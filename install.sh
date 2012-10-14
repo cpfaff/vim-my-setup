@@ -20,26 +20,30 @@ mv ~/.vimrc ~/.vimrc_bck
 ln -s ~/.vim/vimrc ~/.vimrc
 
 # Install the Bundles
-vim -c :BundInstall -c :q :q
+vim -c :BundleInstall -c :q :q
+
+# Ensure system ruby
+if which rvm 
+then
+	rvm use system
+fi
 
 # Go to the comand-t build folder
 pushd ~/.vim/bundle/Command-T/ruby/command-t/
-	# Ensure system ruby
-	if which rvm 
-	then
-		rvm use system
-	fi
 	# Execute the extconf.rb file
 	ruby extconf.rb
 	make
 popd
 
 # Reset ruby version
-
 if which rvm 
 then
 	rvm use ${ruby_version} 
 fi
+
+echo "Vim setup ready!"
+
+exit 0
 
 
 
