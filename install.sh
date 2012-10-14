@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash --login
 
 # ruby version
 ruby_version=1.9.3
@@ -10,8 +10,9 @@ sudo apt-get install par ruby1.8-dev vim-nox git-core exuberant-ctags
 # Backup the existing vim folder  
 mv ~/.vim ~/.vim_bck
 
-# Clone into my repository
-git clone https://github.com/cpfaff/vim-my-config.git ~/.vim
+# Clone into my repository setup vundle
+git clone https://github.com/cpfaff/vim-my-setup.git ~/.vim
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 # Backup the existing vimrc
 mv ~/.vimrc ~/.vimrc_bck
@@ -25,7 +26,7 @@ vim -c :BundleInstall -c :q :q
 # Ensure system ruby
 if which rvm 
 then
-	rvm use system
+rvm use system
 fi
 
 # Go to the comand-t build folder
@@ -38,7 +39,7 @@ popd
 # Reset ruby version
 if which rvm 
 then
-	rvm use ${ruby_version} 
+rvm use ${ruby_version} 
 fi
 
 echo "Vim setup ready!"

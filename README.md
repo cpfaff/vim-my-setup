@@ -12,7 +12,13 @@ sudo apt-get install par ruby1.8-dev vim-nox git-core exuberant-ctags
 
 ```
 mv ~/.vim ~/.vim_bck
-git clone https://github.com/cpfaff/vim-my-config.git ~/.vim
+git clone https://github.com/cpfaff/vim-my-setup.git ~/.vim
+```
+
+### Prepare vundle:
+
+```
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 ```
 
 ### Link the bashrc:
