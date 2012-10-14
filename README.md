@@ -36,19 +36,19 @@ plugin requires the same version vim is linked against to work properly! If you
 use rvm for ruby version control try: `rmv use system` before executing the
 steps below.
 
-1. Go to command-t plugin folder:
+- Go to command-t plugin folder:
 
 ```
 cd ~/.vim/bundle/Command-T/ruby/command-t/
 ```
 
-2. Execute the extconf.rb
+- Execute the extconf.rb
 
 ```
 ruby extconf.rb
 ```
 
-3. Execute the the build process
+- Execute the the build process
 
 ```
 make
