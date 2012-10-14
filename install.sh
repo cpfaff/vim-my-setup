@@ -95,7 +95,6 @@ sudo_install_packages ${depends_on[@]}
 # mv ~/.vim ~/.vim_bck
 execute_command "Backup vim folder" "mv ~/.vim ~/.vim_bck"
 
-exit 0
 # Clone into my repository setup vundle
 execute_command "Clone into my-vim-setup repo" "git clone https://github.com/cpfaff/vim-my-setup.git ~/.vim"
 
