@@ -88,27 +88,50 @@ function execute_command()
 	check_for_process_error "Problems executing the command" ${2}
 }
 
+
+
+function backup_content()
+{
+	big_step_display "Backup content"
+
+	echo "Backup" ${1}
+	if [ -e ${1} ]
+	then
+		cp -rf ${1}{,.bck}
+		check_for_process_error "Problems backing up the file" ${1}
+		rm -rf ${1}
+		check_for_process_error "Problems deleting the file" ${1}
+		
+	else
+		echo "Skipping backup"
+	fi
+}
+
+
 welcome_display "my-vim-setup script" "${message_intro}"
 sudo_install_packages ${depends_on[@]}
 
-# Backup the existing vim folder  
-# mv ~/.vim ~/.vim_bck
-execute_command "Backup vim folder" "mv ~/.vim ~/.vim_bck"
+folder_vim_vim=~/.vim
+file_vim_vimrc=~/.vimrc
+link_vim_vimrc_from=~/.vim/vimrc
+link_vim_vimrc_to=~/.vimrc
+
+backup_content ${folder_vim_vim}
+backup_content ${file_vim_vimrc}
+
+my_vim_setup_cloneto=~/.vim
 
 # Clone into my repository setup vundle
-execute_command "Clone into my-vim-setup repo" "git clone https://github.com/cpfaff/vim-my-setup.git ~/.vim"
+execute_command "Clone into my-vim-setup repo" "git clone https://github.com/cpfaff/vim-my-setup.git ${my_vim_setup_cloneto}"
 
-execute_command "Clone into vundle repo" "git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle"
-
-# Backup the existing vimrc
-# mv ~/.vimrc ~/.vimrc_bck
-execute_command "Backup the .vimrc file" "mv ~/.vimrc ~/.vimrc_bck"
+vundle_clone_to=~/.vim/bundle/vundle
+execute_command "Clone into vundle repo" "git clone https://github.com/gmarik/vundle.git ${vundle_clone_to}"
 
 # Symbolic link the vimrc file
-execute_command "Link the .vimrc to user home" "ln -s ~/.vim/vimrc ~/.vimrc"
+execute_command "Link the .vimrc to user home" "ln -s ${link_vim_vimrc_from} ${link_vim_vimrc_to}"
 
 # Install the Bundles
-vim -c :BundleInstall -c :q -c :q
+vim -u setup_vimrc -c :BundleInstall -c :q -c :q
 
 # rvm ensure system ruby
 if which rvm 
