@@ -34,6 +34,8 @@ Bundle 'tpope/vim-unimpaired.git'
 Bundle 'sukima/xmledit.git'
 Bundle 'vim-scripts/YankRing.vim.git'
 Bundle 'rosenfeld/conque-term.git'
+Bundle 'vim-scripts/tex.vim--Tanzler'
+Bundle 'vim-scripts/peaksea.git'
 
 " auto source changed vimrc file
 if has("autocmd")
