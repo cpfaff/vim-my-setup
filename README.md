@@ -42,13 +42,13 @@ steps below.
 cd ~/.vim/bundle/Command-T/ruby/command-t/
 ```
 
-- Execute the extconf.rb
+- Execute the extconf.rb:
 
 ```
 ruby extconf.rb
 ```
 
-- Execute the the build process
+- Execute the the build process:
 
 ```
 make
