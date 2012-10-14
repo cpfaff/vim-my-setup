@@ -2,7 +2,7 @@
 
 # Variables 
 
-ruby_version=1.9.3
+rvm_ruby_version=1.9.3
 depends_on_packages=(par ruby1.8-dev vim-nox git-core exuberant-ctags)
 folder_home_vim=~/.vim
 folder_home_vim_bundle_vundle=~/.vim/bundle/vundle
@@ -140,10 +140,10 @@ function my_vim_setup()
 
 	if which rvm 
 	then
-		execute_command "Change back to ${ruby_version} ruby" "rvm use ${ruby_version}"
+		execute_command "Change back to ${rvm_ruby_version} ruby" "rvm use ${rvm_ruby_version}"
 	fi
 
-	big_step_display "Vim setup ready!"
+	big_step_display "The Vim setup is ready!"
 }
 
 
