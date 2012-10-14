@@ -36,6 +36,7 @@ Bundle 'vim-scripts/YankRing.vim.git'
 Bundle 'rosenfeld/conque-term.git'
 Bundle 'vim-scripts/tex.vim--Tanzler'
 Bundle 'vim-scripts/peaksea.git'
+Bundle 'cpfaff/vim-rnoweb-snippets.git'
 
 " auto source changed vimrc file
 if has("autocmd")
@@ -225,7 +226,7 @@ noremap <leader>sr 1z=
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " edit rnoweb snippet file
-nnoremap <leader>es :vsplit ~/.vim/bundle/snipmate-snippets/snippets/rnoweb.snippets  <cr>
+nnoremap <leader>es :vsplit ~/.vim/bundle/rnoweb-snippets/snippets/rnoweb.snippets <cr>
 
 " simple make call 
 nnoremap <silent> <leader>c :!make<CR>
