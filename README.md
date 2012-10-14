@@ -11,8 +11,8 @@ sudo apt-get install par ruby1.8-dev vim-nox git-core exuberant-ctags
 ### Clone the repository:
 
 ```
-cd
-git clone https://github.com/cpfaff/vim-my-config.git
+mv ~/.vim ~/.vim_bck
+git clone https://github.com/cpfaff/vim-my-config.git ~/.vim
 ```
 
 ### Link the bashrc:
