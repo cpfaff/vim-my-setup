@@ -30,11 +30,12 @@ ln -s ~/.vim/vimrc ~/.vimrc
 
 Note:
 
-To use the command-t plugin vim must be build with ruby support. To build
-properly the same ruby version vim is linked against must be used! If you
-use rvm try: `rmv use system` if compilation does not work.
+To use the command-t plugin vim must be build with ruby support. The command-t
+plugin requires the same version vim is linked against to work properly! If you
+use rvm for ruby version control try: `rmv use system` before executing the
+steps below.
 
-1. Go to: `~/.vim/bundle/Command-T/ruby/command-t/`
+1. Go to command-t plugin folder:
 
 ```
 cd ~/.vim/bundle/Command-T/ruby/command-t/
