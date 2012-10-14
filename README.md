@@ -2,20 +2,20 @@
 
 ## Install
 
-### Install all dependencies:
+### Install the dependencies:
 
 ```
 sudo apt-get install par ruby1.8-dev vim-nox git-core exuberant-ctags
 ```
 
-Clone into the repository:
+### Clone the repository:
 
 ```
 cd
 git clone https://github.com/cpfaff/vim-my-config.git
 ```
 
-### Link the bashrc file:
+### Link the bashrc:
 
 ```
 ln -s ~/.vim
@@ -43,7 +43,7 @@ cd ~/.vim/bundle/Command-T/ruby/command-t/
 2. Execute the extconf.rb
 
 ```
-cd ~/.vim/bundle/Command-T/ruby/command-t/
+ruby extconf.rb
 ```
 
 3. Execute the the build process
