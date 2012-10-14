@@ -1,0 +1,16 @@
+Bundle 'tex.vim',V
+4.6 CLEANING UP ~                                     *vundle-scripts-cleanup* *BundleClean*run >    :BundleCleanconfirms removal of unused script-dirs from `.vim/bundle/`.                                                            *BundleClean!*>    :BundleClean!,v
+Bundle 'vim.tex',V
+" Number of cols to scroll at a time,v
+    Errors are loaded into the location list for the corresponding window.    When the cursor is on a line containing an error, the error message is echoed in the command window.    Signs are placed beside lines with errors - note that warnings are displayed in a different color.    There is a configurable statusline flag you can include in your statusline config.    Hover the mouse over a line containing an error and the error message is displayed as a balloon.    (not shown) Highlighting errors with syntax highlighting. Erroneous parts of lines can be highlighted.,V
+4.3 UPDATE SCRIPTS ~                                      *vundle-scripts-update* *BundleInstall!*run >    :BundleInstall! " NOTE: bang(!)installs or updates configured scripts.press u after updates ,v
+" Number of cols from horizontal edge to start scrolling,v
+" Number of cols from horizontal edge to start scrolling,v
+Number of lines from vertical edge to start scrolling,v
+,V
+ ,v
+      " Number of lines from vertical edge to start scrolling,v
+" Include all plugins under the ~/.vim/bundle directory " call pathogen#runtime_append_all_bundles()" call pathogen#helptags(),V
+	 " let Vundle manage Vundle	  " required! ,V
+	   Bundle 'gmarik/vundle',V
+" let Vundle manage Vundle" required! ,V
