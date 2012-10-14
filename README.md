@@ -18,7 +18,7 @@ git clone https://github.com/cpfaff/vim-my-config.git ~/.vim
 ### Link the bashrc:
 
 ```
-ln -s ~/.vim
+ln -s ~/.vim/vimrc ~/.vimrc
 ```
 
 ### Install the bundles:
