@@ -1,3 +1,1 @@
-# My Vim setup
-
-This is the backup of my vimrc.
+# This is my vim setup
