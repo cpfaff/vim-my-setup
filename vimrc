@@ -36,7 +36,7 @@ Bundle 'vim-scripts/YankRing.vim.git'
 Bundle 'rosenfeld/conque-term.git'
 Bundle 'vim-scripts/tex.vim--Tanzler'
 Bundle 'vim-scripts/peaksea.git'
-Bundle 'cpfaff/vim-rnoweb-snippets.git'
+Bundle 'cpfaff/vim-my-snippets.git'
 
 " auto source changed vimrc file
 if has("autocmd")
@@ -384,7 +384,7 @@ let Tlist_WinWidth = 40
 " Function definitions and calls 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+" Delete trailing white space on save (Python and CoffeeScript)
 func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
@@ -405,8 +405,9 @@ set foldtext=MyFoldText()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
+" Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
@@ -441,57 +442,3 @@ function! HasPaste()
     en
     return ''
 endfunction
-
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
-
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
-
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
-
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
-endfunction
-
-
-
-
-
-
-
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Unused but potentially useful 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When you press gv you vimgrep after the selected text
-" vnoremap <silent> gv :call VisualSelection('gv')<CR>
-
-" Open vimgrep and put the cursor in the right position
-" noremap <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
-
-" Vimgreps in the current file
-" noremap <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
-
-" Do :help cope if you are unsure what cope is. It's super useful!
-"
-" When you search with vimgrep, display your results in cope by doing:
-"   <leader>cc
-"
-"noremap <leader>cc       : botright cope<CR>
- 
-
-
-
-
-
