@@ -33,6 +33,7 @@ Bundle 'vim-scripts/taglist.vim.git'
 Bundle 'tpope/vim-unimpaired.git'
 Bundle 'sukima/xmledit.git'
 Bundle 'vim-scripts/YankRing.vim.git'
+Bundle 'rosenfeld/conque-term.git'
 
 " auto source changed vimrc file
 if has("autocmd")
@@ -116,6 +117,7 @@ set t_Co=256
 syntax enable
 set background=dark
 colorscheme solarized
+" colorscheme peaksea
 
 " use spaces instead of tabs
 " set expandtab
