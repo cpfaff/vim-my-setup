@@ -1,35 +1,35 @@
 #!/bin/bash --login
 
 # Variables 
+
 ruby_version=1.9.3
-
 depends_on_packages=(par ruby1.8-dev vim-nox git-core exuberant-ctags)
-
 folder_home_vim=~/.vim
 folder_home_vim_bundle_vundle=~/.vim/bundle/vundle
-
 file_home_vimrc=~/.vimrc
 file_home_vim_vimrc=~/.vim/vimrc
-
 file_this_script_logfile=/tmp/my-vim-setup.log
 
 
 # Messages
-message_intro=$(cat <<EOF
 
+message_intro=$(cat <<EOF
 Welcome to the my-vim-setup installation script. This script will install your
 complete vim setup using the vundle package.
-
 EOF
 )
 
+
 # Pseudo ui
+
 frame_big="OO====================================================================================O0"
 frame_small="O===================================================================O"
 step_big="----------------------------------------------------------o"
 step_small="---------------------------"
 
+
 # Functions
+
 function write_log_entry()
 {
 	echo "${1}" >> ${file_this_script_logfile}	
@@ -140,11 +140,13 @@ function my_vim_setup()
 
 	if which rvm 
 	then
-		execute_command "Change back to latest ruby" "rvm use ${ruby_version}"
+		execute_command "Change back to ${ruby_version} ruby" "rvm use ${ruby_version}"
 	fi
 
 	big_step_display "Vim setup ready!"
 }
 
+
 # Function calls
+
 my_vim_setup
