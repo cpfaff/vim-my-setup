@@ -18,6 +18,7 @@ git clone https://github.com/cpfaff/vim-my-config.git ~/.vim
 ### Link the bashrc:
 
 ```
+mv ~/.vimrc ~/.vimrc_bck
 ln -s ~/.vim/vimrc ~/.vimrc
 ```
 
