@@ -3,7 +3,6 @@
 # ruby version
 ruby_version=1.9.3
 
-
 # Install the dependencies
 sudo apt-get install par ruby1.8-dev vim-nox git-core exuberant-ctags
 
@@ -23,7 +22,7 @@ ln -s ~/.vim/vimrc ~/.vimrc
 # Install the Bundles
 vim -c :BundleInstall -c :q :q
 
-# Ensure system ruby
+# rvm ensure system ruby
 if which rvm 
 then
 rvm use system
@@ -36,7 +35,7 @@ pushd ~/.vim/bundle/Command-T/ruby/command-t/
 	make
 popd
 
-# Reset ruby version
+# rvm reset ruby version
 if which rvm 
 then
 rvm use ${ruby_version} 

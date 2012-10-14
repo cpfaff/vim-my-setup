@@ -1,6 +1,6 @@
 # My vim setup
 
-## Install
+## Manual installation
 
 ### Install the dependencies:
 
@@ -60,8 +60,32 @@ ruby extconf.rb
 make
 ```
 
+## Script install 
 
+- Clone into my repository:
 
+```
+git clone https://github.com/cpfaff/vim-my-setup.git
+```
 
+- Change into the repository folder
+
+```
+cd vim-my-setup
+```
+
+- Make the install.sh executable:
+
+```
+chmod +x install.sh
+```
+
+- Execute the script:
+
+```
+./install.sh
+```
+
+- Wait till it is finished. Then enjoy my-vim-setup!
 
 

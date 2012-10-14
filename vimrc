@@ -115,12 +115,9 @@ set mat=2
 set t_Co=256
 
 " Set colour scheme
-" set background=dark 
-" colorscheme peaksea
 syntax enable
-set background=dark
-colorscheme solarized
-" colorscheme peaksea
+set background=dark 
+colorscheme peaksea
 
 " use spaces instead of tabs
 " set expandtab
