@@ -20,12 +20,12 @@ mv ~/.vimrc ~/.vimrc_bck
 ln -s ~/.vim/vimrc ~/.vimrc
 
 # Install the Bundles
-vim -c :BundleInstall -c :q :q
+vim -c :BundleInstall -c :q -c :q
 
 # rvm ensure system ruby
 if which rvm 
 then
-rvm use system
+	rvm use system
 fi
 
 # Go to the comand-t build folder
@@ -38,7 +38,7 @@ popd
 # rvm reset ruby version
 if which rvm 
 then
-rvm use ${ruby_version} 
+	rvm use ${ruby_version} 
 fi
 
 echo "Vim setup ready!"

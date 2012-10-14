@@ -37,12 +37,12 @@ ln -s ~/.vim/vimrc ~/.vimrc
 
 Note:
 
-To use the command-t plugin vim must be build with ruby support. The command-t
-plugin requires the same version vim is linked against to work properly! If you
+To use the command-t plug-in vim must be build with ruby support. The command-t
+plug-in requires the same version vim is linked against to work properly! If you
 use rvm for ruby version control try: `rmv use system` before executing the
 steps below.
 
-- Go to command-t plugin folder:
+- Go to command-t plug-in folder:
 
 ```
 cd ~/.vim/bundle/Command-T/ruby/command-t/
@@ -54,7 +54,7 @@ cd ~/.vim/bundle/Command-T/ruby/command-t/
 ruby extconf.rb
 ```
 
-- Execute the the build process:
+- Execute the build process:
 
 ```
 make
@@ -68,7 +68,7 @@ make
 git clone https://github.com/cpfaff/vim-my-setup.git
 ```
 
-- Change into the repository folder
+- Change into the cloned repository folder
 
 ```
 cd vim-my-setup
@@ -79,6 +79,17 @@ cd vim-my-setup
 ```
 chmod +x install.sh
 ```
+
+Note: 
+
+The next step is for rvm users only. You need to set the ruby version you
+usually use. This is the version the script switches back after switching to
+system ruby for the plug-in compilation process.
+
+```
+vim install.sh
+```
+
 
 - Execute the script:
 
