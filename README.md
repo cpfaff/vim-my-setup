@@ -92,7 +92,7 @@ Note:
 
 The next step is for ruby version manager users only. You need to edit the
 script and set the ruby version you normally use. You can set this in set this
-in the variable `rub_version` as shown in the example below.
+in the variable `ruby_version` as shown in the example below.
 
 - Open the installer:
 
