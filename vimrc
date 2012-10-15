@@ -57,8 +57,8 @@ set history=700
 set undolevels=100
 
 " save all backupfiles in one place
-set backupdir=~/.vim/tmp,/tmp  
-set directory=~/.vim/tmp,/tmp 
+set backupdir=~/.vim/tmp  
+set directory=~/.vim/tmp 
 
 " Enable filetype plugins
 filetype plugin on
