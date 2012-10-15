@@ -86,19 +86,21 @@ cd vim-my-setup
 chmod +x install.sh
 ```
 
+### Set ruby version:
+
 Note: 
 
 The next step is for ruby version manager users only. You need to edit the
 script and set the ruby version you normally use. You can set this in set this
 in the variable `rvm_ruby_version` as shown in the example below.
 
-### Open the script:
+- Open the installer:
 
 ```
 vim vim-my-setup/installer/install.sh
 ```
 
-### Set the variable to your needs:
+- Set the variable to your needs:
 
 ```
 ruby_version="1.9.3"
