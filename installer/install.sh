@@ -4,8 +4,10 @@
 
 rvm_ruby_version=1.9.3
 depends_on_packages=(par ruby1.8-dev vim-nox git-core exuberant-ctags)
+
 folder_home_vim=~/.vim
 folder_home_vim_bundle_vundle=~/.vim/bundle/vundle
+
 file_home_vimrc=~/.vimrc
 file_home_vim_vimrc=~/.vim/vimrc
 file_this_script_logfile=/tmp/my-vim-setup.log
