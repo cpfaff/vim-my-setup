@@ -128,8 +128,7 @@ function my_vim_setup()
 
 	execute_command "Link the .vimrc to user home" "ln -s ${file_home_vim_vimrc} ${file_home_vimrc}"
 
-	# execute_command "Installing the bundles" "vim -u setup_vimrc -c :BundleInstall -c :q -c :q"
-	execute_command "Installing the bundles" "vim +BundleInstall +qall"
+	execute_command "Installing the bundles" "vim -u setup_vimrc -c :BundleInstall -c :q -c :q"
 
 	if which rvm 
 	then
