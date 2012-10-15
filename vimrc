@@ -175,7 +175,7 @@ set laststatus=2
 " Set look and infor in status line
 set statusline=%F%m%r%h%w\ [CWD=%{getcwd()}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
-" Foldin options
+" Folding options
 set nofoldenable
 set foldmethod=marker
 "set foldmarker=  "\begin{figure*},end{\figure*}
