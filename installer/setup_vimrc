@@ -34,4 +34,6 @@ Bundle 'vim-scripts/YankRing.vim.git'
 Bundle 'rosenfeld/conque-term.git'
 Bundle 'vim-scripts/tex.vim--Tanzler'
 Bundle 'vim-scripts/peaksea.git'
-
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'guns/xterm-color-table.vim.git'
+Bundle 'mutewinter/vim-indent-guides'

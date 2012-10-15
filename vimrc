@@ -36,10 +36,15 @@ Bundle 'vim-scripts/YankRing.vim.git'
 Bundle 'rosenfeld/conque-term.git'
 Bundle 'vim-scripts/tex.vim--Tanzler'
 Bundle 'vim-scripts/peaksea.git'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'guns/xterm-color-table.vim.git'
+Bundle 'mutewinter/vim-indent-guides'
+
+" Bundle 'Rykka/colorv.vim.git'
 
 " auto source changed vimrc file
 if has("autocmd")
-  autocmd bufwritepost .vimrc source $MYVIMRC
+   autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
 """""""""""""""""""""""""""""""""""""""
@@ -71,8 +76,8 @@ let maplocalleader = '.'
 
 " set this to have alt and meta key mappings
 for i in range(97,122)
-	let c = nr2char(i)
-	exec "set <M-".c.">=\<Esc>".c
+   let c = nr2char(i)
+   exec "set <M-".c.">=\<Esc>".c
 endfor
 
 " A buffer becomes hidden when it is abandoned 
@@ -119,7 +124,7 @@ set background=dark
 colorscheme peaksea
 
 " use spaces instead of tabs
-" set expandtab
+set expandtab
 
 " Be smart when using tabs 
 set smarttab
@@ -171,7 +176,7 @@ set pumheight=15
 " Always show the status line
 set laststatus=2
 
-" Set look and infor in status line
+" Set look and info of status line
 set statusline=%F%m%r%h%w\ [CWD=%{getcwd()}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 " Folding options
@@ -214,15 +219,15 @@ nnoremap <leader>wq :wq!<CR>
 noremap <leader>ss :setlocal spell!<CR>
 noremap <leader>sn ]s
 noremap <leader>sp [s
-noremap <leader>sa zg
-noremap <leader>s? z=
+noremap <leader>sg zg
+noremap <leader>se z=
 noremap <leader>sr 1z=
 
 " edit vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " edit rnoweb snippet file
-nnoremap <leader>es :vsplit ~/.vim/bundle/rnoweb-snippets/snippets/rnoweb.snippets <cr>
+nnoremap <leader>es :vsplit ~/.vim/snippets/rnoweb.snippets <cr>
 
 " simple make call 
 nnoremap <silent> <leader>c :!make<CR>
@@ -232,7 +237,7 @@ nnoremap <silent> <leader>cs :!make showpdf &> /dev/null <CR>
 
 " Shortcut to rapidly toggle `set list`
 " nnoremap <leader>l :set list!<CR>
- 
+
 " Use the same symbols as TextMate for tabstops and EOLs
 " set listchars=tab:▸\ ,eol:¬
 
@@ -283,7 +288,7 @@ nnoremap <leader>fs :mksession! session.vim<CR>
 
 " Read the session file
 nnoremap <leader>fr :source session.vim<CR>
- 	
+
 " Remap VIM 0 to first non-blank character
 noremap 0 ^
 
@@ -328,16 +333,23 @@ nnoremap <silent> <leader>ys :YRPush '+'<CR>
 
 " Tabularize
 if exists(":Tabularize")
-  nnoremap <Leader>aa :Tabularize /&<CR>
-  vnoremap <Leader>aa :Tabularize /&<CR>
-  nnoremap <Leader>a: :Tabularize /:\zs<CR>
-  vnoremap <Leader>a: :Tabularize /:\zs<CR>
+   nnoremap <Leader>aa :Tabularize /&<CR>
+   vnoremap <Leader>aa :Tabularize /&<CR>
+   nnoremap <Leader>a: :Tabularize /:\zs<CR>
+   vnoremap <Leader>a: :Tabularize /:\zs<CR>
 endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin specific options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Tab guideline options 
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_guide_size = 1 
+let g:indent_guides_start_level = 1
+hi IndentGuidesOdd  ctermbg=238 
+hi IndentGuidesEven ctermbg=243
 
 " Supertab options
 let g:SuperTabDefaultCompletionType = "context"
@@ -382,19 +394,19 @@ let Tlist_WinWidth = 40
 
 " Delete trailing white space on save (Python and CoffeeScript)
 func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
+   exe "normal mz"
+   %s/\s\+$//ge
+   exe "normal `z"
 endfunc
 
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 function! MyFoldText()
-    "let nl = v:foldend - v:foldstart + 1
-    let linetext = getline(v:foldstart + 1)
-    let text =  linetext  
-    return text
+   "let nl = v:foldend - v:foldstart + 1
+   let linetext = getline(v:foldstart + 1)
+   let text =  linetext  
+   return text
 endfunction
 
 set foldtext=MyFoldText()
@@ -405,36 +417,33 @@ set foldtext=MyFoldText()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
+   exe "menu Foo.Bar :" . a:str
+   emenu Foo.Bar
+   unmenu Foo
 endfunction
 
 function! VisualSelection(direction) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
+   let l:saved_reg = @"
+   execute "normal! vgvy"
+   let l:pattern = escape(@", '\\/.*$^~[]')
+   let l:pattern = substitute(l:pattern, "\n$", "", "")
+   if a:direction == 'b'
+      execute "normal ?" . l:pattern . "^M"
+   elseif a:direction == 'gv'
+      call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+   elseif a:direction == 'replace'
+      call CmdLine("%s" . '/'. l:pattern . '/')
+   elseif a:direction == 'f'
+      execute "normal /" . l:pattern . "^M"
+   endif
+   let @/ = l:pattern
+   let @" = l:saved_reg
 endfunction
 
 " Returns true if paste mode is enabled
 function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
+   if &paste
+      return 'PASTE MODE  '
+   en
+   return ''
 endfunction
