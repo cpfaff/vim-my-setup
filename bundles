@@ -13,8 +13,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/CmdlineComplete.git'
 Bundle 'vim-scripts/LustyJuggler.git'
-Bundle 'honza/snipmate-snippets.git'
-Bundle 'ervandew/supertab.git'
 Bundle 'godlygeek/tabular.git'
 Bundle 'tomtom/tlib_vim.git'
 Bundle 'MarcWeber/vim-addon-mw-utils.git'
@@ -39,7 +37,12 @@ Bundle 'guns/xterm-color-table.vim.git'
 Bundle 'mutewinter/vim-indent-guides'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'Shougo/neocomplcache.git'
+Bundle 'Shougo/neocomplcache-snippets-complete.git'
+Bundle 'honza/snipmate-snippets.git'
 
+
+
+" Bundle 'ervandew/supertab.git'
 " Bundle 'garbas/vim-snipmate.git'
 " Bundle 'wincent/Command-T.git'
 " Bundle 'vim-scripts/taglist.vim.git'

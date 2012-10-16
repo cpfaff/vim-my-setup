@@ -17,12 +17,19 @@ set t_vb=
 set tm=500
 
 " Sets how much history and undo vim remembers  
-set history=700
-set undolevels=100
+set history=1000
 
 " save all backupfiles in one place
 set backupdir=~/.vim/tmp  
 set directory=~/.vim/tmp 
+
+" Persistent undo
+if has('persistent_undo')
+   set undodir=~/.vim/tmp
+   set undofile
+   set undolevels=1000 "maximum number of changes that can be undone
+   set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+endif
 
 " Enable filetype plugins
 filetype plugin on
@@ -43,14 +50,13 @@ endfor
 set hidden
 
 " Configure backspace 
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l,[,]
+set backspace=indent,eol,start 
+set whichwrap=b,s,h,l,<,>,[,]
 
 "swith on numbering 
 set number
 
 " Ignore compiled files 
-" set wildignore=*.o,*~,*.pyc
 set wildignore=*tikzDiktionary*
 
 " Ignore case when searching 
@@ -132,18 +138,22 @@ set completeopt=menu,menuone,longest
 " Limit popup menu height
 set pumheight=15
 
-" Always show the status line
-set laststatus=2
-
 " Set look and info of status line
-set statusline=%F%m%r%h%w\ [CWD=%{getcwd()}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+if has('statusline')
+   set laststatus=2
+   " in segments
+   set statusline=%<%f\ " Filename
+   set statusline+=%w%h%m%r " Options
+   set statusline+=%{fugitive#statusline()} " Git 
+   set statusline+=\ [%{&ff}/%Y] " filetype
+   set statusline+=\ [%{getcwd()}] " current dir
+   set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
+endif
+" set statusline=%F%m%r%h%w\ [CWD=%{getcwd()}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 " Folding options
 set nofoldenable
 set foldmethod=marker
-"set foldmarker=  "\begin{figure*},end{\figure*}
-"set foldtext=search("\\label{\w*:\w*}")
-"set foldtext=getlinie(\\label{\w*:\w*})
 set foldnestmax=10
 
 " Standard spelling en
@@ -157,6 +167,10 @@ au BufNewFile,BufRead * set cpoptions+=$
 
 " Toggle paste mode on and off
 set pastetoggle=<F3>
+
+" save/restore the view
+au BufWinLeave *.* silent! mkview "make vim save view (state) (folds, cursor, etc)
+au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
 
 """""""""""""""""""""""""""""""""""""""
 " Vim mappings
@@ -251,19 +265,15 @@ nnoremap <leader>fr :source session.vim<CR>
 " Remap VIM 0 to first non-blank character
 noremap 0 ^
 
-" Bubble (move) single lines
+" Move lines 
 nmap <A-k> [e
 nmap <A-j> ]e
-" Bubble (move) multiple lines
 vmap <A-k> [egv
 vmap <A-j> ]egv
-" vertial indent
 nnoremap <A-l> >>
 nnoremap <A-h> <<
-" the visual mapping could be advanced vertical indent and get visual
-" selection again
-vnoremap <A-l> >>
-vnoremap <A-h> <<
+vnoremap <A-l> >gv
+vnoremap <A-h> <gv
 
 " Smart way to move between windows
 noremap <C-j> <C-W>j
@@ -289,7 +299,15 @@ vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 
 
 " Taglist plugin mappings
-noremap <F1> :TagbarToggle<cr>
+
+" Ctags {
+    noremap <F1> :TagbarToggle<cr>
+    set tags=~/.vim/tmp/
+" }
+
+
+
+
 " noremap <F2> :!ctags --extra=+f --exclude=.git --exclude=log -R * <CR><CR>
 
 " Yankring plugin mappings
@@ -298,18 +316,17 @@ nnoremap <silent> <leader>ys :YRPush '+'<CR>
 
 
 " Tabularize {
-        nmap <Leader>a= :Tabularize /=<CR>
-        vmap <Leader>a= :Tabularize /=<CR>
-        nmap <Leader>a: :Tabularize /:<CR>
-        vmap <Leader>a: :Tabularize /:<CR>
-        nmap <Leader>a:: :Tabularize /:\zs<CR>
-        vmap <Leader>a:: :Tabularize /:\zs<CR>
-        nmap <Leader>a, :Tabularize /,<CR>
-        vmap <Leader>a, :Tabularize /,<CR>
-        nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-        vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+   nmap <Leader>a= :Tabularize /=<CR>
+   vmap <Leader>a= :Tabularize /=<CR>
+   nmap <Leader>a: :Tabularize /:<CR>
+   vmap <Leader>a: :Tabularize /:<CR>
+   nmap <Leader>a:: :Tabularize /:\zs<CR>
+   vmap <Leader>a:: :Tabularize /:\zs<CR>
+   nmap <Leader>a, :Tabularize /,<CR>
+   vmap <Leader>a, :Tabularize /,<CR>
+   nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+   vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 " }
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -333,10 +350,13 @@ let g:yankring_history_dir = '~/.vim/tmp'
 " Add comment strings for unknown files
 autocmd FileType rnoweb set commentstring=%\ %s
 
-" Command-T fuzzy file finder
-" let g:CommandTAcceptSelectionMap = '<C-t>'
-" let g:CommandTAcceptSelectionTabMap = '<CR>'
+" Ctrlp fuzzy finder 
+
+" ctrlp 
 let g:ctrlp_map = '<leader>t'
+let g:ctrlp_custom_ignore = {
+         \ 'dir': '\.git$\|\.hg$\|\.svn$',
+         \ 'file': '\.exe$\|\.so$\|\.dll$' }
 
 " Conque term options
 let g:ConqueTerm_SendFunctionKeys = 0
@@ -387,7 +407,7 @@ let g:tagbar_left = 1
    inoremap <expr><C-g> neocomplcache#undo_completion()
    inoremap <expr><C-l> neocomplcache#complete_common_string()
    inoremap <expr><CR> neocomplcache#complete_common_string()
-
+   
    " <CR>: close popup
    " <s-CR>: close popup and save indent.
    inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
