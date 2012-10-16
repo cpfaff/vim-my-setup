@@ -1,5 +1,5 @@
 " Load the bundles
-source vimrc_bunles
+source vimrc_bundles
 
 " auto source changed vimrc file
 if has("autocmd")
