@@ -221,7 +221,7 @@ noremap <space> /
 noremap <C-@> ? 
 
 " Disable highlight when <leader><CR> is pressed
-noremap <silent> <leader><CR> :noh<CR>
+noremap <silent> <leader><space> :noh<CR>
 
 " Handle buffers
 noremap <leader>bn :tabnew<CR>
@@ -278,25 +278,38 @@ inoremap kj <esc>
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 
-" Vim fugitive mappings 
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gp :Git push<CR><CR>
+" Fugitive {
+        nnoremap <silent> <leader>gs :Gstatus<CR>
+        nnoremap <silent> <leader>gd :Gdiff<CR>
+        nnoremap <silent> <leader>gc :Gcommit<CR>
+        nnoremap <silent> <leader>gb :Gblame<CR>
+        nnoremap <silent> <leader>gl :Glog<CR>
+        nnoremap <silent> <leader>gp :Git push<CR><CR>
+" }
+
 
 " Taglist plugin mappings
-noremap <F1> :TlistToggle<cr>
-noremap <F2> :!ctags --extra=+f --exclude=.git --exclude=log -R * <CR><CR>
+noremap <F1> :TagbarToggle<cr>
+" noremap <F2> :!ctags --extra=+f --exclude=.git --exclude=log -R * <CR><CR>
 
 " Yankring plugin mappings
 nnoremap <silent> <leader>y :YRShow<CR>
 nnoremap <silent> <leader>ys :YRPush '+'<CR>
 
-" Tabularize
-if exists(":Tabularize")
-   nnoremap <Leader>aa :Tabularize /&<CR>
-   vnoremap <Leader>aa :Tabularize /&<CR>
-   nnoremap <Leader>a: :Tabularize /:\zs<CR>
-   vnoremap <Leader>a: :Tabularize /:\zs<CR>
-endif
+
+" Tabularize {
+        nmap <Leader>a= :Tabularize /=<CR>
+        vmap <Leader>a= :Tabularize /=<CR>
+        nmap <Leader>a: :Tabularize /:<CR>
+        vmap <Leader>a: :Tabularize /:<CR>
+        nmap <Leader>a:: :Tabularize /:\zs<CR>
+        vmap <Leader>a:: :Tabularize /:\zs<CR>
+        nmap <Leader>a, :Tabularize /,<CR>
+        vmap <Leader>a, :Tabularize /,<CR>
+        nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+        vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+" }
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -321,8 +334,9 @@ let g:yankring_history_dir = '~/.vim/tmp'
 autocmd FileType rnoweb set commentstring=%\ %s
 
 " Command-T fuzzy file finder
-let g:CommandTAcceptSelectionMap = '<C-t>'
-let g:CommandTAcceptSelectionTabMap = '<CR>'
+" let g:CommandTAcceptSelectionMap = '<C-t>'
+" let g:CommandTAcceptSelectionTabMap = '<CR>'
+let g:ctrlp_map = '<leader>t'
 
 " Conque term options
 let g:ConqueTerm_SendFunctionKeys = 0
@@ -342,10 +356,79 @@ let ConqueTerm_Color = 0
 let ConqueTerm_ReadUnfocused = 1
 let vimrplugin_conquevsplit = 0
 
-" Taglist options (needs ctags program)
-let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-let Tlist_WinWidth = 40
+" tagbar {
+let g:tagbar_left = 1
+" }
 
+" neocomplcache {
+   let g:neocomplcache_enable_at_startup = 1
+   let g:neocomplcache_enable_camel_case_completion = 1
+   let g:neocomplcache_enable_smart_case = 1
+   let g:neocomplcache_enable_underbar_completion = 1
+   let g:neocomplcache_min_syntax_length = 3
+   let g:neocomplcache_enable_auto_delimiter = 1
+   let g:neocomplcache_max_list = 15
+   let g:neocomplcache_auto_completion_start_length = 3
+   let g:neocomplcache_force_overwrite_completefunc = 1
+   let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate-snippets/snippets/'
+
+   " AutoComplPop like behavior.
+   let g:neocomplcache_enable_auto_select = 0
+
+   " SuperTab like snippets behavior.
+   imap <silent><expr><tab> neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
+   smap <tab> <right><plug>(neocomplcache_snippets_jump)
+
+   " Plugin key-mappings.
+   " Ctrl-k expands snippet & moves to next position
+   " <CR> chooses highlighted value
+   imap <C-k> <Plug>(neocomplcache_snippets_expand)
+   smap <C-k> <Plug>(neocomplcache_snippets_expand)
+   inoremap <expr><C-g> neocomplcache#undo_completion()
+   inoremap <expr><C-l> neocomplcache#complete_common_string()
+   inoremap <expr><CR> neocomplcache#complete_common_string()
+
+   " <CR>: close popup
+   " <s-CR>: close popup and save indent.
+   inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
+   inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+
+   " <TAB>: completion.
+   inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+   inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+
+   " <C-h>, <BS>: close popup and delete backword char.
+   inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+   inoremap <expr><C-y> neocomplcache#close_popup()
+
+   " Define keyword.
+   if !exists('g:neocomplcache_keyword_patterns')
+      let g:neocomplcache_keyword_patterns = {}
+   endif
+   let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+   " Enable omni completion.
+   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+   autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+   " Enable heavy omni completion.
+   if !exists('g:neocomplcache_omni_patterns')
+      let g:neocomplcache_omni_patterns = {}
+   endif
+   let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+   let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+   let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+   let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
+   " For snippet_complete marker.
+   if has('conceal')
+      set conceallevel=2 concealcursor=i
+   endif
+" }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function definitions and calls 
@@ -369,7 +452,6 @@ function! MyFoldText()
 endfunction
 
 set foldtext=MyFoldText()
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helper functions
