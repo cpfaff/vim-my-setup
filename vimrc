@@ -1,46 +1,5 @@
-"""""""""""""""""""""""""""""""""""""""
-" Preparations 
-"""""""""""""""""""""""""""""""""""""""
-
-" Be improved 
-set nocompatible
-filetype off
-
-" Setup vundle package manager
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-Bundle 'vim-scripts/CmdlineComplete.git'
-Bundle 'wincent/Command-T.git'
-Bundle 'vim-scripts/LustyJuggler.git'
-Bundle 'honza/snipmate-snippets.git'
-Bundle 'ervandew/supertab.git'
-Bundle 'godlygeek/tabular.git'
-Bundle 'tomtom/tlib_vim.git'
-Bundle 'MarcWeber/vim-addon-mw-utils.git'
-Bundle 'Townk/vim-autoclose.git'
-Bundle 'altercation/vim-colors-solarized.git'
-Bundle 'tpope/vim-commentary.git'
-Bundle 'tpope/vim-fugitive.git'
-Bundle 'edsono/vim-matchit.git'
-Bundle 'tpope/vim-rails.git'
-Bundle 'tpope/vim-repeat.git'
-Bundle 'vim-scripts/Vim-R-plugin.git'
-Bundle 'garbas/vim-snipmate.git'
-Bundle 'tpope/vim-surround.git'
-Bundle 'vim-scripts/taglist.vim.git'
-Bundle 'tpope/vim-unimpaired.git'
-Bundle 'sukima/xmledit.git'
-Bundle 'vim-scripts/YankRing.vim.git'
-Bundle 'rosenfeld/conque-term.git'
-Bundle 'vim-scripts/tex.vim--Tanzler'
-Bundle 'vim-scripts/peaksea.git'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'guns/xterm-color-table.vim.git'
-Bundle 'mutewinter/vim-indent-guides'
-
-" Bundle 'Rykka/colorv.vim.git'
+" Load the bundles
+source vimrc_bunles
 
 " auto source changed vimrc file
 if has("autocmd")

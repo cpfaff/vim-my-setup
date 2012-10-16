@@ -1,10 +1,12 @@
 """""""""""""""""""""""""""""""""""""""
-" Setup vimrc 
+" Preparations 
 """""""""""""""""""""""""""""""""""""""
 
+" Be improved 
 set nocompatible
 filetype off
 
+" Setup vundle package manager
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -37,3 +39,5 @@ Bundle 'vim-scripts/peaksea.git'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'guns/xterm-color-table.vim.git'
 Bundle 'mutewinter/vim-indent-guides'
+
+" Bundle 'Rykka/colorv.vim.git'
