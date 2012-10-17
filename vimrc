@@ -149,6 +149,7 @@ if has('statusline')
    set statusline+=\ [%{getcwd()}] " current dir
    set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
 endif
+
 " set statusline=%F%m%r%h%w\ [CWD=%{getcwd()}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 " Folding options
@@ -196,11 +197,10 @@ noremap <leader>sg zg
 noremap <leader>se z=
 noremap <leader>sr 1z=
 
-" edit vimrc
+" Edit config files
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-
-" edit rnoweb snippet file
-nnoremap <leader>es :vsplit ~/.vim/snippets/rnoweb.snippets <cr>
+nnoremap <Leader>es :NeoSnippetEdit<CR>
+nnoremap <Leader>er :NeoComplCacheEditRuntimeSnippets<CR>
 
 " simple make call 
 nnoremap <silent> <leader>c :!make<CR>
@@ -303,9 +303,8 @@ noremap <F1> :TagbarToggle<cr>
 set tags=~/.vim/tmp/
 
 " Yankring plugin mappings
-nnoremap <silent> <leader>y :YRShow<CR>
+nnoremap <silent> <leader>yy :YRShow<CR>
 nnoremap <silent> <leader>ys :YRPush '+'<CR>
-
 
 " Tabularize 
 nmap <Leader>a= :Tabularize /=<CR>
@@ -325,166 +324,119 @@ vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Tab guideline options 
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_guide_size = 1 
-let g:indent_guides_start_level = 1
-hi IndentGuidesOdd  ctermbg=238 
-hi IndentGuidesEven ctermbg=243
-
-" Supertab options
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabNoCompleteAfter = ['^', '\s', '%', '"']
+ let g:indent_guides_auto_colors = 0
+ let g:indent_guides_guide_size = 1 
+ let g:indent_guides_start_level = 1
+ hi IndentGuidesOdd  ctermbg=238 
+ hi IndentGuidesEven ctermbg=243
+"
 
 " Yankring history folder
-let g:yankring_history_dir = '~/.vim/tmp'
+ let g:yankring_history_dir = '~/.vim/tmp'
+"
 
 " Add comment strings for unknown files
-autocmd FileType rnoweb set commentstring=%\ %s
+ autocmd FileType rnoweb set commentstring=%\ %s
+"
 
 " Ctrlp fuzzy finder 
-let g:ctrlp_map = '<leader>t'
-let g:ctrlp_custom_ignore = {
-         \ 'dir': '\.git$\|\.hg$\|\.svn$',
-         \ 'file': '\.exe$\|\.so$\|\.dll$' }
+ let g:ctrlp_map = '<leader>t'
+ let g:ctrlp_custom_ignore = {
+          \ 'dir': '\.git$\|\.hg$\|\.svn$',
+          \ 'file': '\.exe$\|\.so$\|\.dll$' }
+"
 
 " Conque term options
-let g:ConqueTerm_SendFunctionKeys = 0
-let g:ConqueTerm_ExecFileKey = '<nop>'
-let g:ConqueTerm_SendFileKey = '<nop>'
-let g:ConqueTerm_SendVisKey = '<nop>'
+ let g:ConqueTerm_SendFunctionKeys = 0
+ let g:ConqueTerm_ExecFileKey = '<nop>'
+ let g:ConqueTerm_SendFileKey = '<nop>'
+ let g:ConqueTerm_SendVisKey = '<nop>'
+ let vimrplugin_underscore = 0
+ let vimrplugin_rnowebchunk = 0
+ let vimrplugin_ca_ck = 0
+ let vimrplugin_applescript = 0
+ let vimrplugin_screenplugin = 0
+ let vimrplugin_conqueplugin = 1
+ let ConqueTerm_CWInsert = 1
+ let ConqueTerm_Color = 0
+ let ConqueTerm_ReadUnfocused = 1
+ let vimrplugin_conquevsplit = 0
+"
 
-" let vimrplugin_tmux = 0
-let vimrplugin_underscore = 0
-let vimrplugin_rnowebchunk = 0
-let vimrplugin_ca_ck = 0
-let vimrplugin_applescript = 0
-let vimrplugin_screenplugin = 0
-let vimrplugin_conqueplugin = 1
-let ConqueTerm_CWInsert = 1
-let ConqueTerm_Color = 0
-let ConqueTerm_ReadUnfocused = 1
-let vimrplugin_conquevsplit = 0
-
-" tagbar {
-let g:tagbar_left = 1
-" }
-
-
-   
-"    inoremap <expr> <s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
-"    inoremap <expr> <CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-   
-"    inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-"    inoremap <expr> <s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-   
-"    " <C-h>, <BS>: close popup and delete backword char.
-"    inoremap <expr> <BS> neocomplcache#smart_close_popup()."\<C-h>"
-"    inoremap <expr> <C-y> neocomplcache#close_popup()
-   
-"    " Define keyword.
-"    if !exists('g:neocomplcache_keyword_patterns')
-"       let g:neocomplcache_keyword_patterns = {}
-"    endif
-"    let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-"    " Enable omni completion.
-"    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-"    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
-"    " Enable heavy omni completion.
-"    if !exists('g:neocomplcache_omni_patterns')
-"       let g:neocomplcache_omni_patterns = {}
-"    endif
-"    let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-"    let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"    let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-"    let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
-
-"    " For snippet_complete marker.
-"    if has('conceal')
-"       set conceallevel=2 concealcursor=i
-"    endif
-" " }
+" tagbar 
+ let g:tagbar_left = 1
+" 
 
 " neocomplcache 
-" let g:acp_enableAtStartup = 0
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_enable_auto_select = 1
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_enable_auto_delimiter = 1
-let g:neocomplcache_max_list = 15
-let g:neocomplcache_auto_completion_start_length = 3
-let g:neocomplcache_force_overwrite_completefunc = 1
-let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate-snippets/snippets/'
+ let g:neocomplcache_enable_at_startup = 1
+ let g:neocomplcache_enable_camel_case_completion = 1
+ let g:neocomplcache_enable_smart_case = 1
+ let g:neocomplcache_enable_underbar_completion = 1
+ let g:neocomplcache_min_syntax_length = 3
+ let g:neocomplcache_enable_auto_delimiter = 1
+ let g:neocomplcache_max_list = 15
+ let g:neocomplcache_auto_completion_start_length = 3
+ let g:neocomplcache_force_overwrite_completefunc = 1
+ let g:neocomplcache_enable_auto_select = 1
 
+ let g:neosnippet#snippets_directory='~/.vim/snippets/'
 
-imap <silent> <expr> <tab> neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
-smap <tab> <right> <plug>(neocomplcache_snippets_jump)
+ imap <C-k> <Plug>(neosnippet_expand)
+ smap <C-k> <Plug>(neosnippet_expand)
+ imap <C-j> <Plug>(neosnippet_jump)
+ smap <C-j> <Plug>(neosnippet_jump)
+ 
+ inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+ inoremap <expr><C-y> neocomplcache#close_popup()
+ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+ inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+ 
+ " Define keyword.
+ if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+ endif
+ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
+ " Enable omni completion.
+ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-" Define dictinary
-" let g:neocomplcache_dictionary_filetype_lists = {
-  " \ 'default': '',
-  " \ 'vimshell': $HOME.'/.vimshell_hist'
-  " \}
+ " Enable heavy omni completion.
+ if !exists('g:neocomplcache_omni_patterns')
+    let g:neocomplcache_omni_patterns = {}
+ endif
 
-" Define keyword
-if !exists('g:neocomplcache_keyword_patterns')
-  let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+ let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+ let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
-" Plugin key-mappings
-imap <C-k> <Plug>(neocomplcache_snippets_expand)
-smap <C-k> <Plug>(neocomplcache_snippets_expand)
-inoremap <expr><C-g> neocomplcache#undo_completion()
-inoremap <expr><C-l> neocomplcache#complete_common_string()
-" inoremap <expr><TAB> neocomplcache#complete_common_string()
-noremap <expr><CR> neocomplcache#smart_close_popup()."\<CR>"
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-" <TAB>: completion.
-" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" inoremap <expr><C-y> neocomplcache#close_popup() " duplicate zen-coding
-inoremap <expr><C-e> neocomplcache#cancel_popup()
-
-" Enable omni completion.
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-" let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-" autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
+ " For snippet_complete marker.
+ if has('conceal')
+    set conceallevel=2 concealcursor=i
+ endif
+"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function definitions and calls 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Delete trailing white space on save (Python and CoffeeScript)
-func! DeleteTrailingWS()
-   exe "normal mz"
-   %s/\s\+$//ge
-   exe "normal `z"
-endfunc
+ func! DeleteTrailingWS()
+    exe "normal mz"
+    %s/\s\+$//ge
+    exe "normal `z"
+ endfunc
 
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
+ autocmd BufWrite *.py :call DeleteTrailingWS()
+ autocmd BufWrite *.coffee :call DeleteTrailingWS()
+"
 
+"
 function! MyFoldText()
    "let nl = v:foldend - v:foldstart + 1
    let linetext = getline(v:foldstart + 1)
