@@ -6,6 +6,7 @@ depends_on_packages=(par vim-nox git-core exuberant-ctags)
 folder_home_vim=~/.vim
 folder_home_vim_bundle_vundle=~/.vim/bundle/vundle
 
+file_home_vim_bundles=~/.vim/bundles 
 file_home_vimrc=~/.vimrc
 file_home_vim_vimrc=~/.vim/vimrc
 file_this_script_logfile=/tmp/my-vim-setup.log
@@ -126,9 +127,8 @@ function my_vim_setup()
 
 	execute_command "Link the .vimrc to user home" "ln -s ${file_home_vim_vimrc} ${file_home_vimrc}"
 
-  #	execute_command "Installing the bundles" "vim -u bundles -c :BundleInstall -c :q -c :q"
+  	execute_command "Installing the bundles" "vim -u ${file_home_vim_bundles} -c :BundleInstall -c :q -c :q"
 
-	execute_command "Installing the bundles" "vim -u bundles +BundleInstall +q +q"
 	big_step_display "The Vim setup is ready!"
 }
 
