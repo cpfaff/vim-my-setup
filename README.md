@@ -38,34 +38,6 @@ ln -s ~/.vim/vimrc ~/.vimrc
 1. Open Vim `vim`
 2. Type `:BundleInstall`
 
-### Build the command-t plugin:
-
-Note:
-
-To use the command-t plug-in Vim must be build with ruby support. The command-t
-plug-in requires the same version Vim is linked against to compile and work
-properly! If you use the ruby version manager (rvm) issue `rmv use system`
-before executing the steps below. You can switch back to the ruby version which
-you use normally with: `rvm use [version number]` after compilation.
-
-- Go to command-t plug-in folder:
-
-```
-cd ~/.vim/bundle/Command-T/ruby/command-t/
-```
-
-- Execute the extconf.rb:
-
-```
-ruby extconf.rb
-```
-
-- Execute the build process:
-
-```
-make
-```
-
 ## Script install 
 
 ### Clone into my repository:
@@ -84,26 +56,6 @@ cd vim-my-setup
 
 ```
 chmod +x install.sh
-```
-
-### Set ruby version:
-
-Note: 
-
-The next step is for ruby version manager users only. You need to edit the
-script and set the ruby version you normally use. You can set this in set this
-in the variable `ruby_version` as shown in the example below.
-
-- Open the installer:
-
-```
-vim vim-my-setup/installer/install.sh
-```
-
-- Set the variable to your needs:
-
-```
-ruby_version="1.9.3"
 ```
 
 ### Execute the script:

@@ -1,9 +1,7 @@
 #!/bin/bash --login
 
-# Variables 
 
-ruby_version="1.9.3"
-depends_on_packages=(par ruby1.8-dev vim-nox git-core exuberant-ctags)
+depends_on_packages=(par vim-nox git-core exuberant-ctags)
 
 folder_home_vim=~/.vim
 folder_home_vim_bundle_vundle=~/.vim/bundle/vundle
@@ -129,21 +127,6 @@ function my_vim_setup()
 	execute_command "Link the .vimrc to user home" "ln -s ${file_home_vim_vimrc} ${file_home_vimrc}"
 
 	execute_command "Installing the bundles" "vim -u bundles -c :BundleInstall -c :q -c :q"
-
-	if which rvm 
-	then
-		execute_command "Switch to system ruby" "rvm use system"
-	fi
-
-	pushd ~/.vim/bundle/Command-T/ruby/command-t/ > /dev/null
-		execute_command "Execute the extconf" "ruby extconf.rb"
-		execute_command "Make command-t plugin" "make"
-	popd
-
-	if which rvm 
-	then
-		execute_command "Switch back to ${ruby_version} ruby" "rvm use ${ruby_version}"
-	fi
 
 	big_step_display "The Vim setup is ready!"
 }
