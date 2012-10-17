@@ -1,7 +1,7 @@
 # My Vim setup
 
 This is my personal Vim setup. It can be installed manual or with an installer
-bash script. Both methods are described in detail below.
+bash script. Both methods are described in detail below. 
 
 ## Manual installation
 
@@ -39,6 +39,13 @@ ln -s ~/.vim/vimrc ~/.vimrc
 2. Type `:BundleInstall`
 
 ## Script install 
+
+If you have curl available you can simply issue the command below for
+installation. If not read on for more details.
+
+```
+curl https://raw.github.com/cpfaff/vim-my-setup/master/install.sh | bash
+```
 
 ### Clone into my repository:
 
