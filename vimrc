@@ -2,9 +2,9 @@
 source ~/.vim/bundles
 
 " auto source changed vimrc file
-if has("autocmd")
-   autocmd bufwritepost .vimrc source $MYVIMRC
-endif
+" if has("autocmd")
+"    autocmd bufwritepost .vimrc source $MYVIMRC
+" endif
 
 """""""""""""""""""""""""""""""""""""""
 " General vim behaviour 
@@ -169,8 +169,8 @@ au BufNewFile,BufRead * set cpoptions+=$
 set pastetoggle=<F3>
 
 " save/restore the view
-au BufWinLeave *.* silent! mkview "make vim save view (state) (folds, cursor, etc)
-au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
+" au BufWinLeave *.* silent! mkview "make vim save view (state) (folds, cursor, etc)
+" au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
 
 """""""""""""""""""""""""""""""""""""""
 " Vim mappings
@@ -288,45 +288,36 @@ inoremap kj <esc>
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 
-" Fugitive {
-        nnoremap <silent> <leader>gs :Gstatus<CR>
-        nnoremap <silent> <leader>gd :Gdiff<CR>
-        nnoremap <silent> <leader>gc :Gcommit<CR>
-        nnoremap <silent> <leader>gb :Gblame<CR>
-        nnoremap <silent> <leader>gl :Glog<CR>
-        nnoremap <silent> <leader>gp :Git push<CR><CR>
-" }
-
+" Fugitive 
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gd :Gdiff<CR>
+nnoremap <silent> <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>gb :Gblame<CR>
+nnoremap <silent> <leader>gl :Glog<CR>
+nnoremap <silent> <leader>gp :Git push<CR><CR>
 
 " Taglist plugin mappings
 
-" Ctags {
-    noremap <F1> :TagbarToggle<cr>
-    set tags=~/.vim/tmp/
-" }
-
-
-
-
-" noremap <F2> :!ctags --extra=+f --exclude=.git --exclude=log -R * <CR><CR>
+" Ctags 
+noremap <F1> :TagbarToggle<cr>
+set tags=~/.vim/tmp/
 
 " Yankring plugin mappings
 nnoremap <silent> <leader>y :YRShow<CR>
 nnoremap <silent> <leader>ys :YRPush '+'<CR>
 
 
-" Tabularize {
-   nmap <Leader>a= :Tabularize /=<CR>
-   vmap <Leader>a= :Tabularize /=<CR>
-   nmap <Leader>a: :Tabularize /:<CR>
-   vmap <Leader>a: :Tabularize /:<CR>
-   nmap <Leader>a:: :Tabularize /:\zs<CR>
-   vmap <Leader>a:: :Tabularize /:\zs<CR>
-   nmap <Leader>a, :Tabularize /,<CR>
-   vmap <Leader>a, :Tabularize /,<CR>
-   nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-   vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-" }
+" Tabularize 
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
+nmap <Leader>a:: :Tabularize /:\zs<CR>
+vmap <Leader>a:: :Tabularize /:\zs<CR>
+nmap <Leader>a, :Tabularize /,<CR>
+vmap <Leader>a, :Tabularize /,<CR>
+nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -351,8 +342,6 @@ let g:yankring_history_dir = '~/.vim/tmp'
 autocmd FileType rnoweb set commentstring=%\ %s
 
 " Ctrlp fuzzy finder 
-
-" ctrlp 
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_custom_ignore = {
          \ 'dir': '\.git$\|\.hg$\|\.svn$',
@@ -380,75 +369,107 @@ let vimrplugin_conquevsplit = 0
 let g:tagbar_left = 1
 " }
 
-" neocomplcache {
-   let g:neocomplcache_enable_at_startup = 1
-   let g:neocomplcache_enable_camel_case_completion = 1
-   let g:neocomplcache_enable_smart_case = 1
-   let g:neocomplcache_enable_underbar_completion = 1
-   let g:neocomplcache_min_syntax_length = 3
-   let g:neocomplcache_enable_auto_delimiter = 1
-   let g:neocomplcache_max_list = 15
-   let g:neocomplcache_auto_completion_start_length = 3
-   let g:neocomplcache_force_overwrite_completefunc = 1
-   let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate-snippets/snippets/'
 
-   " AutoComplPop like behavior.
-   let g:neocomplcache_enable_auto_select = 0
-
-   " SuperTab like snippets behavior.
-   imap <silent><expr><tab> neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
-   smap <tab> <right><plug>(neocomplcache_snippets_jump)
-
-   " Plugin key-mappings.
-   " Ctrl-k expands snippet & moves to next position
-   " <CR> chooses highlighted value
-   imap <C-k> <Plug>(neocomplcache_snippets_expand)
-   smap <C-k> <Plug>(neocomplcache_snippets_expand)
-   inoremap <expr><C-g> neocomplcache#undo_completion()
-   inoremap <expr><C-l> neocomplcache#complete_common_string()
-   inoremap <expr><CR> neocomplcache#complete_common_string()
    
-   " <CR>: close popup
-   " <s-CR>: close popup and save indent.
-   inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
-   inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+"    inoremap <expr> <s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
+"    inoremap <expr> <CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+   
+"    inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+"    inoremap <expr> <s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+   
+"    " <C-h>, <BS>: close popup and delete backword char.
+"    inoremap <expr> <BS> neocomplcache#smart_close_popup()."\<C-h>"
+"    inoremap <expr> <C-y> neocomplcache#close_popup()
+   
+"    " Define keyword.
+"    if !exists('g:neocomplcache_keyword_patterns')
+"       let g:neocomplcache_keyword_patterns = {}
+"    endif
+"    let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
-   " <TAB>: completion.
-   inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-   inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+"    " Enable omni completion.
+"    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-   " <C-h>, <BS>: close popup and delete backword char.
-   inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-   inoremap <expr><C-y> neocomplcache#close_popup()
+"    " Enable heavy omni completion.
+"    if !exists('g:neocomplcache_omni_patterns')
+"       let g:neocomplcache_omni_patterns = {}
+"    endif
+"    let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+"    let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"    let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+"    let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
-   " Define keyword.
-   if !exists('g:neocomplcache_keyword_patterns')
-      let g:neocomplcache_keyword_patterns = {}
-   endif
-   let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+"    " For snippet_complete marker.
+"    if has('conceal')
+"       set conceallevel=2 concealcursor=i
+"    endif
+" " }
 
-   " Enable omni completion.
-   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-   autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+" neocomplcache 
+" let g:acp_enableAtStartup = 0
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_enable_auto_delimiter = 1
+let g:neocomplcache_max_list = 15
+let g:neocomplcache_auto_completion_start_length = 3
+let g:neocomplcache_force_overwrite_completefunc = 1
+let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate-snippets/snippets/'
 
-   " Enable heavy omni completion.
-   if !exists('g:neocomplcache_omni_patterns')
-      let g:neocomplcache_omni_patterns = {}
-   endif
-   let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-   let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-   let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-   let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
-   " For snippet_complete marker.
-   if has('conceal')
-      set conceallevel=2 concealcursor=i
-   endif
-" }
+imap <silent> <expr> <tab> neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
+smap <tab> <right> <plug>(neocomplcache_snippets_jump)
+
+
+" Define dictinary
+" let g:neocomplcache_dictionary_filetype_lists = {
+  " \ 'default': '',
+  " \ 'vimshell': $HOME.'/.vimshell_hist'
+  " \}
+
+" Define keyword
+if !exists('g:neocomplcache_keyword_patterns')
+  let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings
+imap <C-k> <Plug>(neocomplcache_snippets_expand)
+smap <C-k> <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-g> neocomplcache#undo_completion()
+inoremap <expr><C-l> neocomplcache#complete_common_string()
+" inoremap <expr><TAB> neocomplcache#complete_common_string()
+noremap <expr><CR> neocomplcache#smart_close_popup()."\<CR>"
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+" <TAB>: completion.
+" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" inoremap <expr><C-y> neocomplcache#close_popup() " duplicate zen-coding
+inoremap <expr><C-e> neocomplcache#cancel_popup()
+
+" Enable omni completion.
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+" let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+" autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function definitions and calls 

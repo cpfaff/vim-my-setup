@@ -40,10 +40,7 @@ Bundle 'Shougo/neocomplcache.git'
 Bundle 'Shougo/neocomplcache-snippets-complete.git'
 Bundle 'honza/snipmate-snippets.git'
 
-
-
 " Bundle 'ervandew/supertab.git'
 " Bundle 'garbas/vim-snipmate.git'
 " Bundle 'wincent/Command-T.git'
-" Bundle 'vim-scripts/taglist.vim.git'
 " Bundle 'Rykka/colorv.vim.git'
