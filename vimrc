@@ -98,8 +98,11 @@ set smarttab
 set shiftwidth=3
 set tabstop=3
 
+" cursor beyond last character
+set virtualedit=onemore
+
 " Wrap and linebreak
-set wrap
+set wrap 
 set linebreak
 set nolist
 
@@ -188,9 +191,7 @@ set winminheight=5
  noremap <F1> <nop>
 
 " Tagbar toggle
- noremap <F1> :TagbarToggle<cr>
-
-
+ "noremap <F1> :TagbarToggle<cr>
 
 " Align with tabularize 
  nmap <Leader>a= :Tabularize /=<CR>
@@ -210,6 +211,16 @@ set winminheight=5
  noremap <leader>bn :tabnew<CR>
  noremap <leader>bd :bd!<CR>
  noremap <leader>bo :tabonly<CR>
+"
+
+" Nerd commenter remap
+ map <leader>c <plug>NERDCommenterToggle
+"
+
+" Dump and display sessions 
+ set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
+ nmap <leader>dl :SessionList<CR>
+ nmap <leader>ds :SessionSave<CR>
 "
 
 " Edit config files
@@ -268,6 +279,10 @@ set winminheight=5
  noremap <leader>sg zg
  noremap <leader>se z=
  noremap <leader>sr 1z=
+"
+  
+" Tag bar toggle 
+ nnoremap <silent> <leader>tt :TagbarToggle<CR>
 "
 
 " Fast save and quit 
@@ -362,7 +377,7 @@ let g:LustyJugglerDefaultMappings = 0
 "
 
 " Ctrlp fuzzy finder 
- let g:ctrlp_map = '<leader>t'
+ let g:ctrlp_map = '<leader>f'
  let g:ctrlp_custom_ignore = {
    \ 'dir': '\.git$\|\.hg$\|\.svn$',
    \ 'file': '\.exe$\|\.so$\|\.dll$' }

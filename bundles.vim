@@ -42,7 +42,10 @@ Bundle 'Shougo/neocomplcache-snippets-complete.git'
 Bundle 'honza/snipmate-snippets.git'
 Bundle 'scrooloose/nerdcommenter.git'
 Bundle 'guns/xterm-color-table.vim.git'
+Bundle 'vim-scripts/sessionman.vim.git'
+Bundle 'Lokaltog/vim-powerline.git'
 
+" Disabled bundles
 " Bundle 'tpope/vim-commentary.git'
 " Bundle 'garbas/vim-snipmate.git'
 " Bundle 'ervandew/supertab.git'
