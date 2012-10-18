@@ -259,6 +259,10 @@ set winminheight=5
  nnoremap <silent> <leader>ms :!make showpdf &> /dev/null <CR>
 "
 
+" Nertree toggle 
+ nnoremap <leader>n :NERDTreeToggle <CR>
+"
+
 " Fast quit
  nnoremap <leader>q :q!<CR>
 "
@@ -277,10 +281,13 @@ set winminheight=5
 "
   
 " Tag bar toggle 
- nnoremap <silent> <leader>tt :TagbarToggle<CR>
+nnoremap <silent> <leader>t :TagbarToggle<CR>
 "
 
-" Fast save and quit 
+" Vizalize indent
+nnoremap <Leader>v :IndentGuidesToggle<CR>
+
+" Fast write and quit 
  nnoremap <leader>w :w!<CR>
  nnoremap <leader>wq :wq!<CR>
 "
@@ -356,6 +363,7 @@ set winminheight=5
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Tab guideline options 
+ let g:indent_guides_enable_on_vim_startup = 0
  let g:indent_guides_auto_colors = 0
  let g:indent_guides_guide_size = 1 
  let g:indent_guides_start_level = 1
@@ -371,11 +379,26 @@ let g:LustyJugglerDefaultMappings = 0
  let g:yankring_history_dir = '~/.vim/tmp'
 "
 
+" Nerd tree plugin
+ let NERDTreeShowBookmarks=1
+ let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+ let NERDTreeChDirMode=0
+ let NERDTreeQuitOnOpen=1
+ let NERDTreeShowHidden=1
+ let NERDTreeKeepTreeInNewTab=1
+ let g:nerdtree_tabs_open_on_gui_startup=0
+" 
+
+
 " Ctrlp fuzzy finder 
  let g:ctrlp_map = '<leader>f'
  let g:ctrlp_custom_ignore = {
    \ 'dir': '\.git$\|\.hg$\|\.svn$',
    \ 'file': '\.exe$\|\.so$\|\.dll$' }
+"
+
+" Rails plugin
+let g:rubycomplete_buffer_loading = 1
 "
 
 " Conque term options
@@ -396,7 +419,7 @@ let g:LustyJugglerDefaultMappings = 0
 "
 
 " Tagbar options
- let g:tagbar_left = 1
+ let g:tagbar_left = 0
 " 
 
 " neocomplcache 
