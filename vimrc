@@ -229,11 +229,6 @@ set winminheight=5
  nnoremap <Leader>er :NeoComplCacheEditRuntimeSnippets<CR>
 "
 
-" Session handling
- nnoremap <leader>fs :mksession! session.vim<CR>
- nnoremap <leader>fr :source session.vim<CR>
-" 
-
 " Fugitive 
  nnoremap <silent> <leader>gs :Gstatus<CR>
  nnoremap <silent> <leader>gd :Gdiff<CR>
