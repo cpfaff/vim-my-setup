@@ -3,6 +3,47 @@
 This is my personal Vim setup. It can be installed manual or with an installer
 bash script. Both methods are described in detail below. 
 
+## Script install 
+
+### With Curl
+
+If you have curl installed on your machine you can simply use the command below
+for installation. It scrapes the install script from github and pipes it into
+bash.
+
+```
+curl https://raw.github.com/cpfaff/vim-my-setup/master/install.sh | bash
+```
+
+### Without Curl
+
+#### Clone into my repository:
+
+```
+git clone https://github.com/cpfaff/vim-my-setup.git
+```
+
+#### Change to repository folder:
+
+```
+cd vim-my-setup
+```
+
+#### Make the install.sh executable:
+
+```
+chmod +x install.sh
+```
+
+#### Execute the script:
+
+```
+./install.sh
+```
+
+Wait till it is finished. Then enjoy my-vim-setup!
+
+
 ## Manual installation
 
 ### Install the dependencies:
@@ -37,40 +78,4 @@ ln -s ~/.vim/vimrc ~/.vimrc
 
 1. Open Vim `vim`
 2. Type `:BundleInstall`
-
-## Script install 
-
-If you have curl available you can simply issue the command below for
-installation. If not read on for more details.
-
-```
-curl https://raw.github.com/cpfaff/vim-my-setup/master/install.sh | bash
-```
-
-### Clone into my repository:
-
-```
-git clone https://github.com/cpfaff/vim-my-setup.git
-```
-
-### Change to repository folder:
-
-```
-cd vim-my-setup
-```
-
-### Make the install.sh executable:
-
-```
-chmod +x install.sh
-```
-
-### Execute the script:
-
-```
-./install.sh
-```
-
-Wait till it is finished. Then enjoy my-vim-setup!
-
 
