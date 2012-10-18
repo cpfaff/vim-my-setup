@@ -1,5 +1,5 @@
 " Load the bundles
-source ~/.vim/bundles
+source ~/.vim/bundles.vim
 
 " auto source changed vimrc file
 " if has("autocmd")
@@ -119,9 +119,9 @@ endtry
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+   \ if line("'\"") > 0 && line("'\"") <= line("$") |
+   \   exe "normal! g`\"" |
+   \ endif
 
 " Remember info about open buffers on close
 set viminfo^=%
@@ -150,8 +150,6 @@ if has('statusline')
    set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
 endif
 
-" set statusline=%F%m%r%h%w\ [CWD=%{getcwd()}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-
 " Folding options
 set nofoldenable
 set foldmethod=marker
@@ -163,7 +161,7 @@ set spelllang=en
 " spell on if noweb file
 autocmd BufNewFile,BufRead *.Rnw set spell
 
-" Add $ to end of change
+" Add $ to end of change range
 au BufNewFile,BufRead * set cpoptions+=$
 
 " Toggle paste mode on and off
@@ -173,151 +171,175 @@ set pastetoggle=<F3>
 " au BufWinLeave *.* silent! mkview "make vim save view (state) (folds, cursor, etc)
 " au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
 
+" Set tag folder
+set tags=~/.vim/tmp/
+
+" Autosize windows
+set winheight=30
+au VimResized * exe "normal! \<c-w>="
+set winminheight=5
+
+
 """""""""""""""""""""""""""""""""""""""
 " Vim mappings
 """""""""""""""""""""""""""""""""""""""
 
 " Remove help from F1
-noremap <F1> <nop>
+ noremap <F1> <nop>
 
-" Fast save 
-nnoremap <leader>w :w!<CR>
+" Tagbar toggle
+ noremap <F1> :TagbarToggle<cr>
 
-" Fast quit
-nnoremap <leader>q :q!<CR>
 
-" Fast quit and save
-nnoremap <leader>wq :wq!<CR>
 
-" Spellchecking 
-noremap <leader>ss :setlocal spell!<CR>
-noremap <leader>sn ]s
-noremap <leader>sp [s
-noremap <leader>sg zg
-noremap <leader>se z=
-noremap <leader>sr 1z=
+" Align with tabularize 
+ nmap <Leader>a= :Tabularize /=<CR>
+ vmap <Leader>a= :Tabularize /=<CR>
+ nmap <Leader>a: :Tabularize /:<CR>
+ vmap <Leader>a: :Tabularize /:<CR>
+ nmap <Leader>a:: :Tabularize /:\zs<CR>
+ vmap <Leader>a:: :Tabularize /:\zs<CR>
+ nmap <Leader>a, :Tabularize /,<CR>
+ vmap <Leader>a, :Tabularize /,<CR>
+ nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+ vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+"
+
+" Handle buffers
+ noremap <leader>b :LustyJuggler<CR>
+ noremap <leader>bn :tabnew<CR>
+ noremap <leader>bd :bd!<CR>
+ noremap <leader>bo :tabonly<CR>
+"
 
 " Edit config files
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <Leader>es :NeoSnippetEdit<CR>
-nnoremap <Leader>er :NeoComplCacheEditRuntimeSnippets<CR>
+ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+ nnoremap <Leader>es :NeoSnippetEdit<CR>
+ nnoremap <Leader>er :NeoComplCacheEditRuntimeSnippets<CR>
+"
 
-" simple make call 
-nnoremap <silent> <leader>c :!make<CR>
+" Session handling
+ nnoremap <leader>fs :mksession! session.vim<CR>
+ nnoremap <leader>fr :source session.vim<CR>
+" 
 
-" Show the pdf file
-nnoremap <silent> <leader>cs :!make showpdf &> /dev/null <CR>
+" Fugitive 
+ nnoremap <silent> <leader>gs :Gstatus<CR>
+ nnoremap <silent> <leader>gd :Gdiff<CR>
+ nnoremap <silent> <leader>gc :Gcommit<CR>
+ nnoremap <silent> <leader>gb :Gblame<CR>
+ nnoremap <silent> <leader>gl :Glog<CR>
+ nnoremap <silent> <leader>gp :Git push<CR><CR>
+"
+
+" Yankring plugin mappings
+ nnoremap <silent> <leader>yy :YRShow<CR>
+ nnoremap <silent> <leader>ys :YRPush '+'<CR>
+"
+
+" Treat long lines as break lines (useful when moving around in them)
+ noremap j gj
+ noremap k gk
+" 
+
+" type jk to exit visual/insert/command mode 
+ vnoremap kj <esc>
+ inoremap kj <esc>
+ cnoremap kj <esc> 
+"
+
+" My makefile calls 
+ nnoremap <silent> <leader>m :!make<CR>
+ nnoremap <silent> <leader>ms :!make showpdf &> /dev/null <CR>
+"
+
+" Fast quit
+ nnoremap <leader>q :q!<CR>
+"
+
+" Search and repace visual selection
+ vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
+"
+
+" Spellchecking 
+ noremap <leader>ss :setlocal spell!<CR>
+ noremap <leader>sn ]s
+ noremap <leader>sp [s
+ noremap <leader>sg zg
+ noremap <leader>se z=
+ noremap <leader>sr 1z=
+"
+
+" Fast save and quit 
+ nnoremap <leader>w :w!<CR>
+ nnoremap <leader>wq :wq!<CR>
+"
+
+" Remap VIM 0 to first non-blank character
+ noremap 0 ^
+"
+
+" reformat the current paragraph
+ noremap Q gqap
+"
+
+" remap U to <C-r> for easier undo 
+ nnoremap U <C-r>
+"
+
+" Move lines 
+ nmap <A-k> [e
+ nmap <A-j> ]e
+ vmap <A-k> [egv
+ vmap <A-j> ]egv
+ nnoremap <A-l> >>
+ nnoremap <A-h> <<
+ vnoremap <A-l> >gv
+ vnoremap <A-h> <gv
+"
+
+" Smart way to move between windows
+ noremap <C-j> <C-W>j
+ noremap <C-k> <C-W>k
+ noremap <C-h> <C-W>h
+ noremap <C-l> <C-W>l
+"
+
+" Necomplcache and neosnippet mappings
+ imap <C-k> <Plug>(neosnippet_expand)
+ smap <C-k> <Plug>(neosnippet_expand)
+ imap <C-j> <Plug>(neosnippet_jump)
+ smap <C-j> <Plug>(neosnippet_jump)
+
+ inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+ inoremap <expr><C-y> neocomplcache#close_popup()
+ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+ inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+"
+
+" Visual mode pressing * or # searches for the current selection
+ vnoremap <silent> * :call VisualSelection('b')<CR>
+ vnoremap <silent> # :call VisualSelection('f')<CR>
+"
+ 
+" Space forward search Ctrl-<Space> backward, leader space clear search 
+ noremap <space> /
+ noremap <C-@> ? 
+ noremap <leader><space> :noh<CR>
+"
+
+" Switch CWD to the directory of the open buffer
+" noremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" set + and - for fast window resize
+" nnoremap <silent> <C-+> :exe "resize " . (winheight(0) * 3/2)<CR>
+" nnoremap <silent> <C--> :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " Shortcut to rapidly toggle `set list`
 " nnoremap <leader>l :set list!<CR>
 
 " Use the same symbols as TextMate for tabstops and EOLs
 " set listchars=tab:▸\ ,eol:¬
-
-" reformat the current paragraph
-noremap Q gqap
-
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :call VisualSelection('b')<CR>
-vnoremap <silent> # :call VisualSelection('f')<CR>
-
-" Treat long lines as break lines (useful when moving around in them)
-noremap j gj
-noremap k gk
-
-" Use lusty-juggler to switch between buffers "
-let g:LustyJugglerDefaultMappings = 0
-noremap <leader>b :LustyJuggler<CR>
-
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-noremap <space> /
-noremap <C-@> ? 
-
-" Disable highlight when <leader><CR> is pressed
-noremap <silent> <leader><space> :noh<CR>
-
-" Handle buffers
-noremap <leader>bn :tabnew<CR>
-noremap <leader>bd :bd!<CR>
-noremap <leader>bo :tabonly<CR>
-
-" Switch CWD to the directory of the open buffer
-" noremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-
-"set + and - for fast window resize
-nnoremap <silent> <C-+> :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <C--> :exe "resize " . (winheight(0) * 2/3)<CR>
-
-set winheight=30
-au VimResized * exe "normal! \<c-w>="
-set winminheight=5
-
-" remap U to <C-r> for easier redo
-nnoremap U <C-r>
-
-" Create a session file
-nnoremap <leader>fs :mksession! session.vim<CR>
-
-" Read the session file
-nnoremap <leader>fr :source session.vim<CR>
-
-" Remap VIM 0 to first non-blank character
-noremap 0 ^
-
-" Move lines 
-nmap <A-k> [e
-nmap <A-j> ]e
-vmap <A-k> [egv
-vmap <A-j> ]egv
-nnoremap <A-l> >>
-nnoremap <A-h> <<
-vnoremap <A-l> >gv
-vnoremap <A-h> <gv
-
-" Smart way to move between windows
-noremap <C-j> <C-W>j
-noremap <C-k> <C-W>k
-noremap <C-h> <C-W>h
-noremap <C-l> <C-W>l
-
-" type jk to exit the insert mode
-vnoremap kj <esc>
-inoremap kj <esc>
-
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
-
-" Fugitive 
-nnoremap <silent> <leader>gs :Gstatus<CR>
-nnoremap <silent> <leader>gd :Gdiff<CR>
-nnoremap <silent> <leader>gc :Gcommit<CR>
-nnoremap <silent> <leader>gb :Gblame<CR>
-nnoremap <silent> <leader>gl :Glog<CR>
-nnoremap <silent> <leader>gp :Git push<CR><CR>
-
-" Taglist plugin mappings
-
-" Ctags 
-noremap <F1> :TagbarToggle<cr>
-set tags=~/.vim/tmp/
-
-" Yankring plugin mappings
-nnoremap <silent> <leader>yy :YRShow<CR>
-nnoremap <silent> <leader>ys :YRPush '+'<CR>
-
-" Tabularize 
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:<CR>
-vmap <Leader>a: :Tabularize /:<CR>
-nmap <Leader>a:: :Tabularize /:\zs<CR>
-vmap <Leader>a:: :Tabularize /:\zs<CR>
-nmap <Leader>a, :Tabularize /,<CR>
-vmap <Leader>a, :Tabularize /,<CR>
-nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin specific options
@@ -331,19 +353,19 @@ vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
  hi IndentGuidesEven ctermbg=243
 "
 
-" Yankring history folder
- let g:yankring_history_dir = '~/.vim/tmp'
+" Lusty juggler options  
+let g:LustyJugglerDefaultMappings = 0
 "
 
-" Add comment strings for unknown files
- autocmd FileType rnoweb set commentstring=%\ %s
+" Yankring history folder
+ let g:yankring_history_dir = '~/.vim/tmp'
 "
 
 " Ctrlp fuzzy finder 
  let g:ctrlp_map = '<leader>t'
  let g:ctrlp_custom_ignore = {
-          \ 'dir': '\.git$\|\.hg$\|\.svn$',
-          \ 'file': '\.exe$\|\.so$\|\.dll$' }
+   \ 'dir': '\.git$\|\.hg$\|\.svn$',
+   \ 'file': '\.exe$\|\.so$\|\.dll$' }
 "
 
 " Conque term options
@@ -363,7 +385,7 @@ vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
  let vimrplugin_conquevsplit = 0
 "
 
-" tagbar 
+" Tagbar options
  let g:tagbar_left = 1
 " 
 
@@ -380,16 +402,6 @@ vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
  let g:neocomplcache_enable_auto_select = 1
 
  let g:neosnippet#snippets_directory='~/.vim/snippets/'
-
- imap <C-k> <Plug>(neosnippet_expand)
- smap <C-k> <Plug>(neosnippet_expand)
- imap <C-j> <Plug>(neosnippet_jump)
- smap <C-j> <Plug>(neosnippet_jump)
- 
- inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
- inoremap <expr><C-y> neocomplcache#close_popup()
- inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
- inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
  
  " Define keyword.
  if !exists('g:neocomplcache_keyword_patterns')
@@ -437,47 +449,53 @@ vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 "
 
 "
-function! MyFoldText()
-   "let nl = v:foldend - v:foldstart + 1
-   let linetext = getline(v:foldstart + 1)
-   let text =  linetext  
-   return text
-endfunction
+ function! MyFoldText()
+    "let nl = v:foldend - v:foldstart + 1
+    let linetext = getline(v:foldstart + 1)
+    let text =  linetext  
+    return text
+ endfunction
 
-set foldtext=MyFoldText()
+ set foldtext=MyFoldText()
+"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-function! CmdLine(str)
-   exe "menu Foo.Bar :" . a:str
-   emenu Foo.Bar
-   unmenu Foo
-endfunction
+" Small helper
+ function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+ endfunction
+"
 
-function! VisualSelection(direction) range
-   let l:saved_reg = @"
-   execute "normal! vgvy"
-   let l:pattern = escape(@", '\\/.*$^~[]')
-   let l:pattern = substitute(l:pattern, "\n$", "", "")
-   if a:direction == 'b'
-      execute "normal ?" . l:pattern . "^M"
-   elseif a:direction == 'gv'
-      call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-   elseif a:direction == 'replace'
-      call CmdLine("%s" . '/'. l:pattern . '/')
-   elseif a:direction == 'f'
-      execute "normal /" . l:pattern . "^M"
-   endif
-   let @/ = l:pattern
-   let @" = l:saved_reg
-endfunction
+" Get visual selection
+ function! VisualSelection(direction) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+    if a:direction == 'b'
+       execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'gv'
+       call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+    elseif a:direction == 'replace'
+       call CmdLine("%s" . '/'. l:pattern . '/')
+    elseif a:direction == 'f'
+       execute "normal /" . l:pattern . "^M"
+    endif
+    let @/ = l:pattern
+    let @" = l:saved_reg
+ endfunction
+"
 
 " Returns true if paste mode is enabled
-function! HasPaste()
-   if &paste
-      return 'PASTE MODE  '
-   en
-   return ''
-endfunction
+ function! HasPaste()
+    if &paste
+       return 'PASTE MODE  '
+    en
+    return ''
+ endfunction
+"
