@@ -2,7 +2,7 @@
 
 This is my personal Vim setup. It can be installed manual or with an installer
 bash script. Both methods are described in detail below. The setup uses the
-[Vundle][https://github.com/gmarik/vundle] package manager to handle the
+[Vundle](https://github.com/gmarik/vundle) package manager to handle the
 plugins.
 
 ## Script install 
