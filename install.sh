@@ -1,7 +1,7 @@
 #!/bin/bash --login
 
 
-depends_on_packages=(par vim-nox git-core exuberant-ctags)
+depends_on_packages=(ack-grep par vim-nox git-core exuberant-ctags)
 
 folder_home_vim=~/.vim
 folder_home_vim_bundle_vundle=~/.vim/bundle/vundle

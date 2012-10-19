@@ -14,6 +14,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'MarcWeber/vim-addon-mw-utils.git'
 Bundle 'tomtom/tlib_vim.git'
+Bundle 'chrisbra/SudoEdit.vim.git'
 
 " Load bundles 
 Bundle 'vim-scripts/CmdlineComplete.git'
@@ -41,10 +42,13 @@ Bundle 'kien/ctrlp.vim.git'
 Bundle 'Shougo/neocomplcache.git'
 Bundle 'Shougo/neocomplcache-snippets-complete.git'
 Bundle 'scrooloose/nerdcommenter.git'
+Bundle 'scrooloose/syntastic.git'
+Bundle 'mileszs/ack.vim.git'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'guns/xterm-color-table.vim.git'
 Bundle 'vim-scripts/sessionman.vim.git'
+Bundle 'Lokaltog/vim-powerline.git'
 
 " Disabled bundles
 " Bundle 'honza/snipmate-snippets.git'

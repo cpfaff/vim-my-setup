@@ -179,9 +179,9 @@ set tags=~/.vim/tmp/
 
 " Autosize windows
 set winheight=30
-au VimResized * exe "normal! \<c-w>="
-set winminheight=5
 
+" Short messages
+set shortmess+=filmnrxoOtT 
 
 """""""""""""""""""""""""""""""""""""""
 " Vim mappings
@@ -248,10 +248,11 @@ set winminheight=5
  noremap k gk
 " 
 
-" type jk to exit visual/insert/command mode 
+" type jk to exit visual/insert/command/select mode 
  vnoremap kj <esc>
  inoremap kj <esc>
  cnoremap kj <esc> 
+ snoremap kj <esc> 
 "
 
 " My makefile calls 
