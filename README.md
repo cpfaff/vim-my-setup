@@ -40,8 +40,6 @@ git clone https://github.com/cpfaff/vim-my-setup.git
 cd vim-my-setup
 ```
 
-This is my long line
-
 #### Make the install.sh executable:
 
 ```
