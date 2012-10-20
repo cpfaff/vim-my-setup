@@ -167,9 +167,6 @@ set foldnestmax=10
 " Standard spelling en
 set spelllang=en
 
-" Add $ to end of change range
-au BufNewFile,BufRead * set cpoptions+=$
-
 " Toggle paste mode on and off
 set pastetoggle=<F3>
 
@@ -518,6 +515,21 @@ let g:header_author = "Claas-Thido Pfaff"
 "
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Filetype specific autogroups
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Set filetype specific options
+augroup set_filetypes_options
+   autocmd!
+   autocmd BufNewFile,BufRead *.tex set ft=tex
+augroup END
+
+augroup rnw_specific_options
+   autocmd!
+   autocmd BufNewFile,BufRead *.Rnw set spell
+augroup END
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -562,16 +574,5 @@ let g:header_author = "Claas-Thido Pfaff"
  endfunction
 "
 
-" Set filetype specific options
-augroup set_filetypes_options
-   autocmd!
-   autocmd BufNewFile,BufRead *.tex set ft=tex
-augroup END
-
-augroup rnw_specific_options
-   autocmd!
-   autocmd BufNewFile,BufRead *.Rnw set spell
-augroup END
-
-
-
+" Add $ to end of change range
+au BufNewFile,BufRead * set cpoptions+=$
