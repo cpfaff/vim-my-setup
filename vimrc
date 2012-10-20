@@ -181,7 +181,7 @@ set tags=~/.vim/tmp/
 set winheight=30
 
 " Short messages
-set shortmess+=filmnrxoOtT 
+" set shortmess+=filmnrxoOtT 
 
 """""""""""""""""""""""""""""""""""""""
 " Vim mappings
@@ -231,6 +231,7 @@ set shortmess+=filmnrxoOtT
 
 " There is also a mapping defined for the letter f. You
 " find it under the options for fuzzy finder below. 
+" <leader>f starts fuzzy finder. 
 
 " Fugitive 
  nnoremap <silent> <leader>gs :Gstatus<CR>
@@ -251,14 +252,14 @@ set shortmess+=filmnrxoOtT
  noremap k gk
 " 
 
-" type jk to exit visual/insert/command/select mode 
+" type kj to exit visual/insert/command/select mode 
  vnoremap kj <esc>
  inoremap kj <esc>
- "cnoremap kj <esc> 
+ cnoremap kj <esc> 
  snoremap kj <esc> 
 "
 
-" My makefile calls 
+" Makefile call tasks 
  nnoremap <silent> <leader>m :!make<CR>
  nnoremap <silent> <leader>ms :!make showpdf &> /dev/null <CR>
 "
@@ -267,8 +268,8 @@ set shortmess+=filmnrxoOtT
  nnoremap <leader>n :NERDTreeToggle <CR>
 "
 
-" Open something  
- nnoremap <leader>ob :ConqueTermSplit bash<CR>
+" Open something
+" here will follow open file handling
 "
 
 " Fast quit
@@ -278,7 +279,9 @@ set shortmess+=filmnrxoOtT
 " Search and repace visual selection
  vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
  vnoremap <silent> <leader>rs :call VisualSelection('acksearch')<CR>
- vnoremap <silent> <leader>ra :call VisualSelection('quickfixdo')<CR>
+ vnoremap <silent> <leader>ra :call VisualSelection('quickfixdo')<CR> 
+ "|<left><left><left><left><left><left><left> <CR>   
+ "map <leader>re :vimgrep // **/*.<left><left><left><left><left><left><left>
 "
 
 " Spellchecking 
@@ -302,8 +305,8 @@ nnoremap <Leader>v :IndentGuidesToggle<CR>
  nnoremap <leader>wq :wq!<CR>
 "
 
-" Remap VIM 0 to first non-blank character
- noremap 0 ^
+" Xecute something (bash)  
+ nnoremap <leader>xb :ConqueTermSplit bash<CR>
 "
 
 " reformat the current paragraph
@@ -312,6 +315,10 @@ nnoremap <Leader>v :IndentGuidesToggle<CR>
 
 " remap U to <C-r> for easier undo 
  nnoremap U <C-r>
+"
+
+" Remap VIM 0 to first non-blank character
+ noremap 0 ^
 "
 
 " Move lines 
@@ -325,7 +332,7 @@ nnoremap <Leader>v :IndentGuidesToggle<CR>
  vnoremap <A-h> <gv
 "
 
-" Smart way to move between windows
+" Easier way to move between windows
  noremap <C-j> <C-W>j
  noremap <C-k> <C-W>k
  noremap <C-h> <C-W>h
@@ -339,7 +346,8 @@ nnoremap <Leader>v :IndentGuidesToggle<CR>
  smap <C-j> <Plug>(neosnippet_jump)
 
  inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
- inoremap <expr><C-y> neocomplcache#close_popup()
+ "inoremap <expr><C-y> neocomplcache#close_popup()
+ inoremap <expr><C-l>     neocomplcache#complete_common_string()
  inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
  inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 "
@@ -349,7 +357,7 @@ nnoremap <Leader>v :IndentGuidesToggle<CR>
  vnoremap <silent> # :call VisualSelection('f')<CR>
 "
  
-" Space forward search Ctrl-<Space> backward, leader space clear search 
+" Space search forward. Ctrl-<Space> backward, leader space clear search 
  noremap <space> /
  noremap <C-@> ? 
  noremap <leader><space> :noh<CR>
@@ -379,6 +387,12 @@ nnoremap <silent> <C--> :exe "resize " . (winheight(0) * 2/3)<CR>
  let g:indent_guides_start_level = 1
  hi IndentGuidesOdd  ctermbg=238 
  hi IndentGuidesEven ctermbg=243
+"
+
+" Nerd commenter options
+let g:NERDCustomDelimiters = {
+   \ 'snippet': {'left': '#'}
+ \ }
 "
 
 " Syntastic options 
@@ -438,6 +452,7 @@ let g:rubycomplete_buffer_loading = 1
 
 " neocomplcache 
  let g:neocomplcache_enable_at_startup = 1
+ let g:neocomplcache_temporary_dir = '~/.vim/tmp/'
  let g:neocomplcache_enable_camel_case_completion = 1
  let g:neocomplcache_enable_smart_case = 1
  let g:neocomplcache_enable_underbar_completion = 1

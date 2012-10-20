@@ -4,7 +4,7 @@
 depends_on_packages=(ack-grep par vim-nox git-core exuberant-ctags)
 
 folder_home_vim=~/.vim
-folder_home_vim_bundle_vundle=~/.vim/bundle/vundle
+folder_home_vim_bundle_neobundle=~/.vim/bundle/neobundle
 
 file_home_vim_bundles=~/.vim/bundles 
 file_home_vimrc=~/.vimrc
@@ -122,7 +122,7 @@ function my_vim_setup()
 	backup_content ${file_home_vimrc}
 
 	execute_command "Clone into my-vim-setup repo" "git clone https://github.com/cpfaff/vim-my-setup.git ${folder_home_vim}"
-	execute_command "Clone into vundle repo" "git clone https://github.com/gmarik/vundle.git ${folder_home_vim_bundle_vundle}"
+	execute_command "Clone into vundle repo" "git clone https://github.com/Shougo/neobundle.git ${folder_home_vim_bundle_neobundle}"
 
 	execute_command "Link the .vimrc to user home" "ln -s ${file_home_vim_vimrc} ${file_home_vimrc}"
 
