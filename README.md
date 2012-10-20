@@ -1,17 +1,26 @@
-# My Vim setup
+My Vim setup
+============
 
-This is my personal Vim setup. It can be installed manual or with my installer
-bash script. Both methods are described in detail below. The setup uses the
-[Vundle](https://github.com/gmarik/vundle) package manager to handle the
-plugins. The setup is tested only on a Ubuntu machine 
+This is my personal Vim setup. It can be installed manually or with the help
+of a bash installer script. Both installation methods are described in detail
+below. The setup uses the [Vundle](https://github.com/gmarik/vundle) package
+manager to handle all the included plug-ins. For a full list of installed Vim
+plug-ins please have a look into the `bundles.vim` file.
 
-## Script install 
+Note: This setup is only tested on a Linux machine in a terminal Vim but should
+work also well on G-Vim.
+
+Script install 
+---------------
+
+The easiest way to get this Vim distribution up an running is to use the bash
+installer.
 
 ### With Curl
 
 If you have curl installed on your machine you can simply use the command below
-for installation. It scrapes the install script from github and pipes it into
-bash.
+for installation. It scrapes the install script from this GitHub page and pipes
+the output into bash.
 
 ```
 curl https://raw.github.com/cpfaff/vim-my-setup/master/install.sh | bash
