@@ -13,9 +13,12 @@ set rtp+=~/.vim/bundle/neobundle/
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 
+NeoBundle 'Shougo/neobundle.vim'
+
 NeoBundle 'MarcWeber/vim-addon-mw-utils.git'
 NeoBundle 'tomtom/tlib_vim.git'
 NeoBundle 'chrisbra/SudoEdit.vim.git'
+
 
 " Load bundles 
 NeoBundle 'vim-scripts/CmdlineComplete.git'
