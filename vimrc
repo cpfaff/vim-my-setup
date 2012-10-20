@@ -2,9 +2,9 @@
 source ~/.vim/bundles.vim
 
 " auto source changed vimrc file
-" if has("autocmd")
-"    autocmd bufwritepost .vimrc source $MYVIMRC
-" endif
+ "if has("autocmd")
+    "autocmd bufwritepost .vimrc source $MYVIMRC
+ "endif
 
 """""""""""""""""""""""""""""""""""""""
 " General vim behaviour 
@@ -121,10 +121,13 @@ catch
 endtry
 
 " Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-   \ if line("'\"") > 0 && line("'\"") <= line("$") |
-   \   exe "normal! g`\"" |
-   \ endif
+augroup last_cursor_position
+   autocmd!
+   autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
+augroup END
 
 " Remember info about open buffers on close
 set viminfo^=%
@@ -149,7 +152,10 @@ if has('statusline')
    set statusline+=%w%h%m%r " Options
    set statusline+=%{fugitive#statusline()} " Git 
    set statusline+=\ [%{&ff}/%Y] " filetype
-   set statusline+=\ [%{getcwd()}] " current dir
+   set statusline+=\ [%{getcwd()}] " current directory
+   set statusline+=%#warningmsg#
+   set statusline+=%{SyntasticStatuslineFlag()}
+   "set statusline+=%*
    set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
 endif
 
@@ -160,9 +166,6 @@ set foldnestmax=10
 
 " Standard spelling en
 set spelllang=en
-
-" spell on if noweb file
-autocmd BufNewFile,BufRead *.Rnw set spell
 
 " Add $ to end of change range
 au BufNewFile,BufRead * set cpoptions+=$
@@ -229,6 +232,9 @@ set shortmess+=filmnrxoOtT
  nnoremap <Leader>er :NeoComplCacheEditRuntimeSnippets<CR>
 "
 
+" There is also a mapping defined for the letter f. You
+" find it under the options for fuzzy finder below. 
+
 " Fugitive 
  nnoremap <silent> <leader>gs :Gstatus<CR>
  nnoremap <silent> <leader>gd :Gdiff<CR>
@@ -251,7 +257,7 @@ set shortmess+=filmnrxoOtT
 " type jk to exit visual/insert/command/select mode 
  vnoremap kj <esc>
  inoremap kj <esc>
- cnoremap kj <esc> 
+ "cnoremap kj <esc> 
  snoremap kj <esc> 
 "
 
@@ -264,12 +270,18 @@ set shortmess+=filmnrxoOtT
  nnoremap <leader>n :NERDTreeToggle <CR>
 "
 
+" Open something  
+ nnoremap <leader>ob :ConqueTermSplit bash<CR>
+"
+
 " Fast quit
  nnoremap <leader>q :q!<CR>
 "
 
 " Search and repace visual selection
  vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
+ vnoremap <silent> <leader>rs :call VisualSelection('acksearch')<CR>
+ vnoremap <silent> <leader>ra :call VisualSelection('quickfixdo')<CR>
 "
 
 " Spellchecking 
@@ -350,14 +362,14 @@ nnoremap <Leader>v :IndentGuidesToggle<CR>
 " noremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " set + and - for fast window resize
-" nnoremap <silent> <C-+> :exe "resize " . (winheight(0) * 3/2)<CR>
-" nnoremap <silent> <C--> :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <C-+> :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <C--> :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " Shortcut to rapidly toggle `set list`
 " nnoremap <leader>l :set list!<CR>
 
 " Use the same symbols as TextMate for tabstops and EOLs
-" set listchars=tab:▸\ ,eol:¬
+" set listchacksearch=tab:▸\ ,eol:¬
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin specific options
@@ -371,6 +383,10 @@ nnoremap <Leader>v :IndentGuidesToggle<CR>
  hi IndentGuidesOdd  ctermbg=238 
  hi IndentGuidesEven ctermbg=243
 "
+
+" Syntastic options 
+ let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+ 
 
 " Lusty juggler options  
 let g:LustyJugglerDefaultMappings = 0
@@ -444,12 +460,15 @@ let g:rubycomplete_buffer_loading = 1
  let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
  " Enable omni completion.
- autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
- autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
- autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
- autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
- autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
- autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+ augroup neocomplcache_omni_completion
+    autocmd!
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+ augroup END
 
  " Enable heavy omni completion.
  if !exists('g:neocomplcache_omni_patterns')
@@ -467,6 +486,8 @@ let g:rubycomplete_buffer_loading = 1
  endif
 "
 
+let g:header_author = "Claas-Thido Pfaff"
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function definitions and calls 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -478,11 +499,14 @@ let g:rubycomplete_buffer_loading = 1
     exe "normal `z"
  endfunc
 
- autocmd BufWrite *.py :call DeleteTrailingWS()
- autocmd BufWrite *.coffee :call DeleteTrailingWS()
+ augroup remove_trailing_spaces
+    autocmd!
+    autocmd BufWrite *.py :call DeleteTrailingWS()
+    autocmd BufWrite *.coffee :call DeleteTrailingWS()
+ augroup END 
 "
 
-"
+" My fold text
  function! MyFoldText()
     "let nl = v:foldend - v:foldstart + 1
     let linetext = getline(v:foldstart + 1)
@@ -519,6 +543,10 @@ let g:rubycomplete_buffer_loading = 1
        call CmdLine("%s" . '/'. l:pattern . '/')
     elseif a:direction == 'f'
        execute "normal /" . l:pattern . "^M"
+    elseif a:direction == 'acksearch'
+       call CmdLine("Ack " . l:pattern . ' *')
+    elseif a:direction == 'quickfixdo'
+       call CmdLine("Qdo " . '%s/' . l:pattern . '/' . '/gc ' . '\|' . 'update')
     endif
     let @/ = l:pattern
     let @" = l:saved_reg
@@ -533,3 +561,17 @@ let g:rubycomplete_buffer_loading = 1
     return ''
  endfunction
 "
+
+" Set filetype specific options
+augroup set_filetypes_options
+   autocmd!
+   autocmd BufNewFile,BufRead *.tex set ft=tex
+augroup END
+
+augroup rnw_specific_options
+   autocmd!
+   autocmd BufNewFile,BufRead *.Rnw set spell
+augroup END
+
+
+

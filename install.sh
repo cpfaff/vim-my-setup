@@ -11,7 +11,6 @@ file_home_vimrc=~/.vimrc
 file_home_vim_vimrc=~/.vim/vimrc
 file_this_script_logfile=/tmp/my-vim-setup.log
 
-
 # Messages
 
 message_intro=$(cat <<EOF
