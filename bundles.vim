@@ -49,6 +49,9 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'guns/xterm-color-table.vim.git'
 Bundle 'vim-scripts/sessionman.vim.git'
 Bundle 'Lokaltog/vim-powerline.git'
+Bundle 'cpfaff/vim-help.git'
+Bundle 'henrik/vim-qargs.git'
+Bundle 'tjennings/git-grep-vim.git'
 
 " Disabled bundles
 " Bundle 'honza/snipmate-snippets.git'
