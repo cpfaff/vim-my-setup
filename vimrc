@@ -1,4 +1,13 @@
-" Load the bundles
+" File: vimrc
+" Author: Claas-Thido Pfaff
+" Description: This is my personal Vim setup
+" Last Modified: Oktober 21, 2012
+
+"""""""""""""""""""""""""""""""""""""""
+"  Preparations 
+"""""""""""""""""""""""""""""""""""""""
+
+" Load vim bundles
 source ~/.vim/bundles.vim
 
 " auto source changed vimrc file
@@ -7,8 +16,11 @@ source ~/.vim/bundles.vim
  "endif
 
 """""""""""""""""""""""""""""""""""""""
-" General vim behaviour 
+" Setup general behaviour 
 """""""""""""""""""""""""""""""""""""""
+
+"{{{ 
+" Set vim options
 
 " No annoying sound on errors 
 set noerrorbells 
@@ -183,192 +195,282 @@ set winheight=30
 " Short messages
 " set shortmess+=filmnrxoOtT 
 
+"}}}
+
 """""""""""""""""""""""""""""""""""""""
-" Vim mappings
+" Mappings
 """""""""""""""""""""""""""""""""""""""
 
-" Remove help from F1
+" Mixed mappings 
+
+" {{{
+" Movement related 
+
+   " Move one line
+   noremap j gj
+   noremap k gk
+
+   " Easy move between windows
+   noremap <C-j> <C-W>j
+   noremap <C-k> <C-W>k
+   noremap <C-h> <C-W>h
+   noremap <C-l> <C-W>l
+
+   " 0 to first non-blank character
+   noremap 0 ^
+   
+   " Space search forward. Ctrl-<Space> backward, leader space clear search 
+   noremap <space> /
+   noremap <C-@> ? 
+   noremap <leader><space> :noh<CR>
+
+   " Visual mode pressing * or # searches for the current selection
+   vnoremap <silent> * :call VisualSelection('b')<CR>
+   vnoremap <silent> # :call VisualSelection('f')<CR>
+"
+
+" }}}
+
+" {{{ 
+" Editing related mappings
+
+   " Exit visual/insert/command/select mode with kj 
+   vnoremap kj <esc>
+   inoremap kj <esc>
+   cnoremap kj <esc> 
+   snoremap kj <esc> 
+
+   " easy undo 
+   nnoremap U <C-r>
+
+   " Move lines up and down (bubbling) left and right (indent)  
+   nmap <A-k> [e
+   nmap <A-j> ]e
+   vmap <A-k> [egv
+   vmap <A-j> ]egv
+   nnoremap <A-l> >>
+   nnoremap <A-h> <<
+   vnoremap <A-l> >gv
+   vnoremap <A-h> <gv
+
+   " Necomplcache and neosnippet mappings
+   imap <C-k> <Plug>(neosnippet_expand)
+   smap <C-k> <Plug>(neosnippet_expand)
+   imap <C-j> <Plug>(neosnippet_jump)
+   smap <C-j> <Plug>(neosnippet_jump)
+
+   inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+   "inoremap <expr><C-y> neocomplcache#close_popup()
+   inoremap <expr><C-l> neocomplcache#complete_common_string()
+   inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+   inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+   
+"}}}
+
+" {{{
+" Remove key functionality 
  noremap <F1> <nop>
+" }}}
 
-" Tagbar toggle
- "noremap <F1> :TagbarToggle<cr>
 
-" Align with tabularize 
- nmap <Leader>a= :Tabularize /=<CR>
- vmap <Leader>a= :Tabularize /=<CR>
- nmap <Leader>a: :Tabularize /:<CR>
- vmap <Leader>a: :Tabularize /:<CR>
- nmap <Leader>a:: :Tabularize /:\zs<CR>
- vmap <Leader>a:: :Tabularize /:\zs<CR>
- nmap <Leader>a, :Tabularize /,<CR>
- vmap <Leader>a, :Tabularize /,<CR>
- nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
- vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-"
+" Leader key mappings
 
-" Handle buffers
- noremap <leader>b :LustyJuggler<CR>
- noremap <leader>bn :tabnew<CR>
- noremap <leader>bd :bd!<CR>
- noremap <leader>bo :tabonly<CR>
-"
+" {{{
+" (a)lign with tabularize 
+ nnoremap [n_align_key] <Nop>
+ nmap <leader>a [n_align_key]
 
-" Nerd commenter remap
- map <leader>c <plug>NERDCommenterToggle
-"
+ vnoremap [v_align_key] <Nop>
+ vmap <leader>a [v_align_key]
 
-" Dump and display sessions 
- set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
- nmap <leader>dl :SessionList<CR>
- nmap <leader>ds :SessionSave<CR>
-"
+ nnoremap [n_align_key]= :Tabularize /=<CR>
+ vnoremap [v_align_key]= :Tabularize /=<CR>
+ nnoremap [n_align_key]a :Tabularize /&<CR>
+ vnoremap [v_align_key]a :Tabularize /&<CR>
+ nnoremap [n_align_key]: :Tabularize /:<CR>
+ vnoremap [v_align_key]: :Tabularize /:<CR>
+ nnoremap [n_align_key]:: :Tabularize /:\zs<CR>
+ vnoremap [v_align_key]:: :Tabularize /:\zs<CR>
+ nnoremap [n_align_key], :Tabularize /,<CR>
+ vnoremap [v_align_key], :Tabularize /,<CR>
+ nnoremap [n_align_key]<Bar> :Tabularize /<Bar><CR>
+ vnoremap [v_align_key]<Bar> :Tabularize /<Bar><CR>
+" }}}
 
-" Edit config files
- nnoremap <leader>ev :vsplit $MYVIMRC<cr>
- nnoremap <Leader>es :NeoSnippetEdit<CR>
- nnoremap <Leader>er :NeoComplCacheEditRuntimeSnippets<CR>
-"
+" {{{
+" (b)uffer handling
+ nnoremap [buffer_key] <Nop>
+ nmap <leader>b [buffer_key]
 
-" There is also a mapping defined for the letter f. You
-" find it under the options for fuzzy finder below. 
-" <leader>f starts fuzzy finder. 
+ noremap [buffer_key] :LustyJuggler<CR>
+ noremap [buffer_key]n :tabnew<CR>
+ noremap [buffer_key]d :bd!<CR>
+ noremap [buffer_key]o :tabonly<CR>
+" }}}
 
-" Fugitive 
- nnoremap <silent> <leader>gs :Gstatus<CR>
- nnoremap <silent> <leader>gd :Gdiff<CR>
- nnoremap <silent> <leader>gc :Gcommit<CR>
- nnoremap <silent> <leader>gb :Gblame<CR>
- nnoremap <silent> <leader>gl :Glog<CR>
- nnoremap <silent> <leader>gp :Git push<CR><CR>
-"
-
-" Yankring plugin mappings
- nnoremap <silent> <leader>yy :YRShow<CR>
- nnoremap <silent> <leader>ys :YRPush '+'<CR>
-"
-
-" Treat long lines as break lines (useful when moving around in them)
- noremap j gj
- noremap k gk
-" 
-
-" type kj to exit visual/insert/command/select mode 
- vnoremap kj <esc>
- inoremap kj <esc>
- cnoremap kj <esc> 
- snoremap kj <esc> 
-"
-
-" Makefile call tasks 
- nnoremap <silent> <leader>m :!make<CR>
- nnoremap <silent> <leader>ms :!make showpdf &> /dev/null <CR>
-"
-
-" Nertree toggle 
- nnoremap <leader>n :NERDTreeToggle <CR>
-"
-
-" Open something
-" here will follow open file handling
-"
-
-" Fast quit
- nnoremap <leader>q :q!<CR>
-"
-
-" Search and repace visual selection
- vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
- vnoremap <silent> <leader>rs :call VisualSelection('acksearch')<CR>
- vnoremap <silent> <leader>ra :call VisualSelection('quickfixdo')<CR> 
- "|<left><left><left><left><left><left><left> <CR>   
- "map <leader>re :vimgrep // **/*.<left><left><left><left><left><left><left>
-"
-
-" Spellchecking 
- noremap <leader>ss :setlocal spell!<CR>
- noremap <leader>sn ]s
- noremap <leader>sp [s
- noremap <leader>sg zg
- noremap <leader>se z=
- noremap <leader>sr 1z=
-"
-  
-" Tag bar toggle 
-nnoremap <silent> <leader>t :TagbarToggle<CR>
-"
-
-" Vizalize indent
-nnoremap <Leader>v :IndentGuidesToggle<CR>
-
-" Fast write and quit 
- nnoremap <leader>w :w!<CR>
- nnoremap <leader>wq :wq!<CR>
-"
-
-" Xecute something (bash)  
- nnoremap <leader>xb :ConqueTermSplit bash<CR>
-"
-
-" reformat the current paragraph
- noremap Q gqap
-"
-
-" remap U to <C-r> for easier undo 
- nnoremap U <C-r>
-"
-
-" Remap VIM 0 to first non-blank character
- noremap 0 ^
-"
-
-" Move lines 
- nmap <A-k> [e
- nmap <A-j> ]e
- vmap <A-k> [egv
- vmap <A-j> ]egv
- nnoremap <A-l> >>
- nnoremap <A-h> <<
- vnoremap <A-l> >gv
- vnoremap <A-h> <gv
-"
-
-" Easier way to move between windows
- noremap <C-j> <C-W>j
- noremap <C-k> <C-W>k
- noremap <C-h> <C-W>h
- noremap <C-l> <C-W>l
-"
-
-" Necomplcache and neosnippet mappings
- imap <C-k> <Plug>(neosnippet_expand)
- smap <C-k> <Plug>(neosnippet_expand)
- imap <C-j> <Plug>(neosnippet_jump)
- smap <C-j> <Plug>(neosnippet_jump)
-
- inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
- "inoremap <expr><C-y> neocomplcache#close_popup()
- inoremap <expr><C-l>     neocomplcache#complete_common_string()
- inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
- inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-"
-
-" Visual mode pressing * or # searches for the current selection
- vnoremap <silent> * :call VisualSelection('b')<CR>
- vnoremap <silent> # :call VisualSelection('f')<CR>
-"
+" {{{
+" (c)omment out
+ nnoremap [comment_key] <Nop>
+ nmap <leader>c [comment_key]
  
-" Space search forward. Ctrl-<Space> backward, leader space clear search 
- noremap <space> /
- noremap <C-@> ? 
- noremap <leader><space> :noh<CR>
-"
+ map [comment_key] <plug>NERDCommenterToggle
+" }}}
 
-" Switch CWD to the directory of the open buffer
-" noremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+" {{{
+" (d)ump and load sessions 
+ nnoremap [dump_key] <Nop>
+ nmap <leader>d [dump_key]
+
+ set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
+ nnoremap [dump_key]l :SessionList<CR>
+ nnoremap [dump_key]s :SessionSave<CR>
+" }}}
+
+" {{{
+" (e)dit config files
+ nnoremap [edit_key] <Nop>
+ nmap <leader>e [edit_key]
+
+ nnoremap [edit_key]v :vsplit $MYVIMRC<cr>
+ nnoremap [edit_key]s :NeoSnippetEdit<CR>
+ nnoremap [edit_key]r :NeoComplCacheEditRuntimeSnippets<CR>
+" }}}
+
+"{{{
+" (f)ind files, buffers etc and do (unite)
+   nnoremap [unite] <Nop>
+   nmap <leader>f [unite]
+
+   nnoremap <silent> [unite]c  :<C-u>UniteWithCurrentDir
+          \ -buffer-name=files buffer file_mru bookmark file<CR>
+   nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir
+          \ -buffer-name=files -prompt=%\  buffer file_mru bookmark file<CR>
+   nnoremap <silent> [unite]r  :<C-u>Unite
+          \ -buffer-name=register register<CR>
+   nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
+   nnoremap <silent> [unite]f
+          \ :<C-u>Unite -buffer-name=resume resume<CR>
+   nnoremap <silent> [unite]d
+          \ :<C-u>Unite -buffer-name=files -default-action=lcd directory_mru<CR>
+   nnoremap <silent> [unite]ma
+          \ :<C-u>Unite mapping<CR>
+   nnoremap <silent> [unite]me
+          \ :<C-u>Unite output:message<CR>
+   nnoremap  [unite]f  :<C-u>Unite source<CR>
+
+   nnoremap <silent> [unite]s
+          \ :<C-u>Unite -buffer-name=files -no-split
+          \ jump_point file_point buffer_tab
+          \ file_rec:! file file/new file_mru<CR>
+"}}}
+
+" {{{
+" (g)it version control (Fugitive) 
+ nnoremap [git_key] <Nop>
+ nmap <silent> <leader>g [git_key]
+
+ nnoremap [git_key]s :Gstatus<CR>
+ nnoremap [git_key]d :Gdiff<CR>
+ nnoremap [git_key]c :Gcommit<CR>
+ nnoremap [git_key]b :Gblame<CR>
+ nnoremap [git_key]l :Glog<CR>
+ nnoremap [git_key]p :Git push<CR><CR>
+" }}}
+
+"{{{
+" (p)aragraph formatting
+   nnoremap [paragraph_key] <Nop>
+   nmap <leader>p [paragraph_key]
+
+   noremap [paragraph_key] gqap
+"}}}
+
+" {{{
+" (m)ake call a task 
+ nnoremap [make_key] <Nop>
+ nmap <silent> <leader>m [make_key]
+ 
+ nnoremap [make_key]  :!make <CR>
+ nnoremap [make_key]s :!make showpdf &> /dev/null <CR>
+" }}}
+
+" {{{
+" (q)quit fast
+ nnoremap [quit_key] <Nop>
+ nmap <leader>q [quit_key]
+
+ nnoremap [quit_key] :q!<CR>
+" }}}
+
+" {{{ 
+" (r) eplace search visual selection
+ vnoremap [replace_key] <Nop>
+ vmap <silent> <leader>r [replace_key]
+ 
+ vnoremap [replace_key] :call VisualSelection('replace')<CR>
+ vnoremap [replace_key]s :call VisualSelection('acksearch')<CR>
+ vnoremap [replace_key]a :call VisualSelection('quickfixdo')<CR> 
+" }}}
+
+" {{{
+" (s)pellchecking 
+   nnoremap [spell_key] <Nop>
+   nmap <leader>s [spell_key]
+
+   noremap [spell_key]s :setlocal spell!<CR>
+   noremap [spell_key]n ]s
+   noremap [spell_key]p [s
+   noremap [spell_key]g zg
+   noremap [spell_key]e z=
+   noremap [spell_key]r 1z=
+" }}}
+  
+"{{{
+" (t)tag navigation 
+   nnoremap [tag_key] <Nop>
+   nmap <silent> <leader>t  [tag_key]
+
+   nnoremap [tag_key] :TagbarToggle<CR>
+"}}}
+
+"{{{
+" (v)izualize 
+   nnoremap [vizualize_key] <Nop>
+   nmap <Leader>v  [vizualize_key]
+
+   nnoremap [vizualize_key] :IndentGuidesToggle<CR>
+"}}}
+
+"{{{
+" (w)rite and quit fast 
+   nnoremap [write_key] <Nop>
+   nmap <Leader>w  [write_key]
+
+   nnoremap [write_key] :w!<CR>
+   nnoremap [write_key]q :wq!<CR>
+"}}}
+
+"{{{ 
+" (x)ecute a shell with something  
+   nnoremap [execute_key] <Nop>
+   nmap <Leader>x  [execute_key]
+
+   nnoremap [execute_key]b :ConqueTermSplit bash<CR>
+"}}}
+
+" {{{
+" (y)ank and paste management (Yankring)
+ nnoremap [yank_key] <Nop>
+ nmap <silent> <leader>y [yank_key]
+
+ nnoremap [yank_key]y :YRShow<CR>
+ nnoremap [yank_key]s :YRPush '+'<CR>
+" }}}
+
 
 " set + and - for fast window resize
-nnoremap <silent> <C-+> :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <C--> :exe "resize " . (winheight(0) * 2/3)<CR>
+"nnoremap <silent> <C-+> :exe "resize " . (winheight(0) * 3/2)<CR>
+"nnoremap <silent> <C--> :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " Shortcut to rapidly toggle `set list`
 " nnoremap <leader>l :set list!<CR>
@@ -376,60 +478,75 @@ nnoremap <silent> <C--> :exe "resize " . (winheight(0) * 2/3)<CR>
 " Use the same symbols as TextMate for tabstops and EOLs
 " set listchacksearch=tab:▸\ ,eol:¬
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin specific options
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Nertree toggle 
+" nnoremap <leader>n :NERDTreeToggle <CR>
+"
 
-" Tab guideline options 
+" Switch CWD to the directory of the open buffer
+" noremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+
+"{{{
+" Plugin specific options
+
+" {{{
+" tab guideline  
  let g:indent_guides_enable_on_vim_startup = 0
  let g:indent_guides_auto_colors = 0
  let g:indent_guides_guide_size = 1 
  let g:indent_guides_start_level = 1
  hi IndentGuidesOdd  ctermbg=238 
  hi IndentGuidesEven ctermbg=243
-"
+" }}}
 
-" Nerd commenter options
+" {{{
+" nerd commenter
 let g:NERDCustomDelimiters = {
    \ 'snippet': {'left': '#'}
  \ }
-"
+" }}}
 
-" Syntastic options 
+" {{{
+" syntastic 
  let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
- 
+" }}}
 
-" Lusty juggler options  
+" {{{
+" lusty juggler
 let g:LustyJugglerDefaultMappings = 0
-"
+" }}}
 
-" Yankring history folder
+" {{{ 
+" yankring 
  let g:yankring_history_dir = '~/.vim/tmp'
-"
+" }}}
 
-" Nerd tree plugin
- let NERDTreeShowBookmarks=1
- let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
- let NERDTreeChDirMode=0
- let NERDTreeQuitOnOpen=1
- let NERDTreeShowHidden=1
- let NERDTreeKeepTreeInNewTab=1
- let g:nerdtree_tabs_open_on_gui_startup=0
-" 
+" {{{
+" nerd tree
+ "let NERDTreeShowBookmarks=1
+ "let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+ "let NERDTreeChDirMode=0
+ "let NERDTreeQuitOnOpen=1
+ "let NERDTreeShowHidden=1
+ "let NERDTreeKeepTreeInNewTab=1
+ "let g:nerdtree_tabs_open_on_gui_startup=0
+" }}}
 
+" {{{
+" ctrlp fuzzy finder
+ "let g:ctrlp_map = '<leader>f'
+ "let g:ctrlp_custom_ignore = {
+   "\ 'dir': '\.git$\|\.hg$\|\.svn$',
+   "\ 'file': '\.exe$\|\.so$\|\.dll$' }
+" }}}
 
-" Ctrlp fuzzy finder 
- let g:ctrlp_map = '<leader>f'
- let g:ctrlp_custom_ignore = {
-   \ 'dir': '\.git$\|\.hg$\|\.svn$',
-   \ 'file': '\.exe$\|\.so$\|\.dll$' }
-"
-
-" Rails plugin
+" {{{
+" rails plugin
 let g:rubycomplete_buffer_loading = 1
-"
+" }}}
 
-" Conque term options
+" {{{
+" conque term 
  let g:ConqueTerm_SendFunctionKeys = 0
  let g:ConqueTerm_ExecFileKey = '<nop>'
  let g:ConqueTerm_SendFileKey = '<nop>'
@@ -444,13 +561,79 @@ let g:rubycomplete_buffer_loading = 1
  let ConqueTerm_Color = 0
  let ConqueTerm_ReadUnfocused = 1
  let vimrplugin_conquevsplit = 0
-"
+" }}}
 
-" Tagbar options
+" {{{ 
+" tagbar options
  let g:tagbar_left = 0
-" 
+" }}}
 
-" neocomplcache 
+" {{{
+" unite vim
+ 
+imap <expr> -  pumvisible() ? 
+        \ "\<Plug>(neocomplcache_start_unite_quick_match)" : '-' 
+
+" Start insert.
+ let g:unite_enable_start_insert = 1
+ "let g:unite_enable_short_source_names = 1
+ "
+
+ autocmd FileType unite call s:unite_my_settings()
+ function! s:unite_my_settings()
+    " Overwrite settings.
+ 
+    nmap <buffer> <ESC>      <Plug>(unite_exit)
+    imap <buffer>  kj      <Plug>(unite_insert_leave)
+    "imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+    imap <buffer><expr> j unite#smart_map('j', '')
+    imap <buffer> <TAB>   <Plug>(unite_select_next_line)
+    imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+    imap <buffer> - <Plug>(unite_quick_match_default_action)
+    nmap <buffer> - <Plug>(unite_quick_match_default_action)
+    imap <buffer><expr> x
+             \ unite#smart_map('x', "\<Plug>(unite_quick_match_choose_action)")
+    nmap <buffer> x     <Plug>(unite_quick_match_choose_action)
+    nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+    imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+    imap <buffer> <C-y>     <Plug>(unite_narrowing_path)
+    nmap <buffer> <C-y>     <Plug>(unite_narrowing_path)
+    "nmap <buffer> <C-j>     <Plug>(unite_toggle_auto_preview)
+    nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+    imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+
+    nnoremap <silent><buffer><expr> l
+             \ unite#smart_map('l', unite#do_action('default'))
+ 
+    let unite = unite#get_current_unite()
+    if unite.buffer_name =~# '^search'
+       nnoremap <silent><buffer><expr> r     unite#do_action('replace')
+    else
+       nnoremap <silent><buffer><expr> r     unite#do_action('rename')
+    endif
+ 
+    nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
+    nnoremap <buffer><expr> S      unite#mappings#set_current_filters(
+             \ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
+ endfunction
+ 
+ let g:unite_source_file_mru_limit = 200
+ let g:unite_cursor_line_highlight = 'TabLineSel'
+ let g:unite_abbr_highlight = 'TabLine'
+ 
+ " For optimize.
+ let g:unite_source_file_mru_filename_format = ''
+ 
+ " For ack.
+ if executable('ack-grep')
+    let g:unite_source_grep_command = 'ack-grep'
+    let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
+    let g:unite_source_grep_recursive_opt = ''
+ endif
+" }}}
+
+" {{{ 
+" neocomplcache and neosnippet 
  let g:neocomplcache_enable_at_startup = 1
  let g:neocomplcache_temporary_dir = '~/.vim/tmp/'
  let g:neocomplcache_enable_camel_case_completion = 1
@@ -496,9 +679,11 @@ let g:rubycomplete_buffer_loading = 1
  if has('conceal')
     set conceallevel=2 concealcursor=i
  endif
-"
 
-let g:header_author = "Claas-Thido Pfaff"
+ let g:header_author = "Claas-Thido Pfaff"
+" }}}
+
+"}}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function definitions and calls 
