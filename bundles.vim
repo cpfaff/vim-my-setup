@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""
-" Preparations 
+" Vim-Bundles 
 """""""""""""""""""""""""""""""""""""""
 
 " No vi compatibility 
@@ -9,29 +9,34 @@ set nocompatible
 filetype off
 
 " Setup vundle package manager
-set rtp+=~/.vim/bundle/neobundle/
+if has('vim_starting')
+   set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 
-NeoBundle 'Shougo/neobundle.vim'
-
-NeoBundle 'MarcWeber/vim-addon-mw-utils.git'
-NeoBundle 'tomtom/tlib_vim.git'
-NeoBundle 'chrisbra/SudoEdit.vim.git'
-
-
 " Load bundles 
-NeoBundle 'vim-scripts/CmdlineComplete.git'
-NeoBundle 'vim-scripts/LustyJuggler.git'
-NeoBundle 'godlygeek/tabular.git'
-NeoBundle 'Townk/vim-autoclose.git'
-NeoBundle 'altercation/vim-colors-solarized.git'
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc.git'
+NeoBundle 'Shougo/vimshell.git'
+NeoBundle 'Shougo/neocomplcache.git'
+NeoBundle 'Shougo/neosnippet.git'
+NeoBundle 'Shougo/unite.vim.git'
+
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tpope/vim-rails.git'
 NeoBundle 'tpope/vim-repeat.git'
 NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'tpope/vim-unimpaired.git'
 NeoBundle 'tpope/vim-markdown.git'
+
+NeoBundle 'scrooloose/nerdcommenter.git'
+NeoBundle 'scrooloose/syntastic.git'
+
+NeoBundle 'vim-scripts/CmdlineComplete.git'
+NeoBundle 'vim-scripts/LustyJuggler.git'
+NeoBundle 'godlygeek/tabular.git'
+NeoBundle 'Townk/vim-autoclose.git'
 NeoBundle 'edsono/vim-matchit.git'
 NeoBundle 'majutsushi/tagbar.git'
 NeoBundle 'vim-scripts/Vim-R-plugin.git'
@@ -42,21 +47,26 @@ NeoBundle 'vim-scripts/tex.vim--Tanzler'
 NeoBundle 'vim-scripts/peaksea.git'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mutewinter/vim-indent-guides'
-NeoBundle 'kien/ctrlp.vim.git'
-NeoBundle 'Shougo/neocomplcache.git'
-NeoBundle 'Shougo/neosnippet.git'
-NeoBundle 'Shougo/unite.vim.git'
-NeoBundle 'scrooloose/nerdcommenter.git'
-NeoBundle 'scrooloose/syntastic.git'
+
 NeoBundle 'mileszs/ack.vim.git'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'jistr/vim-nerdtree-tabs'
-NeoBundle 'guns/xterm-color-table.vim.git'
+NeoBundle 'tjennings/git-grep-vim.git'
+
 NeoBundle 'vim-scripts/sessionman.vim.git'
 NeoBundle 'Lokaltog/vim-powerline.git'
 NeoBundle 'cpfaff/vim-help.git'
 NeoBundle 'henrik/vim-qargs.git'
-NeoBundle 'tjennings/git-grep-vim.git'
+NeoBundle 'guns/xterm-color-table.vim.git'
+
+" Required!
+filetype plugin indent on     
+
+" Installation check.
+if neobundle#exists_not_installed_bundles()
+  echomsg 'Not installed bundles : ' .
+        \ string(neobundle#get_not_installed_bundle_names())
+  echomsg 'Please execute ":NeoBundleInstall" command.'
+  "finish
+endif
 
 " Disabled bundles
 " NeoBundle 'honza/snipmate-snippets.git'
@@ -66,3 +76,10 @@ NeoBundle 'tjennings/git-grep-vim.git'
 " NeoBundle 'wincent/Command-T.git'
 " NeoBundle 'Rykka/colorv.vim.git'
 " NeoBundle 'gmarik/vundle'
+" NeoBundle 'MarcWeber/vim-addon-mw-utils.git'
+" NeoBundle 'tomtom/tlib_vim.git'
+" NeoBundle 'chrisbra/SudoEdit.vim.git'
+" NeoBundle 'altercation/vim-colors-solarized.git'
+" NeoBundle 'kien/ctrlp.vim.git'
+" NeoBundle 'jistr/vim-nerdtree-tabs'
+" NeoBundle 'scrooloose/nerdtree'
