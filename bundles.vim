@@ -17,7 +17,11 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 
 " Load bundles 
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc.git'
+NeoBundle 'Shougo/vimproc.git', {
+         \ 'build' : {
+         \     'unix' : 'make -f make_unix.mak',
+         \    },
+         \ }
 NeoBundle 'Shougo/vimshell.git'
 NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/neosnippet.git'
