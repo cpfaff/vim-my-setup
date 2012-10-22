@@ -126,7 +126,7 @@ function my_vim_setup()
    execute_command "Create bundle folder" "mkdir -p ${folder_home_vim_bundles}"
    execute_command "Clone into neobundle repo" "git clone git://github.com/Shougo/neobundle.vim ${folder_home_vim_bundle_neobundle}"
 	execute_command "Link the .vimrc to user home" "ln -s ${file_home_vim_vimrc} ${file_home_dot_vimrc}"
-  	execute_command "Installing the bundles" "vim -u ${file_home_vim_bundles} +NeoBundleInstall"
+       vim -u ${file_home_vim_bundles} +NeoBundleInstall
 
 	big_step_display "The Vim setup is ready!"
 }
