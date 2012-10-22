@@ -123,10 +123,15 @@ function my_vim_setup()
 	backup_content ${file_home_dot_vimrc}
 
 	execute_command "Clone into my-vim-setup repo" "git clone https://github.com/cpfaff/vim-my-setup.git ${folder_home_vim}"
+  
    execute_command "Create bundle folder" "mkdir -p ${folder_home_vim_bundles}"
+  
    execute_command "Clone into neobundle repo" "git clone git://github.com/Shougo/neobundle.vim ${folder_home_vim_bundle_neobundle}"
+
 	execute_command "Link the .vimrc to user home" "ln -s ${file_home_vim_vimrc} ${file_home_dot_vimrc}"
-       vim -u ${file_home_vim_bundles} +NeoBundleInstall
+       
+	big_step_display "Install the bundles!"
+   vim -u ${file_home_vim_bundles} +NeoBundleInstall +qall
 
 	big_step_display "The Vim setup is ready!"
 }
