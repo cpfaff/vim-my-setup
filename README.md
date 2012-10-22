@@ -1,14 +1,15 @@
 My Vim setup
 ============
 
-This is my personal Vim setup. It can be installed manually or with the help
-of a bash installer script. Both installation methods are described in detail
-below. The setup uses the [Vundle](https://github.com/gmarik/vundle) package
-manager to handle all the included plug-ins. For a full list of installed Vim
-plug-ins please have a look into the `bundles.vim` file.
+This is my personal Vim setup. It can be installed manually or
+with the help of a bash installer script. Both installation
+methods are described in detail below. The setup uses the
+[NeoBundle](https://github.com/Shougo/neobundle.vim.git) package manager to
+handle all the included plug-ins. For a full list of installed Vim plug-ins
+please have a look into the `bundles.vim` file.
 
 Note: This setup is only tested on a Linux machine in a terminal Vim but should
-work also well on G-Vim.
+usually work also well on G-Vim.
 
 Script install 
 ---------------
@@ -58,7 +59,7 @@ Wait till it is finished. Then enjoy my-vim-setup!
 
 ### Install the dependencies:
 
-Note: Package names in Ubuntu 12.04.
+Note: These are package names from Ubuntu 12.04 sources.
 
 ```
 sudo apt-get install par ruby1.8-dev vim-nox git-core exuberant-ctags
@@ -74,7 +75,7 @@ git clone https://github.com/cpfaff/vim-my-setup.git ~/.vim
 ### Clone the Vundle repository:
 
 ```
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+git clone https://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim
 ```
 
 ### Link the .vimrc:
@@ -87,4 +88,4 @@ ln -s ~/.vim/vimrc ~/.vimrc
 ### Install the bundles:
 
 1. Open Vim `vim`
-2. Type `:BundleInstall`
+2. Type `:NeoBundleInstall`
