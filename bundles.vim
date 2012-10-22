@@ -32,6 +32,7 @@ NeoBundle 'tpope/vim-repeat.git'
 NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'tpope/vim-unimpaired.git'
 NeoBundle 'tpope/vim-markdown.git'
+NeoBundle 'tpope/vim-abolish.git'
 
 NeoBundle 'scrooloose/nerdcommenter.git'
 NeoBundle 'scrooloose/syntastic.git'
