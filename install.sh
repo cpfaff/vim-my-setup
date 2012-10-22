@@ -7,7 +7,7 @@ folder_home_vim=~/.vim
 folder_home_vim_bundles=~/.vim/bundle
 folder_home_vim_bundle_neobundle=~/.vim/bundle/neobundle.vim
 
-file_home_vim_bundles=~/.vim/bundles 
+file_home_vim_bundles=~/.vim/bundles.vim 
 file_home_vimrc=~/.vimrc
 file_home_vim_vimrc=~/.vim/vimrc
 file_this_script_logfile=/tmp/my-vim-setup.log
