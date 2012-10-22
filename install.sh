@@ -8,7 +8,7 @@ folder_home_vim_bundles=~/.vim/bundle
 folder_home_vim_bundle_neobundle=~/.vim/bundle/neobundle.vim
 
 file_home_vim_bundles=~/.vim/bundles.vim 
-file_home_vimrc=~/.vimrc
+file_home_dot_vimrc=~/.vimrc
 file_home_vim_vimrc=~/.vim/vimrc
 file_this_script_logfile=/tmp/my-vim-setup.log
 
@@ -120,12 +120,12 @@ function my_vim_setup()
 	sudo_install_packages ${depends_on_packages[@]}
 
 	backup_content ${folder_home_vim}
-	backup_content ${file_home_vimrc}
+	backup_content ${file_home_dot_vimrc}
 
 	execute_command "Clone into my-vim-setup repo" "git clone https://github.com/cpfaff/vim-my-setup.git ${folder_home_vim}"
    execute_command "Create bundle folder" "mkdir -p ${folder_home_vim_bundles}"
    execute_command "Clone into neobundle repo" "git clone git://github.com/Shougo/neobundle.vim ${folder_home_vim_bundle_neobundle}"
-	execute_command "Link the .vimrc to user home" "ln -s ${file_home_vim_vimrc} ${file_home_vimrc}"
+	execute_command "Link the .vimrc to user home" "ln -s ${file_home_vim_vimrc} ${file_home_dot_vimrc}"
   	execute_command "Installing the bundles" "vim -u ${file_home_vim_bundles} -c NeoBundleInstall -c q"
 
 	big_step_display "The Vim setup is ready!"
