@@ -1,7 +1,13 @@
 #!/bin/bash --login
 
+#{{{
+# Variable setting
+
+# Dependencies
 
 depends_on_packages=(ack-grep par vim-nox git-core exuberant-ctags)
+
+# Folder and files
 
 folder_home_vim=~/.vim
 folder_home_vim_bundles=~/.vim/bundle
@@ -20,7 +26,6 @@ complete vim setup using the vundle package.
 EOF
 )
 
-
 # Pseudo ui
 
 frame_big="OO====================================================================================O0"
@@ -28,14 +33,19 @@ frame_small="O==================================================================
 step_big="----------------------------------------------------------o"
 step_small="---------------------------"
 
+#}}}
 
-# Functions
+#{{{
+# Functions definition
 
+#{{{
 function write_log_entry()
 {
 	echo "${1}" >> ${file_this_script_logfile}	
 }
+#}}}
 
+#{{{
 function check_for_process_error()
 {
 	if [ ${?} -eq "0" ]
@@ -45,7 +55,9 @@ function check_for_process_error()
 		write_log_entry "func: ${FUNCNAME[1]}: ${1} ${2}"  
 	fi	
 }
+#}}}
 
+#{{{
 function welcome_display()
 {
 	clear
@@ -58,7 +70,9 @@ function welcome_display()
 	echo ${frame_big} 
 	echo ""
 }
+#}}}
 
+#{{{
 function big_step_display()
 {
 	echo ""
@@ -67,7 +81,9 @@ function big_step_display()
 	echo ${step_big}
 	echo ""
 }
+#}}}
 
+#{{{
 function sudo_install_packages() 
 {
 	big_step_display "Install packages"
@@ -87,7 +103,9 @@ function sudo_install_packages()
 
 	done
 }
+#}}}
 
+#{{{
 function execute_command()
 {
 	big_step_display "${1}"
@@ -95,7 +113,9 @@ function execute_command()
 	${2} 2> /dev/null
 	check_for_process_error "Problems executing the command" ${2}
 }
+#}}}
 
+#{{{
 function backup_content()
 {
 	big_step_display "Backup content"
@@ -112,7 +132,10 @@ function backup_content()
 		echo "Skipping backup"
 	fi
 }
+#}}}
 
+
+#{{{
 function my_vim_setup()
 {
 	welcome_display "my-vim-setup script" "${message_intro}"
@@ -135,8 +158,10 @@ function my_vim_setup()
 
 	big_step_display "The Vim setup is ready!"
 }
+#}}}
+#}}}
 
-
+#{{{
 # Function calls
-
-my_vim_setup
+   my_vim_setup
+#}}}
