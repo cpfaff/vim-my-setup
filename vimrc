@@ -683,17 +683,6 @@ imap <expr> -  pumvisible() ?
  let g:header_author = "Claas-Thido Pfaff"
 " }}}
 
-"{{{
-" Neobundle
-   NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-
-"}}}
-
-
 "}}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
