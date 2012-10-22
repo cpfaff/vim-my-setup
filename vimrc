@@ -11,9 +11,9 @@
 source ~/.vim/bundles.vim
 
 " auto source changed vimrc file
- "if has("autocmd")
-    "autocmd bufwritepost .vimrc source $MYVIMRC
- "endif
+if has("autocmd")
+   autocmd bufwritepost .vimrc source $MYVIMRC
+endif
 
 """""""""""""""""""""""""""""""""""""""
 " Setup general behaviour 
@@ -485,6 +485,9 @@ set winheight=30
 " Switch CWD to the directory of the open buffer
 " noremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
+"""""""""""""""""""""""""""""""""""""""
+" Plugin specific options
+"""""""""""""""""""""""""""""""""""""""
 
 "{{{
 " Plugin specific options

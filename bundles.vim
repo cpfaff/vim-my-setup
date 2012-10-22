@@ -21,7 +21,10 @@ NeoBundle 'Shougo/vimproc.git'
 NeoBundle 'Shougo/vimshell.git'
 NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/neosnippet.git'
+NeoBundle 'Shougo/unite-build.git'
+
 NeoBundle 'Shougo/unite.vim.git'
+NeoBundle 'h1mesuke/unite-outline.git'
 
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tpope/vim-rails.git'
@@ -45,6 +48,7 @@ NeoBundle 'vim-scripts/YankRing.vim.git'
 NeoBundle 'rosenfeld/conque-term.git'
 NeoBundle 'vim-scripts/tex.vim--Tanzler'
 NeoBundle 'vim-scripts/peaksea.git'
+
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mutewinter/vim-indent-guides'
 
@@ -83,3 +87,5 @@ endif
 " NeoBundle 'kien/ctrlp.vim.git'
 " NeoBundle 'jistr/vim-nerdtree-tabs'
 " NeoBundle 'scrooloose/nerdtree'
+" NeoBundle 'chriskempson/base16-vim.git'
+" NeoBundle 'chriskempson/vim-tomorrow-theme.git'
