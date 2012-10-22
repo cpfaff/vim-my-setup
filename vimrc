@@ -122,7 +122,6 @@ set ai "Auto indent
 set si "Smart indent
 
 " set formating program to par with 80 col width call
-" with gq and the vim internal formatting then with gw
 set formatprg=par\ -w80
 
 " Specify the behavior when switching between buffers 
@@ -132,12 +131,12 @@ try
 catch
 endtry
 
-" Return to last edit position when opening files (You want this!)
+" Return to last edit position when opening files
 augroup last_cursor_position
    autocmd!
    autocmd BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
+      \  exe "normal! g`\"" |
       \ endif
 augroup END
 
@@ -150,8 +149,6 @@ set sidescrolloff=15
 set sidescroll=1 
 
 " Autocompletion
-"
-" Complete options (disable preview scratch window)
 set completeopt=menu,menuone,longest
 " Limit popup menu height
 set pumheight=15
