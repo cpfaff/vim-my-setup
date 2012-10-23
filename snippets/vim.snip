@@ -1,11 +1,12 @@
-snippet     bun
+snippet     neobundle
+alias       neob
 abbr        NeoBundle 'id'
 prev_word   '^'
    NeoBundle '${1:bundle_name}'
 
-snippet header
-   " File: ${1:`expand('%:t')`}
-   " Author: ${2:`g:snips_author`}
+snippet  header
+   " Filename: ${1:`expand('%:t')`}
+   " Maintainer: ${2:`g:snips_author`}
 	" Description: ${3}
 	${4:" Last Modified: `strftime("%B %d, %Y")`}
 

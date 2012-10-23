@@ -1,6 +1,6 @@
 " File: vimrc
 " Maintainer: Claas-Thido Pfaff
-" Description: This is my personal Vim setup
+" Description: This is my personal Vim setup 
 
 " Include bundles and autosource {{{
 
@@ -651,6 +651,7 @@
       " Global options
       let g:vimshell_split_command='belowright split' 
       let g:vimshell_no_default_keymappings=1
+      let g:vimshell_temporary_directory='~/.vim/tmp/'
 
       " Buffer specific remapping
       
@@ -661,8 +662,8 @@
       endfunction
 
       " This can be done to have interpreter specific mappings
-      "autocmd FileType int-R call s:vimshell_bash_my_settings()
-      "function! s:vimshell_bash_my_settings()
+      "autocmd FileType int-R call s:vimshell_R_my_settings()
+      "function! s:vimshell_R_my_settings()
          "imap <buffer> <CR> <Plug>(vimshell_int_execute_line)
       "endfunction
       
