@@ -2,8 +2,7 @@
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup
 
-"{{{
-" Include bundles and autosource 
+" Include bundles and autosource {{{
 
    " Load vim bundles
    source ~/.vim/bundles.vim
@@ -15,9 +14,8 @@
 
 "}}}
 
-"{{{ 
-" General Vim behaviour 
-
+" General Vim behaviour {{{ 
+ 
    " No annoying sound on errors 
    set noerrorbells 
    set novisualbell 
@@ -180,11 +178,9 @@
 
 "}}}
 
-"{{{
-" Mappings 
+" Mappings {{{
 
-   "{{{
-   " Preparations
+   " Preparations {{{
 
       " leader and local leader
       let mapleader = "," 
@@ -198,11 +194,9 @@
 
    "}}}
 
-   "{{{
-   " Mixed mappings
+   " Mixed mappings {{{
 
-         " {{{
-         " Movement related 
+         " Movement related {{{
 
             " Move one line
             noremap j gj
@@ -229,8 +223,7 @@
 
          " }}}
 
-         " {{{ 
-         " Editing related mappings
+         " Editing related mappings {{{ 
 
             " Exit visual/insert/command/select mode with kj 
             vnoremap kj <esc>
@@ -265,18 +258,17 @@
             
          "}}}
 
-         "{{{
-         " Remove key functionality 
+         " Remove key functionality {{{
+
+            " Remove help from f1
             noremap <F1> <nop>
          "}}}
 
    "}}}
 
-   "{{{
-   " Leader key mappings
+   " Leader key mappings {{{
 
-         "{{{
-         " (a)lign with tabularize 
+         " (a)lign with tabularize {{{
             nnoremap [n_align_key] <Nop>
             nmap <leader>a [n_align_key]
 
@@ -297,8 +289,7 @@
             "vnoremap [v_align_key]<Bar> :Tabularize /<Bar><CR>
          "}}}
 
-         " {{{
-         " (b)uffer handling
+         " (b)uffer handling {{{
             nnoremap [buffer_key] <Nop>
             nmap <leader>b [buffer_key]
 
@@ -308,16 +299,14 @@
             noremap [buffer_key]o :tabonly<CR>
          " }}}
 
-         " {{{
-         " (c)omment out
+         " (c)omment out {{{
             nnoremap [comment_key] <Nop>
             map <leader>c [comment_key]
 
             map [comment_key] <plug>NERDCommenterToggle
          " }}}
 
-         " {{{
-         " (d)ump and load sessions 
+         " (d)ump and load sessions {{{
             nnoremap [dump_key] <Nop>
             nmap <leader>d [dump_key]
 
@@ -326,8 +315,7 @@
             nnoremap [dump_key]s :SessionSave<CR>
          " }}}
 
-         " {{{
-         " (e)dit config files
+         " (e)dit config files {{{
             nnoremap [edit_key] <Nop>
             nmap <leader>e [edit_key]
 
@@ -336,8 +324,7 @@
             nnoremap [edit_key]r :NeoComplCacheEditRuntimeSnippets<CR>
          " }}}
 
-         "{{{
-         " (f)ind files, buffers etc and do (unite)
+         " (f)ind files, buffers etc and do (unite) {{{
             nnoremap [unite] <Nop>
             nmap <leader>f [unite]
             
@@ -365,8 +352,7 @@
                    \ file_rec:! file file/new file_mru<CR>
          "}}}
 
-         " {{{
-         " (g)it version control (Fugitive) 
+         " (g)it version control (Fugitive) {{{
             nnoremap [git_key] <Nop>
             nmap <silent> <leader>g [git_key]
 
@@ -378,16 +364,14 @@
             nnoremap [git_key]p :Git push<CR><CR>
          " }}}
 
-         "{{{
-         " (p)aragraph formatting
+         " (p)aragraph formatting {{{
             nnoremap [paragraph_key] <Nop>
             nmap <leader>p [paragraph_key]
 
             noremap [paragraph_key] gqap
          "}}}
 
-         " {{{
-         " (m)ake call a task 
+         " (m)ake call a task {{{
             nnoremap [make_key] <Nop>
             nmap <silent> <leader>m [make_key]
 
@@ -395,26 +379,26 @@
             nnoremap [make_key]s :!make showpdf &> /dev/null <CR>
          " }}}
 
-         " {{{
-         " (q)quit fast
+         " (q)quit fast {{{
             nnoremap [quit_key] <Nop>
             nmap <leader>q [quit_key]
 
             nnoremap [quit_key] :q!<CR>
          " }}}
 
-         " {{{ 
-         " (r)eplace search visual selection
+         " (r)eplace search visual selection {{{ 
             vnoremap [replace_key] <Nop>
             vmap <silent> <leader>r [replace_key]
 
+            "vnoremap [replace_key] :call VisualSelection('replace')<CR>
+            "vnoremap [replace_key]s :call VisualSelection('acksearch')<CR>
+            "vnoremap [replace_key]a :call VisualSelection('quickfixdo')<CR> 
             vnoremap [replace_key] :call VisualSelection('replace')<CR>
             vnoremap [replace_key]s :call VisualSelection('acksearch')<CR>
             vnoremap [replace_key]a :call VisualSelection('quickfixdo')<CR> 
          " }}}
 
-         " {{{
-         " (s)pellchecking 
+         " (s)pellchecking {{{
             nnoremap [spell_key] <Nop>
             nmap <leader>s [spell_key]
 
@@ -426,24 +410,21 @@
             noremap [spell_key]r 1z=
          " }}}
            
-         "{{{
-         " (t)tag navigation 
+         " (t)tag navigation {{{
             nnoremap [tag_key] <Nop>
             nmap <silent> <leader>t  [tag_key]
 
             nnoremap [tag_key] :TagbarToggle<CR>
          "}}}
 
-         "{{{
-         " (v)izualize 
+         " (v)izualize {{{
             nnoremap [vizualize_key] <Nop>
             nmap <Leader>v  [vizualize_key]
 
             nnoremap [vizualize_key] :IndentGuidesToggle<CR>
          "}}}
 
-         "{{{
-         " (w)rite and quit fast 
+         " (w)rite and quit fast {{{
             nnoremap [write_key] <Nop>
             nmap <Leader>w  [write_key]
 
@@ -451,21 +432,25 @@
             nnoremap [write_key]q :wq!<CR>
          "}}}
 
-         "{{{ 
-         " (x)ecute a shell with interpreter  
+         " (x)ecute a shell with interpreter {{{
             nnoremap [execute_key] <Nop>
             nmap <Leader>x  [execute_key]
-
-            " There are mappinsg missing to send down a line and vizual selection
+            
+            " Send to shell
+            nnoremap [execute_key]s :VimShellSendString<CR> 
+            vnoremap [execute_key]s :VimShellSendString<CR>
+            
+            " Toggle or close the shell
+            " nnoremap [execute_key]q :bd! iexe* <CR>
+            
+            " Start with interpreter
             nnoremap [execute_key]b :VimShellInteractive bash<CR>
             nnoremap [execute_key]r :VimShellInteractive R<CR>
             nnoremap [execute_key]c :VimShellInteractive rails console<CR>
             " nnoremap [execute_key] :ConqueTermSplit bash<CR>
-            " nnoremap [execute_key] call vimshell#interactive#send('ls')<CR>
          "}}}
 
-         " {{{
-         " (y)ank and paste management (Yankring)
+         " (y)ank and paste management (Yankring) {{{
             nnoremap [yank_key] <Nop>
             nmap <silent> <leader>y [yank_key]
 
@@ -473,15 +458,13 @@
             nnoremap [yank_key]s :YRPush '+'<CR>
          " }}}
 
-"}}}
+   "}}}
 
 "}}}
 
-"{{{
-" Plugin configuration 
+" Plugin configuration {{{
 
-   " {{{
-   " tab guideline  
+   " tab guideline {{{
       let g:indent_guides_enable_on_vim_startup = 0
       let g:indent_guides_auto_colors = 0
       let g:indent_guides_guide_size = 1 
@@ -490,54 +473,46 @@
       hi IndentGuidesEven ctermbg=243
    " }}}
 
-   " {{{
-   " nerd commenter
+   " nerd commenter {{{
       let g:NERDCustomDelimiters = {
          \ 'snippet': {'left': '#'}
        \ }
    " }}}
 
-   " {{{
-   " syntastic 
+   " syntastic {{{
       let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
    " }}}
 
-   " {{{
-   " lusty juggler
+   " lusty juggler {{{
       let g:LustyJugglerDefaultMappings = 0
    " }}}
 
-   " {{{ 
-   " yankring 
+   " yankring {{{ 
       let g:yankring_history_dir = '~/.vim/tmp'
    " }}}
 
-   " {{{
-   " nerd tree
-    "let NERDTreeShowBookmarks=1
-    "let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-    "let NERDTreeChDirMode=0
-    "let NERDTreeQuitOnOpen=1
-    "let NERDTreeShowHidden=1
-    "let NERDTreeKeepTreeInNewTab=1
-    "let g:nerdtree_tabs_open_on_gui_startup=0
+   " nerd tree {{{
+      "let NERDTreeShowBookmarks=1
+      "let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+      "let NERDTreeChDirMode=0
+      "let NERDTreeQuitOnOpen=1
+      "let NERDTreeShowHidden=1
+      "let NERDTreeKeepTreeInNewTab=1
+      "let g:nerdtree_tabs_open_on_gui_startup=0
    " }}}
 
-   " {{{
-   " ctrlp fuzzy finder
-    "let g:ctrlp_map = '<leader>f'
-    "let g:ctrlp_custom_ignore = {
-      "\ 'dir': '\.git$\|\.hg$\|\.svn$',
-      "\ 'file': '\.exe$\|\.so$\|\.dll$' }
+   " ctrlp fuzzy finder {{{
+      "let g:ctrlp_map = '<leader>f'
+      "let g:ctrlp_custom_ignore = {
+         "\ 'dir': '\.git$\|\.hg$\|\.svn$',
+         "\ 'file': '\.exe$\|\.so$\|\.dll$' }
    " }}}
 
-   " {{{
-   " rails plugin
+   " rails plugin {{{
       let g:rubycomplete_buffer_loading = 1
    " }}}
 
-   " {{{
-   " conque term 
+   " conque term {{{
       let g:ConqueTerm_SendFunctionKeys = 0
       let g:ConqueTerm_ExecFileKey = '<nop>'
       let g:ConqueTerm_SendFileKey = '<nop>'
@@ -554,21 +529,17 @@
       let vimrplugin_conquevsplit = 0
    " }}}
 
-   " {{{ 
-   " tagbar options
+   " tagbar options {{{ 
       let g:tagbar_left = 0
    " }}}
 
-   " {{{
-   " unite vim
+   " unite vim {{{
     
       "imap <expr> -  pumvisible() ? 
            "\ "\<Plug>(neocomplcache_start_unite_quick_match)" : '-' 
 
       " Start insert.
       let g:unite_enable_start_insert = 1
-      "let g:unite_enable_short_source_names = 1
-      "
 
       autocmd FileType unite call s:unite_my_settings()
       function! s:unite_my_settings()
@@ -623,102 +594,83 @@
       endif
    " }}}
 
-   " {{{ 
-   " neocomplcache and neosnippet 
-    let g:neocomplcache_enable_at_startup = 1
-    let g:neocomplcache_temporary_dir = '~/.vim/tmp/'
-    let g:neocomplcache_enable_camel_case_completion = 1
-    let g:neocomplcache_enable_smart_case = 1
-    let g:neocomplcache_enable_underbar_completion = 1
-    let g:neocomplcache_min_syntax_length = 3
-    let g:neocomplcache_enable_auto_delimiter = 1
-    let g:neocomplcache_max_list = 15
-    let g:neocomplcache_auto_completion_start_length = 3
-    let g:neocomplcache_force_overwrite_completefunc = 1
-    let g:neocomplcache_enable_auto_select = 1
+   " neocomplcache and neosnippet {{{ 
+      
+      " Set options
+      let g:neocomplcache_enable_at_startup = 1
+      let g:neocomplcache_temporary_dir = '~/.vim/tmp/'
+      let g:neocomplcache_enable_camel_case_completion = 1
+      let g:neocomplcache_enable_smart_case = 1
+      let g:neocomplcache_enable_underbar_completion = 1
+      let g:neocomplcache_min_syntax_length = 3
+      let g:neocomplcache_enable_auto_delimiter = 1
+      let g:neocomplcache_max_list = 15
+      let g:neocomplcache_auto_completion_start_length = 3
+      let g:neocomplcache_force_overwrite_completefunc = 1
+      let g:neocomplcache_enable_auto_select = 1
 
-    let g:neosnippet#snippets_directory='~/.vim/snippets/'
-    
-    " Define keyword.
-    if !exists('g:neocomplcache_keyword_patterns')
-       let g:neocomplcache_keyword_patterns = {}
-    endif
-    let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+      let g:neosnippet#snippets_directory='~/.vim/snippets/'
 
-    " Enable omni completion.
-    augroup neocomplcache_omni_completion
-       autocmd!
-       autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-       autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-       autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-       autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-       autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-       autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-    augroup END
+      " Define keyword.
+      if !exists('g:neocomplcache_keyword_patterns')
+         let g:neocomplcache_keyword_patterns = {}
+      endif
+      
+      let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
-    " Enable heavy omni completion.
-    if !exists('g:neocomplcache_omni_patterns')
-       let g:neocomplcache_omni_patterns = {}
-    endif
+      " Enable omni completion.
+      augroup neocomplcache_omni_completion
+         autocmd!
+         autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+         autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+         autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+         autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+         autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+      augroup END
 
-    let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-    let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-    let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-    let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+      " Enable heavy omni completion.
+      if !exists('g:neocomplcache_omni_patterns')
+         let g:neocomplcache_omni_patterns = {}
+      endif
 
-    " For snippet_complete marker.
-    if has('conceal')
-       set conceallevel=2 concealcursor=i
-    endif
+      let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+      let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+      let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+      let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
-    let g:header_author = "Claas-Thido Pfaff"
+      " For snippet_complete marker.
+      if has('conceal')
+         set conceallevel=2 concealcursor=i
+      endif
+
+      let g:header_author = "Claas-Thido Pfaff"
    " }}}
 
-   "{{{
-   " vimshell
+   " vimshell {{{
       " Global options
       let g:vimshell_split_command='belowright split' 
       let g:vimshell_no_default_keymappings=1
-      "let g:vimshell_popup_height=30
 
-      " Buffer remapping
-      autocmd FileType int-bash call s:vimshell_bash_my_settings()
-      function! s:vimshell_bash_my_settings()
-         imap <buffer> <CR> <Plug>(vimshell_int_execute_line)
-         "nmap <buffer> wq <Plug>(vimshell_exit)
-         "imap <C-p> <Plug>(vimshell_select_previous_prompt)
-         "imap <C-n> <Plug>(vimshell_select_next_prompt)
-         "
-         "The shell needs a proper exit command bd! dos not work
-      endfunction
+      " Buffer specific remapping
       
-      autocmd FileType int-rails call s:vimshell_bash_my_settings()
-      function! s:vimshell_bash_my_settings()
+      " For all vimshells 
+      autocmd FileType int-* call s:vimshell_all_my_settings()
+      function! s:vimshell_all_my_settings()
          imap <buffer> <CR> <Plug>(vimshell_int_execute_line)
-         "nmap <buffer> wq <Plug>(vimshell_exit)
-         "imap <C-p> <Plug>(vimshell_select_previous_prompt)
-         "imap <C-n> <Plug>(vimshell_select_next_prompt)
-         "
-         "The shell needs a proper exit command bd! dos not work
       endfunction
-      
-      autocmd FileType int-R call s:vimshell_bash_my_settings()
-      function! s:vimshell_bash_my_settings()
-         imap <buffer> <CR> <Plug>(vimshell_int_execute_line)
-         "nmap <buffer> wq <Plug>(vimshell_exit)
-         "imap <C-p> <Plug>(vimshell_select_previous_prompt)
-         "imap <C-n> <Plug>(vimshell_select_next_prompt)
-         "
-         "The shell needs a proper exit command bd! dos not work
-      endfunction
-      
+
+      " This can be done to have interpreter specific mappings
+      "autocmd FileType int-R call s:vimshell_bash_my_settings()
+      "function! s:vimshell_bash_my_settings()
+         "imap <buffer> <CR> <Plug>(vimshell_int_execute_line)
+      "endfunction
       
    "}}}
 
 "}}}
 
-"{{{
-" Functions 
+" Functions {{{
 
    " Delete trailing white space on save (Python and CoffeeScript)
     func! DeleteTrailingWS()
@@ -729,14 +681,14 @@
    "
 
    " My fold text
-    function! MyFoldText()
-       "let nl = v:foldend - v:foldstart + 1
-       let linetext = getline(v:foldstart + 1)
-       let text =  linetext  
-       return text
-    endfunction
+    "function! MyFoldText()
+       ""let nl = v:foldend - v:foldstart + 1
+       "let linetext = getline(v:foldstart + 1)
+       "let text =  linetext  
+       "return text
+    "endfunction
 
-    set foldtext=MyFoldText()
+    "set foldtext=MyFoldText()
    "
 
    " Small helper
@@ -782,8 +734,7 @@
 
 "}}}
 
-"{{{
-" Autogroups 
+" Autogroups {{{
 
    "Remove trailing whilespaces
    augroup remove_trailing_spaces
@@ -806,11 +757,9 @@
 
 "}}}
 
-"{{{ 
-" At the end 
+" At the end {{{ 
 
    " Add $ to end of change range
    au BufNewFile,BufRead * set cpoptions+=$
-   "
 
 "}}}
