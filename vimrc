@@ -16,8 +16,8 @@
 
 " General Vim behaviour {{{ 
  
-   " No annoying sound on errors 
-   set noerrorbells 
+   " Disable vim error behavior
+   set noerrorbells
    set novisualbell 
    set t_vb= 
    set tm=500
@@ -25,9 +25,10 @@
    " Sets how much history and undo vim remembers  
    set history=1000
 
-   " save all backupfiles in one place
+   " Save files in one place
    set backupdir=~/.vim/tmp  
    set directory=~/.vim/tmp 
+   set tags=~/.vim/tmp/
 
    " Persistent undo
    if has('persistent_undo')
@@ -41,13 +42,12 @@
    filetype plugin on
    filetype indent on
 
-
    " A buffer becomes hidden when it is abandoned 
    set hidden
 
    " Configure backspace 
    set backspace=indent,eol,start 
-   set whichwrap=b,s,h,l,<,>,[,]
+   set whichwrap=b,s,<,>,[,]
 
    "swith on numbering 
    set number
@@ -68,13 +68,13 @@
    set incsearch
 
    " Don't redraw while executing macros (good performance config) 
-   set lazyredraw
+   "set lazyredraw
 
    " For regular expressions turn magic on 
    set magic
 
    " blink on mathing bracets 
-   set mat=2
+   set matchtime=2
 
    " Enable better colours in console 
    set t_Co=256
@@ -95,15 +95,15 @@
    set tabstop=3
 
    " cursor beyond last character
-   set virtualedit=onemore
+   "set virtualedit=onemore
 
    " Wrap and linebreak
    set wrap 
    set linebreak
    set nolist
 
-   set ai "Auto indent
-   set si "Smart indent
+   set autoindent "Auto indent
+   set smartindent "Smart indent
 
    " set formating program to par with 80 col width call
    set formatprg=par\ -w80
@@ -111,18 +111,9 @@
    " Specify the behavior when switching between buffers 
    try
      set switchbuf=useopen,usetab,newtab
-     set stal=2
+     set showtabline=2
    catch
    endtry
-
-   " Return to last edit position when opening files
-   augroup last_cursor_position
-      autocmd!
-      autocmd BufReadPost *
-         \ if line("'\"") > 0 && line("'\"") <= line("$") |
-         \  exe "normal! g`\"" |
-         \ endif
-   augroup END
 
    " Remember info about open buffers on close
    set viminfo^=%
@@ -148,12 +139,12 @@
       set statusline+=\ [%{getcwd()}] " current directory
       set statusline+=%#warningmsg#
       set statusline+=%{SyntasticStatuslineFlag()}
-      "set statusline+=%*
+      set statusline+=%*
       set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
    endif
 
    " Folding options
-   set nofoldenable
+   "set nofoldenable
    set foldmethod=marker
    set foldnestmax=10
 
@@ -163,18 +154,8 @@
    " Toggle paste mode on and off
    set pastetoggle=<F3>
 
-   " save/restore the view
-   " au BufWinLeave *.* silent! mkview "make vim save view (state) (folds, cursor, etc)
-   " au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
-
-   " Set tag folder
-   set tags=~/.vim/tmp/
-
    " Autosize windows
    set winheight=30
-
-   " Short messages
-   " set shortmess+=filmnrxoOtT 
 
 "}}}
 
@@ -182,11 +163,11 @@
 
    " Preparations {{{
 
-      " leader and local leader
+      " set leader and local leader
       let mapleader = "," 
       let maplocalleader = '.' 
 
-      " for alt and meta key mappings 
+      " setup for alt and meta key mappings 
       for i in range(97,122)
          let c = nr2char(i)
          exec "set <M-".c.">=\<Esc>".c
@@ -204,11 +185,11 @@
 
       " Movement related {{{
 
-         " Move one line
+         " move always one line down
          noremap j gj
          noremap k gk
 
-         " Easy move between windows
+         " move between windows
          noremap <C-j> <C-W>j
          noremap <C-k> <C-W>k
          noremap <C-h> <C-W>h
@@ -217,7 +198,7 @@
          " 0 to first non-blank character
          noremap 0 ^
          
-         " Space search forward. Ctrl-<Space> backward, leader space clear search 
+         " space: search forward. ctrl-<Space>: search backward, leader space clear search 
          noremap <space> /
          noremap <C-@> ? 
          noremap <leader><space> :noh<CR>
@@ -274,33 +255,35 @@
          "  This mappings help to align text with the tabularize plugin.
          "  You can call them in vizual and in normal mode. For example
          "  to allign text by the & character you can issue <leader>aa.
-            
-            " create [n_align_key] as trigger for normal mode alignment
+         "
+         " Mappings:
+         "
+         "   <leader>a=    align with    =
+         "   <leader>aa    align with    &
+         "   <leader>a:    align with    :
+         "   <leader>a::   align with    ::
+         "   <leader>a,          align   with   ,
+        
             nnoremap [n_align_key] <Nop>
             nmap <leader>a [n_align_key]
 
-            " create [v_align_key] as trigger for visual mode alignment
             vnoremap [v_align_key] <Nop>
             vmap <leader>a [v_align_key]
             
-            " align with = 
             nnoremap [n_align_key]= :Tabularize /=<CR>
             vnoremap [v_align_key]= :Tabularize /=<CR>
-            " align with & 
+            
             nnoremap [n_align_key]a :Tabularize /&<CR>
             vnoremap [v_align_key]a :Tabularize /&<CR>
-            " align with : 
+        
             nnoremap [n_align_key]: :Tabularize /:<CR>
             vnoremap [v_align_key]: :Tabularize /:<CR>
-            " align with :: 
+            
             nnoremap [n_align_key]:: :Tabularize /:\zs<CR>
             vnoremap [v_align_key]:: :Tabularize /:\zs<CR>
-            " align with , 
+            
             nnoremap [n_align_key], :Tabularize /,<CR>
             vnoremap [v_align_key], :Tabularize /,<CR>
-            " align with <space bar> (not working because of mapping conflict) 
-            "nnoremap [n_align_key]<Bar> :Tabularize /<Bar><CR>
-            "vnoremap [v_align_key]<Bar> :Tabularize /<Bar><CR>
          "}}}
 
          " (b)uffer handling {{{
@@ -315,7 +298,7 @@
          " and so on. On tap on the key highlights the corresponding buffer, a
          " second key stroke switches to that buffer. 
          " 
-         " Other mappings:
+         " Mappings:
          " 
          "  - <leader>bd closes the active buffer 
          "  - <leader>bn opens a new tab 
@@ -334,19 +317,21 @@
          
          " Description:
          "
-         " This mappings handle commenting lines with the NERDCommenter plugin.
-         " They combination <leader>c calls the toggle of nerd commter and
-         " comments out or in. This mapping works in vizal as well as normal
-         " mode.
+         " This mappings handle commenting lines in and out with the
+         " NERDCommenter plugin. They combination <leader>c calls the comment
+         " toggle of nerd commter which comments the line in or out. This
+         " mapping works in vizal and normal mode.
          "
          " Mappings:
          "
          " - <leader>c toggles the nerd commenter
-         
-            nnoremap [comment_key] <Nop>
+
+            nnoremap [comment_key] <nop>
             map <leader>c [comment_key]
             
             map [comment_key] <plug>NERDCommenterToggle
+            map [comment_key]y <plug>NERDCommenterYank
+            map [comment_key]a <plug>NERDCommenterAltDelims
          " }}}
 
          " (d)ump and load sessions {{{
@@ -547,9 +532,12 @@
    " }}}
 
    " nerd commenter {{{
+      let g:NERDCreateDefaultMappings = 0
+      let g:NERDSpaceDelims = 1
+
       let g:NERDCustomDelimiters = {
          \ 'snippet': {'left': '#'},
-         \ 'rnoweb' : {'left': '%'}
+         \ 'rnoweb' : {'left': '%', 'leftAlt': '#'}
        \ }
    " }}}
 
@@ -811,6 +799,15 @@
 "}}}
 
 " Autogroups {{{
+
+   " Return to last edit position when opening files
+   augroup last_cursor_position
+      autocmd!
+      autocmd BufReadPost *
+         \ if line("'\"") > 0 && line("'\"") <= line("$") |
+         \  exe "normal! g`\"" |
+         \ endif
+   augroup END
 
    "Remove trailing whilespaces
    augroup remove_trailing_spaces
