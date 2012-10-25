@@ -68,7 +68,7 @@
    set incsearch
 
    " Don't redraw while executing macros (good performance config) 
-   "set lazyredraw
+   set lazyredraw
 
    " For regular expressions turn magic on 
    set magic
@@ -116,7 +116,7 @@
    endtry
 
    " Remember info about open buffers on close
-   set viminfo^=%
+   " set viminfo^=%
 
    " Scroll options 
    set scrolloff=8   
@@ -258,11 +258,11 @@
          "
          " Mappings:
          "
-         "   <leader>a=    align with    =
-         "   <leader>aa    align with    &
-         "   <leader>a:    align with    :
-         "   <leader>a::   align with    ::
-         "   <leader>a,          align   with   ,
+         "  - <leader>a=    align by  =
+         "  - <leader>aa    align by  &
+         "  - <leader>a:    align by  :
+         "  - <leader>a::   align by  ::
+         "  - <leader>a,    align by  ,
         
             nnoremap [n_align_key] <Nop>
             nmap <leader>a [n_align_key]
@@ -300,9 +300,9 @@
          " 
          " Mappings:
          " 
-         "  - <leader>bd closes the active buffer 
-         "  - <leader>bn opens a new tab 
-         "  - <leader>bo closes all but the active buffer 
+         "  - [buffer_key]d   closes the active buffer 
+         "  - [buffer_key]n   opens a new tab 
+         "  - [buffer_key]o   closes all but the active buffer 
 
             nnoremap [buffer_key] <Nop>
             nmap <leader>b [buffer_key]
@@ -324,7 +324,9 @@
          "
          " Mappings:
          "
-         " - <leader>c toggles the nerd commenter
+         " - [comment_key]    toggles the nerd commenter
+         " - [comment_key]y   yank text then comment out 
+         " - [comment_key]a   change to alternative delimiter set 
 
             nnoremap [comment_key] <nop>
             map <leader>c [comment_key]
@@ -338,77 +340,81 @@
          
          " Description:
          "
-         " This mappings use the vim-session plugin to handle sessions. If
+         " This mappings use the vim sessionman plugin to handle sessions. If
          " you store a session all things defined under sessionoptions will be
          " stored.
          "
          " Mappings:
          "
-         " - <leader>dl lists all stored sessions 
-         " - <leader>ds to save a session
+         " - [dump_key]l   lists all stored sessions 
+         " - [dump_key]s   to save a session
         
             nnoremap [dump_key] <Nop>
             nmap <leader>d [dump_key]
 
-            set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-            nnoremap [dump_key]l :SessionList<CR>
             nnoremap [dump_key]s :SessionSave<CR>
+            nnoremap [dump_key]l :SessionList<CR>
          " }}}
 
          " (e)dit config files {{{
-            " create [edit_key] as trigger for edit actions
+         
+         " Description:
+         "
+         " This mappings use enable fast access to important configuration
+         " and snippet files. 
+         "
+         " Mappings:
+         "
+         " - [edit_key]v   edit the vimrc file in vertical split
+         " - [edit_key]r   edit the neosnippet runtime snippets for [filetype] 
+         " - [edit_key]s   edit your personal snippet for [filetype]
+         
             nnoremap [edit_key] <Nop>
             nmap <leader>e [edit_key]
             
-            " edit the vimrc file in vertical split
             nnoremap [edit_key]v :vsplit $MYVIMRC<cr>
-            " edit the neosnippet runtime snippets for [filetype] 
             nnoremap [edit_key]r :NeoSnippetEdit -runtime<CR>
-            " edit your personal snippet for [filetype]
             nnoremap [edit_key]s :NeoSnippetEdit<CR>
          " }}}
 
-         " (f)ind files, buffers etc and do (unite) {{{
-            nnoremap [unite] <Nop>
-            nmap <leader>f [unite]
+         " (f)ind files, buffers etc. and do (unite) {{{
+
+         " Description:
+         "
+         " This are the mappings use the unite plug-in to search in files,
+         " buffers etc. 
+         "
+         " Mappings:
+         "
+         " - [unite_key]c  open files recursively starting from current directory
+         " - [unite_key]r  open recently used files   
+         " - [unite_key]f  open unite with sources overview to chose from actions
             
-            " rework this mappings!
+            nnoremap [unite_key] <Nop>
+            nmap <leader>f [unite_key]
            
-            " recently used files only <leader>fr
-            nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=files file_mru<CR>
+            nnoremap <silent> [unite_key]c :<C-u>Unite -buffer-name=files file_rec:!<CR>
+            nnoremap <silent> [unite_key]r :<C-u>Unite -buffer-name=files file_mru<CR>
+            nnoremap <silent> [unite_key]f :<C-u>Unite -buffer-name=sources source<CR>
 
-            " buffers, recently used, bookmark and files from current dir on
-            " <leader>fc
-            nnoremap <silent> [unite]c  :<C-u>UniteWithCurrentDir
-                   \ -buffer-name=files buffer file_mru bookmark file<CR>
-            
-            " 
-            nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir
-                   \ -buffer-name=files -prompt=%\  buffer file_mru bookmark file<CR>
-            
-            " create outline for document useful for help navigation
-            nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
-            
-            nnoremap <silent> [unite]f
-                   \ :<C-u>Unite -buffer-name=resume resume<CR>
-            "nnoremap <silent> [unite]d
-                   \ :<C-u>Unite -buffer-name=files -default-action=lcd directory_mru<CR>
-            
-            "nnoremap <silent> [unite]r  :<C-u>Unite
-                   "\ -buffer-name=register register<CR>
-            nnoremap <silent> [unite]ma
-                   \ :<C-u>Unite mapping<CR>
-            nnoremap <silent> [unite]me
-                   \ :<C-u>Unite output:message<CR>
-            nnoremap  [unite]f  :<C-u>Unite source<CR>
-
-            nnoremap <silent> [unite]s
-                   \ :<C-u>Unite -buffer-name=files -no-split
-                   \ jump_point file_point buffer_tab
-                   \ file_rec:! file file/new file_mru<CR>
          "}}}
 
          " (g)it version control (Fugitive) {{{
+
+         " Description:
+         "
+         " This mappings cover common git tasks with the help of the Vim
+         " plug-in fugitive.
+         "
+         " Mappings:
+         "
+         " - [git_key]s   open the interactive git status window            
+         " - [git_key]d   opens a git diff in split view of the file  
+         " - [git_key]c   commit your changes
+         " - [git_key]b   open a git blame in split view        
+         " - [git_key]l   show a git log         
+         " - [git_key]p   push to your remote repository        
+         
             nnoremap [git_key] <Nop>
             nmap <silent> <leader>g [git_key]
 
@@ -497,10 +503,7 @@
             " Send to shell
             nnoremap [execute_key]s :VimShellSendString<CR> 
             vnoremap [execute_key]s :VimShellSendString<CR>
-            
-            " Toggle or close the shell
-            " nnoremap [execute_key]q :bd! iexe* <CR>
-            
+          
             " Start with interpreter
             nnoremap [execute_key]b :VimShellInteractive bash<CR>
             nnoremap [execute_key]r :VimShellInteractive R<CR>
@@ -529,6 +532,10 @@
       let g:indent_guides_start_level = 1
       hi IndentGuidesOdd  ctermbg=238 
       hi IndentGuidesEven ctermbg=243
+   " }}}
+
+   " sessionman plugin {{{
+      set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
    " }}}
 
    " nerd commenter {{{
@@ -578,7 +585,8 @@
       let g:ConqueTerm_SendFunctionKeys = 0
       let g:ConqueTerm_ExecFileKey = '<nop>'
       let g:ConqueTerm_SendFileKey = '<nop>'
-      let g:ConqueTerm_SendVisKey = '<nop>'
+      let g:ConqueTerm_SendVisKey = '<nop>' 
+      let g:ConqueTerm_FastMode = 1
       let vimrplugin_underscore = 0
       let vimrplugin_rnowebchunk = 0
       let vimrplugin_ca_ck = 0
@@ -589,6 +597,7 @@
       let ConqueTerm_Color = 0
       let ConqueTerm_ReadUnfocused = 1
       let vimrplugin_conquevsplit = 0
+      let g:ConqueTerm_TERM = 'vt100'
    " }}}
 
    " tagbar options {{{ 
@@ -596,7 +605,7 @@
    " }}}
 
    " unite vim {{{
-
+      " TODO: rework this configuration 
       " Start insert.
       let g:unite_enable_start_insert = 1
       let g:unite_source_file_mru_limit = 200
@@ -722,7 +731,36 @@
       autocmd FileType int-* call s:vimshell_all_my_settings()
       function! s:vimshell_all_my_settings()
          imap <buffer> <CR> <Plug>(vimshell_int_execute_line)
+
+         nmap <buffer> <up>	<Plug>(vimshell_int_previous_prompt)
+         nmap <buffer> <down>	<Plug>(vimshell_int_next_prompt)
+         nmap <buffer> <CR> 	<Plug>(vimshell_int_execute_line)
+         nmap <buffer> <C-y>	<Plug>(vimshell_int_paste_prompt)
+         nmap <buffer> <C-z>	<Plug>(vimshell_int_restart_command)
+         nmap <buffer> <C-c>	<Plug>(vimshell_int_interrupt)
+         nmap <buffer> q	 <Plug>(vimshell_int_exit)
+         nmap <buffer> cc	 <Plug>(vimshell_int_change_line)
+         nmap <buffer> dd	 <Plug>(vimshell_int_delete_line)
+         nmap <buffer> I	 <Plug>(vimshell_int_insert_head)
+         nmap <buffer> A	 <Plug>(vimshell_int_append_end)
+         nmap <buffer> i	 <Plug>(vimshell_int_insert_enter)
+         nmap <buffer> a	 <Plug>(vimshell_int_append_enter)
+         nmap <buffer> <C-l>	<Plug>(vimshell_int_clear)
+
+         " imap <buffer> <C-h>	<Plug>(vimshell_int_delete_backward_char)
+         " imap <buffer> <BS>	<Plug>(vimshell_int_delete_backward_char)
+         " imap <buffer> <C-a>	<Plug>(vimshell_int_move_head)
+         " imap <buffer> <C-u>	<Plug>(vimshell_int_delete_backward_line)
+         " imap <buffer> <C-w>	<Plug>(vimshell_int_delete_backward_word)
+         " imap <buffer> <C-k>	<Plug>(vimshell_int_delete_forward_line)
+         " imap <buffer> <CR>	<Plug>(vimshell_int_execute_line)
+         " imap <buffer> <C-c>	<Plug>(vimshell_int_interrupt)
+         " imap <buffer> <C-l>	Start vimshell/history source
+         " imap <buffer> <C-v>	<Plug>(vimshell_int_send_input)
+         " imap <buffer> <C-n>	<C-n>
+         " imap <buffer> <TAB>	Select candidate or start completion
       endfunction
+
 
       " This can be done to have interpreter specific mappings
       "autocmd FileType int-R call s:vimshell_R_my_settings()
@@ -828,11 +866,10 @@
       autocmd BufNewFile,BufRead *.Rnw set spell
    augroup END
 
-"}}}
-
-" At the end {{{ 
-
-   " Add $ to end of change range
-   au BufNewFile,BufRead * set cpoptions+=$
+   " Add $ to options
+   augroup set_cp_options
+      autocmd!
+      autocmd BufNewFile,BufRead * set cpoptions+=$
+   augroup END
 
 "}}}
