@@ -66,6 +66,8 @@ NeoBundle 'cpfaff/vim-help.git'
 NeoBundle 'henrik/vim-qargs.git'
 NeoBundle 'guns/xterm-color-table.vim.git'
 
+NeoBundle 'altercation/vim-colors-solarized.git'
+
 " Required!
 filetype plugin indent on     
 
@@ -88,7 +90,6 @@ filetype plugin indent on
 " NeoBundle 'MarcWeber/vim-addon-mw-utils.git'
 " NeoBundle 'tomtom/tlib_vim.git'
 " NeoBundle 'chrisbra/SudoEdit.vim.git'
-" NeoBundle 'altercation/vim-colors-solarized.git'
 " NeoBundle 'kien/ctrlp.vim.git'
 " NeoBundle 'jistr/vim-nerdtree-tabs'
 " NeoBundle 'scrooloose/nerdtree'
