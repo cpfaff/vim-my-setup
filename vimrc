@@ -217,6 +217,9 @@
          inoremap kj <esc>
          cnoremap kj <esc> 
          snoremap kj <esc> 
+         
+         " Format the current paragraph with par
+         noremap Q gqap
 
          " easy undo 
          nnoremap U <C-r>
@@ -427,23 +430,45 @@
          " }}}
 
          " (m)ake call a task {{{
+
+         " Description:
+         "
+         " This mappings help to call make tasks.
+         "
+         " Mappings:
+         "
+         " - [make_key]   opens a unite window and starte a plain make call.
+         "                the filter in the file is set to error so it will
+         "                display all errors in the make run output. You can
+         "                specify it to your needs or to multiple statements
+         "                if you like. Another solution is to delete the
+         "                filter and type in the interactive unite window to 
+         "                narrow down the output.
+         "
+         " - [make_key]s  This is an exaple makefile call which calls make directly to
+         "                execute a task defined in the makefile. I would also do this with
+         "                unite in future versions of this configuration but I have a unicode
+         "                problem with it at them moment. The example calls
+         "                the make task showpdf. You can extend this to you
+         "                needs.
+
             nnoremap [make_key] <Nop>
             nmap <silent> <leader>m [make_key]
 
             nnoremap [make_key]  :Unite -input=error build <CR>
             nnoremap [make_key]s :!make showpdf &> /dev/null <CR>
          " }}}
-
-         " (p)aragraph formatting {{{
-            "nnoremap [paragraph_key] <Nop>
-            "nmap <leader>p [paragraph_key]
-
-            "noremap [paragraph_key] gqap
-         "}}}
          
          " (q)quit fast {{{
-            noremap Q gqap
-
+         
+         " Description:
+         "
+         " Fast quit your document 
+         "
+         " Mappings:
+         "
+         " [quit_key] close your document.
+         "
             nnoremap [quit_key] <Nop>
             nmap <leader>q [quit_key]
 
@@ -451,18 +476,64 @@
          " }}}
 
          " (r)eplace search visual selection {{{ 
+ 
+         " Description:
+         "
+         " These mappings help to search and replace content in your files. 
+         " 
+         " Mappings:
+         "
+         " - [replace_key]    Works in vizual mode and replaces the current
+         "                    marked text by a replacement defined by you.
+         "
+         " - [replace_key]s   Is also a vizal mode mapping and Calls grep (ack) from current direcotry
+         "                    recursive on its contents to find the currently
+         "                    marked text. The results end up in a quickfix
+         "                    window. This is really helpful when you like to 
+         "                    replace a string in all your project files. You
+         "                    can combine it with the next command for
+         "                    replacment.
+         "
+         " - [replace_key]a   You can mark text in vizual mode and then call
+         "                    this mapping. Does a quickfixdo which opens all the files
+         "                    whith the occurence of the string you grepped
+         "                    for in the quickfix window. It changes all
+         "                    strings to a string defined by you and saves the
+         "                    files.
+         
             vnoremap [replace_key] <Nop>
             vmap <silent> <leader>r [replace_key]
 
-            "vnoremap [replace_key] :call VisualSelection('replace')<CR>
-            "vnoremap [replace_key]s :call VisualSelection('acksearch')<CR>
-            "vnoremap [replace_key]a :call VisualSelection('quickfixdo')<CR> 
             vnoremap [replace_key] :call VisualSelection('replace')<CR>
             vnoremap [replace_key]s :call VisualSelection('acksearch')<CR>
             vnoremap [replace_key]a :call VisualSelection('quickfixdo')<CR> 
          " }}}
 
          " (s)pellchecking {{{
+
+         " Description:
+         "
+         " This mappings help to spell check your files. 
+         " 
+         " Mappings:
+         " 
+         " - [spell_key]s     enables the spelling for the file. If you like to
+         "                    auto enable spelling for a certain file type you
+         "                    should have a look into the auto command section
+         "                    below.
+         " 
+         " - [spell_key]n     Go to the next spelling error in the file.
+         " 
+         " - [spell_key]p     Go to the previous spelling error in file.
+         " 
+         " - [spell_key]g     Mark a word as good.
+         " 
+         " - [spell_key]l     Show a list of items which are suggested for the
+         "                    misspelled word.
+         " 
+         " - [spell_key]f     Chose the first entry from list and replace the
+         "                    misspelled word.
+            
             nnoremap [spell_key] <Nop>
             nmap <leader>s [spell_key]
 
@@ -470,8 +541,8 @@
             noremap [spell_key]n ]s
             noremap [spell_key]p [s
             noremap [spell_key]g zg
-            noremap [spell_key]e z=
-            noremap [spell_key]r 1z=
+            noremap [spell_key]l z=
+            noremap [spell_key]f 1z=
          " }}}
            
          " (t)tag navigation {{{
