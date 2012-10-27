@@ -910,6 +910,11 @@
       let g:Powerline_symbols = 'fancy'
    " }}}
 
+
+   " vimfiler plugin {{{
+      let g:vimfiler_as_default_explorer = 1
+   " }}}
+
 "}}}
 
 " Functions {{{

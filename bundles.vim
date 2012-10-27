@@ -26,6 +26,7 @@ NeoBundle 'Shougo/vimshell.git'
 NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/unite-build.git'
+NeoBundle 'Shougo/vimfiler.git'
 
 NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'h1mesuke/unite-outline.git'
