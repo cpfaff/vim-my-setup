@@ -7,6 +7,8 @@
 
 depends_on_packages=(ack-grep par vim-nox git-core exuberant-ctags)
 
+
+
 # Folder and files
 
 folder_home_vim=~/.vim
