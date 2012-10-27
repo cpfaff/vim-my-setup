@@ -2,6 +2,7 @@
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup 
 
+
 " Include bundles and autosource {{{
 
    " Load vim bundles
@@ -535,7 +536,7 @@
          " - [spell_key]l     Show a list of items which are suggested for the
          "                    misspelled word.
          " 
-         " - [spell_key]f     Chose the first entry from list and replace the
+         " - [spell_key]r     Chose the first entry from list and replace the
          "                    misspelled word.
             
             nnoremap [spell_key] <Nop>
@@ -546,10 +547,23 @@
             noremap [spell_key]p [s
             noremap [spell_key]g zg
             noremap [spell_key]l z=
-            noremap [spell_key]f 1z=
+            noremap [spell_key]r 1z=
          " }}}
            
          " (t)tag navigation {{{
+
+         " Description:
+         "
+         " This mappings help you with tags and tag navigation. They use the
+         " plugin tagbar which requires in background a working installation
+         " of the ctags program.
+         " 
+         " Mappings:
+         " 
+         " - [tag_key]     opens a tagbar on the left side of a screen. In
+         "                 this window you can navigate beween the functions
+         "                 in your sourcecode. 
+         
             nnoremap [tag_key] <Nop>
             nmap <silent> <leader>t  [tag_key]
 
@@ -557,6 +571,17 @@
          "}}}
 
          " (v)izualize {{{
+
+         " Description:
+         "
+         " This mappings help to vizualize tabs and other invisivle
+         " characters. Especially the tab vizualization is very helpful in 
+         " checking the indent of code. 
+         "  
+         " Mappings:
+         " 
+         " - [vizualize_key]     Vizualizes the indent with guide lines. 
+            
             nnoremap [vizualize_key] <Nop>
             nmap <Leader>v  [vizualize_key]
 
@@ -564,6 +589,17 @@
          "}}}
 
          " (w)rite and quit fast {{{
+ 
+         " Description:
+         "
+         " This mappings help to write and to write and quit fast.
+         "  
+         " Mappings:
+         " 
+         " - [write_key]      Write your document to file.
+         "
+         " - [write_key]q     Write document and then quit Vim.
+         
             nnoremap [write_key] <Nop>
             nmap <Leader>w  [write_key]
 
@@ -572,6 +608,16 @@
          "}}}
 
          " (x)ecute a shell with interpreter {{{
+ 
+         " Description:
+         "
+         " The mappings around the letter x are thought to execute 
+         " shells with a certain interpreter.
+         "  
+         " Mappings:
+         " 
+         " todo: rework the mappings
+         
             nnoremap [execute_key] <Nop>
             nmap <Leader>x  [execute_key]
             
@@ -587,6 +633,21 @@
          "}}}
 
          " (y)ank and paste management (Yankring) {{{
+         
+         " Description:
+         "
+         " This mappings help you to deal with yanked text. They use the
+         " yankring plugin. The yankring plugin maintains a yank history 
+         " which survives a Vim session.
+         "  
+         " Mappings:
+         " 
+         " - [yank_key]y     Opens the yankring window where you can chose
+         "                   which text you like to paste.
+         " 
+         " - [yank_key]s     Copy text from system Clipboard. After that you 
+         "                   can simply paste it by pressin p in normal mode.
+
             nnoremap [yank_key] <Nop>
             nmap <silent> <leader>y [yank_key]
 
@@ -844,6 +905,10 @@
       "endfunction
       
    "}}}
+
+   " powerline plugin {{{
+      let g:Powerline_symbols = 'fancy'
+   " }}}
 
 "}}}
 
