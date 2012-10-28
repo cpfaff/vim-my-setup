@@ -7,7 +7,7 @@
 
 depends_on_packages=(ack-grep par vim-nox git-core exuberant-ctags)
 
-
+apt_preference=apt-get
 
 # Folder and files
 
@@ -98,7 +98,7 @@ function sudo_install_packages()
 			echo ${step_small}
 		else 
 			echo "Installs" ${package}
-			sudo apt-get -y install ${package} > /dev/null 
+			sudo ${apt_preference} -y install ${package} > /dev/null 
 			check_for_process_error "Problems installing the package:" ${package}
 			echo ${step_small}
 		fi
