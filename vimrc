@@ -321,7 +321,7 @@
             noremap [buffer_key]o :tabonly<CR>
          " }}}
 
-         " (c)omment out {{{
+         " (c)omment handling {{{
          
          " Description:
          "
@@ -461,7 +461,7 @@
             nmap <silent> <leader>m [make_key]
 
             nnoremap [make_key]  :Unite -input=error build <CR>
-            nnoremap [make_key]s :!make showpdf &> /dev/null <CR>
+            nnoremap [make_key]s :Unite -no-empty build:make:showpdf <CR>
          " }}}
          
          " (q)quit fast {{{
@@ -550,24 +550,26 @@
             noremap [spell_key]r 1z=
          " }}}
            
-         " (t)tag navigation {{{
+         " (t)toggle windows {{{
 
          " Description:
          "
-         " This mappings help you with tags and tag navigation. They use the
-         " plugin tagbar which requires in background a working installation
+         " This mappings help you with file and tag navigation. They use the
+         " plugin tagbar on one hand and on the other the vimfiler for file
+         " navigation. The tagbar requires in background a working installation
          " of the ctags program.
          " 
          " Mappings:
          " 
-         " - [tag_key]     opens a tagbar on the left side of a screen. In
+         " - [toggle_key]     opens a tagbar on the left side of a screen. In
          "                 this window you can navigate beween the functions
          "                 in your sourcecode. 
          
-            nnoremap [tag_key] <Nop>
-            nmap <silent> <leader>t  [tag_key]
+            nnoremap [toggle_key] <Nop>
+            nmap <silent> <leader>t  [toggle_key]
 
-            nnoremap [tag_key] :TagbarToggle<CR>
+            nnoremap [toggle_key]t :TagbarToggle<CR>
+            nnoremap [toggle_key]f :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
          "}}}
 
          " (v)izualize {{{
@@ -616,7 +618,7 @@
          "  
          " Mappings:
          " 
-         " todo: rework the mappings
+         " todo: rework this mappings
          
             nnoremap [execute_key] <Nop>
             nmap <Leader>x  [execute_key]
@@ -626,7 +628,8 @@
             vnoremap [execute_key]s :VimShellSendString<CR>
           
             " Start with interpreter
-            nnoremap [execute_key]b :VimShellInteractive bash<CR>
+            " nnoremap [execute_key]b :VimShellInteractive bash<CR>
+            nnoremap [execute_key]b :VimShellInteractive zsh<CR>
             nnoremap [execute_key]r :VimShellInteractive R<CR>
             nnoremap [execute_key]c :VimShellInteractive rails console<CR>
             " nnoremap [execute_key] :ConqueTermSplit bash<CR>
@@ -670,7 +673,7 @@
       hi IndentGuidesEven ctermbg=243
    " }}}
 
-   " sessionman plugin {{{
+   " sessionman session plugin {{{
       set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
    " }}}
 
@@ -694,23 +697,6 @@
 
    " yankring {{{ 
       let g:yankring_history_dir = '~/.vim/tmp'
-   " }}}
-
-   " nerd tree {{{
-      "let NERDTreeShowBookmarks=1
-      "let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-      "let NERDTreeChDirMode=0
-      "let NERDTreeQuitOnOpen=1
-      "let NERDTreeShowHidden=1
-      "let NERDTreeKeepTreeInNewTab=1
-      "let g:nerdtree_tabs_open_on_gui_startup=0
-   " }}}
-
-   " ctrlp fuzzy finder {{{
-      "let g:ctrlp_map = '<leader>f'
-      "let g:ctrlp_custom_ignore = {
-         "\ 'dir': '\.git$\|\.hg$\|\.svn$',
-         "\ 'file': '\.exe$\|\.so$\|\.dll$' }
    " }}}
 
    " rails plugin {{{
@@ -910,9 +896,21 @@
       let g:Powerline_symbols = 'fancy'
    " }}}
 
-
    " vimfiler plugin {{{
       let g:vimfiler_as_default_explorer = 1
+      " let g:vimfiler_no_default_key_mappings = 1
+      let g:vimfiler_tree_leaf_icon = ' '
+      let g:vimfiler_tree_opened_icon = '▾'
+      let g:vimfiler_tree_closed_icon = '▸'
+      let g:vimfiler_file_icon = '-'
+      let g:vimfiler_marked_file_icon = '*'
+
+      " For fll vimfiler 
+      autocmd FileType vimfiler call s:vimfiler_all_my_settings()
+      function! s:vimfiler_all_my_settings()
+         nmap <buffer> <C-l> <Plug>(vimfiler_switch_to_other_window)
+      endfunction
+      
    " }}}
 
 "}}}
