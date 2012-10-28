@@ -13,10 +13,11 @@ Note:
 
 This setup has only been tested on a Ubuntu Linux machine with a non graphical
 Vim. It requires additional programs you need to install so you can use all the
-functionality. In order to make the color scheme Solarized look right you need
-to set the Solarized [Solarized](https://github.com/altercation/solarized) color
-palette for your terminal emulator. If you don't like to use the solarized theme
-please uncomment or change the lines in the vimrc file.
+functionality. In order to make its color scheme Solarized look right you also
+need to set the Solarized [Solarized](https://github.com/altercation/solarized)
+color palette in your terminal emulator. If you don't like to use the Solarized
+theme please uncomment or change the lines in the vimrc file. This distribution
+also contains the very nice looking color scheme Peaksea.
 
 If you like to use the fancy symbols of the Vim
 [powerline](https://github.com/Lokaltog/vim-powerline.git) plug-in then you also
@@ -26,25 +27,40 @@ theme without them.
 Script install 
 ---------------
 
-The easiest way to get my Vim distribution up an running is to use the bash
-installer. It installs all requirements. The packages are installed with apt-get
-and the package names fit the packages from Ubuntu 12.10 sources. If they don't
-fit your system you need to adapt them to your needs. For that you simply need
-to edit the script and adapt the variable which contains the package names. If
-they fit your system you can simply install the setup using curl. If not use the
-second script install approach and adapt the install script to your needs.
-
-### With Curl
-
-If you have curl installed on your machine you can simply use the command below
-for installation. It scrapes the install script from this GitHub page and pipes
-the output into bash.
+The easiest way to get my Vim distribution is to use the bash installer script.
+It installs all required packages with apt-get (Ubuntu 12.10 sources). If they
+don't fit to your system you need to adapt the package names in the beginning of
+the script to your needs. Packages are separated by an empty space.
 
 ```
-curl https://raw.github.com/cpfaff/vim-my-setup/master/install.sh | bash
+depends_on_packages=(ack-grep par vim-nox git-core exuberant-ctags)
 ```
 
-### Without Curl
+### With wget 
+
+You can use wget to download the script. Afterwards you need to make it    
+executable and start the script for installation.                               
+
+
+#### Download installer:
+
+```
+wget https://raw.github.com/cpfaff/vim-my-setup/master/install.sh 
+```
+
+#### Make it executable:
+
+```
+chmod +x install.sh
+```
+
+#### Start installer:
+
+```
+./install.sh
+```
+
+### With git 
 
 #### Clone into my repository:
 
@@ -64,15 +80,6 @@ cd vim-my-setup
 chmod +x install.sh
 ```
 
-#### Adapt the script to your needs:
-
-If the package names in the install script do not fit your system change the
-variable to your needs. Packages are separated by an empty space.
-
-```
-depends_on_packages=(ack-grep par vim-nox git-core exuberant-ctags)
-```
-
 #### Execute the script:
 
 ```
@@ -84,11 +91,6 @@ Wait till it is finished. Then enjoy my Vim setup!
 ## Manual installation
 
 ### Install the dependencies:
-
-Note: 
-
-These are package names from Ubuntu 12.10 sources and might need adaption
-on your system. 
 
 ```
 sudo apt-get install par ruby1.8-dev vim-nox git-core exuberant-ctags
