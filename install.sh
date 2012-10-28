@@ -156,7 +156,7 @@ function my_vim_setup()
 	execute_command "Link the .vimrc to user home" "ln -s ${file_home_vim_vimrc} ${file_home_dot_vimrc}"
        
 	big_step_display "Install the bundles!"
-   vim -u ${file_home_vim_bundles} +NeoBundleInstall +qall
+   vim -u ${file_home_vim_bundles} +NeoBundleInstall
 
 	big_step_display "The Vim setup is ready!"
 }
