@@ -156,7 +156,7 @@ function my_vim_setup()
       
    # another way would be to use --cmd with or without a file
 	big_step_display "Install the bundles!"
-   vim -u ~/.vim/viminitrc +NeoBundleInstall +q
+   vim -u ~/.vim/bundles.vim +NeoBundleInstall +q
 
 	big_step_display "The Vim setup is ready!"
 }
