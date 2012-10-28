@@ -1,7 +1,16 @@
+" MMMMM   MMMMM  VVVV           VVVV  SSSSSSSS
+" MMMM MMM MMMM   VVVV         VVVV   SSSSSSSS
+" MMMM  M  MMMM    VVVV       VVVV    SSSS
+" MMMM     MMMM     VVVV     VVVV     SSSSSSSS 
+" MMMM     MMMM      VVVV   VVVV          SSSS
+" MMMM     MMMM       VVVV VVVV       SSSSSSSS
+" MMMM     MMMM        VVVVVVVV       SSSSSSSS
+"
+" My Vim Setup 
+"
 " File: init-vimrc
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup 
-
 
 " Include bundles and autosource {{{
 
