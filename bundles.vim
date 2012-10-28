@@ -70,7 +70,7 @@ NeoBundle 'vim-scripts/peaksea.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
 
 " Required!
-" filetype plugin indent on     
+filetype plugin indent on     
 
 " Installation check.
 "if neobundle#exists_not_installed_bundles()

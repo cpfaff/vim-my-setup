@@ -1,4 +1,4 @@
-" File: vimrc
+" File: init-vimrc
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup 
 
