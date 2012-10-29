@@ -8,7 +8,7 @@
 "
 " My Vim Setup 
 "
-" File: init-vimrc
+" File: vimrc
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup 
 
@@ -57,7 +57,7 @@
 
    " Configure backspace 
    set backspace=indent,eol,start 
-   set whichwrap=b,s,<,>,[,]
+   set whichwrap=b,s,h,l,<,>,[,]
 
    "swith on numbering 
    set number
