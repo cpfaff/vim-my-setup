@@ -673,46 +673,7 @@
 
 " Plugin configuration {{{
 
-   " tab guideline {{{
-      let g:indent_guides_enable_on_vim_startup = 0
-      let g:indent_guides_auto_colors = 0
-      let g:indent_guides_guide_size = 1 
-      let g:indent_guides_start_level = 1
-      hi IndentGuidesOdd  ctermbg=238 
-      hi IndentGuidesEven ctermbg=243
-   " }}}
-
-   " sessionman session plugin {{{
-      set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-   " }}}
-
-   " nerd commenter {{{
-      let g:NERDCreateDefaultMappings = 0
-      let g:NERDSpaceDelims = 1
-
-      let g:NERDCustomDelimiters = {
-         \ 'snippet': {'left': '#'},
-         \ 'rnoweb' : {'left': '%', 'leftAlt': '#'}
-       \ }
-   " }}}
-
-   " syntastic {{{
-      let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-   " }}}
-
-   " lusty juggler {{{
-      let g:LustyJugglerDefaultMappings = 0
-   " }}}
-
-   " yankring {{{ 
-      let g:yankring_history_dir = '~/.vim/tmp'
-   " }}}
-
-   " rails plugin {{{
-      let g:rubycomplete_buffer_loading = 1
-   " }}}
-
-   " conque term {{{
+   " (c)onque term {{{
       let g:ConqueTerm_SendFunctionKeys = 0
       let g:ConqueTerm_ExecFileKey = '<nop>'
       let g:ConqueTerm_SendFileKey = '<nop>'
@@ -731,11 +692,103 @@
       let g:ConqueTerm_TERM = 'vt100'
    " }}}
 
-   " tagbar options {{{ 
+   " (l)usty juggler {{{
+      let g:LustyJugglerDefaultMappings = 0
+   " }}}
+
+   " (n)eocomplcache and neosnippet {{{ 
+      
+      " Set options
+      let g:neocomplcache_enable_at_startup = 1
+      let g:neocomplcache_temporary_dir = '~/.vim/tmp/'
+      let g:neocomplcache_enable_camel_case_completion = 1
+      let g:neocomplcache_enable_smart_case = 1
+      let g:neocomplcache_enable_underbar_completion = 1
+      let g:neocomplcache_min_syntax_length = 3
+      let g:neocomplcache_enable_auto_delimiter = 1
+      let g:neocomplcache_max_list = 15
+      let g:neocomplcache_auto_completion_start_length = 3
+      let g:neocomplcache_force_overwrite_completefunc = 1
+      let g:neocomplcache_enable_auto_select = 1
+
+      let g:neosnippet#snippets_directory='~/.vim/snippets/'
+
+      " Define keyword.
+      if !exists('g:neocomplcache_keyword_patterns')
+         let g:neocomplcache_keyword_patterns = {}
+      endif
+      
+      let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+      " Enable omni completion.
+      augroup neocomplcache_omni_completion
+         autocmd!
+         autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+         autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+         autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+         autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+         autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+      augroup END
+
+      " Enable heavy omni completion.
+      if !exists('g:neocomplcache_omni_patterns')
+         let g:neocomplcache_omni_patterns = {}
+      endif
+
+      let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+      let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+      let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+      let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
+      " For snippet_complete marker.
+      if has('conceal')
+         set conceallevel=2 concealcursor=i
+      endif
+
+      let g:header_author = "Claas-Thido Pfaff"
+   " }}}
+
+   " (n)erd commenter {{{
+      let g:NERDCreateDefaultMappings = 0
+      let g:NERDSpaceDelims = 1
+
+      let g:NERDCustomDelimiters = {
+         \ 'snippet': {'left': '#'},
+         \ 'rnoweb' : {'left': '%', 'leftAlt': '#'}
+       \ }
+   " }}}
+
+   " (p)owerline plugin {{{
+      let g:Powerline_symbols = 'fancy'
+   " }}}
+
+   " (r)ails plugin {{{
+      let g:rubycomplete_buffer_loading = 1
+   " }}}
+
+   " (s)essionman session plugin {{{
+      set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
+   " }}}
+
+   " (s)yntastic {{{
+      let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+   " }}}
+
+   " (t)agbar options {{{ 
       let g:tagbar_left = 0
    " }}}
 
-   " unite vim {{{
+   " (t)ab guideline {{{
+      let g:indent_guides_enable_on_vim_startup = 0
+      let g:indent_guides_auto_colors = 0
+      let g:indent_guides_guide_size = 1 
+      let g:indent_guides_start_level = 1
+      hi IndentGuidesOdd  ctermbg=238 
+      hi IndentGuidesEven ctermbg=243
+   " }}}
+
+   " (u)nite vim {{{
       " TODO: rework this configuration 
       " Start insert.
       let g:unite_enable_start_insert = 1
@@ -797,60 +850,7 @@
 
    " }}}
 
-   " neocomplcache and neosnippet {{{ 
-      
-      " Set options
-      let g:neocomplcache_enable_at_startup = 1
-      let g:neocomplcache_temporary_dir = '~/.vim/tmp/'
-      let g:neocomplcache_enable_camel_case_completion = 1
-      let g:neocomplcache_enable_smart_case = 1
-      let g:neocomplcache_enable_underbar_completion = 1
-      let g:neocomplcache_min_syntax_length = 3
-      let g:neocomplcache_enable_auto_delimiter = 1
-      let g:neocomplcache_max_list = 15
-      let g:neocomplcache_auto_completion_start_length = 3
-      let g:neocomplcache_force_overwrite_completefunc = 1
-      let g:neocomplcache_enable_auto_select = 1
-
-      let g:neosnippet#snippets_directory='~/.vim/snippets/'
-
-      " Define keyword.
-      if !exists('g:neocomplcache_keyword_patterns')
-         let g:neocomplcache_keyword_patterns = {}
-      endif
-      
-      let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-      " Enable omni completion.
-      augroup neocomplcache_omni_completion
-         autocmd!
-         autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-         autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-         autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-         autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-         autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-      augroup END
-
-      " Enable heavy omni completion.
-      if !exists('g:neocomplcache_omni_patterns')
-         let g:neocomplcache_omni_patterns = {}
-      endif
-
-      let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-      let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-      let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-      let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
-
-      " For snippet_complete marker.
-      if has('conceal')
-         set conceallevel=2 concealcursor=i
-      endif
-
-      let g:header_author = "Claas-Thido Pfaff"
-   " }}}
-
-   " vimshell {{{
+   " (v)imshell {{{
       " Global options
       let g:vimshell_split_command='belowright split' 
       let g:vimshell_no_default_keymappings=1
@@ -901,13 +901,9 @@
       
    "}}}
 
-   " powerline plugin {{{
-      let g:Powerline_symbols = 'fancy'
-   " }}}
-
-   " vimfiler plugin {{{
+   " (v)imfiler plugin {{{
       let g:vimfiler_as_default_explorer = 1
-      " let g:vimfiler_no_default_key_mappings = 1
+      let g:vimfiler_no_default_key_mappings = 1
       let g:vimfiler_tree_leaf_icon = ' '
       let g:vimfiler_tree_opened_icon = '▾'
       let g:vimfiler_tree_closed_icon = '▸'
@@ -919,7 +915,10 @@
       function! s:vimfiler_all_my_settings()
          nmap <buffer> <C-l> <Plug>(vimfiler_switch_to_other_window)
       endfunction
-      
+   " }}}
+
+   " (y)ankring {{{ 
+      let g:yankring_history_dir = '~/.vim/tmp'
    " }}}
 
 "}}}

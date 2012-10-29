@@ -22,6 +22,8 @@ NeoBundle 'Shougo/vimproc.git', {
          \     'unix' : 'make -f make_unix.mak',
          \    },
          \ }
+
+NeoBundle 'vim-scripts/LustyJuggler.git'
 NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/unite-build.git'
@@ -43,7 +45,6 @@ NeoBundle 'scrooloose/nerdcommenter.git'
 NeoBundle 'scrooloose/syntastic.git'
 
 NeoBundle 'vim-scripts/CmdlineComplete.git'
-NeoBundle 'vim-scripts/LustyJuggler.git'
 NeoBundle 'godlygeek/tabular.git'
 NeoBundle 'Townk/vim-autoclose.git'
 NeoBundle 'edsono/vim-matchit.git'
