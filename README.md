@@ -42,7 +42,7 @@ installs all required packages with apt-get (Ubuntu 12.10 sources) and all the
 plug ins to extend the Vim functionality with NeoBundleInstall. The packages
 installed via apt-get fit the names of Ubuntu 12.10 sources and if they do not
 fit your system you can change the following variable in the beginning of the
-install.sh file. The package names are separated by an empty space.
+`install.sh` file. The package names are separated by an empty space.
 
 ```
 depends_on_packages=(ack-grep par vim-nox git-core exuberant-ctags)
