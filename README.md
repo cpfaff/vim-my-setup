@@ -2,27 +2,37 @@ My Vim setup
 ============
 
 This is my personal Vim setup. It can be installed manually or with a bash
-installer script. Both installation methods are described in detail below.
-The setup comes with a curated set of plug ins and mappings. It uses the
-[NeoBundle](https://github.com/Shougo/neobundle.vim.git) package manager to
-handle all the included plug-ins. For a full list of installed Vim plug-ins
-please have a look into the `bundles.vim` file. The mappings are documented in
-the vimrc file.
+installer script. Both installation methods are described in detail below. The
+setup comes with a curated set of plug ins which are managed with the package
+manager [NeoBundle](https://github.com/Shougo/neobundle.vim.git). The setup
+and mappings ensures that all components play well together. For a full list
+of installed Vim plug-ins please have a look into the `bundles.vim` file. The
+mappings are documented in the vimrc file.
 
 Note: 
 
 This setup has only been tested on a Ubuntu Linux machine with a non graphical
-Vim. It requires additional programs you need to install so you can use all the
-functionality. In order to make its color scheme Solarized look right you also
-need to set the Solarized [Solarized](https://github.com/altercation/solarized)
-color palette in your terminal emulator. If you don't like to use the Solarized
-theme please uncomment or change the lines in the vimrc file. This distribution
-also contains the very nice looking color scheme Peaksea.
+Vim. The setup requires additional programs you need to install on your system
+in order to use all the functionality. The dependencies are:
+
+- ack-grep  (grep)
+- par (format text)
+- vim-nox (Vim)
+- git-core (Git)
+- exuberant-ctags (create tags)
+
+My setup uses the Solarized color scheme as standard.
+It is recommended to set also your terminal colors to
+[Solarized](https://github.com/altercation/solarized) because otherwise it
+will not look as expected. If you don't like to use the Solarized theme please
+uncomment or change the lines in the vimrc file. This distribution also contains
+the very nice looking color scheme Peaksea.
 
 If you like to use the fancy symbols of the Vim
 [powerline](https://github.com/Lokaltog/vim-powerline.git) plug-in then you also
-need to prepare a patched font. Otherwise it will display a fall-back default
-theme without them.
+need to prepare or install a patched font. Otherwise it will display a fall-back
+default theme without them.
+
 
 Script install 
 ---------------
