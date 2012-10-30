@@ -11,7 +11,7 @@ prev_word   '^'
    NeoBundle '${1:bundle_name}'
 
 snippet     header
-abbr        header
+abbr        [fileheader]
 prev_word   '^'
    " File: ${1:`expand('%:t')`}
    " Author: ${2:`g:header_author`}
@@ -19,10 +19,10 @@ prev_word   '^'
    " License: Creative Commons (ccbysa)
    " ${4:Created at: `strftime("%B %d, %Y")`}
 
-snippet ifex
-abbr if_exists
+snippet     ifex
+abbr        [if][exists][endif]
+prev_word   '^'
 	if exists(${1:check})
 		finish
 	endif
-	let $1 = ${3}
-
+	let $1 = ${3} 
