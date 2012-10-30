@@ -64,7 +64,6 @@ NeoBundle 'henrik/vim-qargs.git'
 
 NeoBundle 'vim-scripts/sessionman.vim.git'
 NeoBundle 'Lokaltog/vim-powerline.git'
-NeoBundle 'cpfaff/vim-help.git'
 
 NeoBundle 'guns/xterm-color-table.vim.git'
 NeoBundle 'vim-scripts/peaksea.git'

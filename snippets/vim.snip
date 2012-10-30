@@ -1,14 +1,23 @@
+# File: vim.snip 
+# Author: Claas-Thido Pfaff
+# Description: This are my vim snippets
+# License: Creative Commons (ccbysa)
+# Created at: Oktober 30, 2012
+
 snippet     neobundle
 alias       neob
 abbr        [NeoBundle]['id']
 prev_word   '^'
    NeoBundle '${1:bundle_name}'
 
-snippet  header
-   " Filename: ${1:`expand('%:t')`}
-   " Maintainer: ${2:`g:snips_author`}
-	" Description: ${3}
-	${4:" Last Modified: `strftime("%B %d, %Y")`}
+snippet     header
+abbr        header
+prev_word   '^'
+   " File: ${1:`expand('%:t')`}
+   " Author: ${2:`g:header_author`}
+   " Description: ${3}
+   " License: Creative Commons (ccbysa)
+   " ${4:Created at: `strftime("%B %d, %Y")`}
 
 snippet ifex
 abbr if_exists
