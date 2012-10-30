@@ -57,11 +57,11 @@
    " A buffer becomes hidden when it is abandoned 
    set hidden
 
-   " Configure backspace 
+   " Configure backspace and wrap behavior 
    set backspace=indent,eol,start 
    set whichwrap=b,s,h,l,<,>,[,]
 
-   "swith on numbering 
+   "swith on numbering on left side
    set number
 
    " Ignore compiled files 
@@ -99,7 +99,6 @@
    set background=dark
    colorscheme solarized
 
-
    " use spaces instead of tabs
    set expandtab
 
@@ -110,21 +109,24 @@
    set shiftwidth=3
    set tabstop=3
 
-   " cursor beyond last character
+   " let cursor beyond last character
    "set virtualedit=onemore
 
-   " Wrap and linebreak
+   " wrap and linebreak
    set wrap 
    set linebreak
    set nolist
+   
+   "Auto indent
+   set autoindent 
+   
+   "Smart indent
+   set smartindent 
 
-   set autoindent "Auto indent
-   set smartindent "Smart indent
-
-   " set formating program to par with 80 col width call
+   " set format program to par with 80 col width 
    set formatprg=par\ -w80
 
-   " Specify the behavior when switching between buffers 
+   " Specify the behavior when switching buffers 
    try
      set switchbuf=useopen,usetab,newtab
      set showtabline=2
@@ -141,10 +143,11 @@
 
    " Autocompletion
    set completeopt=menu,menuone,longest
+    
    " Limit popup menu height
    set pumheight=15
 
-   " Set look and info of status line
+   " Set information of status line
    if has('statusline')
       set laststatus=2
       " in segments
