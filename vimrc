@@ -710,6 +710,9 @@
       let g:neocomplcache_auto_completion_start_length = 3
       let g:neocomplcache_force_overwrite_completefunc = 1
       let g:neocomplcache_enable_auto_select = 1
+     
+      " Compatibility setting for LustyJuggler
+      let g:neosnippet#disable_select_mode_mappings = 0
 
       let g:neosnippet#snippets_directory='~/.vim/snippets/'
 
