@@ -1,3 +1,5 @@
+" ============================================
+"
 " MMMMM   MMMMM  VVVV           VVVV  SSSSSSSS
 " MMMM MMM MMMM   VVVV         VVVV   SSSSSSSS
 " MMMM  M  MMMM    VVVV       VVVV    SSSS
@@ -6,11 +8,11 @@
 " MMMM     MMMM       VVVV VVVV       SSSSSSSS
 " MMMM     MMMM        VVVVVVVV       SSSSSSSS
 "
-" My Vim Setup 
+" ============================================
 "
-" File: vimrc
+" File: My-Vim-Setup, vimrc
 " Maintainer: Claas-Thido Pfaff
-" Description: This is my personal Vim setup 
+" Description: This is my personal Vim setup. 
 
 " Include bundles and autosource {{{
 
@@ -199,7 +201,7 @@
 
       " Movement related {{{
 
-         " move always one line down
+         " move always one line up/down
          noremap j gj
          noremap k gk
 
@@ -232,10 +234,10 @@
          cnoremap kj <esc> 
          snoremap kj <esc> 
          
-         " Format the current paragraph with par
+         " format the current paragraph with par
          noremap Q gqap
 
-         " easy undo 
+         " Easy undo 
          nnoremap U <C-r>
 
          " Move lines up and down (bubbling) left and right (indent)  
