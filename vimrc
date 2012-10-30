@@ -11,7 +11,7 @@
 " 
 " File: vimrc
 " Maintainer: Claas-Thido Pfaff
-" Description: This is my personal Vim setup. 
+" Description: This is my personal Vim setup.
 
 " Include bundles and autosource {{{
 
@@ -64,6 +64,7 @@
    set number
 
    " Ignore compiled files 
+   set wildmenu
    set wildignore=*tikzDiktionary*
 
    " Ignore case when searching 
