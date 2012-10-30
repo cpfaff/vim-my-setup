@@ -69,18 +69,7 @@ NeoBundle 'guns/xterm-color-table.vim.git'
 NeoBundle 'vim-scripts/peaksea.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
 
-" Required!
-filetype plugin indent on     
-
-" Installation check.
-"if neobundle#exists_not_installed_bundles()
-  "echomsg 'Not installed bundles : ' .
-        "\ string(neobundle#get_not_installed_bundle_names())
-  "echomsg 'Please execute ":NeoBundleInstall" command.'
-  ""finish
-"endif
-
-" Disabled bundles
+" Other useful bundles
 " NeoBundle 'honza/snipmate-snippets.git'
 " NeoBundle 'garbas/vim-snipmate.git'
 " NeoBundle 'ervandew/supertab.git'
