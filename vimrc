@@ -1,16 +1,15 @@
 " ============================================
-"
-" MMMMM   MMMMM  VVVV           VVVV  SSSSSSSS
+"  MMMM   MMMM    VVV           VVV    SSSSSS
 " MMMM MMM MMMM   VVVV         VVVV   SSSSSSSS
 " MMMM  M  MMMM    VVVV       VVVV    SSSS
-" MMMM     MMMM     VVVV     VVVV     SSSSSSSS 
+" MMMM     MMMM     VVVV     VVVV     SSSSSSS 
 " MMMM     MMMM      VVVV   VVVV          SSSS
 " MMMM     MMMM       VVVV VVVV       SSSSSSSS
-" MMMM     MMMM        VVVVVVVV       SSSSSSSS
-"
+" MMMM     MMMM         VVVVV          SSSSSS
 " ============================================
-"
-" File: My-Vim-Setup, vimrc
+" My-Vim-Setup
+" 
+" File: vimrc
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup. 
 
