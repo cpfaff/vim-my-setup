@@ -1,6 +1,6 @@
 # File: vim.snip 
 # Author: Claas-Thido Pfaff
-# Description: This are my vim snippets
+# Description: This are my vim filetype snippets
 # License: Creative Commons (ccbysa)
 # Created at: Oktober 30, 2012
 
@@ -21,7 +21,7 @@ prev_word   '^'
 
 snippet ifex
 abbr if_exists
-	if exists(${1:whatever})
+	if exists(${1:check})
 		finish
 	endif
 	let $1 = ${3}
