@@ -58,31 +58,11 @@ The easiest way install my Vim setup, is to use the bash installer script. It
 installs all required packages with apt-get (Ubuntu 12.10 sources) and all the
 plug ins to extend the Vim functionality with NeoBundleInstall. 
 
-The packages get installed via apt-get as standard but if you prefer to use
-aptitude you can simply change one of the `install.sh` script variables from:
-
-```
-apt_preference=apt-get
-```
-to:
-
-```
-apt_preference=aptitude
-```
-
-The names of the program packages fit the names of the Ubuntu 12.10 sources. If
-they do not match the program names on your system you can change the following
-variable in the beginning of the `install.sh` file. Note: The package names are
-separated by an empty space.
-
-```
-depends_on_packages=(ack-grep par vim-nox git-core exuberant-ctags)
-```
-
 ### With wget 
 
 You can use wget to download the script. Afterwards you need to make it         
-executable and start the script for installation.                               
+executable and start the script for installation. If you like you can modify 
+the script before you start the installation (see section ...)
 
 #### Download installer:
 
@@ -162,3 +142,28 @@ ln -s ~/.vim/vimrc ~/.vimrc
 
 1. Open Vim `vim`
 2. Type `:NeoBundleInstall`
+
+
+
+## Modify the install script: 
+
+The packages my Vim setup requires get installed via apt-get as standard but if
+you prefer to use aptitude you can simply change the variable `apt_preference`
+in the `install.sh` script file.
+
+```
+apt_preference=apt-get
+```
+
+```
+apt_preference=aptitude
+```
+
+The package names of the required programs match the names of the Ubuntu
+12.10 sources. If they do not match on your system you can change the
+`depends_on_packages` variable in the beginning of the `install.sh` file. Note:
+The package names are separated by an empty space.
+
+```
+depends_on_packages=(ack-grep par vim-nox git-core exuberant-ctags)
+```
