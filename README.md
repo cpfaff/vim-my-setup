@@ -1,17 +1,15 @@
 My Vim setup
 ============
 
-This repository contains my personal Vim setup. It can be installed
-manually or with the help of a bash installer script. Both installation
-methods are described in detail below. 
+This repository contains my personal Vim setup. It can be installed manually
+or with the help of a bash installer script. Both installation methods are
+described in detail below.
 
 The setup comes with a curated set of plug ins which are managed with the
-package manager [NeoBundle](https://github.com/Shougo/neobundle.vim.git).
-The setup of the plug-ins and the mappings ensures that all components play well
-together. 
-
-For a full list of installed Vim plug-ins please have a look into the
-`bundles.vim` file. All mappings are documented in the vimrc file.
+package manager [NeoBundle](https://github.com/Shougo/neobundle.vim.git). The
+setup of the plug-ins and the mappings ensures that all components play well
+together. For a full list of installed Vim plug-ins please have a look into the
+`bundles.vim` file. All mappings are documented in the `vimrc` file.
 
 Note: 
 
@@ -28,10 +26,8 @@ in order to use all the functionality. The dependencies are:
 My setup uses the Solarized color scheme as standard.
 It is recommended to set also your terminal colors to
 [Solarized](https://github.com/altercation/solarized) because otherwise it
-may not look as expected. 
-
-If you don't like to use the Solarized theme please uncomment the following
-line in the vimrc file.
+may not look as expected. If you don't like to use the Solarized theme please
+uncomment the following line in the vimrc file.
 
 ```
 colorscheme solarized
@@ -55,13 +51,14 @@ Script install
 
 The easiest way install my Vim setup, is to use the bash installer script. It
 installs all required packages with apt-get (Ubuntu 12.10 sources) and all the
-plug ins to extend the Vim functionality with NeoBundleInstall. 
+plug ins to extend the Vim functionality with NeoBundleInstall.
 
 ### With wget 
 
-You can use wget to download the script. Afterwards you need to make it         
-executable and start the script for installation. If you like you can modify 
-the script before you start the installation (see section ...)
+You can use wget to download the script. Afterwards you need to make it
+executable and start the script for installation. If you like you can modify the
+script before you start the installation (see the section about modifying the
+install script below)
 
 #### Download installer:
 
@@ -141,8 +138,6 @@ ln -s ~/.vim/vimrc ~/.vimrc
 
 1. Open Vim `vim`
 2. Type `:NeoBundleInstall`
-
-
 
 ## Modify the install script: 
 
