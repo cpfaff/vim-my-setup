@@ -640,12 +640,10 @@
             nnoremap [execute_key]s :VimShellSendString<CR> 
             vnoremap [execute_key]s :VimShellSendString<CR>
           
-            " Start with interpreter
-            " nnoremap [execute_key]b :VimShellInteractive bash<CR>
-            nnoremap [execute_key]b :VimShellInteractive zsh<CR>
+            " Start shell or shell with interpreter
+            nnoremap [execute_key]b :ConqueTermSplit bash<CR>
             nnoremap [execute_key]r :VimShellInteractive R<CR>
             nnoremap [execute_key]c :VimShellInteractive rails console<CR>
-            " nnoremap [execute_key] :ConqueTermSplit bash<CR>
          "}}}
 
          " (y)ank and paste management (Yankring) {{{
