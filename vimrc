@@ -92,11 +92,9 @@
 
    " Set colour scheme
    syntax enable
-   " set background=dark 
-   " colorscheme peaksea
-
    set background=dark
    colorscheme solarized
+   " colorscheme peaksea
 
    " use spaces instead of tabs
    set expandtab
