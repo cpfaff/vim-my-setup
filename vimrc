@@ -1,13 +1,12 @@
-" ============================================
-"  MMMM   MMMM    VVV           VVV    SSSSSS
-" MMMM MMM MMMM   VVVV         VVVV   SSSSSSSS
-" MMMM  M  MMMM    VVVV       VVVV    SSSS
-" MMMM     MMMM     VVVV     VVVV     SSSSSSS 
-" MMMM     MMMM      VVVV   VVVV          SSSS
-" MMMM     MMMM       VVVV VVVV       SSSSSSSS
-" MMMM     MMMM         VVVVV          SSSSSS
-" ============================================
-" My-Vim-Setup
+" ================================================
+"   MMMM   MMMM    VVV           VVV    SSSSSS
+"  MMMM MMM MMMM   VVVV         VVVV   SSSSSSSS
+"  MMMM  M  MMMM    VVVV       VVVV    SSSS
+"  MMMM     MMMM     VVVV     VVVV     SSSSSSS 
+"  MMMM     MMMM      VVVV   VVVV          SSSS
+"  MMMM     MMMM       VVVV VVVV       SSSSSSSS
+"  MMMM     MMMMy        VVVVVim        SSSSSSetup
+" ================================================
 " 
 " File: vimrc
 " Maintainer: Claas-Thido Pfaff
@@ -804,7 +803,8 @@
       let g:unite_source_file_mru_limit = 200
       let g:unite_cursor_line_highlight = 'TabLineSel'
       let g:unite_abbr_highlight = 'TabLine'
-
+      let g:unite_split_rule = 'topleft'
+      
       " For optimize.
       let g:unite_source_file_mru_filename_format = ''
 
