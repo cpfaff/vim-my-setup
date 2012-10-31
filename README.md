@@ -98,7 +98,7 @@ mv ~/.vim ~/.vim_bck
 git clone https://github.com/cpfaff/vim-my-setup.git ~/.vim
 ```
 
-### Clone the Vundle repository:
+### Clone the NeoBundle repository:
 
 ```
 git clone https://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim
