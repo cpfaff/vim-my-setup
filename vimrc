@@ -260,7 +260,6 @@
          smap <C-j> <Plug>(neosnippet_jump)
          
          inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-         "inoremap <expr><C-y> neocomplcache#close_popup()
          inoremap <expr><C-l> neocomplcache#complete_common_string()
          inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
          inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
@@ -804,7 +803,6 @@
       let g:unite_cursor_line_highlight = 'TabLineSel'
       let g:unite_abbr_highlight = 'TabLine'
       let g:unite_split_rule='belowright'     
-      " let g:unite_split_rule = 'topleft'
       
       " For optimize.
       let g:unite_source_file_mru_filename_format = ''
