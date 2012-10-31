@@ -256,10 +256,10 @@
          " Necomplcache and neosnippet mappings
          imap <C-k> <Plug>(neosnippet_expand)
          smap <C-k> <Plug>(neosnippet_expand)
-         xmap <C-k> <Plug>(neosnippet_expand_target)
+         xmap <C-k> <Plug>(neosnippet_start_unite_snippet_target)
          imap <C-j> <Plug>(neosnippet_jump)
          smap <C-j> <Plug>(neosnippet_jump)
-
+         
          inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
          "inoremap <expr><C-y> neocomplcache#close_popup()
          inoremap <expr><C-l> neocomplcache#complete_common_string()
