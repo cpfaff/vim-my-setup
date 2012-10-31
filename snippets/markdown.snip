@@ -18,63 +18,6 @@ abbr    header_two
 	
 	${1}
 
-# Emphasis
-snippet     italic
-abbr        italic
-   *${1:text}*
-
-snippet     bold
-abbr        bold
-prev_word   '^'
-   **${1:text}**
-
-snippet     bolditalic
-abbr        bold_and_italic
-prev_word   '^'
-   **_${1:text}_**
-
-# Links
-snippet link
-abbr [link][]
-    [${1:link_id}][] ${2}
-
-snippet linkid
-abbr [link][id]
-    [${1:link}][${2:id}] ${3}
-
-snippet linkurl
-abbr [link](url)
-    [${1:link}](http://${2:url}) ${3}
-
-snippet linkemail
-abbr [link](email)
-    [${1:link}](mailto:${2:email}) ${3}
-
-snippet linkurltitle
-abbr [link](url "title")
-    [${1:link}](${2:url} "${3:title}") ${4}
-
-snippet idurl
-abbr [id]: url "title"
-    [${1:id}]: http://${2:url} "${3:title}" ${4}
-
-snippet idemail
-abbr [id]: email "title"
-    [${1:id}]: mailto:${2:url} "${3:title}" ${4}
-
-snippet altid
-abbr ![alt][id]
-    ![${1:alt}][${2:id}] ${3}
-
-snippet alturl
-abbr ![alt](url)
-    ![${1:alt}](${2:url}) ${3}
-
-snippet alturltitle
-# alias   aut
-abbr ![alt](url "title")
-    ![${1:alt}](${2:url} "${3:title}") ${4}
-
 snippet     codeblock
 alias       cb
 abbr        ```code```
