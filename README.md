@@ -23,29 +23,6 @@ in order to use all the functionality. The dependencies are:
 - git-core (Git)
 - exuberant-ctags (create tag files)
 
-My setup uses the Solarized color scheme as standard.
-It is recommended to set also your terminal colors to
-[Solarized](https://github.com/altercation/solarized) because otherwise it
-may not look as expected. If you don't like to use the Solarized theme please
-uncomment the following line in the vimrc file.
-
-```
-colorscheme solarized
-```
-
-This distribution also contains the very nice looking color scheme Peaksea which 
-you can enable by uncommenting the following line in your vimrc.
-
-```
-colorscheme peaksea
-```
-
-If you like to use the Vim powerline plug-in with the nice and fancy symbols
-you need to install or prepare a patched font by yourself as described on the
-project [homepage](https://github.com/Lokaltog/vim-powerline.git). If you do
-nothing it will display a fall-back layout which is also quite nice.
-
-
 Script install 
 ---------------
 
@@ -139,7 +116,31 @@ ln -s ~/.vim/vimrc ~/.vimrc
 1. Open Vim `vim`
 2. Type `:NeoBundleInstall`
 
-## Modify the install script: 
+## Modify my vim setup 
+
+My setup uses the Solarized color scheme as standard.
+It is recommended to set also your terminal colors to
+[Solarized](https://github.com/altercation/solarized) because otherwise it
+may not look as expected. If you don't like to use the Solarized theme please
+uncomment the following line in the vimrc file.
+
+```
+colorscheme solarized
+```
+
+This distribution also contains the very nice looking color scheme Peaksea which 
+you can enable by uncommenting the following line in your vimrc.
+
+```
+colorscheme peaksea
+```
+
+If you like to use the Vim powerline plug-in with the nice and fancy symbols
+you need to install or prepare a patched font by yourself as described on the
+project [homepage](https://github.com/Lokaltog/vim-powerline.git). If you do
+nothing it will display a fall-back layout which is also quite nice.
+
+### Change the install script
 
 The packages my Vim setup requires get installed via apt-get as standard but if
 you prefer to use aptitude you can simply change the variable `apt_preference`
