@@ -30,16 +30,15 @@ It is recommended to set also your terminal colors to
 [Solarized](https://github.com/altercation/solarized) because otherwise it
 may not look as expected. 
 
-If you don't like to use the Solarized theme please uncomment or change the
-following lines in the vimrc file. 
+If you don't like to use the Solarized theme please uncomment the following
+line in the vimrc file.
 
 ```
-set background=dark
 colorscheme solarized
 ```
 
 This distribution also contains the very nice looking color scheme Peaksea which 
-you can enable by uncommenting the following lines in your vimrc.
+you can enable by uncommenting the following line in your vimrc.
 
 ```
 colorscheme peaksea
