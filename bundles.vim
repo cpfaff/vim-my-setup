@@ -69,6 +69,8 @@ NeoBundle 'guns/xterm-color-table.vim.git'
 NeoBundle 'vim-scripts/peaksea.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
 
+NeoBundle 'benmills/vimux.git'
+
 " Other useful bundles
 " NeoBundle 'honza/snipmate-snippets.git'
 " NeoBundle 'garbas/vim-snipmate.git'
