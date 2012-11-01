@@ -674,22 +674,14 @@
 " Plugin configuration {{{
 
    " (c)onque term {{{
-      let g:ConqueTerm_SendFunctionKeys = 0
+      let g:ConqueTerm_CWInsert = 1
+      let g:ConqueTerm_FastMode = 1
+      let g:ConqueTerm_ReadUnfocused = 1
+      
+      " let g:ConqueTerm_TERM = 'xterm'
       " let g:ConqueTerm_ExecFileKey = '<nop>'
       " let g:ConqueTerm_SendFileKey = '<nop>'
       " let g:ConqueTerm_SendVisKey = '<nop>' 
-      " let g:ConqueTerm_FastMode = 1
-      let vimrplugin_underscore = 0
-      let vimrplugin_rnowebchunk = 0
-      let vimrplugin_ca_ck = 0
-      let vimrplugin_applescript = 0
-      let vimrplugin_screenplugin = 0
-      let vimrplugin_conqueplugin = 1
-      " let ConqueTerm_CWInsert = 1
-      " let ConqueTerm_Color = 0
-      " let ConqueTerm_ReadUnfocused = 1
-      " let vimrplugin_conquevsplit = 0
-      let g:ConqueTerm_TERM = 'xterm'
    " }}}
 
    " (l)usty juggler {{{
@@ -768,6 +760,13 @@
 
    " (r)ails plugin {{{
       let g:rubycomplete_buffer_loading = 1
+   " }}}
+
+   " (r)-plugin {{{
+      let vimrplugin_ca_ck = 0
+      let vimrplugin_applescript = 0
+      let vimrplugin_screenplugin = 0
+      let vimrplugin_conqueplugin = 1
    " }}}
 
    " (s)essionman session plugin {{{
