@@ -173,6 +173,10 @@
    " Autosize windows
    set winheight=30
 
+   " Set the concealment of LaTeX charachters 
+   " set cole=2
+   let g:tex_conceal= ''
+   " hi Conceal guibg=White guifg=DarkMagenta 
 "}}}
 
 " Mappings {{{
@@ -674,9 +678,9 @@
 " Plugin configuration {{{
 
    " (c)onque term {{{
-      let g:ConqueTerm_CWInsert = 1
-      let g:ConqueTerm_FastMode = 1
-      let g:ConqueTerm_ReadUnfocused = 1
+      " let g:ConqueTerm_CWInsert = 1
+      " let g:ConqueTerm_FastMode = 1
+      " let g:ConqueTerm_ReadUnfocused = 1
       
       " let g:ConqueTerm_TERM = 'xterm'
       " let g:ConqueTerm_ExecFileKey = '<nop>'
@@ -855,46 +859,32 @@
 
    " (v)imshell {{{
       " Global options
-      let g:vimshell_split_command='belowright split' 
-      let g:vimshell_no_default_keymappings=1
-      let g:vimshell_temporary_directory='~/.vim/tmp/'
+      " let g:vimshell_split_command='belowright split' 
+      " let g:vimshell_no_default_keymappings=1
+      " let g:vimshell_temporary_directory='~/.vim/tmp/'
 
       " Buffer specific remapping
       
       " For all vimshells 
-      autocmd FileType int-* call s:vimshell_all_my_settings()
-      function! s:vimshell_all_my_settings()
-         imap <buffer> <CR> <Plug>(vimshell_int_execute_line)
+      " autocmd FileType int-* call s:vimshell_all_my_settings()
+      " function! s:vimshell_all_my_settings()
+         " imap <buffer> <CR> <Plug>(vimshell_int_execute_line)
 
-         nmap <buffer> <up>	<Plug>(vimshell_int_previous_prompt)
-         nmap <buffer> <down>	<Plug>(vimshell_int_next_prompt)
-         nmap <buffer> <CR> 	<Plug>(vimshell_int_execute_line)
-         nmap <buffer> <C-y>	<Plug>(vimshell_int_paste_prompt)
-         nmap <buffer> <C-z>	<Plug>(vimshell_int_restart_command)
-         nmap <buffer> <C-c>	<Plug>(vimshell_int_interrupt)
-         nmap <buffer> q	 <Plug>(vimshell_int_exit)
-         nmap <buffer> cc	 <Plug>(vimshell_int_change_line)
-         nmap <buffer> dd	 <Plug>(vimshell_int_delete_line)
-         nmap <buffer> I	 <Plug>(vimshell_int_insert_head)
-         nmap <buffer> A	 <Plug>(vimshell_int_append_end)
-         nmap <buffer> i	 <Plug>(vimshell_int_insert_enter)
-         nmap <buffer> a	 <Plug>(vimshell_int_append_enter)
-         nmap <buffer> <C-l>	<Plug>(vimshell_int_clear)
-
-         " imap <buffer> <C-h>	<Plug>(vimshell_int_delete_backward_char)
-         " imap <buffer> <BS>	<Plug>(vimshell_int_delete_backward_char)
-         " imap <buffer> <C-a>	<Plug>(vimshell_int_move_head)
-         " imap <buffer> <C-u>	<Plug>(vimshell_int_delete_backward_line)
-         " imap <buffer> <C-w>	<Plug>(vimshell_int_delete_backward_word)
-         " imap <buffer> <C-k>	<Plug>(vimshell_int_delete_forward_line)
-         " imap <buffer> <CR>	<Plug>(vimshell_int_execute_line)
-         " imap <buffer> <C-c>	<Plug>(vimshell_int_interrupt)
-         " imap <buffer> <C-l>	Start vimshell/history source
-         " imap <buffer> <C-v>	<Plug>(vimshell_int_send_input)
-         " imap <buffer> <C-n>	<C-n>
-         " imap <buffer> <TAB>	Select candidate or start completion
-      endfunction
-
+         " nmap <buffer> <up>	<Plug>(vimshell_int_previous_prompt)
+         " nmap <buffer> <down>	<Plug>(vimshell_int_next_prompt)
+         " nmap <buffer> <CR> 	<Plug>(vimshell_int_execute_line)
+         " nmap <buffer> <C-y>	<Plug>(vimshell_int_paste_prompt)
+         " nmap <buffer> <C-z>	<Plug>(vimshell_int_restart_command)
+         " nmap <buffer> <C-c>	<Plug>(vimshell_int_interrupt)
+         " nmap <buffer> q	 <Plug>(vimshell_int_exit)
+         " nmap <buffer> cc	 <Plug>(vimshell_int_change_line)
+         " nmap <buffer> dd	 <Plug>(vimshell_int_delete_line)
+         " nmap <buffer> I	 <Plug>(vimshell_int_insert_head)
+         " nmap <buffer> A	 <Plug>(vimshell_int_append_end)
+         " nmap <buffer> i	 <Plug>(vimshell_int_insert_enter)
+         " nmap <buffer> a	 <Plug>(vimshell_int_append_enter)
+         " nmap <buffer> <C-l>	<Plug>(vimshell_int_clear)
+      " endfunction
 
       " This can be done to have interpreter specific mappings
       "autocmd FileType int-R call s:vimshell_R_my_settings()
@@ -1007,6 +997,12 @@
       autocmd BufWrite *.py :call DeleteTrailingWS()
       autocmd BufWrite *.coffee :call DeleteTrailingWS()
    augroup END 
+
+   " Tex files
+   augroup tex_file_options
+     autocmd!
+     autocmd BufNewFile,BufRead *.tex set ft=tex
+   augroup END
 
    " Rnw files
    augroup rnw_file_options
