@@ -1008,12 +1008,6 @@
       autocmd BufWrite *.coffee :call DeleteTrailingWS()
    augroup END 
 
-   " Tex files
-   augroup tex_file_options
-      autocmd!
-      autocmd BufNewFile,BufRead *.tex set ft=tex
-   augroup END
-
    " Rnw files
    augroup rnw_file_options
       autocmd!

@@ -30,8 +30,6 @@ NeoBundle 'Shougo/unite-build.git'
 NeoBundle 'Shougo/vimfiler.git'
 NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'h1mesuke/unite-outline.git'
-" NeoBundle 'Shougo/vimshell.git'
-" NeoBundle 'rosenfeld/conque-term.git'
 
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tpope/vim-rails.git'
@@ -70,6 +68,8 @@ NeoBundle 'vim-scripts/peaksea.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
 
 " Other useful bundles
+" NeoBundle 'Shougo/vimshell.git'
+" NeoBundle 'rosenfeld/conque-term.git'
 " NeoBundle 'honza/snipmate-snippets.git'
 " NeoBundle 'garbas/vim-snipmate.git'
 " NeoBundle 'ervandew/supertab.git'
