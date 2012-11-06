@@ -3,20 +3,20 @@ My Vim setup
 
 This repository contains my personal Vim setup. It can be installed
 manually or with the help of a bash installer script. Both installation
-methods are described in detail below. The setup comes with a
-curated set of plug ins which are managed by the package manager
-[NeoBundle](https://github.com/Shougo/neobundle.vim.git). 
+methods are described in detail below. The setup contains a curated
+set of plug-ins to play well together. The packages are managed with the package manager
+[NeoBundle](https://github.com/Shougo/neobundle.vim.git).
 
-The plugins and mappings are setup to play well together. If you find any
-incompatibility please let me know about that. For a full list of installed Vim
-plug-ins please have a look into the `bundles.vim` file. For the mappings have a
-look into the `vimrc` file where all of them are documented.
+If you find any problems with mappings or plug-ins please let me know about
+that. For a full list of installed Vim plug-ins please have a look into the
+`bundles.vim` file. For the mappings have a look into the `vimrc` file where all
+of them are documented.
 
 Note: 
 
-This setup has only has been tested on a Ubuntu Linux machine with a non
-graphical Vim. The setup requires additional programs you need to install on
-your system, in order to use all the functionality. The dependencies are:
+This setup was tested on a Ubuntu Linux machine, with a non graphical Vim only.
+In order to use the full functionality of this Vim setup, you need to install
+additional packages to your system. The dependencies are:
 
 - ack-grep  (grep)
 - par (format text)
@@ -27,7 +27,7 @@ your system, in order to use all the functionality. The dependencies are:
 Script install 
 ---------------
 
-The bash installer script is the easiest way to setup my vim configuration. It
+The bash installer script is the easiest way to setup my Vim configuration. It
 installs all required packages with apt-get (Ubuntu 12.10 sources) and all the
 plug-ins to extend the Vim functionality with NeoBundleInstall. If you prefer to
 use aptitude see the section about how to modify the installer script.
