@@ -17,7 +17,7 @@
    " Load vim bundles
    source ~/.vim/bundles.vim
 
-   " auto source changed vimrc file
+   " auto source a changed vimrc file (very slow after 3 or 4 sources)
    "if has("autocmd")
       "autocmd bufwritepost .vimrc source $MYVIMRC
    "endif
@@ -160,7 +160,7 @@
    endif
 
    " Folding options
-   "set nofoldenable
+   " set nofoldenable
    set foldmethod=marker
    set foldnestmax=10
 
@@ -171,10 +171,10 @@
    set pastetoggle=<F3>
 
    " Autosize windows
-   set winheight=30
+   set winheight=31
 
-   " Set the concealment of LaTeX charachters 
-   " set cole=2
+   " Set the concealment options (LaTeX)
+   set conceallevel=0
    let g:tex_conceal= ''
    " hi Conceal guibg=White guifg=DarkMagenta 
 "}}}
