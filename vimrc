@@ -91,7 +91,7 @@
    set t_Co=256
 
    " Set colour scheme
-   syntax enable
+   " syntax enable
    set background=dark
    colorscheme solarized
    " colorscheme peaksea
@@ -898,6 +898,7 @@
       let g:vimfiler_as_default_explorer = 1
       " let g:vimfiler_no_default_key_mappings = 1
       let g:vimfiler_tree_leaf_icon = ' '
+      let g:vimfiler_safe_mode_by_default = 0
       let g:vimfiler_tree_opened_icon = '▾'
       let g:vimfiler_tree_closed_icon = '▸'
       let g:vimfiler_file_icon = '-'
