@@ -5,7 +5,7 @@
 
 # Dependencies
 
-depends_on_packages=(ack-grep par vim-nox git-core exuberant-ctags)
+depends_on_packages=(make ack-grep par vim-nox git-core exuberant-ctags)
 
 apt_preference=apt-get
 
