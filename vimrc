@@ -767,10 +767,11 @@
    " }}}
 
    " (r)-plugin {{{
-      let vimrplugin_ca_ck = 0
-      let vimrplugin_applescript = 0
-      let vimrplugin_screenplugin = 0
-      let vimrplugin_conqueplugin = 1
+      let vimrplugin_screenvsplit = 1
+      let ScreenImpl = 'Tmux'
+      let vimrplugin_screenvsplit = 0
+      " let vimrplugin_ca_ck = 0
+      let vimrplugin_assign = 0
    " }}}
 
    " (s)essionman session plugin {{{
