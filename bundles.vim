@@ -67,6 +67,8 @@ NeoBundle 'guns/xterm-color-table.vim.git'
 NeoBundle 'vim-scripts/peaksea.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
 
+NeoBundle 'ervandew/screen.git'
+
 " Other useful bundles
 " NeoBundle 'Shougo/vimshell.git'
 " NeoBundle 'rosenfeld/conque-term.git'
