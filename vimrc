@@ -177,6 +177,10 @@
    set conceallevel=0
    let g:tex_conceal= ''
    " hi Conceal guibg=White guifg=DarkMagenta 
+   
+   " so vim doesn't hang inside screen and tmux
+   set ttymouse=xterm    
+
 "}}}
 
 " Mappings {{{
