@@ -1,22 +1,23 @@
 My Vim setup
 ============
 
-This repository contains my personal Vim setup. It can be installed
-manually or with the help of a bash installer script. Both installation
-methods are described in detail below. The setup contains a curated
-set of plug-ins to play well together. The packages are managed with the package manager
-[NeoBundle](https://github.com/Shougo/neobundle.vim.git).
+This repository contains my personal Vim setup which can be installed manually
+or with a bash installer script. Both installation methods are described below
+in detail. The setup contains a curated set of plug-ins that play well together
+and fit a wide range of usage scenarios. The packages are managed with the Vim
+package manager [NeoBundle](https://github.com/Shougo/neobundle.vim.git).
 
-If you find any problems with mappings or plug-ins please let me know about
-that. For a full list of installed Vim plug-ins please have a look into the
-`bundles.vim` file. For the mappings have a look into the `vimrc` file where all
-of them are documented.
+If you come across any problems with the mappings or plug-ins in this setup
+please let me know about that or write a patch. For a full list of the installed
+Vim plug-ins, please have a look into the `bundles.vim` file. The mappings are
+all together located in the `vimrc` file together with their documentation.
 
 Note: 
 
-This setup was tested on a Ubuntu Linux machine, with a non graphical Vim only.
+This setup was tested only on an Ubuntu Linux machine, with a non graphical Vim.
 In order to use the full functionality of this Vim setup, you need to install
-additional packages to your system. The dependencies are:
+additional packages on your system on manual install. And if you use the install
+script it will take care of that for you. The dependencies are:
 
 - ack-grep  (grep)
 - par (format text)
@@ -27,10 +28,11 @@ additional packages to your system. The dependencies are:
 Script install 
 ---------------
 
-The bash installer script is the easiest way to setup my Vim configuration. It
-installs all required packages with apt-get (Ubuntu 12.10 sources) and all the
-plug-ins to extend the Vim functionality with NeoBundleInstall. If you prefer to
-use aptitude see the section about how to modify the installer script.
+The bash installer script is the easiest way to setup this Vim distribution. It
+installs all required packages with apt-get (Ubuntu 12.10 sources package names)
+and all the plug-ins to extend the Vim functionality with the NeoBundleInstall
+routine. If you prefer to use aptitude see the section about how to modify the
+installer script.
 
 ### With wget 
 
@@ -56,6 +58,10 @@ chmod +x install.sh
 ```
 ./install.sh
 ```
+
+What does the script do? Well it is an easy script which does a backup of your  
+existing `.vim` folder and `.vimrc`. After that it clones my repository to the  
+`.vim` folder and creates a symbolic link from the `vimrc` file to `~/.vimrc`.  
 
 ### With git 
 
