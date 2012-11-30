@@ -179,7 +179,7 @@
    " hi Conceal guibg=White guifg=DarkMagenta 
    
    " so vim doesn't hang inside screen and tmux
-   set ttymouse=xterm    
+   set ttyfast
 
 "}}}
 
