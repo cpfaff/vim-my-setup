@@ -359,8 +359,8 @@
          
          " Description:
          "
-         " This mappings use the vim sessionman plugin to handle sessions. If
-         " you store a session all things defined under sessionoptions will be
+         " This mappings make use of the Vim sessionman plug-in to handle sessions. If
+         " you store a session all things defined under "sessionoptions" will be
          " stored.
          "
          " Mappings:
@@ -379,7 +379,7 @@
          
          " Description:
          "
-         " This mappings use enable fast access to important configuration
+         " This mappings enable fast access to important configuration
          " and snippet files. 
          "
          " Mappings:
