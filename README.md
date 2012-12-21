@@ -7,17 +7,18 @@ in detail. The setup contains a curated set of plug-ins that play well together
 and fit a wide range of usage scenarios. The packages are managed with the Vim
 package manager [NeoBundle](https://github.com/Shougo/neobundle.vim.git).
 
-If you come across any problems with the mappings or plug-ins in this setup
-please let me know about that or write a patch. For a full list of the installed
-Vim plug-ins, please have a look into the `bundles.vim` file. The mappings are
-all together located in the `vimrc` file together with their documentation.
+If you find any problems with the mappings or plug-ins in this setup please
+let me know about that or write a patch. For a full list of the installed Vim
+plug-ins, please have a look into the `bundles.vim` file. All mappings are
+located in the `vimrc` file with a short documentation.
 
 Note: 
 
-This setup was tested only on an Ubuntu Linux machine, with a non graphical Vim.
+This setup was tested on an Ubuntu Linux machine with a non graphical Vim only.
 In order to use the full functionality of this Vim setup, you need to install
-additional packages on your system on manual install. And if you use the install
-script it will take care of that for you. The dependencies are:
+additional packages on your system (see list below). If you use the install
+script it will take care of the package installation for you. The dependencies
+are:
 
 - ack-grep  (grep)
 - par (format text)
@@ -28,17 +29,16 @@ script it will take care of that for you. The dependencies are:
 Script install 
 ---------------
 
-The bash installer script is the easiest way to setup this Vim distribution. It
+The bash installer script is the easiest way to setup my Vim configuration. It
 installs all required packages with apt-get (Ubuntu 12.10 sources package names)
-and all the plug-ins to extend the Vim functionality with the NeoBundleInstall
-routine. If you prefer to use aptitude see the section about how to modify the
-installer script.
+and all the Vim plug-ins via the NeoBundleInstall routine. If you prefer to use
+aptitude see the section about how to modify the installer script.
 
 ### With wget 
 
 You can use wget to download the installer script. Afterwards you need to make
 it executable and start the script to install the setup. If you like you can
-modify the script before you start the installation (see the section about
+also modify the script before you start the installation (see the section about
 modifying the install script below)
 
 #### Download installer:
