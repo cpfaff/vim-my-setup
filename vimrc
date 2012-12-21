@@ -445,7 +445,7 @@
             nnoremap [git_key] <Nop>
             nmap <silent> <leader>g [git_key]
 
-            nnoremap [git_key]s :Gstatus<CR>
+            nnoremap [git_key]s :Gstatus<CR><C-w>15+
             nnoremap [git_key]d :Gdiff<CR>
             nnoremap [git_key]c :Gcommit<CR>
             nnoremap [git_key]b :Gblame<CR>
