@@ -1,4 +1,4 @@
-" ================================================
+" ======================================================
 "   MMMM   MMMM    VVV           VVV    SSSSSS
 "  MMMM MMM MMMM   VVVV         VVVV   SSSSSSSS
 "  MMMM  M  MMMM    VVVV       VVVV    SSSS
@@ -6,7 +6,7 @@
 "  MMMM     MMMM      VVVV   VVVV          SSSS
 "  MMMM     MMMM       VVVV VVVV       SSSSSSSS
 "  MMMM     MMMM y       VVVVV  im      SSSSSS etup
-" ================================================
+" ===================================================
 " 
 " File: vimrc
 " Maintainer: Claas-Thido Pfaff
@@ -32,13 +32,13 @@
    set t_vb= 
    set tm=500
 
-   " Sets how much history and undo vim remembers  
-   set history=1000
-
    " Save files in one place
    set backupdir=~/.vim/tmp  
    set directory=~/.vim/tmp 
    set tags=~/.vim/tmp/
+   
+   " Sets how much history and undo vim remembers  
+   set history=1000
 
    " Persistent undo
    if has('persistent_undo')
@@ -62,7 +62,7 @@
    "swith on numbering on left side
    set number
 
-   " Ignore compiled files 
+   " Tab completion  
    set wildmenu
    set wildignore=*tikzDiktionary*
 
@@ -78,7 +78,7 @@
    " Makes search act like search in modern browsers 
    set incsearch
 
-   " Don't redraw while executing macros (good performance config) 
+   " Don't redraw while executing macros (better performance) 
    set lazyredraw
 
    " For regular expressions turn magic on 
@@ -91,7 +91,6 @@
    set t_Co=256
 
    " Set colour scheme
-   " syntax enable
    set background=dark
    colorscheme solarized
    " colorscheme peaksea
@@ -106,21 +105,19 @@
    set shiftwidth=3
    set tabstop=3
 
-   " let cursor beyond last character
-   "set virtualedit=onemore
-
    " wrap and linebreak
    set wrap 
    set linebreak
    set nolist
    
-   "Auto indent
+   "Auto-indent
    set autoindent 
    
-   "Smart indent
+   "Smart-indent
    set smartindent 
 
-   " set format program to par with 80 col width 
+   " set text format program to par with 80 col width
+   " This option requires par to be installed.
    set formatprg=par\ -w80
 
    " Specify the behavior when switching buffers 
@@ -130,15 +127,12 @@
    catch
    endtry
 
-   " Remember info about open buffers on close
-   " set viminfo^=%
-
    " Scroll options 
    set scrolloff=8   
    set sidescrolloff=15 
    set sidescroll=1 
 
-   " Autocompletion
+   " Completion
    set completeopt=menu,menuone,longest
     
    " Limit popup menu height
@@ -173,13 +167,12 @@
    " Autosize windows
    set winheight=31
 
-   " Set the concealment options (LaTeX)
+   " Concealment behaviour (e.g LaTeX)
    set conceallevel=0
    let g:tex_conceal= ''
-   " hi Conceal guibg=White guifg=DarkMagenta 
    
    " so vim doesn't hang inside screen and tmux
-   set ttyfast
+   " set ttyfast
 
 "}}}
 
@@ -230,11 +223,10 @@
          " Visual mode pressing * or # searches for the current selection
          vnoremap <silent> * :call VisualSelection('b')<CR>
          vnoremap <silent> # :call VisualSelection('f')<CR>
-      "
 
       " }}}
 
-      " Edit related mappings {{{ 
+      " Editing related mappings {{{ 
 
          " Exit visual/insert/command/select mode with kj 
          vnoremap kj <esc>
@@ -249,8 +241,8 @@
          nnoremap U <C-r>
 
          " Move lines up and down (bubbling) left and right (indent)  
-         nmap <A-k> [e
          nmap <A-j> ]e
+         nmap <A-k> [e
          vmap <A-k> [egv
          vmap <A-j> ]egv
          nnoremap <A-l> >>
@@ -317,13 +309,13 @@
          
          " Description:
          "
-         " This mappings do the buffer handling. Fast buffer switching is
+         " This mappings helpo you to handle buffers. A fast buffer switching is
          " realized with the LustyJuggler plugin. You can switch betwenn buffers
          " with the combination <leader>b which opens up LustyJuggler. Then
          " you can switch to the buffer you like with a key of the homerow of
-         " your keyboard starting with a for the first buffer, s for the second
-         " and so on. On tap on the key highlights the corresponding buffer, a
-         " second key stroke switches to that buffer. 
+         " your keyboard, starting with "a" for the first buffer, "s" for the second
+         " buffer and so on. One tap on a key highlights the corresponding buffer as 
+         " selected, a second key stroke switches to that buffer. 
          " 
          " Mappings:
          " 
@@ -344,14 +336,14 @@
          
          " Description:
          "
-         " This mappings handle commenting lines in and out with the
-         " NERDCommenter plugin. They combination <leader>c calls the comment
-         " toggle of nerd commter which comments the line in or out. This
-         " mapping works in vizal and normal mode.
+         " This mappings help to comment lines in and out with the
+         " NERDCommenter plug-in. The combination <leader>c calls the comment
+         " toggle of nerd commenter which comments the line in or out. This
+         " mapping works in visual and normal mode.
          "
          " Mappings:
          "
-         " - [comment_key]    toggles the nerd commenter
+         " - [comment_key]    toggles comments 
          " - [comment_key]y   yank text then comment out 
          " - [comment_key]a   change to alternative delimiter set 
 
