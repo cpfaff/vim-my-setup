@@ -60,8 +60,9 @@ chmod +x install.sh
 ```
 
 What does the script do? Well it is an easy script which does a backup of your  
-existing `.vim` folder and `.vimrc`. After that it clones my repository to the  
-`.vim` folder and creates a symbolic link from the `vimrc` file to `~/.vimrc`.  
+existing `.vim` folder and `.vimrc`. After the backup it clones my repository   
+to the `.vim` folder and creates a symbolic link from the `vimrc` file to your  
+home directory `~/.vimrc`.                                                      
 
 ### With git 
 
@@ -126,18 +127,17 @@ ln -s ~/.vim/vimrc ~/.vimrc
 
 ## Modify my vim setup 
 
-My setup uses the Solarized color scheme as standard.
-It is recommended to set also your terminal colors to
-[Solarized](https://github.com/altercation/solarized) because otherwise it
-may not look as expected. If you don't like to use the Solarized theme please
-uncomment the following line in the vimrc file.
+This setup uses the Solarized color scheme as standard. It is recommended to set
+your terminal colors to [Solarized](https://github.com/altercation/solarized)
+because otherwise it may not look as expected. If you don't like to use the
+Solarized theme please uncomment the following line in the vimrc file.
 
 ```
 colorscheme solarized
 ```
 
-This distribution also contains the very nice looking color scheme Peaksea which 
-you can enable by uncommenting the following line in your vimrc.
+You can also try to use the colour scheme peaksea. It is included in this setup
+and you can enable it uncommenting the following line in the `.vimrc` file.
 
 ```
 colorscheme peaksea
