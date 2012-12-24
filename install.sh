@@ -3,11 +3,8 @@
 #{{{
 # Variable setting
 
-# Dependencies
-
 depends_on_packages=(make ack-grep par vim-nox git-core exuberant-ctags)
-
-apt_preference=apt-get
+apt_installer_preference=apt-get
 
 # Folder and files
 
@@ -98,7 +95,7 @@ function sudo_install_packages()
 			echo ${step_small}
 		else 
 			echo "Installs" ${package}
-			sudo ${apt_preference} -y install ${package} > /dev/null 
+			sudo ${apt_installer_preference} -y install ${package} > /dev/null 
 			check_for_process_error "Problems installing the package:" ${package}
 			echo ${step_small}
 		fi
@@ -154,7 +151,6 @@ function my_vim_setup()
 
 	execute_command "Link the .vimrc to user home" "ln -s ${file_home_vim_vimrc} ${file_home_dot_vimrc}"
       
-   # another way would be to use --cmd with or without a file
 	big_step_display "Install the bundles!"
    vim -u ~/.vim/bundles.vim +NeoBundleInstall +qall
 
