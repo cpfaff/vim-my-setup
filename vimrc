@@ -172,7 +172,7 @@
    let g:tex_conceal= ''
    
    " so vim doesn't hang inside screen and tmux
-   " set ttyfast
+   set ttyfast
 
 "}}}
 
