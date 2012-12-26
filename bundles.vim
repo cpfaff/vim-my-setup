@@ -68,6 +68,8 @@ NeoBundle 'vim-scripts/peaksea.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
 
 NeoBundle 'ervandew/screen.git'
+" NeoBundle 'benmills/vimux'
+" NeoBundle 'jgdavey/vim-turbux.git'
 
 " Other useful bundles
 " NeoBundle 'Shougo/vimshell.git'
