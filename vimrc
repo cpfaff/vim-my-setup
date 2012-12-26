@@ -33,7 +33,8 @@
    set tm=500
 
    " Save files in one place
-   set backupdir=~/.vim/tmp  
+   set nobackup
+   " set backupdir=~/.vim/tmp  
    set directory=~/.vim/tmp 
    set tags=~/.vim/tmp/
    
