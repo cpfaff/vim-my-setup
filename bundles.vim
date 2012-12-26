@@ -8,7 +8,7 @@ set nocompatible
 " Filetype detection of 
 filetype off
 
-" Setup vundle package manager
+" Setup for neobundle package manager
 if has('vim_starting')
    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
@@ -63,15 +63,16 @@ NeoBundle 'henrik/vim-qargs.git'
 NeoBundle 'vim-scripts/sessionman.vim.git'
 NeoBundle 'Lokaltog/vim-powerline.git'
 
-NeoBundle 'guns/xterm-color-table.vim.git'
 NeoBundle 'vim-scripts/peaksea.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
 
 NeoBundle 'ervandew/screen.git'
-" NeoBundle 'benmills/vimux'
-" NeoBundle 'jgdavey/vim-turbux.git'
 
 " Other useful bundles
+
+" NeoBundle 'benmills/vimux'
+" NeoBundle 'jgdavey/vim-turbux.git'
+" NeoBundle 'guns/xterm-color-table.vim.git'
 " NeoBundle 'Shougo/vimshell.git'
 " NeoBundle 'rosenfeld/conque-term.git'
 " NeoBundle 'honza/snipmate-snippets.git'
