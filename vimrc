@@ -12,7 +12,7 @@
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup.
 
-" Include bundles and autosource {{{
+" Include bundles and autosource vimrc file {{{
 
    " Load vim bundles
    source ~/.vim/bundles.vim
@@ -24,7 +24,7 @@
 
 "}}}
 
-" General Vim behaviour {{{ 
+" General Vim behaviour {{{
  
    " Disable vim error behavior
    set noerrorbells
@@ -32,7 +32,7 @@
    set t_vb= 
    set tm=500
 
-   " Save files in one place
+   " Save all files in one place
    set nobackup
    " set backupdir=~/.vim/tmp  
    set directory=~/.vim/tmp 
@@ -58,7 +58,8 @@
 
    " Configure backspace and wrap behavior 
    set backspace=indent,eol,start 
-   set whichwrap=b,s,h,l,<,>,[,]
+   set whichwrap=b,s,<,>,[,] 
+   " h,l,
 
    "swith on numbering on left side
    set number
@@ -121,10 +122,10 @@
    " This option requires par to be installed.
    set formatprg=par\ -w80
 
-   " Specify the behavior when switching buffers 
+   " Specify the behavior of tabs 
    try
      set switchbuf=useopen,usetab,newtab
-     set showtabline=2
+     set showtabline=1
    catch
    endtry
 
@@ -165,14 +166,14 @@
    " Toggle paste mode on and off
    set pastetoggle=<F3>
 
-   " Autosize windows
+   " Autoresize active windows
    set winheight=31
 
    " Concealment behaviour (e.g LaTeX)
    set conceallevel=0
    let g:tex_conceal= ''
    
-   " so vim doesn't hang inside screen and tmux
+   " faste terminal reduces lags
    set ttyfast
 
 "}}}
@@ -203,7 +204,7 @@
 
       " Movement related {{{
 
-         " move always one line up/down
+         " move always only one line up/down
          noremap j gj
          noremap k gk
 
@@ -272,7 +273,7 @@
          " (a)lign with tabularize {{{
          
          " Description:
-         "  This mappings help to align text with the tabularize plugin.
+         "  This mappings align text with the tabularize plugin.
          "  You can call them in vizual and in normal mode. For example
          "  to allign text by the & character you can issue <leader>aa.
          "
@@ -310,7 +311,7 @@
          
          " Description:
          "
-         " This mappings helpo you to handle buffers. A fast buffer switching is
+         " This mappings handle buffers. A fast buffer switch is
          " realized with the LustyJuggler plugin. You can switch betwenn buffers
          " with the combination <leader>b which opens up LustyJuggler. Then
          " you can switch to the buffer you like with a key of the homerow of
@@ -337,7 +338,7 @@
          
          " Description:
          "
-         " This mappings help to comment lines in and out with the
+         " This mappings comment lines in and out with the
          " NERDCommenter plug-in. The combination <leader>c calls the comment
          " toggle of nerd commenter which comments the line in or out. This
          " mapping works in visual and normal mode.
@@ -434,6 +435,7 @@
          " - [git_key]b   open a git blame in split view        
          " - [git_key]l   show a git log         
          " - [git_key]p   push to your remote repository        
+         " - [git_key]o   only to close all but the active diff split        
          
             nnoremap [git_key] <Nop>
             nmap <silent> <leader>g [git_key]
@@ -444,6 +446,7 @@
             nnoremap [git_key]b :Gblame<CR>
             nnoremap [git_key]l :Glog<CR>
             nnoremap [git_key]p :Git push<CR><CR>
+            nnoremap [git_key]o :only<CR><CR>
          " }}}
 
          " (m)ake call a task {{{
@@ -658,7 +661,7 @@
          " - [yank_key]y     Opens the yankring window where you can chose
          "                   which text you like to paste.
          " 
-         " - [yank_key]s     Copy text from system Clipboard. After that you 
+         " - [yank_key]s     Copy text from system Clipboard (Linux). After that you 
          "                   can simply paste it by pressin p in normal mode.
 
             nnoremap [yank_key] <Nop>
@@ -793,8 +796,6 @@
    " }}}
 
    " (u)nite vim {{{
-      " TODO: rework this configuration 
-      " Start insert.
       let g:unite_enable_start_insert = 1
       let g:unite_source_file_mru_limit = 200
       let g:unite_cursor_line_highlight = 'TabLineSel'
@@ -814,16 +815,15 @@
       autocmd FileType unite call s:unite_my_settings()
       
       function! s:unite_my_settings()
-         " Overwrite settings.
+         " Overwrite settings of unite window 
 
          nmap <buffer> <ESC>      <Plug>(unite_exit)
          imap <buffer>  kj      <Plug>(unite_insert_leave)
          imap <buffer> <TAB>   <Plug>(unite_select_next_line)
-         "nmap <buffer> <C-j>     <Plug>(unite_toggle_auto_preview)
 
          nnoremap <silent><buffer><expr> l
                   \ unite#smart_map('l', unite#do_action('default'))
-
+         
          let unite = unite#get_current_unite()
 
          if unite.buffer_name =~# '^search'
@@ -831,26 +831,6 @@
          else
             nnoremap <silent><buffer><expr> r     unite#do_action('rename')
          endif
-         
-         "imap <expr> -  pumvisible() ? 
-           "\ "\<Plug>(neocomplcache_start_unite_quick_match)" : '-' 
-         "imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-         "imap <buffer><expr> j unite#smart_map('j', '')
-         "imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-         "imap <buffer> - <Plug>(unite_quick_match_default_action)
-         "nmap <buffer> - <Plug>(unite_quick_match_default_action)
-         "imap <buffer><expr> x
-         "\ unite#smart_map('x', "\<Plug>(unite_quick_match_choose_action)")
-         "nmap <buffer> x     <Plug>(unite_quick_match_choose_action)
-         "nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
-         "imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
-         "imap <buffer> <C-y>     <Plug>(unite_narrowing_path)
-         "nmap <buffer> <C-y>     <Plug>(unite_narrowing_path)
-         "nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-         "imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-         "nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
-         "nnoremap <buffer><expr> S      unite#mappings#set_current_filters(
-         "\ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
       endfunction
 
    " }}}
@@ -925,17 +905,6 @@
     endfunc
    "
 
-   " My fold text
-    "function! MyFoldText()
-       ""let nl = v:foldend - v:foldstart + 1
-       "let linetext = getline(v:foldstart + 1)
-       "let text =  linetext  
-       "return text
-    "endfunction
-
-    "set foldtext=MyFoldText()
-   "
-
    " Small helper
     function! CmdLine(str)
        exe "menu Foo.Bar :" . a:str
@@ -995,6 +964,8 @@
       autocmd!
       autocmd BufWrite *.py :call DeleteTrailingWS()
       autocmd BufWrite *.coffee :call DeleteTrailingWS()
+      autocmd BufWrite *.rb :call DeleteTrailingWS() 
+      autocmd BufWrite *.haml :call DeleteTrailingWS() 
    augroup END 
 
    " Tex files
@@ -1009,7 +980,7 @@
       autocmd BufNewFile,BufRead *.Rnw set spell
    augroup END
 
-   " Add $ to options
+   " Add $ to schow the end of change text range
    augroup set_cp_options
       autocmd!
       autocmd BufNewFile,BufRead * set cpoptions+=$

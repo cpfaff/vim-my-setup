@@ -52,6 +52,7 @@ NeoBundle 'vim-scripts/YankRing.vim.git'
 
 NeoBundle 'vim-scripts/Vim-R-plugin.git'
 NeoBundle 'vim-scripts/tex.vim--Tanzler'
+NeoBundle 'kchmck/vim-coffee-script'
 
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mutewinter/vim-indent-guides'
