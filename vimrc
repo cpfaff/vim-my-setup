@@ -414,7 +414,7 @@
             nnoremap [unite_key] <Nop>
             nmap <leader>f [unite_key]
            
-            nnoremap <silent> [unite_key]c :<C-u>Unite -buffer-name=files file_rec:!<CR>
+            nnoremap <silent> [unite_key]c :<C-u>Unite -buffer-name=files file_rec<CR>
             nnoremap <silent> [unite_key]r :<C-u>Unite -buffer-name=files file_mru<CR>
             nnoremap <silent> [unite_key]f :<C-u>Unite -buffer-name=sources source<CR>
 
