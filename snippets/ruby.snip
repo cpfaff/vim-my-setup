@@ -1,6 +1,73 @@
+# Routes
+snippet     root
+abbr        root
+options     head
+   root :to => '${1:controller}#${2:action}'
+
+# Migrations
+snippet     column
+abbr        column 
+options     head
+   t.${1:type} :${2:name}, ${3:options}
+
+snippet     notnull 
+abbr        notnull 
+options     head
+   :null => false 
+
+# Testing
 snippet     test
 abbr        <`2test`>
 options     head
    test "${1:description}" do
       ${2:TARGET}
-   end
+   end 
+snippet     describe
+abbr        describe
+options     head
+   describe ${1:something} do 
+      ${2:TARGET}
+   end 
+
+snippet     it
+abbr        it
+options     head
+   it "${1:description}" do
+      ${2:TARGET}
+   end 
+
+# Gemfile
+snippet     gem 
+abbr        gem 
+options     head
+   gem '${1:gem}' ${2}  
+
+snippet     gemv 
+abbr        gemv 
+options     head
+   gem '${1:gem}', '${2:version}' ${3} 
+
+snippet     group 
+abbr        group 
+options     head
+   group :${1:name} do 
+      ${2:TARGET}
+   end 
+
+snippet     require
+abbr        require
+options     head
+   require '${1:requirement}' 
+
+snippet     eachdo 
+abbr        eachdo 
+options     head
+   ${1:object}.each do |${2:something}|
+      ${3:TARGET}
+   end  
+
+# Model relations 
+snippet     accepts_nested_attributes_for 
+abbr        anaf
+options     head
+   accepts_nested_attributes_for :${1:model}
