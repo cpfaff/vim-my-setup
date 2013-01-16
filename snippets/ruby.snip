@@ -17,15 +17,23 @@ options     head
 
 # Testing
 snippet     test
-abbr        <`2test`>
+abbr        test 
 options     head
    test "${1:description}" do
       ${2:TARGET}
    end 
+
 snippet     describe
 abbr        describe
 options     head
    describe ${1:something} do 
+      ${2:TARGET}
+   end 
+
+snippet     context
+abbr        context
+options     head
+   context ${1:description} do 
       ${2:TARGET}
    end 
 
@@ -35,6 +43,13 @@ options     head
    it "${1:description}" do
       ${2:TARGET}
    end 
+
+snippet     before_each
+abbr        before_each
+options     head
+   before :each do
+      ${1:TARGET}
+   end
 
 # Gemfile
 snippet     gem 
