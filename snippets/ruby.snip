@@ -44,12 +44,35 @@ options     head
       ${2:TARGET}
    end 
 
+snippet     expect
+abbr        expect
+options     head
+   expect{ 
+         ${1:something}
+      }.${2:to_or_to_not} change(${3:object}, :count).by(${4:count}) 
+   ${5}
+
 snippet     before_each
 abbr        before_each
 options     head
    before :each do
       ${1:TARGET}
    end
+
+# FactoryGirl 
+snippet     factory
+abbr        factory
+options     head
+   FactoryGirl.${1:method}${2:modifications} 
+
+# Capybara 
+snippet     fill_in
+abbr        fill_in
+options     head
+   fill_in '${1:name of field}', with: "${2:content}" 
+   ${3}
+
+
 
 # Gemfile
 snippet     gem 
