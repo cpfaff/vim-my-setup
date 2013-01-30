@@ -64,13 +64,13 @@ NeoBundle 'henrik/vim-qargs.git'
 NeoBundle 'vim-scripts/sessionman.vim.git'
 NeoBundle 'Lokaltog/vim-powerline.git'
 
-NeoBundle 'vim-scripts/peaksea.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
 
 NeoBundle 'ervandew/screen.git'
 
 " Other useful bundles
 
+" NeoBundle 'vim-scripts/peaksea.git'
 " NeoBundle 'benmills/vimux'
 " NeoBundle 'jgdavey/vim-turbux.git'
 " NeoBundle 'guns/xterm-color-table.vim.git'
