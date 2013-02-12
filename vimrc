@@ -1,16 +1,16 @@
-   " ======================================================
-   "   MMMM   MMMM    VVV           VVV    SSSSSS
-   "  MMMM MMM MMMM   VVVV         VVVV   SSSSSSSS
-   "  MMMM  M  MMMM    VVVV       VVVV    SSSS
-   "  MMMM     MMMM     VVVV     VVVV     SSSSSSS 
-   "  MMMM     MMMM      VVVV   VVVV          SSSS
-   "  MMMM     MMMM       VVVV VVVV       SSSSSSSS
-   "  MMMM     MMMM y       VVVVV  im      SSSSSS etup
-   " ===================================================
-   " 
-   " File: vimrc
-   " Maintainer: Claas-Thido Pfaff
-   " Description: This is my personal Vim setup.
+" ======================================================
+"   MMMM   MMMM    VVV           VVV    SSSSSS
+"  MMMM MMM MMMM   VVVV         VVVV   SSSSSSSS
+"  MMMM  M  MMMM    VVVV       VVVV    SSSS
+"  MMMM     MMMM     VVVV     VVVV     SSSSSSS 
+"  MMMM     MMMM      VVVV   VVVV          SSSS
+"  MMMM     MMMM       VVVV VVVV       SSSSSSSS
+"  MMMM     MMMM y       VVVVV  im      SSSSSS etup
+" ===================================================
+" 
+" File: vimrc
+" Maintainer: Claas-Thido Pfaff
+" Description: This is my personal Vim setup.
 
    " Include bundles and autosource vimrc file {{{
 
@@ -415,6 +415,7 @@
                nmap <leader>f [unite_key]
               
                nnoremap <silent> [unite_key]c :<C-u>Unite -buffer-name=files file_rec/async<CR>
+               nnoremap <silent> [unite_key]g :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
                nnoremap <silent> [unite_key]r :<C-u>Unite -buffer-name=files file_mru<CR>
                nnoremap <silent> [unite_key]f :<C-u>Unite -buffer-name=sources source<CR>
 
