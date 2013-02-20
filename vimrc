@@ -173,9 +173,14 @@
       set conceallevel=0
       let g:tex_conceal= ''
       
-      " faste terminal reduces lags
-      set ttyfast
+      " fast terminal reduces lags
+      set ttyfast 
 
+      " Set eol vizualized character 
+      set listchars=eol:¬
+
+      " Make Y consistent with D and C commands which act on a whole line
+      nnoremap Y y$
    "}}}
 
    " Mappings {{{
@@ -603,7 +608,8 @@
                nnoremap [vizualize_key] <Nop>
                nmap <Leader>v  [vizualize_key]
 
-               nnoremap [vizualize_key] :IndentGuidesToggle<CR>
+               nnoremap [vizualize_key] :IndentGuidesToggle <BAR> set list! <CR> 
+
             "}}}
 
             " (w)rite and quit fast {{{
@@ -636,17 +642,17 @@
             " 
             " todo: rework this mappings
             
-               nnoremap [execute_key] <Nop>
-               nmap <Leader>x  [execute_key]
+               " nnoremap [execute_key] <Nop>
+               " nmap <Leader>x  [execute_key]
                
                " Send to shell
-               nnoremap [execute_key]s :VimShellSendString<CR> 
-               vnoremap [execute_key]s :VimShellSendString<CR>
+               " nnoremap [execute_key]s :VimShellSendString<CR> 
+               " vnoremap [execute_key]s :VimShellSendString<CR>
              
                " Start shell or shell with interpreter
-               nnoremap [execute_key]b :ConqueTermSplit bash<CR>
-               nnoremap [execute_key]r :ConqueTermSplit R<CR>
-               nnoremap [execute_key]c :ConqueTermSplit rails console<CR>
+               " nnoremap [execute_key]b :ConqueTermSplit bash<CR>
+               " nnoremap [execute_key]r :ConqueTermSplit R<CR>
+               " nnoremap [execute_key]c :ConqueTermSplit rails console<CR>
             "}}}
 
             " (y)ank and paste management (Yankring) {{{
@@ -663,7 +669,7 @@
             "                   which text you like to paste.
             " 
             " - [yank_key]s     Copy text from system Clipboard (Linux). After that you 
-            "                   can simply paste it by pressin p in normal mode.
+            "                   can simply paste it by pressing 'p' in normal mode.
 
                nnoremap [yank_key] <Nop>
                nmap <silent> <leader>y [yank_key]
@@ -899,7 +905,7 @@
 
    " Functions {{{
 
-      " Delete trailing white space on save (Python and CoffeeScript)
+      " Delete trailing white space on save 
        func! DeleteTrailingWS()
           exe "normal mz"
           %s/\s\+$//ge
@@ -939,7 +945,7 @@
        endfunction
       "
 
-      " Returns true if paste mode is enabled
+      " Returns PASTE MODE if paste mode is enabled
        function! HasPaste()
           if &paste
              return 'PASTE MODE  '
@@ -968,7 +974,6 @@
          autocmd BufWrite *.coffee :call DeleteTrailingWS()
          autocmd BufWrite *.rb :call DeleteTrailingWS() 
          autocmd BufWrite *.haml :call DeleteTrailingWS() 
-         autocmd BufWrite *.tex :call DeleteTrailingWS() 
       augroup END 
 
       " Tex files
