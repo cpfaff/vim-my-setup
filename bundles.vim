@@ -29,7 +29,7 @@ NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/unite-build.git'
 NeoBundle 'Shougo/vimfiler.git'
 NeoBundle 'Shougo/unite.vim.git'
-NeoBundle 'h1mesuke/unite-outline.git'
+NeoBundle 'Shougo/unite-outline.git'
 
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tpope/vim-rails.git'
