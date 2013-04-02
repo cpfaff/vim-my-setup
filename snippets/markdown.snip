@@ -11,11 +11,12 @@ snippet ===
 abbr    header_one
 	`repeat('=', strlen(getline(line(".") - 1)))`
 	
-	${1}
+   ${1}  
+
 snippet ---
 abbr    header_two
-	`repeat('-', strlen(getline(line(".") - 1)))`
-	
+	`repeat('-', strlen(getline(line(".") - 1)))` 
+
 	${1}
 
 snippet     codeblock
@@ -24,7 +25,7 @@ abbr        ```code```
 prev_word   '^'
    \`\`\`
    ${1:TARGET}
-   \`\`\`
+   \`\`\` 
 
    ${2}
 
@@ -35,6 +36,6 @@ prev_word   '^'
    \`\`\`
 	${1:language} ${2:title} ${3:URL} ${4:link_text}
 	${5:TARGET}
-   \`\`\`
+   \`\`\` 
 
    ${6}

@@ -419,8 +419,10 @@
                nnoremap [unite_key] <Nop>
                nmap <leader>f [unite_key]
               
-               nnoremap <silent> [unite_key]c :<C-u>Unite -buffer-name=files file_rec/async<CR>
-               nnoremap <silent> [unite_key]g :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
+               " nnoremap <silent> [unite_key]c :<C-u>Unite -buffer-name=files file_rec/async<CR>
+               " nnoremap <silent> [unite_key]g :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
+               nnoremap <silent> [unite_key]c :<C-u>Unite -buffer-name=files file_rec<CR>
+               nnoremap <silent> [unite_key]g :<C-u>Unite -buffer-name=files file_rec:!<CR>
                nnoremap <silent> [unite_key]r :<C-u>Unite -buffer-name=files file_mru<CR>
                nnoremap <silent> [unite_key]f :<C-u>Unite -buffer-name=sources source<CR>
 
@@ -974,6 +976,7 @@
          autocmd BufWrite *.coffee :call DeleteTrailingWS()
          autocmd BufWrite *.rb :call DeleteTrailingWS() 
          autocmd BufWrite *.haml :call DeleteTrailingWS() 
+         autocmd BufWrite *.md :call DeleteTrailingWS() 
       augroup END 
 
       " Tex files
