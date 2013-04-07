@@ -58,8 +58,7 @@
 
       " Configure backspace and wrap behavior 
       set backspace=indent,eol,start 
-      set whichwrap=b,s,<,>,[,] 
-      " h,l,
+      set whichwrap=b,s,<,>,[,],h,l
 
       "swith on numbering on left side
       set number
@@ -422,7 +421,7 @@
                nnoremap <silent> [unite_key]c :<C-u>Unite -buffer-name=files file_rec/async<CR>
                nnoremap <silent> [unite_key]g :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
                nnoremap <silent> [unite_key]r :<C-u>Unite -buffer-name=files file_mru<CR>
-               nnoremap <silent> [buffer_key] :<C-u>Unite -buffer-name=buffers buffer -quick-match<CR>  
+               nnoremap <silent> [unite_key]b :<C-u>Unite -buffer-name=buffers buffer -quick-match<CR>
                nnoremap <silent> [unite_key]f :<C-u>Unite -buffer-name=sources source<CR>
 
             "}}}

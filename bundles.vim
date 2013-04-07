@@ -5,9 +5,6 @@
 " No vi compatibility 
 set nocompatible
 
-" Filetype detection of 
-filetype off
-
 " Setup for neobundle package manager
 if has('vim_starting')
    set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -16,15 +13,13 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 
 " Load bundles 
-NeoBundle 'Shougo/neobundle.vim'
+NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc.git', {
          \ 'build' : {
          \     'unix' : 'make -f make_unix.mak',
          \    },
          \ }
 
-" NeoBundle 'vim-scripts/LustyJuggler.git'  
-" NeoBundle 'cpfaff/lusty.git'
 NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/unite-build.git'
@@ -67,11 +62,12 @@ NeoBundle 'vim-scripts/sessionman.vim.git'
 NeoBundle 'Lokaltog/vim-powerline.git'
 
 NeoBundle 'altercation/vim-colors-solarized.git'
-
 NeoBundle 'ervandew/screen.git'
 
 " Other useful bundles
 
+" NeoBundle 'vim-scripts/LustyJuggler.git'  
+" NeoBundle 'cpfaff/lusty.git'
 " NeoBundle 'vim-scripts/peaksea.git'
 " NeoBundle 'benmills/vimux'
 " NeoBundle 'jgdavey/vim-turbux.git'
