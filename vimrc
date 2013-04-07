@@ -333,7 +333,7 @@
                nnoremap [buffer_key] <Nop>
                nmap <leader>b [buffer_key]
 
-               noremap [buffer_key] :LustyJuggler<CR>
+               " noremap [buffer_key] :LustyJuggler<CR>
                noremap [buffer_key]n :tabnew<CR>
                noremap [buffer_key]d :bd!<CR>
                noremap [buffer_key]o :tabonly<CR>
@@ -419,11 +419,10 @@
                nnoremap [unite_key] <Nop>
                nmap <leader>f [unite_key]
               
-               " nnoremap <silent> [unite_key]c :<C-u>Unite -buffer-name=files file_rec/async<CR>
-               " nnoremap <silent> [unite_key]g :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
-               nnoremap <silent> [unite_key]c :<C-u>Unite -buffer-name=files file_rec<CR>
-               nnoremap <silent> [unite_key]g :<C-u>Unite -buffer-name=files file_rec:!<CR>
+               nnoremap <silent> [unite_key]c :<C-u>Unite -buffer-name=files file_rec/async<CR>
+               nnoremap <silent> [unite_key]g :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
                nnoremap <silent> [unite_key]r :<C-u>Unite -buffer-name=files file_mru<CR>
+               nnoremap <silent> [buffer_key] :<C-u>Unite -buffer-name=buffers buffer -quick-match<CR>  
                nnoremap <silent> [unite_key]f :<C-u>Unite -buffer-name=sources source<CR>
 
             "}}}
@@ -698,7 +697,7 @@
       " }}}
 
       " (l)usty juggler {{{
-         let g:LustyJugglerDefaultMappings = 0
+         " let g:LustyJugglerDefaultMappings = 0
       " }}}
 
       " (n)eocomplcache and neosnippet {{{ 
@@ -717,7 +716,7 @@
          let g:neocomplcache_enable_auto_select = 1
         
          " Compatibility setting for LustyJuggler
-         let g:neosnippet#disable_select_mode_mappings = 0
+         " let g:neosnippet#disable_select_mode_mappings = 0
 
          let g:neosnippet#snippets_directory='~/.vim/snippets/'
 
@@ -810,8 +809,6 @@
          let g:unite_cursor_line_highlight = 'TabLineSel'
          let g:unite_abbr_highlight = 'TabLine'
          let g:unite_split_rule='belowright'     
-         
-         " For optimize.
          let g:unite_source_file_mru_filename_format = ''
 
          " For ack.
@@ -821,11 +818,10 @@
             let g:unite_source_grep_recursive_opt = ''
          endif
 
+         " Overwrite settings of unite window 
          autocmd FileType unite call s:unite_my_settings()
          
          function! s:unite_my_settings()
-            " Overwrite settings of unite window 
-
             nmap <buffer> <ESC>      <Plug>(unite_exit)
             nmap <buffer> <SPACE>   <Plug>(unite_redraw)
             imap <buffer>  kj      <Plug>(unite_insert_leave)

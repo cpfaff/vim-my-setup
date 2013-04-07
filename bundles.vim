@@ -23,7 +23,8 @@ NeoBundle 'Shougo/vimproc.git', {
          \    },
          \ }
 
-NeoBundle 'vim-scripts/LustyJuggler.git'
+" NeoBundle 'vim-scripts/LustyJuggler.git'  
+" NeoBundle 'cpfaff/lusty.git'
 NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/unite-build.git'
