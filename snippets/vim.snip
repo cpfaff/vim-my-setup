@@ -1,9 +1,8 @@
 # File: vim.snip 
 # Author: Claas-Thido Pfaff
-# Description: This are my vim filetype snippets
 # License: Creative Commons (ccbysa)
 # Created at: Oktober 30, 2012
-
+   
 snippet     neobundle
 alias       neob
 abbr        [NeoBundle]['id']
@@ -22,7 +21,7 @@ prev_word   '^'
 snippet     ifex
 abbr        [if][exists][endif]
 prev_word   '^'
-	if exists(${1:check})
-		finish
-	endif
-	let $1 = ${3} 
+   if exists(${1:check})
+      finish
+   endif
+   let $1 = ${3} 
