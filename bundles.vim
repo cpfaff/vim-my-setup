@@ -62,10 +62,10 @@ NeoBundle 'vim-scripts/sessionman.vim.git'
 NeoBundle 'Lokaltog/vim-powerline.git'
 
 NeoBundle 'altercation/vim-colors-solarized.git'
+NeoBundle 'ervandew/screen.git'
 
 " Other useful bundles
 
-" NeoBundle 'ervandew/screen.git'
 " NeoBundle 'vim-scripts/LustyJuggler.git'  
 " NeoBundle 'cpfaff/lusty.git'
 " NeoBundle 'vim-scripts/peaksea.git'
