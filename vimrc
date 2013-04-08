@@ -34,7 +34,7 @@
 
       " Save all files in one place
       set nobackup
-      " set backupdir=~/.vim/tmp  
+      set backupdir=~/.vim/tmp  
       set directory=~/.vim/tmp 
       set tags=~/.vim/tmp/
       
@@ -97,14 +97,14 @@
       " colorscheme peaksea
 
       " use spaces instead of tabs
-      set expandtab
+      " set expandtab
 
       " Be smart when using tabs 
-      set smarttab
+      " set smarttab
 
       " 1 tab == 3 spaces
-      set shiftwidth=3
-      set tabstop=3
+      " set shiftwidth=3
+      " set tabstop=3
 
       " wrap and linebreak
       set wrap 
@@ -166,7 +166,7 @@
       set pastetoggle=<F3>
 
       " Autoresize active windows
-      set winheight=31
+      " set winheight=31
 
       " Concealment behaviour (e.g LaTeX)
       set conceallevel=0
@@ -290,38 +290,32 @@
             "  - <leader>a,    align by  ,
            
                nnoremap [n_align_key] <Nop>
-               nmap <leader>a [n_align_key]
+               nmap <silent><leader>a [n_align_key]
 
                vnoremap [v_align_key] <Nop>
-               vmap <leader>a [v_align_key]
+               vmap <silent><leader>a [v_align_key]
                
-               nnoremap [n_align_key]= :Tabularize /=<CR>
-               vnoremap [v_align_key]= :Tabularize /=<CR>
+               nnoremap [n_align_key]= :<C-u>Tabularize /=<CR>
+               vnoremap [v_align_key]= :<C-u>Tabularize /=<CR>
                
-               nnoremap [n_align_key]a :Tabularize /&<CR>
-               vnoremap [v_align_key]a :Tabularize /&<CR>
+               nnoremap [n_align_key]a :<C-u>Tabularize /&<CR>
+               vnoremap [v_align_key]a :<C-u>Tabularize /&<CR>
            
-               nnoremap [n_align_key]: :Tabularize /:<CR>
-               vnoremap [v_align_key]: :Tabularize /:<CR>
+               nnoremap [n_align_key]: :<C-u>Tabularize /:<CR>
+               vnoremap [v_align_key]: :<C-u>Tabularize /:<CR>
                
-               nnoremap [n_align_key]:: :Tabularize /:\zs<CR>
-               vnoremap [v_align_key]:: :Tabularize /:\zs<CR>
+               nnoremap [n_align_key]:: <C-u>:Tabularize /:\zs<CR>
+               vnoremap [v_align_key]:: <C-u>:Tabularize /:\zs<CR>
                
-               nnoremap [n_align_key], :Tabularize /,<CR>
-               vnoremap [v_align_key], :Tabularize /,<CR>
+               nnoremap [n_align_key], :<C-u>Tabularize /,<CR>
+               vnoremap [v_align_key], :<C-u>Tabularize /,<CR>
             "}}}
 
             " (b)uffer handling {{{
             
             " Description:
             "
-            " This mappings handle buffers. A fast buffer switch is
-            " realized with the LustyJuggler plugin. You can switch betwenn buffers
-            " with the combination <leader>b which opens up LustyJuggler. Then
-            " you can switch to the buffer you like with a key of the homerow of
-            " your keyboard, starting with "a" for the first buffer, "s" for the second
-            " buffer and so on. One tap on a key highlights the corresponding buffer as 
-            " selected, a second key stroke switches to that buffer. 
+            " All buffer related mappings 
             " 
             " Mappings:
             " 
@@ -330,12 +324,11 @@
             "  - [buffer_key]o   closes all but the active buffer 
 
                nnoremap [buffer_key] <Nop>
-               nmap <leader>b [buffer_key]
-
-               " noremap [buffer_key] :LustyJuggler<CR>
-               noremap [buffer_key]n :tabnew<CR>
-               noremap [buffer_key]d :bd!<CR>
-               noremap [buffer_key]o :tabonly<CR>
+               nmap <silent><leader>b [buffer_key]
+               
+               noremap [buffer_key]d :<C-u>bd!<CR>
+               noremap [buffer_key]n :<C-u>tabnew<CR>
+               noremap [buffer_key]o :<C-u>tabonly<CR>
             " }}}
 
             " (c)omment handling {{{
@@ -350,15 +343,15 @@
             " Mappings:
             "
             " - [comment_key]    toggles comments 
-            " - [comment_key]y   yank text then comment out 
             " - [comment_key]a   change to alternative delimiter set 
+            " - [comment_key]y   yank text then comment out 
 
                nnoremap [comment_key] <nop>
-               map <leader>c [comment_key]
+               map <silent><leader>c [comment_key]
                
                map [comment_key] <plug>NERDCommenterToggle
-               map [comment_key]y <plug>NERDCommenterYank
                map [comment_key]a <plug>NERDCommenterAltDelims
+               map [comment_key]y <plug>NERDCommenterYank
             " }}}
 
             " (d)ump and load sessions {{{
@@ -375,13 +368,13 @@
             " - [dump_key]s   to save a session
            
                nnoremap [dump_key] <Nop>
-               nmap <leader>d [dump_key]
+               nmap <silent><leader>d [dump_key]
 
-               nnoremap [dump_key]s :SessionSave<CR>
-               nnoremap [dump_key]l :SessionList<CR>
+               nnoremap [dump_key]l :<C-u>SessionList<CR>
+               nnoremap [dump_key]s :<C-u>SessionSave<CR>
             " }}}
 
-            " (e)dit config files {{{
+            " (e)dit config and snippet files {{{
             
             " Description:
             "
@@ -390,39 +383,42 @@
             "
             " Mappings:
             "
+            " - [edit_key]r   edit the neosnippet builtin snippets for [filetype] 
+            " - [edit_key]s   edit your personal snippet file for [filetype]
             " - [edit_key]v   edit the vimrc file in vertical split
-            " - [edit_key]r   edit the neosnippet runtime snippets for [filetype] 
-            " - [edit_key]s   edit your personal snippet for [filetype]
             
                nnoremap [edit_key] <Nop>
-               nmap <leader>e [edit_key]
+               nmap <silent><leader>e [edit_key]
                
-               nnoremap [edit_key]v :vsplit $MYVIMRC<cr>
-               nnoremap [edit_key]r :NeoSnippetEdit -runtime<CR>
-               nnoremap [edit_key]s :NeoSnippetEdit<CR>
+               nnoremap [edit_key]r :<C-u>NeoSnippetEdit -runtime<CR>
+               nnoremap [edit_key]s :<C-u>NeoSnippetEdit<CR>
+               nnoremap [edit_key]v :<C-u>vsplit $MYVIMRC<cr>
             " }}}
 
             " (f)ind files, buffers etc. and do (unite) {{{
 
             " Description:
             "
-            " This are the mappings use the unite plug-in to search in files,
-            " buffers etc. 
-            "
+            " Mappings based on the unite vim plugin to find files and buffers
+            " as sources to pick from. 
+            " 
             " Mappings:
             "
+            " - [unite_key]b  show open buffers (buffer swither)   
             " - [unite_key]c  open files recursively starting from current directory
-            " - [unite_key]r  open recently used files   
-            " - [unite_key]f  open unite with sources overview to chose from actions
+            " - [unite_key]f  open unite vim in sources overview
+            " - [unite_key]g  open files recursively starting from the root of
+            "                 a project folder (e.g. git repository)
+            " - [unite_key]r  open a list of recently used files   
                
                nnoremap [unite_key] <Nop>
-               nmap <leader>f [unite_key]
+               nmap <silent><leader>f [unite_key]
               
-               nnoremap <silent> [unite_key]c :<C-u>Unite -buffer-name=files file_rec/async<CR>
-               nnoremap <silent> [unite_key]g :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
-               nnoremap <silent> [unite_key]r :<C-u>Unite -buffer-name=files file_mru<CR>
-               nnoremap <silent> [unite_key]b :<C-u>Unite -buffer-name=buffers buffer -quick-match<CR>
-               nnoremap <silent> [unite_key]f :<C-u>Unite -buffer-name=sources source<CR>
+               nnoremap [unite_key]b :<C-u>Unite -buffer-name=buffers buffer -quick-match<CR>
+               nnoremap [unite_key]c :<C-u>Unite -buffer-name=files file_rec/async<CR>
+               nnoremap [unite_key]f :<C-u>Unite -buffer-name=sources source<CR>
+               nnoremap [unite_key]g :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
+               nnoremap [unite_key]r :<C-u>Unite -buffer-name=files file_mru<CR>
 
             "}}}
 
@@ -430,29 +426,29 @@
 
             " Description:
             "
-            " This mappings cover common git tasks with the help of the Vim
+            " This mappings cover common git tasks via the Vim
             " plug-in fugitive.
             "
             " Mappings:
             "
-            " - [git_key]s   open the interactive git status window            
-            " - [git_key]d   opens a git diff in split view of the file  
-            " - [git_key]c   commit your changes
             " - [git_key]b   open a git blame in split view        
+            " - [git_key]c   commit your changes
+            " - [git_key]d   opens a git diff in split view of the file  
             " - [git_key]l   show a git log         
-            " - [git_key]p   push to your remote repository        
             " - [git_key]o   only to close all but the active diff split        
+            " - [git_key]p   push to your remote repository        
+            " - [git_key]s   open the interactive git status window            
             
                nnoremap [git_key] <Nop>
-               nmap <silent> <leader>g [git_key]
+               nmap <silent><leader>g [git_key]
 
-               nnoremap [git_key]s :Gstatus<CR><C-w>15+
-               nnoremap [git_key]d :Gdiff<CR>
-               nnoremap [git_key]c :Gcommit<CR>
-               nnoremap [git_key]b :Gblame<CR>
-               nnoremap [git_key]l :Glog<CR>
-               nnoremap [git_key]p :Git push<CR><CR>
-               nnoremap [git_key]o :only<CR><CR>
+               nnoremap [git_key]b :<C-u>Gblame<CR>
+               nnoremap [git_key]c :<C-u>Gcommit<CR>
+               nnoremap [git_key]d :<C-u>Gdiff<CR>
+               nnoremap [git_key]l :<C-u>Glog<CR>
+               nnoremap [git_key]o :<C-u>only<CR><CR>
+               nnoremap [git_key]p :<C-u>Git push<CR><CR>
+               nnoremap [git_key]s :<C-u>Gstatus<CR><C-w>15+
             " }}}
 
             " (m)ake call a task {{{
@@ -479,10 +475,10 @@
             "                needs.
 
                nnoremap [make_key] <Nop>
-               nmap <silent> <leader>m [make_key]
+               nmap <silent><leader>m [make_key]
 
-               nnoremap [make_key]  :Unite -input=error build <CR>
-               nnoremap [make_key]s :Unite -no-empty build:make:showpdf <CR>
+               nnoremap [make_key]  :<C-u>Unite -input=error build<CR>
+               nnoremap [make_key]s :<C-u>Unite -no-empty build:make:showpdf<CR>
             " }}}
             
             " (q)quit fast {{{
@@ -496,9 +492,9 @@
             " [quit_key] close your document.
             "
                nnoremap [quit_key] <Nop>
-               nmap <leader>q [quit_key]
+               nmap <silent><leader>q [quit_key]
 
-               nnoremap [quit_key] :q!<CR>
+               nnoremap [quit_key] :<C-u>q!<CR>
             " }}}
 
             " (r)eplace search visual selection {{{ 
@@ -512,6 +508,13 @@
             " - [replace_key]    Works in vizual mode and replaces the current
             "                    marked text by a replacement defined by you.
             "
+            " - [replace_key]a   You can mark text in vizual mode and then call
+            "                    this mapping. Does a quickfixdo which opens all the files
+            "                    whith the occurence of the string you grepped
+            "                    for in the quickfix window. It changes all
+            "                    strings to a string defined by you and saves the
+            "                    files. 
+            "
             " - [replace_key]s   Is also a vizal mode mapping and Calls grep (ack) from current direcotry
             "                    recursive on its contents to find the currently
             "                    marked text. The results end up in a quickfix
@@ -520,19 +523,12 @@
             "                    can combine it with the next command for
             "                    replacment.
             "
-            " - [replace_key]a   You can mark text in vizual mode and then call
-            "                    this mapping. Does a quickfixdo which opens all the files
-            "                    whith the occurence of the string you grepped
-            "                    for in the quickfix window. It changes all
-            "                    strings to a string defined by you and saves the
-            "                    files.
-            
                vnoremap [replace_key] <Nop>
-               vmap <silent> <leader>r [replace_key]
+               vmap <silent><leader>r [replace_key]
 
                vnoremap [replace_key] :call VisualSelection('replace')<CR>
-               vnoremap [replace_key]s :call VisualSelection('acksearch')<CR>
                vnoremap [replace_key]a :call VisualSelection('quickfixdo')<CR> 
+               vnoremap [replace_key]s :call VisualSelection('acksearch')<CR>
             " }}}
 
             " (s)pellchecking {{{
@@ -561,9 +557,9 @@
             "                    misspelled word.
                
                nnoremap [spell_key] <Nop>
-               nmap <leader>s [spell_key]
+               nmap <silent><leader>s [spell_key]
 
-               noremap [spell_key]s :setlocal spell!<CR>
+               noremap [spell_key]s :<C-u>setlocal spell!<CR>
                noremap [spell_key]n ]s
                noremap [spell_key]p [s
                noremap [spell_key]g zg
@@ -582,33 +578,36 @@
             " 
             " Mappings:
             " 
-            " - [toggle_key]     opens a tagbar on the left side of a screen. In
-            "                 this window you can navigate beween the functions
-            "                 in your sourcecode. 
-            
+            " - [toggle_key]t  Opens a tagbar on the left side of a screen. In
+            "                  this window you can navigate beween the functions
+            "                  in your sourcecode. 
+            " 
+            " - [toggle_key]f  Opens a file manager on the left side of the
+            "                  screen (VimFiler) 
+            "
                nnoremap [toggle_key] <Nop>
-               nmap <silent> <leader>t  [toggle_key]
+               nmap <silent><leader>t  [toggle_key]
 
-               nnoremap [toggle_key]t :TagbarToggle<CR>
-               nnoremap [toggle_key]f :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
+               nnoremap [toggle_key]t :<C-u>TagbarToggle<CR>
+               nnoremap [toggle_key]f :<C-u>VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
             "}}}
 
             " (v)izualize {{{
 
             " Description:
             "
-            " This mappings help to vizualize tabs and other invisivle
+            " This mappings help to vizualize tabs and other usually invisible
             " characters. Especially the tab vizualization is very helpful in 
-            " checking the indent of code. 
+            " checking the indent of code for files that are tab indented. 
             "  
             " Mappings:
             " 
             " - [vizualize_key]     Vizualizes the indent with guide lines. 
                
                nnoremap [vizualize_key] <Nop>
-               nmap <Leader>v  [vizualize_key]
+               nmap <silent><Leader>v  [vizualize_key]
 
-               nnoremap [vizualize_key] :IndentGuidesToggle <BAR> set list! <CR> 
+               nnoremap [vizualize_key] :<C-u>IndentGuidesToggle <BAR> set list! <CR> 
 
             "}}}
 
@@ -616,7 +615,7 @@
     
             " Description:
             "
-            " This mappings help to write and to write and quit fast.
+            " This mappings help to write and to write and quit buffer fast.
             "  
             " Mappings:
             " 
@@ -625,10 +624,10 @@
             " - [write_key]q     Write document and then quit Vim.
             
                nnoremap [write_key] <Nop>
-               nmap <Leader>w  [write_key]
+               nmap <silent><Leader>w  [write_key]
 
-               nnoremap [write_key] :w!<CR>
-               nnoremap [write_key]q :wq!<CR>
+               nnoremap [write_key] :<C-u>w!<CR>
+               nnoremap [write_key]q :<C-u>wq!<CR>
             "}}}
 
             " (x)ecute a shell with interpreter {{{
@@ -672,10 +671,10 @@
             "                   can simply paste it by pressing 'p' in normal mode.
 
                nnoremap [yank_key] <Nop>
-               nmap <silent> <leader>y [yank_key]
+               nmap <silent><leader>y [yank_key]
 
-               nnoremap [yank_key]y :YRShow<CR>
-               nnoremap [yank_key]s :YRPush '+'<CR>
+               nnoremap [yank_key]y :<C-u>YRShow<CR>
+               nnoremap [yank_key]s :<C-u>YRPush '+'<CR>
             " }}}
 
       "}}}
@@ -821,9 +820,9 @@
          autocmd FileType unite call s:unite_my_settings()
          
          function! s:unite_my_settings()
-            nmap <buffer> <ESC>      <Plug>(unite_exit)
-            nmap <buffer> <SPACE>   <Plug>(unite_redraw)
-            imap <buffer>  kj      <Plug>(unite_insert_leave)
+            nmap <buffer> <ESC>   <Plug>(unite_exit)
+            nmap <buffer> <SPACE> <Plug>(unite_redraw)
+            imap <buffer> kj      <Plug>(unite_insert_leave)
             imap <buffer> <TAB>   <Plug>(unite_select_next_line)
 
             nnoremap <silent><buffer><expr> l
@@ -945,7 +944,7 @@
       " Returns PASTE MODE if paste mode is enabled
        function! HasPaste()
           if &paste
-             return 'PASTE MODE  '
+             return 'PASTE MODE '
           en
           return ''
        endfunction
