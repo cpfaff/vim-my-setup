@@ -804,12 +804,12 @@
       " (u)nite vim {{{
          let g:unite_enable_start_insert = 1
          let g:unite_source_file_mru_limit = 200
-         let g:unite_cursor_line_highlight = 'TabLineSel'
+         " let g:unite_cursor_line_highlight = 'TabLineSel'
          let g:unite_abbr_highlight = 'TabLine'
          let g:unite_split_rule='belowright'     
          let g:unite_source_file_mru_filename_format = ''
 
-         " For ack.
+         " For ack grep.
          if executable('ack-grep')
             let g:unite_source_grep_command = 'ack-grep'
             let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
@@ -820,21 +820,19 @@
          autocmd FileType unite call s:unite_my_settings()
          
          function! s:unite_my_settings()
-            nmap <buffer> <ESC>   <Plug>(unite_exit)
-            nmap <buffer> <SPACE> <Plug>(unite_redraw)
             imap <buffer> kj      <Plug>(unite_insert_leave)
-            imap <buffer> <TAB>   <Plug>(unite_select_next_line)
-
-            nnoremap <silent><buffer><expr> l
-                     \ unite#smart_map('l', unite#do_action('default'))
             
             let unite = unite#get_current_unite()
 
-            if unite.buffer_name =~# '^search'
-               nnoremap <silent><buffer><expr> r     unite#do_action('replace')
-            else
-               nnoremap <silent><buffer><expr> r     unite#do_action('rename')
-            endif
+            " nmap <buffer> <SPACE> <Plug>(unite_redraw)
+            " imap <buffer> <TAB>   <Plug>(unite_select_next_line)
+            " nnoremap <silent><buffer><expr> l
+                     " \ unite#smart_map('l', unite#do_action('default'))
+            " if unite.buffer_name =~# '^search'
+               " nnoremap <silent><buffer><expr> r     unite#do_action('replace')
+            " else
+               " nnoremap <silent><buffer><expr> r     unite#do_action('rename')
+            " endif
          endfunction
 
       " }}}

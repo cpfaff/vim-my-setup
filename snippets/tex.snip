@@ -8,4 +8,16 @@ abbr        fold
 options     head
    % {{{
        ${1:TARGET}
-   % }}}
+   % }}} 
+
+snippet     frame
+abbr        frame
+options     indent
+   \begin{frame}
+      \frametitle{${1:Frametitle}}  
+   \end{frame} 
+
+snippet     item
+abbr        item
+options     indent
+   \item ${1:text} 

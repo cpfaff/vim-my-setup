@@ -67,7 +67,6 @@ NeoBundle 'ervandew/screen.git'
 " Other useful bundles
 
 " NeoBundle 'vim-scripts/LustyJuggler.git'  
-" NeoBundle 'cpfaff/lusty.git'
 " NeoBundle 'vim-scripts/peaksea.git'
 " NeoBundle 'benmills/vimux'
 " NeoBundle 'jgdavey/vim-turbux.git'
