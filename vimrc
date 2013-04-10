@@ -815,13 +815,16 @@
          endif
 
          " Overwrite settings of unite window 
-         autocmd FileType unite call s:unite_my_settings()
+         autocmd FileType unite call s:unite_my_settings() 
+
          
          function! s:unite_my_settings()
+            
+            imap <buffer> kj <Plug>(unite_insert_leave)
+            nmap <buffer><leader>bd <Plug>(unite_exit)
+            
             let unite = unite#get_current_unite() 
-            imap <buffer> kj <Plug>(unite_insert_leave) 
-            nmap <buffer> [buffer_key]d <Plug>(unite_exit)
-         endfunction    
+         endfunction   
       " }}}
 
       " (v)imshell {{{
