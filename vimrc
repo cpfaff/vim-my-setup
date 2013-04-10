@@ -414,7 +414,8 @@
                nnoremap [unite_key] <Nop>
                nmap <silent><leader>f [unite_key]
               
-               nnoremap [unite_key]b :<C-u>Unite -buffer-name=buffers buffer -quick-match<CR>
+               nnoremap [buffer_key] :<C-u>Unite -buffer-name=buffers buffer -quick-match<CR>
+ 
                nnoremap [unite_key]c :<C-u>Unite -buffer-name=files file_rec/async<CR>
                nnoremap [unite_key]f :<C-u>Unite -buffer-name=sources source<CR>
                nnoremap [unite_key]g :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
@@ -652,7 +653,8 @@
                " nnoremap [execute_key]b :ConqueTermSplit bash<CR>
                " nnoremap [execute_key]r :ConqueTermSplit R<CR>
                " nnoremap [execute_key]c :ConqueTermSplit rails console<CR>
-            "}}}
+            "}}} 
+
             " (y)ank and paste management (Yankring) {{{
             
             " Description:

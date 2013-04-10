@@ -1,25 +1,22 @@
-"""""""""""""""""""""""""""""""""""""""
-" Vim-Bundles 
-"""""""""""""""""""""""""""""""""""""""
+" =================================================== 
+" Bundle list
+" ===================================================
 
-" No vi compatibility 
 set nocompatible
 
-" Setup for neobundle package manager
 if has('vim_starting')
    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 
-" Load bundles 
-NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundleFetch 'Shougo/neobundle.vim' 
+
 NeoBundle 'Shougo/vimproc.git', {
          \ 'build' : {
          \     'unix' : 'make -f make_unix.mak',
          \    },
          \ }
-
 NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/unite-build.git'
@@ -63,10 +60,9 @@ NeoBundle 'Lokaltog/vim-powerline.git'
 
 NeoBundle 'altercation/vim-colors-solarized.git'
 NeoBundle 'ervandew/screen.git'
+NeoBundle 'vim-scripts/LustyJuggler.git'  
 
 " Other useful bundles
-
-" NeoBundle 'vim-scripts/LustyJuggler.git'  
 " NeoBundle 'vim-scripts/peaksea.git'
 " NeoBundle 'benmills/vimux'
 " NeoBundle 'jgdavey/vim-turbux.git'
