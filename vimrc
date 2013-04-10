@@ -255,7 +255,7 @@
             nnoremap <A-h> <<
             vnoremap <A-l> >gv
             vnoremap <A-h> <gv
-
+ 
             " Necomplcache and neosnippet mappings
             imap <C-k> <Plug>(neosnippet_expand)
             smap <C-k> <Plug>(neosnippet_expand)
@@ -267,7 +267,7 @@
             inoremap <expr><C-l> neocomplcache#complete_common_string()
             inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
             inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-            
+         
          "}}}
 
       "}}}
@@ -653,7 +653,6 @@
                " nnoremap [execute_key]r :ConqueTermSplit R<CR>
                " nnoremap [execute_key]c :ConqueTermSplit rails console<CR>
             "}}}
-
             " (y)ank and paste management (Yankring) {{{
             
             " Description:
@@ -699,8 +698,6 @@
       " }}}
 
       " (n)eocomplcache and neosnippet {{{ 
-         
-         " Set options
          let g:neocomplcache_enable_at_startup = 1
          let g:neocomplcache_temporary_dir = '~/.vim/tmp/'
          let g:neocomplcache_enable_camel_case_completion = 1
@@ -776,7 +773,6 @@
          let vimrplugin_screenvsplit = 1
          let ScreenImpl = 'Tmux'
          let vimrplugin_screenvsplit = 0
-         " let vimrplugin_ca_ck = 0
          let vimrplugin_assign = 0
       " }}}
 
@@ -804,7 +800,7 @@
       " (u)nite vim {{{
          let g:unite_enable_start_insert = 1
          let g:unite_source_file_mru_limit = 200
-         " let g:unite_cursor_line_highlight = 'TabLineSel'
+         let g:unite_cursor_line_highlight = 'TabLineSel'
          let g:unite_abbr_highlight = 'TabLine'
          let g:unite_split_rule='belowright'     
          let g:unite_source_file_mru_filename_format = ''
@@ -820,21 +816,10 @@
          autocmd FileType unite call s:unite_my_settings()
          
          function! s:unite_my_settings()
-            imap <buffer> kj      <Plug>(unite_insert_leave)
-            
-            let unite = unite#get_current_unite()
-
-            " nmap <buffer> <SPACE> <Plug>(unite_redraw)
-            " imap <buffer> <TAB>   <Plug>(unite_select_next_line)
-            " nnoremap <silent><buffer><expr> l
-                     " \ unite#smart_map('l', unite#do_action('default'))
-            " if unite.buffer_name =~# '^search'
-               " nnoremap <silent><buffer><expr> r     unite#do_action('replace')
-            " else
-               " nnoremap <silent><buffer><expr> r     unite#do_action('rename')
-            " endif
-         endfunction
-
+            let unite = unite#get_current_unite() 
+            imap <buffer> kj <Plug>(unite_insert_leave) 
+            nmap <buffer> [buffer_key]d <Plug>(unite_exit)
+         endfunction    
       " }}}
 
       " (v)imshell {{{
