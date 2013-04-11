@@ -958,7 +958,8 @@
          autocmd BufWrite *.coffee :call DeleteTrailingWS()
          autocmd BufWrite *.rb :call DeleteTrailingWS() 
          autocmd BufWrite *.haml :call DeleteTrailingWS() 
-         autocmd BufWrite *.md :call DeleteTrailingWS() 
+         autocmd BufWrite *.md :call DeleteTrailingWS()  
+         autocmd BufWrite *.R :call DeleteTrailingWS()
       augroup END 
 
       " Tex files
