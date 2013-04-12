@@ -97,14 +97,14 @@
       " colorscheme peaksea
 
       " use spaces instead of tabs
-      " set expandtab
+      set expandtab
 
       " Be smart when using tabs 
-      " set smarttab
+      set smarttab
 
       " 1 tab == 3 spaces
-      " set shiftwidth=3
-      " set tabstop=3
+      set shiftwidth=3
+      set tabstop=3
 
       " wrap and linebreak
       set wrap 
@@ -759,7 +759,8 @@
 
          let g:NERDCustomDelimiters = {
             \ 'snippet': {'left': '#'},
-            \ 'rnoweb' : {'left': '%', 'leftAlt': '#'}
+            \ 'rnoweb' : {'left': '%', 'leftAlt': '#'},
+            \ 'r' : {'left': '#', 'leftAlt': "#'"} 
           \ }
       " }}}
 
