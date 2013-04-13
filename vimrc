@@ -33,8 +33,8 @@
       set tm=500
 
       " Save all files in one place
-      set nobackup
       set backupdir=~/.vim/tmp  
+      set nobackup
       set directory=~/.vim/tmp 
       set tags=~/.vim/tmp/
       
@@ -67,9 +67,6 @@
       set wildmenu
       set wildignore=*tikzDiktionary*
 
-      " Ignore case when searching 
-      set ignorecase
-
       " When searching try to be smart about cases 
       set smartcase
 
@@ -85,37 +82,21 @@
       " For regular expressions turn magic on 
       set magic
 
-      " blink on mathing bracets 
-      set matchtime=2
-
       " Enable better colours in console 
       set t_Co=256
 
       " Set colour scheme
       set background=dark
       colorscheme solarized
-      " colorscheme peaksea
-
-      " use spaces instead of tabs
-      set expandtab
-
-      " Be smart when using tabs 
-      set smarttab
-
-      " 1 tab == 3 spaces
-      set shiftwidth=3
-      set tabstop=3
 
       " wrap and linebreak
       set wrap 
       set linebreak
       set nolist
-      
-      "Auto-indent
-      set autoindent 
-      
-      "Smart-indent
-      set smartindent 
+     
+      " Look for modeline 
+      set modeline
+      set modelines=4
 
       " set text format program to par with 80 col width
       " This option requires par to be installed.
@@ -155,7 +136,6 @@
       endif
 
       " Folding options
-      " set nofoldenable
       set foldmethod=marker
       set foldnestmax=10
 
@@ -262,7 +242,7 @@
             xmap <C-k> <Plug>(neosnippet_start_unite_snippet_target)
             imap <C-j> <Plug>(neosnippet_jump)
             smap <C-j> <Plug>(neosnippet_jump)
-            
+ 
             inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
             inoremap <expr><C-l> neocomplcache#complete_common_string()
             inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -631,30 +611,6 @@
                nnoremap [write_key]q :<C-u>wq!<CR>
             "}}}
 
-            " (x)ecute a shell with interpreter {{{
-    
-            " Description:
-            "
-            " The mappings around the letter x are thought to execute 
-            " shells with a certain interpreter.
-            "  
-            " Mappings:
-            " 
-            " todo: rework this mappings
-            
-               " nnoremap [execute_key] <Nop>
-               " nmap <Leader>x  [execute_key]
-               
-               " Send to shell
-               " nnoremap [execute_key]s :VimShellSendString<CR> 
-               " vnoremap [execute_key]s :VimShellSendString<CR>
-             
-               " Start shell or shell with interpreter
-               " nnoremap [execute_key]b :ConqueTermSplit bash<CR>
-               " nnoremap [execute_key]r :ConqueTermSplit R<CR>
-               " nnoremap [execute_key]c :ConqueTermSplit rails console<CR>
-            "}}} 
-
             " (y)ank and paste management (Yankring) {{{
             
             " Description:
@@ -684,21 +640,6 @@
 
    " Plugin configuration {{{
 
-      " (c)onque term {{{
-         " let g:ConqueTerm_CWInsert = 1
-         " let g:ConqueTerm_FastMode = 1
-         " let g:ConqueTerm_ReadUnfocused = 1
-         
-         " let g:ConqueTerm_TERM = 'xterm'
-         " let g:ConqueTerm_ExecFileKey = '<nop>'
-         " let g:ConqueTerm_SendFileKey = '<nop>'
-         " let g:ConqueTerm_SendVisKey = '<nop>' 
-      " }}}
-
-      " (l)usty juggler {{{
-         " let g:LustyJugglerDefaultMappings = 0
-      " }}}
-
       " (n)eocomplcache and neosnippet {{{ 
          let g:neocomplcache_enable_at_startup = 1
          let g:neocomplcache_temporary_dir = '~/.vim/tmp/'
@@ -712,9 +653,6 @@
          let g:neocomplcache_force_overwrite_completefunc = 1
          let g:neocomplcache_enable_auto_select = 1
         
-         " Compatibility setting for LustyJuggler
-         " let g:neosnippet#disable_select_mode_mappings = 0
-
          let g:neosnippet#snippets_directory='~/.vim/snippets/'
 
          " Define keyword.
@@ -817,7 +755,6 @@
 
          " Overwrite settings of unite window 
          autocmd FileType unite call s:unite_my_settings() 
-
          
          function! s:unite_my_settings()
             
@@ -927,15 +864,6 @@
           endif
           let @/ = l:pattern
           let @" = l:saved_reg
-       endfunction
-      "
-
-      " Returns PASTE MODE if paste mode is enabled
-       function! HasPaste()
-          if &paste
-             return 'PASTE MODE '
-          en
-          return ''
        endfunction
       "
 
