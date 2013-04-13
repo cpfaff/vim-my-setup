@@ -765,43 +765,6 @@
          endfunction   
       " }}}
 
-      " (v)imshell {{{
-         " Global options
-         " let g:vimshell_split_command='belowright split' 
-         " let g:vimshell_no_default_keymappings=1
-         " let g:vimshell_temporary_directory='~/.vim/tmp/'
-
-         " Buffer specific remapping
-         
-         " For all vimshells 
-         " autocmd FileType int-* call s:vimshell_all_my_settings()
-         " function! s:vimshell_all_my_settings()
-            " imap <buffer> <CR> <Plug>(vimshell_int_execute_line)
-
-            " nmap <buffer> <up>	<Plug>(vimshell_int_previous_prompt)
-            " nmap <buffer> <down>	<Plug>(vimshell_int_next_prompt)
-            " nmap <buffer> <CR> 	<Plug>(vimshell_int_execute_line)
-            " nmap <buffer> <C-y>	<Plug>(vimshell_int_paste_prompt)
-            " nmap <buffer> <C-z>	<Plug>(vimshell_int_restart_command)
-            " nmap <buffer> <C-c>	<Plug>(vimshell_int_interrupt)
-            " nmap <buffer> q	 <Plug>(vimshell_int_exit)
-            " nmap <buffer> cc	 <Plug>(vimshell_int_change_line)
-            " nmap <buffer> dd	 <Plug>(vimshell_int_delete_line)
-            " nmap <buffer> I	 <Plug>(vimshell_int_insert_head)
-            " nmap <buffer> A	 <Plug>(vimshell_int_append_end)
-            " nmap <buffer> i	 <Plug>(vimshell_int_insert_enter)
-            " nmap <buffer> a	 <Plug>(vimshell_int_append_enter)
-            " nmap <buffer> <C-l>	<Plug>(vimshell_int_clear)
-         " endfunction
-
-         " This can be done to have interpreter specific mappings
-         "autocmd FileType int-R call s:vimshell_R_my_settings()
-         "function! s:vimshell_R_my_settings()
-            "imap <buffer> <CR> <Plug>(vimshell_int_execute_line)
-         "endfunction
-         
-      "}}}
-
       " (v)imfiler plugin {{{
          let g:vimfiler_as_default_explorer = 1
          " let g:vimfiler_no_default_key_mappings = 1

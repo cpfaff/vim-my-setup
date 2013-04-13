@@ -23,7 +23,6 @@ NeoBundle 'Shougo/unite-build.git'
 NeoBundle 'Shougo/vimfiler.git'
 NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'Shougo/unite-outline.git'
-" NeoBundle 'Shougo/vimshell.git'
 
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tpope/vim-rails.git'
@@ -66,6 +65,7 @@ NeoBundle 'jamiebikies/greplace.vim.git'
 
 " Other useful bundles
 " NeoBundle 'vim-scripts/peaksea.git'
+" NeoBundle 'Shougo/vimshell.git'
 " NeoBundle 'benmills/vimux'
 " NeoBundle 'jgdavey/vim-turbux.git'
 " NeoBundle 'guns/xterm-color-table.vim.git'
