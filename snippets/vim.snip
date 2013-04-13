@@ -1,17 +1,15 @@
 # File: vim.snip 
 # Author: Claas-Thido Pfaff
-# License: Creative Commons (ccbysa)
-# Created at: Oktober 30, 2012
    
 snippet     neobundle
 alias       neob
 abbr        [NeoBundle]['id']
-prev_word   '^'
+options     head
    NeoBundle '${1:bundle_name}'
 
 snippet     header
 abbr        [fileheader]
-prev_word   '^'
+options     head
    " File: ${1:`expand('%:t')`}
    " Author: ${2:`g:header_author`}
    " Description: ${3}
@@ -20,7 +18,7 @@ prev_word   '^'
 
 snippet     ifex
 abbr        [if][exists][endif]
-prev_word   '^'
+options     head
    if exists(${1:check})
       finish
    endif

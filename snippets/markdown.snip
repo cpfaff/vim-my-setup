@@ -1,33 +1,34 @@
-# Headers
-snippet ===
-abbr    header_one
-	`repeat('=', strlen(getline(line(".") - 1)))`
-	
+snippet  ===
+abbr     header_one 
+options  head
+   `repeat('=', strlen(getline(line(".") - 1)))`
+
    ${1}  
 
-snippet ---
-abbr    header_two
-	`repeat('-', strlen(getline(line(".") - 1)))` 
+snippet  ---
+abbr     header_two 
+options  head
+   `repeat('-', strlen(getline(line(".") - 1)))` 
 
-	${1}
+   ${1}
 
-snippet     codeblock
-alias       cb
-abbr        ```code```
-prev_word   '^'
+snippet	 codeblock
+alias	 cb
+abbr	 ```code``` 
+options  head
    \`\`\`
-   ${1:TARGET}
+      ${1:TARGET}
    \`\`\` 
 
    ${2}
 
-snippet     fullcodeblock
-alias       fcb
-abbr        ```code options```
-prev_word   '^'
+snippet  fullcodeblock
+alias    fcb
+abbr     ```code options```
+options  head
    \`\`\`
-	${1:language} ${2:title} ${3:URL} ${4:link_text}
-	${5:TARGET}
+      ${1:language} ${2:title} ${3:URL} ${4:link_text}
+      ${5:TARGET}
    \`\`\` 
 
    ${6}
