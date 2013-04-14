@@ -67,7 +67,10 @@
       set wildmenu
       set wildignore=*tikzDiktionary*
 
-      " When searching try to be smart about cases 
+      " ignore the case (unite reads this)
+      set ignorecase 
+      
+      " But be smart about cases  
       set smartcase
 
       " Highlight search results 
@@ -100,7 +103,7 @@
 
       " set text format program to par with 80 col width
       " This option requires par to be installed.
-      set formatprg=par\ -w80
+      " set formatprg=par\ -w80
 
       " Specify the behavior of tabs 
       try
@@ -459,7 +462,9 @@
                nmap <silent><leader>m [make_key]
 
                nnoremap [make_key]  :<C-u>Unite -input=error build<CR>
-               nnoremap [make_key]s :<C-u>Unite -no-empty build:make:showpdf<CR>
+               nnoremap [make_key]s :<C-u>Unite -no-empty build:make:showpdf<CR> 
+               nnoremap [make_key]c :<C-u>Unite -no-empty build:make:clean<CR> 
+
             " }}}
             
             " (q)quit fast {{{
@@ -745,6 +750,7 @@
          let g:unite_abbr_highlight = 'TabLine'
          let g:unite_split_rule='belowright'     
          let g:unite_source_file_mru_filename_format = ''
+         let g:unite_enable_ignore_case=1
 
          " For ack grep.
          if executable('ack-grep')
@@ -761,7 +767,8 @@
             imap <buffer> kj <Plug>(unite_insert_leave)
             nmap <buffer><leader>bd <Plug>(unite_exit)
             
-            let unite = unite#get_current_unite() 
+            let unite = unite#get_current_unite()  
+
          endfunction   
       " }}}
 
