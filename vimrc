@@ -675,7 +675,8 @@
             autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
             autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
             autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete 
+            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete  
+            autocmd FileType gitcommit setlocal omnifunc=rhubarb#omnifunc 
          augroup END
 
          " Enable heavy omni completion.
@@ -689,9 +690,9 @@
          let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
          " For snippet_complete marker.
-         if has('conceal')
-            set conceallevel=2 concealcursor=i
-         endif
+         " if has('conceal')
+            " set conceallevel=0 concealcursor=i
+         " endif
 
          let g:header_author = "Claas-Thido Pfaff"
       " }}}

@@ -32,6 +32,7 @@ NeoBundle 'tpope/vim-unimpaired.git'
 NeoBundle 'tpope/vim-markdown.git'
 NeoBundle 'tpope/vim-abolish.git' 
 NeoBundle 'tpope/vim-sleuth.git' 
+NeoBundle 'tpope/vim-rhubarb.git'
 
 NeoBundle 'scrooloose/nerdcommenter.git'
 NeoBundle 'scrooloose/syntastic.git'
