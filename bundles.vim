@@ -24,6 +24,8 @@ NeoBundle 'Shougo/vimfiler.git'
 NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'Shougo/unite-outline.git'
 
+NeoBundle 'kmnk/vim-unite-giti.git'
+
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tpope/vim-rails.git'
 NeoBundle 'tpope/vim-repeat.git'
@@ -34,39 +36,34 @@ NeoBundle 'tpope/vim-abolish.git'
 NeoBundle 'tpope/vim-sleuth.git' 
 NeoBundle 'tpope/vim-rhubarb.git'
 
+NeoBundle 'vim-scripts/CmdlineComplete.git'
+NeoBundle 'vim-scripts/YankRing.vim.git'
+NeoBundle 'vim-scripts/sessionman.vim.git'
+NeoBundle 'vim-scripts/Vim-R-plugin.git'
+NeoBundle 'vim-scripts/tex.vim--Tanzler'
+
 NeoBundle 'scrooloose/nerdcommenter.git'
 NeoBundle 'scrooloose/syntastic.git'
 
-NeoBundle 'vim-scripts/CmdlineComplete.git'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'Lokaltog/vim-powerline.git'
+
 NeoBundle 'godlygeek/tabular.git'
 NeoBundle 'Townk/vim-autoclose.git'
 NeoBundle 'edsono/vim-matchit.git'
 NeoBundle 'majutsushi/tagbar.git'
 NeoBundle 'sukima/xmledit.git'
-NeoBundle 'vim-scripts/YankRing.vim.git'
-
-NeoBundle 'vim-scripts/Vim-R-plugin.git'
-NeoBundle 'vim-scripts/tex.vim--Tanzler'
 NeoBundle 'kchmck/vim-coffee-script'
-
-NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mutewinter/vim-indent-guides'
-
 NeoBundle 'mileszs/ack.vim.git'
 NeoBundle 'tjennings/git-grep-vim.git'
 NeoBundle 'henrik/vim-qargs.git'
-
-NeoBundle 'vim-scripts/sessionman.vim.git'
-NeoBundle 'Lokaltog/vim-powerline.git'
-
 NeoBundle 'altercation/vim-colors-solarized.git'
 NeoBundle 'ervandew/screen.git'
-
 NeoBundle 'jamiebikies/greplace.vim.git'
 
 " Other useful bundles
 " NeoBundle 'vim-scripts/peaksea.git'
-" NeoBundle 'benmills/vimux'
 " NeoBundle 'guns/xterm-color-table.vim.git'
 " NeoBundle 'honza/snipmate-snippets.git'
 " NeoBundle 'Rykka/colorv.vim.git'
