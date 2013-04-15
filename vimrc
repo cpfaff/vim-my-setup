@@ -101,10 +101,6 @@
       set modeline
       set modelines=4
 
-      " set text format program to par with 80 col width
-      " This option requires par to be installed.
-      " set formatprg=par\ -w80
-
       " Specify the behavior of tabs 
       try
         set switchbuf=useopen,usetab,newtab
