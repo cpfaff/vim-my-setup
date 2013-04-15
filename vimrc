@@ -102,11 +102,8 @@
       set modelines=4
 
       " Specify the behavior of tabs 
-      try
-        set switchbuf=useopen,usetab,newtab
-        set showtabline=1
-      catch
-      endtry
+      set switchbuf=useopen,usetab,newtab
+      set showtabline=1
 
       " Scroll options 
       set scrolloff=8   
@@ -122,7 +119,6 @@
       " Set information of status line
       if has('statusline')
          set laststatus=2
-         " in segments
          set statusline=%<%f\ " Filename
          set statusline+=%w%h%m%r " Options
          set statusline+=%{fugitive#statusline()} " Git 
@@ -145,7 +141,7 @@
       set pastetoggle=<F3>
 
       " Autoresize active windows
-      " set winheight=31
+      set winheight=31
 
       " Concealment behaviour (e.g LaTeX)
       set conceallevel=0
@@ -766,7 +762,6 @@
 
       " (v)imfiler plugin {{{
          let g:vimfiler_as_default_explorer = 1
-         " let g:vimfiler_no_default_key_mappings = 1
          let g:vimfiler_tree_leaf_icon = ' '
          let g:vimfiler_safe_mode_by_default = 0
          let g:vimfiler_tree_opened_icon = '▾'
