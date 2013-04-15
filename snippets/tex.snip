@@ -6,4 +6,12 @@ alias    \enquote{text}
 snippet     item
 abbr        item
 options     indent
-   \item ${1:text} 
+   \item ${1:text}  
+
+snippet     frame
+abbr        frame
+options     head
+   \begin{frame}
+      \frametitle{${1:title}}
+   \end{frame} 
+
