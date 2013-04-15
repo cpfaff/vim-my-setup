@@ -140,9 +140,6 @@
       " Toggle paste mode on and off
       set pastetoggle=<F3>
 
-      " Autoresize active windows
-      set winheight=31
-
       " Concealment behaviour (e.g LaTeX)
       set conceallevel=0
       let g:tex_conceal= ''
@@ -848,6 +845,11 @@
          autocmd BufWrite *.R :call DeleteTrailingWS()
       augroup END 
 
+      augroup resize_buffer_windows 
+         autocmd!
+         autocmd WinEnter * let &winheight = &lines * 7 / 10 
+      augroup END
+
       " Tex files
       augroup tex_file_options
         autocmd!
@@ -865,5 +867,6 @@
          autocmd!
          autocmd BufNewFile,BufRead * set cpoptions+=$
       augroup END
+
 
    "}}}
