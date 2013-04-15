@@ -685,11 +685,6 @@
          let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
          let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
-         " For snippet_complete marker.
-         " if has('conceal')
-            " set conceallevel=0 concealcursor=i
-         " endif
-
          let g:header_author = "Claas-Thido Pfaff"
       " }}}
 
