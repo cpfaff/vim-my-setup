@@ -139,9 +139,6 @@
       " Standard spelling en
       set spelllang=en
 
-      " Toggle paste mode on and off
-      set pastetoggle=<F3>
-
       " Concealment behaviour (e.g LaTeX)
       set conceallevel=0
       let g:tex_conceal= ''
@@ -152,8 +149,6 @@
       " Set eol vizualized character 
       set listchars=eol:¬
 
-      " Make Y consistent with D and C commands which act on a whole line
-      nnoremap Y y$
    "}}}
 
    " Mappings {{{
@@ -242,7 +237,13 @@
             inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
             inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
          
-         "}}}
+            " Make Y consistent with D and C commands which act on a whole line
+            nnoremap Y y$ 
+
+            " Toggle paste mode on and off
+            set pastetoggle=<F3> 
+
+         "}}} 
 
       "}}}
 
