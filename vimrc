@@ -56,8 +56,10 @@
       " A buffer becomes hidden when it is abandoned 
       set hidden
 
-      " Configure backspace and wrap behavior 
-      set backspace=indent,eol,start 
+      " Configure backspace 
+      set backspace=indent,eol,start
+
+      " Wrap behavior
       set whichwrap=b,s,<,>,[,],h,l
 
       "swith on numbering on left side
@@ -739,10 +741,11 @@
 
          " For ack grep.
          if executable('ack-grep')
+            " Use ack in unite grep source.
             let g:unite_source_grep_command = 'ack-grep'
             let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
             let g:unite_source_grep_recursive_opt = ''
-         endif
+         endif   
 
          " Overwrite settings of unite window 
          autocmd FileType unite call s:unite_my_settings() 
