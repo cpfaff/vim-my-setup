@@ -15,3 +15,17 @@ options     head
       \frametitle{${1:title}}
    \end{frame} 
 
+snippet     fframe
+abbr        fragile frame
+options     head
+   \begin{frame}[fragile]
+      \frametitle{${1:title}}
+   \end{frame} 
+
+snippet     rlisting
+abbr        lstlisting
+options     head
+   \begin{lstlisting}[language=Ruby] 
+      ${1:TARGET}
+   \end{lstlisting} 
+   
