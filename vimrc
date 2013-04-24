@@ -786,10 +786,11 @@
    " Functions {{{
 
       " Delete trailing white space on save 
-       func! DeleteTrailingWS()
-          exe "normal mz"
+       func! DeleteTrailingWS() 
+          let l = line(".") 
+          let c = col(".")
           %s/\s\+$//ge
-          exe "normal `z"
+          call cursor(l,c)
        endfunc
       "
 
