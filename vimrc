@@ -1,4 +1,4 @@
-" ======================================================
+" ===================================================
 "   MMMM   MMMM    VVV           VVV    SSSSSS
 "  MMMM MMM MMMM   VVVV         VVVV   SSSSSSSS
 "  MMMM  M  MMMM    VVVV       VVVV    SSSS
@@ -33,8 +33,9 @@
       set tm=500
 
       " Save all files in one place
-      set backupdir=~/.vim/tmp  
-      set nobackup
+      " set backupdir=~/.vim/tmp  
+      set nobackup 
+      set noswapfile
       set directory=~/.vim/tmp 
       set tags=~/.vim/tmp/
       
@@ -155,11 +156,11 @@
 
       " Preparations {{{
 
-         " set leader and local leader
+         " Set leader and local leader
          let mapleader = "," 
          let maplocalleader = '.' 
 
-         " setup for alt and meta key mappings 
+         " Enable alt and meta key mappings 
          for i in range(97,122)
             let c = nr2char(i)
             exec "set <M-".c.">=\<Esc>".c
@@ -850,10 +851,10 @@
          autocmd BufWrite *.R :call DeleteTrailingWS()
       augroup END 
 
-      augroup resize_buffer_windows 
-         autocmd!
-         autocmd WinEnter * let &winheight = &lines * 7 / 10 
-      augroup END
+      " augroup resize_buffer_windows 
+         " autocmd!
+         " autocmd WinEnter * let &winheight = &lines * 7 / 10 
+      " augroup END
 
       " Tex files
       augroup tex_file_options
