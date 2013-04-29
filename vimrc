@@ -851,10 +851,10 @@
          autocmd BufWrite *.R :call DeleteTrailingWS()
       augroup END 
 
-      " augroup resize_buffer_windows 
-         " autocmd!
-         " autocmd WinEnter * let &winheight = &lines * 7 / 10 
-      " augroup END
+      augroup resize_buffer_windows 
+         autocmd!
+         autocmd WinEnter * let &winheight = &lines * 7 / 10 
+      augroup END
 
       " Tex files
       augroup tex_file_options
