@@ -393,7 +393,8 @@
                nnoremap [buffer_key] :<C-u>Unite -buffer-name=buffers buffer -quick-match<CR>
  
                nnoremap [unite_key]c :<C-u>Unite -buffer-name=files file_rec/async<CR>
-               nnoremap [unite_key]f :<C-u>Unite -buffer-name=sources source<CR>
+               nnoremap [unite_key]f :<C-u>Unite -buffer-name=sources source<CR> 
+               nnoremap [unite_key]u :<C-u>Unite -log -buffer-name=update neobundle/update<CR>
                nnoremap [unite_key]g :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
                nnoremap [unite_key]r :<C-u>Unite -buffer-name=files file_mru<CR>
 
@@ -755,7 +756,7 @@
          function! s:unite_my_settings()
             
             imap <buffer> kj <Plug>(unite_insert_leave)
-            nmap <buffer><leader>bd <Plug>(unite_exit)
+            nmap <buffer><leader>bd <Plug>(unite_all_exit)
             
             let unite = unite#get_current_unite()  
 
