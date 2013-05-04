@@ -48,6 +48,8 @@ NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'Lokaltog/vim-powerline.git'
 
+NeoBundle 'airblade/vim-gitgutter.git' 
+
 NeoBundle 'godlygeek/tabular.git'
 NeoBundle 'Townk/vim-autoclose.git'
 NeoBundle 'edsono/vim-matchit.git'
