@@ -25,9 +25,16 @@ options     head
    \end{frame} 
 
 snippet     rlisting
-abbr        lstlisting
+abbr	    ruby listing
 options     head
-   \begin{lstlisting}[language=Ruby] 
+   \begin{lstlisting}[language=Ruby, gobble=2] 
+      ${1:TARGET}
+   \end{lstlisting} 
+
+snippet     nlrlisting
+abbr        no number listing
+options     head
+   \begin{lstlisting}[language=Ruby, numbers=none, gobble=2] 
       ${1:TARGET}
    \end{lstlisting} 
    
