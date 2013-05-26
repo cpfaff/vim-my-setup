@@ -869,7 +869,8 @@
       " Rnw files
       augroup rnw_file_options
          autocmd!
-         autocmd BufNewFile,BufRead *.Rnw set spell
+         autocmd BufNewFile,BufRead *.Rnw set spell 
+         autocmd FileType gitcommit set spell
       augroup END
 
       " Add $ to schow the end of change text range
@@ -878,5 +879,10 @@
          autocmd BufNewFile,BufRead * set cpoptions+=$
       augroup END
 
+      " On insert leave
+      augroup on_insert_leave 
+         autocmd!
+         au InsertLeave * set nopaste 
+      augroup END
 
    "}}}
