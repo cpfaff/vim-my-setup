@@ -148,8 +148,8 @@
       set ttyfast 
 
       " Set eol vizualized character 
-      set listchars=eol:¬
-
+      " set listchars=tab:>-,trail:·,eol:$
+      set listchars=trail:·,eol:$
    "}}}
 
    " Mappings {{{
@@ -198,7 +198,11 @@
 
             " Visual mode pressing * or # searches for the current selection
             vnoremap <silent> * :call VisualSelection('b')<CR>
-            vnoremap <silent> # :call VisualSelection('f')<CR>
+            vnoremap <silent> # :call VisualSelection('f')<CR> 
+
+            " Move viewport  
+            nnoremap <C-e> 3<C-e>
+            nnoremap <C-y> 3<C-y>
 
          " }}}
 
@@ -670,7 +674,6 @@
             autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
             autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
             autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete  
-            autocmd FileType gitcommit setlocal omnifunc=rhubarb#omnifunc 
          augroup END
 
          " Enable heavy omni completion.
