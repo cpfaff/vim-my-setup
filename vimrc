@@ -17,10 +17,13 @@
       " Load vim bundles
       source ~/.vim/bundles.vim
 
-      " auto source a changed vimrc file (very slow after 3 or 4 sources)
-      "if has("autocmd")
-         "autocmd bufwritepost .vimrc source $MYVIMRC
-      "endif
+      " auto source a changed vimrc file 
+      " if has("autocmd") 
+         " augroup source_vimrc 
+            " autocmd!
+            " autocmd bufwritepost .vimrc source $MYVIMRC 
+         " augroup END
+      " endif
 
    "}}}
 
@@ -200,10 +203,6 @@
             vnoremap <silent> * :call VisualSelection('b')<CR>
             vnoremap <silent> # :call VisualSelection('f')<CR> 
 
-            " Move viewport  
-            nnoremap <C-e> 3<C-e>
-            nnoremap <C-y> 3<C-y>
-
          " }}}
 
          " Editing related mappings {{{ 
@@ -299,6 +298,7 @@
             " 
             " Mappings:
             " 
+            "  - [buffer_key]b   show open buffers (buffer swither)   
             "  - [buffer_key]d   closes the active buffer 
             "  - [buffer_key]n   opens a new tab 
             "  - [buffer_key]o   closes all but the active buffer 
@@ -308,7 +308,8 @@
                
                noremap [buffer_key]d :<C-u>bd!<CR>
                noremap [buffer_key]n :<C-u>tabnew<CR>
-               noremap [buffer_key]o :<C-u>tabonly<CR>
+               noremap [buffer_key]o :<C-u>tabonly<CR> 
+               nnoremap [buffer_key] :<C-u>Unite -buffer-name=buffers buffer -quick-match<CR>
             " }}}
 
             " (c)omment handling {{{
@@ -384,23 +385,21 @@
             " 
             " Mappings:
             "
-            " - [unite_key]b  show open buffers (buffer swither)   
             " - [unite_key]c  open files recursively starting from current directory
             " - [unite_key]f  open unite vim in sources overview
             " - [unite_key]g  open files recursively starting from the root of
             "                 a project folder (e.g. git repository)
-            " - [unite_key]r  open a list of recently used files   
+            " - [unite_key]r  open a list of recently used files    
+            " - {unite_key]u  update all plugins
                
                nnoremap [unite_key] <Nop>
                nmap <silent><leader>f [unite_key]
-              
-               nnoremap [buffer_key] :<C-u>Unite -buffer-name=buffers buffer -quick-match<CR>
- 
+               
                nnoremap [unite_key]c :<C-u>Unite -buffer-name=files file_rec/async<CR>
                nnoremap [unite_key]f :<C-u>Unite -buffer-name=sources source<CR> 
-               nnoremap [unite_key]u :<C-u>Unite -log -buffer-name=update neobundle/update<CR>
                nnoremap [unite_key]g :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
                nnoremap [unite_key]r :<C-u>Unite -buffer-name=files file_mru<CR>
+               nnoremap [unite_key]u :<C-u>Unite -log -buffer-name=update neobundle/update<CR>
 
             "}}}
 
@@ -754,7 +753,10 @@
          endif   
 
          " Overwrite settings of unite window 
-         autocmd FileType unite call s:unite_my_settings() 
+         augroup unite_settings
+            autocmd!
+            autocmd FileType unite call s:unite_my_settings()  
+         augroup END
          
          function! s:unite_my_settings()
             
@@ -775,11 +777,15 @@
          let g:vimfiler_file_icon = '-'
          let g:vimfiler_marked_file_icon = '*'
 
-         " For fll vimfiler 
-         autocmd FileType vimfiler call s:vimfiler_all_my_settings()
-         function! s:vimfiler_all_my_settings()
+         " autocommand for vimfiler 
+         augroup vimfiler_settings
+            autocmd!
+            autocmd FileType vimfiler call s:vimfiler_settings() 
+         augroup END
+
+         function! s:vimfiler_settings()
             nmap <buffer> <C-l> <Plug>(vimfiler_switch_to_other_window)
-         endfunction
+         endfunction 
       " }}}
 
       " (y)ankring {{{ 
@@ -791,12 +797,12 @@
    " Functions {{{
 
       " Delete trailing white space on save 
-       func! DeleteTrailingWS() 
+       function! DeleteTrailingWS() 
           let l = line(".") 
           let c = col(".")
           %s/\s\+$//ge
           call cursor(l,c)
-       endfunc
+       endfunction
       "
 
       " Small helper
@@ -882,7 +888,7 @@
       " On insert leave
       augroup on_insert_leave 
          autocmd!
-         au InsertLeave * set nopaste 
+         autocmd InsertLeave * set nopaste 
       augroup END
 
    "}}}
