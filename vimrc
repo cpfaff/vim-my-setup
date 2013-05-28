@@ -213,8 +213,8 @@
             cnoremap kj <esc> 
             snoremap kj <esc> 
             
-            " format the current paragraph with par
-            noremap Q gqap
+            " format the current paragraph with par (gqap)
+            noremap Q gwap
 
             " Easy undo 
             nnoremap U <C-r>
