@@ -190,14 +190,16 @@
             noremap <C-k> <C-W>k
             noremap <C-h> <C-W>h
             noremap <C-l> <C-W>l
-
-            " 0 to first non-blank character
-            noremap 0 ^
+            
+            " fast navigation start/end of line and first char
+            nnoremap H ^
+            nnoremap HH 0
+            nnoremap L $
             
             " space: search forward. ctrl-<Space>: search backward, leader space clear search 
             noremap <space> /
             noremap <C-@> ? 
-            noremap <leader><space> :noh<CR>
+            noremap <leader><space> :noh<CR> 
 
             " Visual mode pressing * or # searches for the current selection
             vnoremap <silent> * :call VisualSelection('b')<CR>
