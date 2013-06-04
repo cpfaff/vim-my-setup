@@ -64,6 +64,8 @@ NeoBundle 'altercation/vim-colors-solarized.git'
 NeoBundle 'ervandew/screen.git'
 NeoBundle 'jamiebikies/greplace.vim.git'
 
+NeoBundle 'kana/vim-niceblock.git'
+
 " Other useful bundles
 " NeoBundle 'vim-scripts/peaksea.git'
 " NeoBundle 'guns/xterm-color-table.vim.git'

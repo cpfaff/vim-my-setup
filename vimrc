@@ -31,16 +31,19 @@
     
       " Disable vim error behavior
       set noerrorbells
-      set novisualbell 
-      set t_vb= 
+      set novisualbell
+      set t_vb=
       set tm=500
 
       " Save all files in one place
-      " set backupdir=~/.vim/tmp  
+      " set backupdir=~/.vim/tmp
       set nobackup 
       set noswapfile
       set directory=~/.vim/tmp 
       set tags=~/.vim/tmp/
+      
+      " Disable vim startup message
+      set shortmess=aTI  
       
       " Sets how much history and undo vim remembers  
       set history=1000
@@ -176,7 +179,10 @@
          " Remove key functionality {{{
 
             " Remove help from f1
-            noremap <F1> <nop>
+            noremap <F1> <nop>  
+
+            " Disable ZZ.
+            nnoremap ZZ <Nop>
          "}}}
 
          " Movement related {{{
@@ -205,6 +211,23 @@
             vnoremap <silent> * :call VisualSelection('b')<CR>
             vnoremap <silent> # :call VisualSelection('f')<CR> 
 
+            " Smart }
+            nnoremap <silent> } :<C-u>call ForwardParagraph()<CR>
+            onoremap <silent> } :<C-u>call ForwardParagraph()<CR>
+            xnoremap <silent> } <Esc>:<C-u>call ForwardParagraph()<CR>mzgv`z 
+
+            function! ForwardParagraph()
+              let cnt = v:count ? v:count : 1
+              let i = 0
+              while i < cnt
+                if !search('^\s*\n.*\S','W')
+                  normal! G$
+                  return
+                endif
+                let i = i + 1
+              endwhile
+            endfunction
+
          " }}}
 
          " Editing related mappings {{{ 
@@ -219,7 +242,11 @@
             noremap Q gwap
 
             " Easy undo 
-            nnoremap U <C-r>
+            nnoremap U <C-r> 
+
+            " Improved block mode
+            xmap I <Plug>(niceblock-I)
+            xmap A <Plug>(niceblock-A)
 
             " Move lines up and down (bubbling) left and right (indent)  
             nmap <A-j> ]e
@@ -712,7 +739,7 @@
       " (r)-plugin {{{
          let vimrplugin_screenvsplit = 1
          let ScreenImpl = 'Tmux'
-         let vimrplugin_screenvsplit = 0
+         let vimrplugin_screenvsplit = 0 
          let vimrplugin_assign = 0
       " }}}
 
@@ -772,12 +799,12 @@
 
       " (v)imfiler plugin {{{
          let g:vimfiler_as_default_explorer = 1
-         let g:vimfiler_tree_leaf_icon = ' '
          let g:vimfiler_safe_mode_by_default = 0
+         let g:vimfiler_tree_leaf_icon = ' '
          let g:vimfiler_tree_opened_icon = '▾'
          let g:vimfiler_tree_closed_icon = '▸'
          let g:vimfiler_file_icon = '-'
-         let g:vimfiler_marked_file_icon = '*'
+         let g:vimfiler_marked_file_icon = '*' 
 
          " autocommand for vimfiler 
          augroup vimfiler_settings
