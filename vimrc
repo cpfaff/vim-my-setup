@@ -2,12 +2,12 @@
 "   MMMM   MMMM    VVV           VVV    SSSSSS
 "  MMMM MMM MMMM   VVVV         VVVV   SSSSSSSS
 "  MMMM  M  MMMM    VVVV       VVVV    SSSS
-"  MMMM     MMMM     VVVV     VVVV     SSSSSSS 
+"  MMMM     MMMM     VVVV     VVVV     SSSSSSS
 "  MMMM     MMMM      VVVV   VVVV          SSSS
 "  MMMM     MMMM       VVVV VVVV       SSSSSSSS
 "  MMMM     MMMM y       VVVVV  im      SSSSSS etup
 " ===================================================
-" 
+"
 " File: vimrc
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup.
@@ -17,18 +17,18 @@
       " Load vim bundles
       source ~/.vim/bundles.vim
 
-      " auto source a changed vimrc file 
-      " if has("autocmd") 
-         " augroup source_vimrc 
+      " auto source a changed vimrc file
+      " if has("autocmd")
+         " augroup source_vimrc
             " autocmd!
-            " autocmd bufwritepost .vimrc source $MYVIMRC 
+            " autocmd bufwritepost .vimrc source $MYVIMRC
          " augroup END
       " endif
 
    "}}}
 
    " General Vim behaviour {{{
-    
+
       " Disable vim error behavior
       set noerrorbells
       set novisualbell
@@ -37,33 +37,33 @@
 
       " Save all files in one place
       " set backupdir=~/.vim/tmp
-      set nobackup 
+      set nobackup
       set noswapfile
-      set directory=~/.vim/tmp 
+      set directory=~/.vim/tmp
       set tags=~/.vim/tmp/
-      
+
       " Disable vim startup message
-      set shortmess=aTI  
-      
-      " Sets how much history and undo vim remembers  
+      set shortmess=aTI
+
+      " Sets how much history and undo vim remembers
       set history=1000
 
       " Persistent undo
       if has('persistent_undo')
          set undodir=~/.vim/tmp
          set undofile
-         set undolevels=1000 
-         set undoreload=10000 
+         set undolevels=1000
+         set undoreload=10000
       endif
 
       " Enable filetype plugins
       filetype plugin on
       filetype indent on
 
-      " A buffer becomes hidden when it is abandoned 
+      " A buffer becomes hidden when it is abandoned
       set hidden
 
-      " Configure backspace 
+      " Configure backspace
       set backspace=indent,eol,start
 
       " Wrap behavior
@@ -72,29 +72,29 @@
       "swith on numbering on left side
       set number
 
-      " Tab completion  
+      " Tab completion
       set wildmenu
       set wildignore=*tikzDiktionary*
 
       " ignore the case (unite reads this)
-      set ignorecase 
-      
-      " But be smart about cases  
+      set ignorecase
+
+      " But be smart about cases
       set smartcase
 
-      " Highlight search results 
+      " Highlight search results
       set hlsearch
 
-      " Makes search act like search in modern browsers 
+      " Makes search act like search in modern browsers
       set incsearch
 
-      " Don't redraw while executing macros (better performance) 
+      " Don't redraw while executing macros (better performance)
       set lazyredraw
 
-      " For regular expressions turn magic on 
+      " For regular expressions turn magic on
       set magic
 
-      " Enable better colours in console 
+      " Enable better colours in console
       set t_Co=256
 
       " Set colour scheme
@@ -102,26 +102,26 @@
       colorscheme solarized
 
       " wrap and linebreak
-      set wrap 
+      set wrap
       set linebreak
       set nolist
-     
-      " Look for modeline 
+
+      " Look for modeline
       set modeline
       set modelines=4
 
-      " Specify the behavior of tabs 
+      " Specify the behavior of tabs
       set switchbuf=useopen,usetab,newtab
       set showtabline=1
 
-      " Scroll options 
-      set scrolloff=8   
-      set sidescrolloff=15 
-      set sidescroll=1 
+      " Scroll options
+      set scrolloff=8
+      set sidescrolloff=15
+      set sidescroll=1
 
       " Completion
       set completeopt=menu,menuone,longest
-       
+
       " Limit popup menu height
       set pumheight=15
 
@@ -130,7 +130,7 @@
          set laststatus=2
          set statusline=%<%f\ " Filename
          set statusline+=%w%h%m%r " Options
-         set statusline+=%{fugitive#statusline()} " Git 
+         set statusline+=%{fugitive#statusline()} " Git
          set statusline+=\ [%{&ff}/%Y] " filetype
          set statusline+=\ [%{getcwd()}] " current directory
          set statusline+=%#warningmsg#
@@ -149,11 +149,11 @@
       " Concealment behaviour (e.g LaTeX)
       set conceallevel=0
       let g:tex_conceal= ''
-      
-      " fast terminal reduces lags
-      set ttyfast 
 
-      " Set eol vizualized character 
+      " fast terminal reduces lags
+      set ttyfast
+
+      " Set eol vizualized character
       " set listchars=tab:>-,trail:·,eol:$
       set listchars=trail:·,eol:$
    "}}}
@@ -163,10 +163,10 @@
       " Preparations {{{
 
          " Set leader and local leader
-         let mapleader = "," 
-         let maplocalleader = '.' 
+         let mapleader = ","
+         let maplocalleader = '.'
 
-         " Enable alt and meta key mappings 
+         " Enable alt and meta key mappings
          for i in range(97,122)
             let c = nr2char(i)
             exec "set <M-".c.">=\<Esc>".c
@@ -175,11 +175,11 @@
       "}}}
 
       " Basic mappings {{{
-            
+
          " Remove key functionality {{{
 
             " Remove help from f1
-            noremap <F1> <nop>  
+            noremap <F1> <nop>
 
             " Disable ZZ.
             nnoremap ZZ <Nop>
@@ -196,59 +196,47 @@
             noremap <C-k> <C-W>k
             noremap <C-h> <C-W>h
             noremap <C-l> <C-W>l
-            
+
             " fast navigation start/end of line and first char
             nnoremap H ^
             nnoremap HH 0
             nnoremap L $
-            
-            " space: search forward. ctrl-<Space>: search backward, leader space clear search 
+
+            " space: search forward. ctrl-<Space>: search backward, leader space clear search
             noremap <space> /
-            noremap <C-@> ? 
-            noremap <leader><space> :noh<CR> 
+            noremap <C-@> ?
+            noremap <leader><space> :noh<CR>
 
             " Visual mode pressing * or # searches for the current selection
             vnoremap <silent> * :call VisualSelection('b')<CR>
-            vnoremap <silent> # :call VisualSelection('f')<CR> 
+            vnoremap <silent> # :call VisualSelection('f')<CR>
 
             " Smart }
             nnoremap <silent> } :<C-u>call ForwardParagraph()<CR>
             onoremap <silent> } :<C-u>call ForwardParagraph()<CR>
-            xnoremap <silent> } <Esc>:<C-u>call ForwardParagraph()<CR>mzgv`z 
-
-            function! ForwardParagraph()
-              let cnt = v:count ? v:count : 1
-              let i = 0
-              while i < cnt
-                if !search('^\s*\n.*\S','W')
-                  normal! G$
-                  return
-                endif
-                let i = i + 1
-              endwhile
-            endfunction
+            xnoremap <silent> } <Esc>:<C-u>call ForwardParagraph()<CR>mzgv`z
 
          " }}}
 
-         " Editing related mappings {{{ 
+         " Editing related mappings {{{
 
-            " Exit visual/insert/command/select mode with kj 
+            " Exit visual/insert/command/select mode with kj
             vnoremap kj <esc>
             inoremap kj <esc>
-            cnoremap kj <esc> 
-            snoremap kj <esc> 
-            
+            cnoremap kj <esc>
+            snoremap kj <esc>
+
             " format the current paragraph with par (gqap)
             noremap Q gwap
 
-            " Easy undo 
-            nnoremap U <C-r> 
+            " Easy undo
+            nnoremap U <C-r>
 
             " Improved block mode
             xmap I <Plug>(niceblock-I)
             xmap A <Plug>(niceblock-A)
 
-            " Move lines up and down (bubbling) left and right (indent)  
+            " Move lines up and down (bubbling) left and right (indent)
             nmap <A-j> ]e
             nmap <A-k> [e
             vmap <A-k> [egv
@@ -257,33 +245,33 @@
             nnoremap <A-h> <<
             vnoremap <A-l> >gv
             vnoremap <A-h> <gv
- 
+
             " Necomplcache and neosnippet mappings
             imap <C-k> <Plug>(neosnippet_expand)
             smap <C-k> <Plug>(neosnippet_expand)
             xmap <C-k> <Plug>(neosnippet_start_unite_snippet_target)
             imap <C-j> <Plug>(neosnippet_jump)
             smap <C-j> <Plug>(neosnippet_jump)
- 
+
             inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
             inoremap <expr><C-l> neocomplcache#complete_common_string()
             inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
             inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-         
+
             " Make Y consistent with D and C commands which act on a whole line
-            nnoremap Y y$ 
+            nnoremap Y y$
 
             " Toggle paste mode on and off
-            set pastetoggle=<F3> 
+            set pastetoggle=<F3>
 
-         "}}} 
+         "}}}
 
       "}}}
 
       " Sorted key mappings {{{
 
             " (a)lign with tabularize {{{
-            
+
             " Description:
             "  This mappings align text with the tabularize plugin.
             "  You can call them in vizual and in normal mode. For example
@@ -296,53 +284,53 @@
             "  - <leader>a:    align by  :
             "  - <leader>a::   align by  ::
             "  - <leader>a,    align by  ,
-           
+
                nnoremap [n_align_key] <Nop>
                nmap <silent><leader>a [n_align_key]
 
                vnoremap [v_align_key] <Nop>
                vmap <silent><leader>a [v_align_key]
-               
+
                nnoremap [n_align_key]= :<C-u>Tabularize /=<CR>
                vnoremap [v_align_key]= :<C-u>Tabularize /=<CR>
-               
+
                nnoremap [n_align_key]a :<C-u>Tabularize /&<CR>
                vnoremap [v_align_key]a :<C-u>Tabularize /&<CR>
-           
+
                nnoremap [n_align_key]: :<C-u>Tabularize /:<CR>
                vnoremap [v_align_key]: :<C-u>Tabularize /:<CR>
-               
+
                nnoremap [n_align_key]:: <C-u>:Tabularize /:\zs<CR>
                vnoremap [v_align_key]:: <C-u>:Tabularize /:\zs<CR>
-               
+
                nnoremap [n_align_key], :<C-u>Tabularize /,<CR>
                vnoremap [v_align_key], :<C-u>Tabularize /,<CR>
             "}}}
 
             " (b)uffer handling {{{
-            
+
             " Description:
             "
-            " All buffer related mappings 
-            " 
+            " All buffer related mappings
+            "
             " Mappings:
-            " 
-            "  - [buffer_key]b   show open buffers (buffer swither)   
-            "  - [buffer_key]d   closes the active buffer 
-            "  - [buffer_key]n   opens a new tab 
-            "  - [buffer_key]o   closes all but the active buffer 
+            "
+            "  - [buffer_key]b   show open buffers (buffer swither)
+            "  - [buffer_key]d   closes the active buffer
+            "  - [buffer_key]n   opens a new tab
+            "  - [buffer_key]o   closes all but the active buffer
 
                nnoremap [buffer_key] <Nop>
                nmap <silent><leader>b [buffer_key]
-               
+
                noremap [buffer_key]d :<C-u>bd!<CR>
                noremap [buffer_key]n :<C-u>tabnew<CR>
-               noremap [buffer_key]o :<C-u>tabonly<CR> 
+               noremap [buffer_key]o :<C-u>tabonly<CR>
                nnoremap [buffer_key] :<C-u>Unite -buffer-name=buffers buffer -quick-match<CR>
             " }}}
 
             " (c)omment handling {{{
-            
+
             " Description:
             "
             " This mappings comment lines in and out with the
@@ -352,20 +340,20 @@
             "
             " Mappings:
             "
-            " - [comment_key]    toggles comments 
-            " - [comment_key]a   change to alternative delimiter set 
-            " - [comment_key]y   yank text then comment out 
+            " - [comment_key]    toggles comments
+            " - [comment_key]a   change to alternative delimiter set
+            " - [comment_key]y   yank text then comment out
 
                nnoremap [comment_key] <nop>
                map <silent><leader>c [comment_key]
-               
+
                map [comment_key] <plug>NERDCommenterToggle
                map [comment_key]a <plug>NERDCommenterAltDelims
                map [comment_key]y <plug>NERDCommenterYank
             " }}}
 
             " (d)ump and load sessions {{{
-            
+
             " Description:
             "
             " This mappings make use of the Vim sessionman plug-in to handle sessions. If
@@ -374,9 +362,9 @@
             "
             " Mappings:
             "
-            " - [dump_key]l   lists all stored sessions 
+            " - [dump_key]l   lists all stored sessions
             " - [dump_key]s   to save a session
-           
+
                nnoremap [dump_key] <Nop>
                nmap <silent><leader>d [dump_key]
 
@@ -385,21 +373,21 @@
             " }}}
 
             " (e)dit config and snippet files {{{
-            
+
             " Description:
             "
             " This mappings enable fast access to important configuration
-            " and snippet files. 
+            " and snippet files.
             "
             " Mappings:
             "
-            " - [edit_key]r   edit the neosnippet builtin snippets for [filetype] 
+            " - [edit_key]r   edit the neosnippet builtin snippets for [filetype]
             " - [edit_key]s   edit your personal snippet file for [filetype]
             " - [edit_key]v   edit the vimrc file in vertical split
-            
+
                nnoremap [edit_key] <Nop>
                nmap <silent><leader>e [edit_key]
-               
+
                nnoremap [edit_key]r :<C-u>NeoSnippetEdit -runtime<CR>
                nnoremap [edit_key]s :<C-u>NeoSnippetEdit<CR>
                nnoremap [edit_key]v :<C-u>vsplit $MYVIMRC<cr>
@@ -410,22 +398,22 @@
             " Description:
             "
             " Mappings based on the unite vim plugin to find files and buffers
-            " as sources to pick from. 
-            " 
+            " as sources to pick from.
+            "
             " Mappings:
             "
             " - [unite_key]c  open files recursively starting from current directory
             " - [unite_key]f  open unite vim in sources overview
             " - [unite_key]g  open files recursively starting from the root of
             "                 a project folder (e.g. git repository)
-            " - [unite_key]r  open a list of recently used files    
+            " - [unite_key]r  open a list of recently used files
             " - {unite_key]u  update all plugins
-               
+
                nnoremap [unite_key] <Nop>
                nmap <silent><leader>f [unite_key]
-               
+
                nnoremap [unite_key]c :<C-u>Unite -buffer-name=files file_rec/async<CR>
-               nnoremap [unite_key]f :<C-u>Unite -buffer-name=sources source<CR> 
+               nnoremap [unite_key]f :<C-u>Unite -buffer-name=sources source<CR>
                nnoremap [unite_key]g :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
                nnoremap [unite_key]r :<C-u>Unite -buffer-name=files file_mru<CR>
                nnoremap [unite_key]u :<C-u>Unite -log -buffer-name=update neobundle/update<CR>
@@ -441,14 +429,14 @@
             "
             " Mappings:
             "
-            " - [git_key]b   open a git blame in split view        
+            " - [git_key]b   open a git blame in split view
             " - [git_key]c   commit your changes
-            " - [git_key]d   opens a git diff in split view of the file  
-            " - [git_key]l   show a git log         
-            " - [git_key]o   only to close all but the active diff split        
-            " - [git_key]p   push to your remote repository        
-            " - [git_key]s   open the interactive git status window            
-            
+            " - [git_key]d   opens a git diff in split view of the file
+            " - [git_key]l   show a git log
+            " - [git_key]o   only to close all but the active diff split
+            " - [git_key]p   push to your remote repository
+            " - [git_key]s   open the interactive git status window
+
                nnoremap [git_key] <Nop>
                nmap <silent><leader>g [git_key]
 
@@ -474,7 +462,7 @@
             "                display all errors in the make run output. You can
             "                specify it to your needs or to multiple statements
             "                if you like. Another solution is to delete the
-            "                filter and type in the interactive unite window to 
+            "                filter and type in the interactive unite window to
             "                narrow down the output.
             "
             " - [make_key]s  This is an exaple makefile call which calls make directly to
@@ -488,16 +476,16 @@
                nmap <silent><leader>m [make_key]
 
                nnoremap [make_key]  :<C-u>Unite -input=error build<CR>
-               nnoremap [make_key]s :<C-u>Unite -no-empty build:make:showpdf<CR> 
-               nnoremap [make_key]c :<C-u>Unite -no-empty build:make:clean<CR> 
+               nnoremap [make_key]s :<C-u>Unite -no-empty build:make:showpdf<CR>
+               nnoremap [make_key]c :<C-u>Unite -no-empty build:make:clean<CR>
 
             " }}}
-            
+
             " (q)quit fast {{{
-            
+
             " Description:
             "
-            " Fast quit your document 
+            " Fast quit your document
             "
             " Mappings:
             "
@@ -509,12 +497,12 @@
                nnoremap [quit_key] :<C-u>q!<CR>
             " }}}
 
-            " (r)eplace search visual selection {{{ 
-    
+            " (r)eplace search visual selection {{{
+
             " Description:
             "
-            " These mappings help to search and replace content in your files. 
-            " 
+            " These mappings help to search and replace content in your files.
+            "
             " Mappings:
             "
             " - [replace_key]    Works in vizual mode and replaces the current
@@ -525,12 +513,12 @@
             "                    whith the occurence of the string you grepped
             "                    for in the quickfix window. It changes all
             "                    strings to a string defined by you and saves the
-            "                    files. 
+            "                    files.
             "
             " - [replace_key]s   Is also a vizal mode mapping and Calls grep (ack) from current direcotry
             "                    recursive on its contents to find the currently
             "                    marked text. The results end up in a quickfix
-            "                    window. This is really helpful when you like to 
+            "                    window. This is really helpful when you like to
             "                    replace a string in all your project files. You
             "                    can combine it with the next command for
             "                    replacment.
@@ -539,7 +527,7 @@
                vmap <silent><leader>r [replace_key]
 
                vnoremap [replace_key] :call VisualSelection('replace')<CR>
-               vnoremap [replace_key]a :call VisualSelection('quickfixdo')<CR> 
+               vnoremap [replace_key]a :call VisualSelection('quickfixdo')<CR>
                vnoremap [replace_key]s :call VisualSelection('acksearch')<CR>
             " }}}
 
@@ -547,27 +535,27 @@
 
             " Description:
             "
-            " This mappings help to spell check your files. 
-            " 
+            " This mappings help to spell check your files.
+            "
             " Mappings:
-            " 
+            "
             " - [spell_key]s     enables the spelling for the file. If you like to
             "                    auto enable spelling for a certain file type you
             "                    should have a look into the auto command section
             "                    below.
-            " 
+            "
             " - [spell_key]n     Go to the next spelling error in the file.
-            " 
+            "
             " - [spell_key]p     Go to the previous spelling error in file.
-            " 
+            "
             " - [spell_key]g     Mark a word as good.
-            " 
+            "
             " - [spell_key]l     Show a list of items which are suggested for the
             "                    misspelled word.
-            " 
+            "
             " - [spell_key]r     Chose the first entry from list and replace the
             "                    misspelled word.
-               
+
                nnoremap [spell_key] <Nop>
                nmap <silent><leader>s [spell_key]
 
@@ -578,7 +566,7 @@
                noremap [spell_key]l z=
                noremap [spell_key]r 1z=
             " }}}
-              
+
             " (t)toggle windows {{{
 
             " Description:
@@ -587,15 +575,15 @@
             " plugin tagbar on one hand and on the other the vimfiler for file
             " navigation. The tagbar requires in background a working installation
             " of the ctags program.
-            " 
+            "
             " Mappings:
-            " 
+            "
             " - [toggle_key]t  Opens a tagbar on the left side of a screen. In
             "                  this window you can navigate beween the functions
-            "                  in your sourcecode. 
-            " 
+            "                  in your sourcecode.
+            "
             " - [toggle_key]f  Opens a file manager on the left side of the
-            "                  screen (VimFiler) 
+            "                  screen (VimFiler)
             "
                nnoremap [toggle_key] <Nop>
                nmap <silent><leader>t  [toggle_key]
@@ -609,32 +597,32 @@
             " Description:
             "
             " This mappings help to vizualize tabs and other usually invisible
-            " characters. Especially the tab vizualization is very helpful in 
-            " checking the indent of code for files that are tab indented. 
-            "  
+            " characters. Especially the tab vizualization is very helpful in
+            " checking the indent of code for files that are tab indented.
+            "
             " Mappings:
-            " 
-            " - [vizualize_key]     Vizualizes the indent with guide lines. 
-               
+            "
+            " - [vizualize_key]     Vizualizes the indent with guide lines.
+
                nnoremap [vizualize_key] <Nop>
                nmap <silent><Leader>v  [vizualize_key]
 
-               nnoremap [vizualize_key] :<C-u>IndentGuidesToggle <BAR> set list! <CR> 
+               nnoremap [vizualize_key] :<C-u>IndentGuidesToggle <BAR> set list! <CR>
 
             "}}}
 
             " (w)rite and quit fast {{{
-    
+
             " Description:
             "
             " This mappings help to write and to write and quit buffer fast.
-            "  
+            "
             " Mappings:
-            " 
+            "
             " - [write_key]      Write your document to file.
             "
             " - [write_key]q     Write document and then quit Vim.
-            
+
                nnoremap [write_key] <Nop>
                nmap <silent><Leader>w  [write_key]
 
@@ -643,19 +631,19 @@
             "}}}
 
             " (y)ank and paste management (Yankring) {{{
-            
+
             " Description:
             "
             " This mappings help you to deal with yanked text. They use the
-            " yankring plugin. The yankring plugin maintains a yank history 
+            " yankring plugin. The yankring plugin maintains a yank history
             " which survives a Vim session.
-            "  
+            "
             " Mappings:
-            " 
+            "
             " - [yank_key]y     Opens the yankring window where you can chose
             "                   which text you like to paste.
-            " 
-            " - [yank_key]s     Copy text from system Clipboard (Linux). After that you 
+            "
+            " - [yank_key]s     Copy text from system Clipboard (Linux). After that you
             "                   can simply paste it by pressing 'p' in normal mode.
 
                nnoremap [yank_key] <Nop>
@@ -671,7 +659,7 @@
 
    " Plugin configuration {{{
 
-      " (n)eocomplcache and neosnippet {{{ 
+      " (n)eocomplcache and neosnippet {{{
          let g:neocomplcache_enable_at_startup = 1
          let g:neocomplcache_temporary_dir = '~/.vim/tmp/'
          let g:neocomplcache_enable_camel_case_completion = 1
@@ -683,14 +671,14 @@
          let g:neocomplcache_auto_completion_start_length = 3
          let g:neocomplcache_force_overwrite_completefunc = 1
          let g:neocomplcache_enable_auto_select = 1
-        
+
          let g:neosnippet#snippets_directory='~/.vim/snippets/'
 
          " Define keyword.
          if !exists('g:neocomplcache_keyword_patterns')
             let g:neocomplcache_keyword_patterns = {}
          endif
-         
+
          let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
          " Enable omni completion.
@@ -701,7 +689,7 @@
             autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
             autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
             autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete  
+            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
          augroup END
 
          " Enable heavy omni completion.
@@ -724,7 +712,7 @@
          let g:NERDCustomDelimiters = {
             \ 'snippet': {'left': '#'},
             \ 'rnoweb' : {'left': '%', 'leftAlt': '#'},
-            \ 'r' : {'left': '#', 'leftAlt': "#'"} 
+            \ 'r' : {'left': '#', 'leftAlt': "#'"}
           \ }
       " }}}
 
@@ -739,7 +727,7 @@
       " (r)-plugin {{{
          let vimrplugin_screenvsplit = 1
          let ScreenImpl = 'Tmux'
-         let vimrplugin_screenvsplit = 0 
+         let vimrplugin_screenvsplit = 0
          let vimrplugin_assign = 0
       " }}}
 
@@ -751,16 +739,16 @@
          let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
       " }}}
 
-      " (t)agbar options {{{ 
+      " (t)agbar options {{{
          let g:tagbar_left = 0
       " }}}
 
       " (t)ab guideline {{{
          let g:indent_guides_enable_on_vim_startup = 0
          let g:indent_guides_auto_colors = 0
-         let g:indent_guides_guide_size = 1 
+         let g:indent_guides_guide_size = 1
          let g:indent_guides_start_level = 1
-         hi IndentGuidesOdd  ctermbg=238 
+         hi IndentGuidesOdd  ctermbg=238
          hi IndentGuidesEven ctermbg=243
       " }}}
 
@@ -769,7 +757,7 @@
          let g:unite_source_file_mru_limit = 200
          let g:unite_cursor_line_highlight = 'TabLineSel'
          let g:unite_abbr_highlight = 'TabLine'
-         let g:unite_split_rule='belowright'     
+         let g:unite_split_rule='belowright'
          let g:unite_source_file_mru_filename_format = ''
          let g:unite_enable_ignore_case=1
 
@@ -779,22 +767,22 @@
             let g:unite_source_grep_command = 'ack-grep'
             let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
             let g:unite_source_grep_recursive_opt = ''
-         endif   
+         endif
 
-         " Overwrite settings of unite window 
+         " Overwrite settings of unite window
          augroup unite_settings
             autocmd!
-            autocmd FileType unite call s:unite_my_settings()  
+            autocmd FileType unite call s:unite_my_settings()
          augroup END
-         
+
          function! s:unite_my_settings()
-            
+
             imap <buffer> kj <Plug>(unite_insert_leave)
             nmap <buffer><leader>bd <Plug>(unite_all_exit)
-            
-            let unite = unite#get_current_unite()  
 
-         endfunction   
+            let unite = unite#get_current_unite()
+
+         endfunction
       " }}}
 
       " (v)imfiler plugin {{{
@@ -804,20 +792,20 @@
          let g:vimfiler_tree_opened_icon = '▾'
          let g:vimfiler_tree_closed_icon = '▸'
          let g:vimfiler_file_icon = '-'
-         let g:vimfiler_marked_file_icon = '*' 
+         let g:vimfiler_marked_file_icon = '*'
 
-         " autocommand for vimfiler 
+         " autocommand for vimfiler
          augroup vimfiler_settings
             autocmd!
-            autocmd FileType vimfiler call s:vimfiler_settings() 
+            autocmd FileType vimfiler call s:vimfiler_settings()
          augroup END
 
          function! s:vimfiler_settings()
             nmap <buffer> <C-l> <Plug>(vimfiler_switch_to_other_window)
-         endfunction 
+         endfunction
       " }}}
 
-      " (y)ankring {{{ 
+      " (y)ankring {{{
          let g:yankring_history_dir = '~/.vim/tmp'
       " }}}
 
@@ -825,13 +813,27 @@
 
    " Functions {{{
 
-      " Delete trailing white space on save 
-       function! DeleteTrailingWS() 
-          let l = line(".") 
+      " Delete trailing white space on save
+       function! DeleteTrailingWS()
+          let l = line(".")
           let c = col(".")
           %s/\s\+$//ge
           call cursor(l,c)
        endfunction
+      "
+
+      " Go forward a paragraph
+      function! ForwardParagraph()
+         let cnt = v:count ? v:count : 1
+         let i = 0
+         while i < cnt
+            if !search('^\s*\n.*\S','W')
+               normal! G$
+               return
+            endif
+            let i = i + 1
+         endwhile
+      endfunction
       "
 
       " Small helper
@@ -884,15 +886,15 @@
          autocmd!
          autocmd BufWrite *.py :call DeleteTrailingWS()
          autocmd BufWrite *.coffee :call DeleteTrailingWS()
-         autocmd BufWrite *.rb :call DeleteTrailingWS() 
-         autocmd BufWrite *.haml :call DeleteTrailingWS() 
-         autocmd BufWrite *.md :call DeleteTrailingWS()  
+         autocmd BufWrite *.rb :call DeleteTrailingWS()
+         autocmd BufWrite *.haml :call DeleteTrailingWS()
+         autocmd BufWrite *.md :call DeleteTrailingWS()
          autocmd BufWrite *.R :call DeleteTrailingWS()
-      augroup END 
+      augroup END
 
-      augroup resize_buffer_windows 
+      augroup resize_buffer_windows
          autocmd!
-         autocmd WinEnter * let &winheight = &lines * 7 / 10 
+         autocmd WinEnter * let &winheight = &lines * 7 / 10
       augroup END
 
       " Tex files
@@ -904,7 +906,7 @@
       " Rnw files
       augroup rnw_file_options
          autocmd!
-         autocmd BufNewFile,BufRead *.Rnw set spell 
+         autocmd BufNewFile,BufRead *.Rnw set spell
          autocmd FileType gitcommit set spell
       augroup END
 
@@ -915,9 +917,9 @@
       augroup END
 
       " On insert leave
-      augroup on_insert_leave 
+      augroup on_insert_leave
          autocmd!
-         autocmd InsertLeave * set nopaste 
+         autocmd InsertLeave * set nopaste
       augroup END
 
    "}}}
