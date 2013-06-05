@@ -155,7 +155,14 @@
 
       " Set eol vizualized character
       " set listchars=tab:>-,trail:·,eol:$
-      set listchars=trail:·,eol:$
+      set listchars=trail:·,eol:$ 
+
+      " Use clipboard register.
+      if has('unnamedplus')
+        set clipboard& clipboard+=unnamedplus
+      else
+        set clipboard& clipboard+=unnamed
+      endif
    "}}}
 
    " Mappings {{{
@@ -759,7 +766,10 @@
          let g:unite_abbr_highlight = 'TabLine'
          let g:unite_split_rule='belowright'
          let g:unite_source_file_mru_filename_format = ''
-         let g:unite_enable_ignore_case=1
+         let g:unite_enable_ignore_case=1 
+
+         let g:unite_marked_icon = '*'
+         let g:unite_prompt = '» '
 
          " For ack grep.
          if executable('ack-grep')
