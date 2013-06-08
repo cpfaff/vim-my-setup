@@ -33,7 +33,7 @@
       set noerrorbells
       set novisualbell
       set t_vb=
-      set tm=500
+      set timeoutlen=500
 
       " Save all files in one place
       " set backupdir=~/.vim/tmp
@@ -43,7 +43,7 @@
       set tags=~/.vim/tmp/
 
       " Disable vim startup message
-      set shortmess=aTI
+      set shortmess=I
 
       " Sets how much history and undo vim remembers
       set history=1000
@@ -99,8 +99,16 @@
 
       " Set colour scheme
       set background=dark
-      colorscheme solarized
-
+      colorscheme solarized 
+      let g:solarized_termtrans=1 
+      let g:solarized_termcolors=256
+      let g:solarized_contrast="high"
+      let g:solarized_visibility="high"
+      highlight clear SignColumn
+      hi Pmenu guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
+      hi PmenuSbar guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
+      hi PmenuThumb guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE 
+ 
       " wrap and linebreak
       set wrap
       set linebreak
@@ -154,15 +162,16 @@
       set ttyfast
 
       " Set eol vizualized character
-      " set listchars=tab:>-,trail:·,eol:$
-      set listchars=trail:·,eol:$ 
+      set listchars=trail:·,eol:$
 
-      " Use clipboard register.
-      if has('unnamedplus')
-        set clipboard& clipboard+=unnamedplus
-      else
-        set clipboard& clipboard+=unnamed
+      if has ('x') && has ('gui')
+         set clipboard=unnamedplus
+      elseif has ('gui')
+         set clipboard=unnamed
       endif
+      
+      " Allow virtual edit in block mode
+      set virtualedit=block
    "}}}
 
    " Mappings {{{
@@ -221,7 +230,15 @@
             " Smart }
             nnoremap <silent> } :<C-u>call ForwardParagraph()<CR>
             onoremap <silent> } :<C-u>call ForwardParagraph()<CR>
-            xnoremap <silent> } <Esc>:<C-u>call ForwardParagraph()<CR>mzgv`z
+            xnoremap <silent> } <Esc>:<C-u>call ForwardParagraph()<CR>mzgv`z 
+            
+            " Alternative movement for camelcase 
+            nmap <silent> <M-w> <Plug>CamelCaseMotion_w
+            xmap <silent> <M-w> <Plug>CamelCaseMotion_w
+            omap <silent> <M-w> <Plug>CamelCaseMotion_w
+            nmap <silent> <M-b> <Plug>CamelCaseMotion_b
+            xmap <silent> <M-b> <Plug>CamelCaseMotion_b
+            omap <silent> <M-b> <Plug>CamelCaseMotion_b
 
          " }}}
 
@@ -420,8 +437,10 @@
                nmap <silent><leader>f [unite_key]
 
                nnoremap [unite_key]c :<C-u>Unite -buffer-name=files file_rec/async<CR>
+               " nnoremap [unite_key]c :<C-u>Unite -buffer-name=files file_rec<CR>
                nnoremap [unite_key]f :<C-u>Unite -buffer-name=sources source<CR>
                nnoremap [unite_key]g :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
+               " nnoremap [unite_key]g :<C-u>Unite -buffer-name=files file_rec:!<CR>
                nnoremap [unite_key]r :<C-u>Unite -buffer-name=files file_mru<CR>
                nnoremap [unite_key]u :<C-u>Unite -log -buffer-name=update neobundle/update<CR>
 

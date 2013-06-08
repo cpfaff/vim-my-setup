@@ -16,7 +16,8 @@ NeoBundle 'Shougo/vimproc.git', {
          \ 'build' : {
          \     'unix' : 'make -f make_unix.mak',
          \    },
-         \ }
+         \ } 
+         
 NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/unite-build.git'
@@ -41,6 +42,7 @@ NeoBundle 'vim-scripts/YankRing.vim.git'
 NeoBundle 'vim-scripts/sessionman.vim.git'
 NeoBundle 'vim-scripts/Vim-R-plugin.git'
 NeoBundle 'vim-scripts/tex.vim--Tanzler'
+NeoBundle 'vim-scripts/camelcasemotion.git'
 
 NeoBundle 'scrooloose/nerdcommenter.git'
 NeoBundle 'scrooloose/syntastic.git'
@@ -67,6 +69,7 @@ NeoBundle 'jamiebikies/greplace.vim.git'
 NeoBundle 'kana/vim-niceblock.git'
 
 " Other useful bundles
+" NeoBundle 'Raimondi/delimitMate.git'
 " NeoBundle 'vim-scripts/peaksea.git'
 " NeoBundle 'guns/xterm-color-table.vim.git'
 " NeoBundle 'honza/snipmate-snippets.git'
