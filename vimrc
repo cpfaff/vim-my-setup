@@ -7,7 +7,7 @@
 "  MMMM     MMMM       VVVV VVVV       SSSSSSSS
 "  MMMM     MMMM y       VVVVV  im      SSSSSS etup
 " ===================================================
-"
+
 " File: vimrc
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup.
@@ -70,7 +70,8 @@
       set whichwrap=b,s,<,>,[,],h,l
 
       "swith on numbering on left side
-      set number
+      " set number 
+      set relativenumber
 
       " Tab completion
       set wildmenu
@@ -350,7 +351,7 @@
                noremap [buffer_key]d :<C-u>bd!<CR>
                noremap [buffer_key]n :<C-u>tabnew<CR>
                noremap [buffer_key]o :<C-u>tabonly<CR>
-               nnoremap [buffer_key] :<C-u>Unite -buffer-name=buffers buffer -quick-match<CR>
+               nnoremap [buffer_key] :<C-u>Unite -buffer-name=buffers buffer -input=!vimfiler -quick-match<CR>
             " }}}
 
             " (c)omment handling {{{
