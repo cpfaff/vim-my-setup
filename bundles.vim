@@ -18,14 +18,13 @@ NeoBundle 'Shougo/vimproc.git', {
          \    },
          \ } 
          
-NeoBundle 'Shougo/neocomplcache.git'
+NeoBundle 'Shougo/neocomplcache.git' 
+" NeoBundle 'Shougo/neocomplete.git'
 NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/unite-build.git'
 NeoBundle 'Shougo/vimfiler.git'
 NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'Shougo/unite-outline.git'
-
-NeoBundle 'kmnk/vim-unite-giti.git'
 
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tpope/vim-rails.git'
@@ -69,6 +68,7 @@ NeoBundle 'jamiebikies/greplace.vim.git'
 NeoBundle 'kana/vim-niceblock.git'
 
 " Other useful bundles
+" NeoBundle 'kmnk/vim-unite-giti.git'
 " NeoBundle 'Raimondi/delimitMate.git'
 " NeoBundle 'vim-scripts/peaksea.git'
 " NeoBundle 'guns/xterm-color-table.vim.git'

@@ -43,8 +43,8 @@
       set tags=~/.vim/tmp/
 
       " Disable vim startup message
-      set shortmess=I
-
+      " set shortmess=I
+      set shortmess+=filmnrxoOtTI
       " Sets how much history and undo vim remembers
       set history=1000
 
@@ -240,6 +240,9 @@
             nmap <silent> <M-b> <Plug>CamelCaseMotion_b
             xmap <silent> <M-b> <Plug>CamelCaseMotion_b
             omap <silent> <M-b> <Plug>CamelCaseMotion_b
+            nmap <silent> <M-e> <Plug>CamelCaseMotion_e
+            xmap <silent> <M-e> <Plug>CamelCaseMotion_e
+            omap <silent> <M-e> <Plug>CamelCaseMotion_e
 
          " }}}
 
@@ -685,6 +688,57 @@
    "}}}
 
    " Plugin configuration {{{
+   
+      " (n)eocomplete {{{
+         " let g:acp_enableAtStartup = 0
+         " let g:neocomplete#enable_at_startup = 1
+         " let g:neocomplete#enable_smart_case = 1
+         " let g:neocomplete#sources#syntax#min_keyword_length = 3
+         " let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+         " " Define dictionary.
+         " let g:neocomplete#sources#dictionary#dictionaries = {
+            " \ 'default' : ''
+            " \ }
+
+         " " Define keyword.
+         " if !exists('g:neocomplete#keyword_patterns')
+             " let g:neocomplete#keyword_patterns = {}
+         " endif 
+
+         " let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+         " " Plugin key-mappings.
+         " inoremap <expr><C-g>     neocomplete#undo_completion()
+         " inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+         " " inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+         " function! s:my_cr_function()
+           " return neocomplete#smart_close_popup() . "\<CR>"
+         " endfunction
+         " " <TAB>: completion.
+         " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+         " inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+         " inoremap <expr><CR> neocomplete#smart_close_popup()."\<CR>"
+
+
+         " " Enable omni completion.
+         " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+         " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+         " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+         " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+         " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+         " " Enable heavy omni completion.
+         " if !exists('g:neocomplete#sources#omni#input_patterns')
+           " let g:neocomplete#sources#omni#input_patterns = {}
+         " endif 
+
+         " let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+         " let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+         " let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+         " let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+      " }}}
 
       " (n)eocomplcache and neosnippet {{{
          let g:neocomplcache_enable_at_startup = 1
@@ -763,7 +817,9 @@
       " }}}
 
       " (s)yntastic {{{
-         let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+         let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'  
+         " ignore as lacheck seems buggy
+         let g:syntastic_ignore_files=['tex']
       " }}}
 
       " (t)agbar options {{{
