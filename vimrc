@@ -741,7 +741,8 @@
       " }}}
 
       " (n)eocomplcache and neosnippet {{{
-         let g:neocomplcache_enable_at_startup = 1
+         let g:neocomplcache_enable_at_startup = 1 
+         let g:neocomplcache_enable_fuzzy_completion = 1
          let g:neocomplcache_temporary_dir = '~/.vim/tmp/'
          let g:neocomplcache_enable_camel_case_completion = 1
          let g:neocomplcache_enable_smart_case = 1
@@ -819,7 +820,7 @@
       " (s)yntastic {{{
          let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'  
          " ignore as lacheck seems buggy
-         let g:syntastic_ignore_files=['tex']
+         let g:syntastic_ignore_files = ['/*.*.cls$)'] 
       " }}}
 
       " (t)agbar options {{{

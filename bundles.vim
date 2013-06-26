@@ -25,7 +25,7 @@ NeoBundle 'Shougo/unite-build.git'
 NeoBundle 'Shougo/vimfiler.git'
 NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'Shougo/unite-outline.git'
-
+" NeoBundle 'Shougo/context_filetype.vim.git'
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tpope/vim-rails.git'
 NeoBundle 'tpope/vim-repeat.git'
