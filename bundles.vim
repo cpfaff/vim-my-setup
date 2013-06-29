@@ -24,7 +24,7 @@ NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/unite-build.git'
 NeoBundle 'Shougo/vimfiler.git'
 NeoBundle 'Shougo/unite.vim.git'
-NeoBundle 'Shougo/unite-outline.git'
+" NeoBundle 'Shougo/unite-outline.git'
 " NeoBundle 'Shougo/context_filetype.vim.git'
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tpope/vim-rails.git'
@@ -67,7 +67,13 @@ NeoBundle 'jamiebikies/greplace.vim.git'
 
 NeoBundle 'kana/vim-niceblock.git'
 
-" Other useful bundles
+" Other useful bundles 
+
+" NeoBundle 'zef/vim-cycle.git'
+" NeoBundle 'sjl/clam.vim.git'
+" NeoBundle 'mattn/gist-vim' 
+
+" NeoBundle 'wikitopian/hardmode.git' 
 " NeoBundle 'kmnk/vim-unite-giti.git'
 " NeoBundle 'Raimondi/delimitMate.git'
 " NeoBundle 'vim-scripts/peaksea.git'
