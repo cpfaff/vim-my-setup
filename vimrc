@@ -11,8 +11,8 @@
 " File: vimrc
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup.
-
-   " Include bundles and autosource vimrc file {{{
+ 
+" Include bundles and autosource vimrc file {{{
 
       " Load vim bundles
       source ~/.vim/bundles.vim
@@ -98,7 +98,8 @@
       " Enable better colours in console
       set t_Co=256
 
-      " Set colour scheme
+      " Set colour scheme 
+      syntax on
       set background=dark
       colorscheme solarized 
       let g:solarized_termtrans=1 
@@ -229,9 +230,9 @@
             vnoremap <silent> # :call VisualSelection('f')<CR>
 
             " Smart }
-            nnoremap <silent> } :<C-u>call ForwardParagraph()<CR>
-            onoremap <silent> } :<C-u>call ForwardParagraph()<CR>
-            xnoremap <silent> } <Esc>:<C-u>call ForwardParagraph()<CR>mzgv`z 
+            " nnoremap <silent> } :<C-u>call ForwardParagraph()<CR>
+            " onoremap <silent> } :<C-u>call ForwardParagraph()<CR>
+            " xnoremap <silent> } <Esc>:<C-u>call ForwardParagraph()<CR>mzgv`z 
             
             " Alternative movement for camelcase 
             nmap <silent> <M-w> <Plug>CamelCaseMotion_w
@@ -281,10 +282,10 @@
             imap <C-j> <Plug>(neosnippet_jump)
             smap <C-j> <Plug>(neosnippet_jump)
 
-            inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-            inoremap <expr><C-l> neocomplcache#complete_common_string()
-            inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+            inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
             inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+            inoremap <expr><CR> neocomplete#smart_close_popup()."\<CR>"
+            inoremap <expr><C-l> neocomplete#complete_common_string()
 
             " Make Y consistent with D and C commands which act on a whole line
             nnoremap Y y$
@@ -688,103 +689,79 @@
    "}}}
 
    " Plugin configuration {{{
-   
+ 
       " (n)eocomplete {{{
-         " let g:acp_enableAtStartup = 0
-         " let g:neocomplete#enable_at_startup = 1
-         " let g:neocomplete#enable_smart_case = 1
-         " let g:neocomplete#sources#syntax#min_keyword_length = 3
-         " let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+         let g:acp_enableAtStartup = 0
+         let g:neocomplete#enable_at_startup = 1
+         let g:neocomplete#enable_smart_case = 1
+         " let g:neocomplete#enable_auto_select = 1    
+         " let g:neocomplete#enable_complete_select = 1 
+         " let g:neocomplete#sources#syntax#min_keyword_length = 3 
+         " let g:neocomplete#enable_auto_delimiter = 1
 
-         " " Define dictionary.
-         " let g:neocomplete#sources#dictionary#dictionaries = {
-            " \ 'default' : ''
-            " \ }
+         " Enable omni completion.
+         autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+         autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+         autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+         autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+         
+         " Enable heavy omni completion.
+         if !exists('g:neocomplete#sources#omni#input_patterns')
+           let g:neocomplete#sources#omni#input_patterns = {}
+         endif 
 
-         " " Define keyword.
-         " if !exists('g:neocomplete#keyword_patterns')
-             " let g:neocomplete#keyword_patterns = {}
-         " endif 
-
-         " let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-         " " Plugin key-mappings.
-         " inoremap <expr><C-g>     neocomplete#undo_completion()
-         " inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-         " " inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-         " function! s:my_cr_function()
-           " return neocomplete#smart_close_popup() . "\<CR>"
-         " endfunction
-         " " <TAB>: completion.
-         " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-         " inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-         " inoremap <expr><CR> neocomplete#smart_close_popup()."\<CR>"
-
-
-         " " Enable omni completion.
-         " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-         " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-         " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-         " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-         " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-         " " Enable heavy omni completion.
-         " if !exists('g:neocomplete#sources#omni#input_patterns')
-           " let g:neocomplete#sources#omni#input_patterns = {}
-         " endif 
-
-         " let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-         " let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-         " let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-         " let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+         let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+         let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+         let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+         let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
       " }}}
 
       " (n)eocomplcache and neosnippet {{{
-         let g:neocomplcache_enable_at_startup = 1 
-         let g:neocomplcache_enable_fuzzy_completion = 1
-         let g:neocomplcache_temporary_dir = '~/.vim/tmp/'
-         let g:neocomplcache_enable_camel_case_completion = 1
-         let g:neocomplcache_enable_smart_case = 1
-         let g:neocomplcache_enable_underbar_completion = 1
-         let g:neocomplcache_min_syntax_length = 3
-         let g:neocomplcache_enable_auto_delimiter = 1
-         let g:neocomplcache_max_list = 15
-         let g:neocomplcache_auto_completion_start_length = 3
-         let g:neocomplcache_force_overwrite_completefunc = 1
-         let g:neocomplcache_enable_auto_select = 1
+         " let g:neocomplcache_enable_at_startup = 1 
+         " let g:neocomplcache_temporary_dir = '~/.vim/tmp/'
+         " let g:neocomplcache_enable_camel_case_completion = 1
+         " let g:neocomplcache_enable_underbar_completion = 1
+         " let g:neocomplcache_enable_smart_case = 1 
+         " let g:neocomplcache_enable_auto_select = 1
+         " let g:neosnippet#snippets_directory='~/.vim/snippets/' 
 
-         let g:neosnippet#snippets_directory='~/.vim/snippets/'
+         " let g:neocomplcache_min_syntax_length = 3
+         " let g:neocomplcache_enable_auto_delimiter = 1
+         " let g:neocomplcache_max_list = 15
+         " let g:neocomplcache_auto_completion_start_length = 3
+         " let g:neocomplcache_force_overwrite_completefunc = 1
+
 
          " Define keyword.
-         if !exists('g:neocomplcache_keyword_patterns')
-            let g:neocomplcache_keyword_patterns = {}
-         endif
+         " if !exists('g:neocomplcache_keyword_patterns')
+            " let g:neocomplcache_keyword_patterns = {}
+         " endif
 
-         let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+         " let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
-         " Enable omni completion.
-         augroup neocomplcache_omni_completion
-            autocmd!
-            autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-            autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-            autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-            autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-            autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-         augroup END
+         " " Enable omni completion.
+         " augroup neocomplcache_omni_completion
+            " autocmd!
+            " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+            " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+            " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+            " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+            " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+            " autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+         " augroup END
 
-         " Enable heavy omni completion.
-         if !exists('g:neocomplcache_omni_patterns')
-            let g:neocomplcache_omni_patterns = {}
-         endif
+         " " Enable heavy omni completion.
+         " if !exists('g:neocomplcache_omni_patterns')
+            " let g:neocomplcache_omni_patterns = {}
+         " endif
 
-         let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-         let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-         let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-         let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+         " let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+         " let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+         " let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+         " let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
-         let g:header_author = "Claas-Thido Pfaff"
+         " let g:header_author = "Claas-Thido Pfaff"
       " }}}
 
       " (n)erd commenter {{{
@@ -820,7 +797,7 @@
       " (s)yntastic {{{
          let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'  
          " ignore as lacheck seems buggy
-         let g:syntastic_ignore_files = ['/*.*.cls$)'] 
+         " let g:syntastic_ignore_files = ['/*.*.cls$)'] 
       " }}}
 
       " (t)agbar options {{{
@@ -910,17 +887,17 @@
       "
 
       " Go forward a paragraph
-      function! ForwardParagraph()
-         let cnt = v:count ? v:count : 1
-         let i = 0
-         while i < cnt
-            if !search('^\s*\n.*\S','W')
-               normal! G$
-               return
-            endif
-            let i = i + 1
-         endwhile
-      endfunction
+      " function! ForwardParagraph()
+         " let cnt = v:count ? v:count : 1
+         " let i = 0
+         " while i < cnt
+            " if !search('^\s*\n.*\S','W')
+               " normal! G$
+               " return
+            " endif
+            " let i = i + 1
+         " endwhile
+      " endfunction
       "
 
       " Small helper
