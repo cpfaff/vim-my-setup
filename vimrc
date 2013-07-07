@@ -69,9 +69,16 @@
       " Wrap behavior
       set whichwrap=b,s,<,>,[,],h,l
 
+      " Do not highlight line and column
+      " set nocursorcolumn
+      " set nocursorline 
+
+      " set sync line limit
+      " syntax sync minlines=256
+
       "swith on numbering on left side
-      " set number 
-      set relativenumber
+      set number 
+      " set relativenumber
 
       " Tab completion
       set wildmenu
@@ -394,11 +401,11 @@
             " - [dump_key]l   lists all stored sessions
             " - [dump_key]s   to save a session
 
-               nnoremap [dump_key] <Nop>
-               nmap <silent><leader>d [dump_key]
+               " nnoremap [dump_key] <Nop>
+               " nmap <silent><leader>d [dump_key]
 
-               nnoremap [dump_key]l :<C-u>SessionList<CR>
-               nnoremap [dump_key]s :<C-u>SessionSave<CR>
+               " nnoremap [dump_key]l :<C-u>SessionList<CR>
+               " nnoremap [dump_key]s :<C-u>SessionSave<CR>
             " }}}
 
             " (e)dit config and snippet files {{{

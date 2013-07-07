@@ -37,10 +37,10 @@ NeoBundle 'tpope/vim-rhubarb.git'
 
 NeoBundle 'vim-scripts/CmdlineComplete.git'
 NeoBundle 'vim-scripts/YankRing.vim.git'
-NeoBundle 'vim-scripts/sessionman.vim.git'
 NeoBundle 'vim-scripts/Vim-R-plugin.git'
 NeoBundle 'vim-scripts/tex.vim--Tanzler'
 NeoBundle 'vim-scripts/camelcasemotion.git'
+" NeoBundle 'vim-scripts/sessionman.vim.git'
 
 NeoBundle 'scrooloose/nerdcommenter.git'
 NeoBundle 'scrooloose/syntastic.git'
@@ -65,9 +65,11 @@ NeoBundle 'kana/vim-niceblock.git'
 
 " Other useful bundles 
 
+
 " NeoBundle 'zef/vim-cycle.git'
 " NeoBundle 'sjl/clam.vim.git'
 " NeoBundle 'mattn/gist-vim' 
+
 
 " NeoBundle 'Shougo/neocomplcache.git' 
 " NeoBundle 'tjennings/git-grep-vim.git'
