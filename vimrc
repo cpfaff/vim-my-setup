@@ -36,14 +36,13 @@
       set timeoutlen=500
 
       " Save all files in one place
-      " set backupdir=~/.vim/tmp
       set nobackup
+      " set backupdir=~/.vim/tmp
       set noswapfile
       set directory=~/.vim/tmp
       set tags=~/.vim/tmp/
 
       " Disable vim startup message
-      " set shortmess=I
       set shortmess+=filmnrxoOtTI
       " Sets how much history and undo vim remembers
       set history=1000
@@ -69,16 +68,8 @@
       " Wrap behavior
       set whichwrap=b,s,<,>,[,],h,l
 
-      " Do not highlight line and column
-      " set nocursorcolumn
-      " set nocursorline 
-
-      " set sync line limit
-      " syntax sync minlines=256
-
       "swith on numbering on left side
       set number 
-      " set relativenumber
 
       " Tab completion
       set wildmenu
@@ -87,37 +78,41 @@
       " ignore the case (unite reads this)
       set ignorecase
 
-      " But be smart about cases
+      " but be smart about cases
       set smartcase
 
-      " Highlight search results
+      " highlight search results
       set hlsearch
 
-      " Makes search act like search in modern browsers
+      " makes search act like search in modern browsers
       set incsearch
 
-      " Don't redraw while executing macros (better performance)
+      " don't redraw while executing macros (better performance)
       set lazyredraw
 
-      " For regular expressions turn magic on
+      " for regular expressions turn magic on
       set magic
 
-      " Enable better colours in console
+      " enable better colours in console
       set t_Co=256
 
-      " Set colour scheme 
+      " set colour scheme 
       syntax on
       set background=dark
       colorscheme solarized 
-      let g:solarized_termtrans=1 
-      let g:solarized_termcolors=256
-      let g:solarized_contrast="high"
-      let g:solarized_visibility="high"
-      highlight clear SignColumn
+      let g:solarized_termtrans=1  
+
+      highlight clear SignColumn 
+ 
+      " completion popup
       hi Pmenu guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
       hi PmenuSbar guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
-      hi PmenuThumb guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE 
- 
+      hi PmenuThumb guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE   
+
+      " search highlight
+      hi Search guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
+      hi IncSearch guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray 
+
       " wrap and linebreak
       set wrap
       set linebreak
@@ -235,12 +230,7 @@
             " Visual mode pressing * or # searches for the current selection
             vnoremap <silent> * :call VisualSelection('b')<CR>
             vnoremap <silent> # :call VisualSelection('f')<CR>
-
-            " Smart }
-            " nnoremap <silent> } :<C-u>call ForwardParagraph()<CR>
-            " onoremap <silent> } :<C-u>call ForwardParagraph()<CR>
-            " xnoremap <silent> } <Esc>:<C-u>call ForwardParagraph()<CR>mzgv`z 
-            
+    
             " Alternative movement for camelcase 
             nmap <silent> <M-w> <Plug>CamelCaseMotion_w
             xmap <silent> <M-w> <Plug>CamelCaseMotion_w
@@ -251,6 +241,16 @@
             nmap <silent> <M-e> <Plug>CamelCaseMotion_e
             xmap <silent> <M-e> <Plug>CamelCaseMotion_e
             omap <silent> <M-e> <Plug>CamelCaseMotion_e
+
+            " nmap <silent> w <Plug>CamelCaseMotion_w
+            " xmap <silent> w <Plug>CamelCaseMotion_w
+            " omap <silent> w <Plug>CamelCaseMotion_w
+            " nmap <silent> b <Plug>CamelCaseMotion_b
+            " xmap <silent> b <Plug>CamelCaseMotion_b
+            " omap <silent> b <Plug>CamelCaseMotion_b
+            " nmap <silent> e <Plug>CamelCaseMotion_e
+            " xmap <silent> e <Plug>CamelCaseMotion_e
+            " omap <silent> e <Plug>CamelCaseMotion_e
 
          " }}}
 
@@ -449,10 +449,8 @@
                nmap <silent><leader>f [unite_key]
 
                nnoremap [unite_key]c :<C-u>Unite -buffer-name=files file_rec/async<CR>
-               " nnoremap [unite_key]c :<C-u>Unite -buffer-name=files file_rec<CR>
                nnoremap [unite_key]f :<C-u>Unite -buffer-name=sources source<CR>
                nnoremap [unite_key]g :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
-               " nnoremap [unite_key]g :<C-u>Unite -buffer-name=files file_rec:!<CR>
                nnoremap [unite_key]r :<C-u>Unite -buffer-name=files file_mru<CR>
                nnoremap [unite_key]u :<C-u>Unite -log -buffer-name=update neobundle/update<CR>
 
@@ -495,7 +493,7 @@
             "
             " Mappings:
             "
-            " - [make_key]   opens a unite window and starte a plain make call.
+            " - [make_key]   opens a unite window and starts a plain make call.
             "                the filter in the file is set to error so it will
             "                display all errors in the make run output. You can
             "                specify it to your needs or to multiple statements
@@ -565,8 +563,8 @@
                vmap <silent><leader>r [replace_key]
 
                vnoremap [replace_key] :call VisualSelection('replace')<CR>
-               vnoremap [replace_key]a :call VisualSelection('quickfixdo')<CR>
-               vnoremap [replace_key]s :call VisualSelection('acksearch')<CR>
+               " vnoremap [replace_key]a :call VisualSelection('quickfixdo')<CR>
+               " vnoremap [replace_key]s :call VisualSelection('acksearch')<CR>
             " }}}
 
             " (s)pellchecking {{{
@@ -701,17 +699,19 @@
          let g:acp_enableAtStartup = 0
          let g:neocomplete#enable_at_startup = 1
          let g:neocomplete#enable_smart_case = 1
-         " let g:neocomplete#enable_auto_select = 1    
-         " let g:neocomplete#enable_complete_select = 1 
-         " let g:neocomplete#sources#syntax#min_keyword_length = 3 
-         " let g:neocomplete#enable_auto_delimiter = 1
+         " let g:neocomplete#enable_refresh_always = 1  
+         " let g:neocomplete#enable_auto_select = 1 
 
-         " Enable omni completion.
-         autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-         autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-         autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-         autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+         " Enable omni completion 
+         augroup neocomplete
+            autocmd!
+            autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+            autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+            autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+            autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+            autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+         augroup END
          
          " Enable heavy omni completion.
          if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -722,52 +722,7 @@
          let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
          let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
          let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-      " }}}
-
-      " (n)eocomplcache and neosnippet {{{
-         " let g:neocomplcache_enable_at_startup = 1 
-         " let g:neocomplcache_temporary_dir = '~/.vim/tmp/'
-         " let g:neocomplcache_enable_camel_case_completion = 1
-         " let g:neocomplcache_enable_underbar_completion = 1
-         " let g:neocomplcache_enable_smart_case = 1 
-         " let g:neocomplcache_enable_auto_select = 1
-         " let g:neosnippet#snippets_directory='~/.vim/snippets/' 
-
-         " let g:neocomplcache_min_syntax_length = 3
-         " let g:neocomplcache_enable_auto_delimiter = 1
-         " let g:neocomplcache_max_list = 15
-         " let g:neocomplcache_auto_completion_start_length = 3
-         " let g:neocomplcache_force_overwrite_completefunc = 1
-
-
-         " Define keyword.
-         " if !exists('g:neocomplcache_keyword_patterns')
-            " let g:neocomplcache_keyword_patterns = {}
-         " endif
-
-         " let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-         " " Enable omni completion.
-         " augroup neocomplcache_omni_completion
-            " autocmd!
-            " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-            " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-            " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-            " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-            " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-            " autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-         " augroup END
-
-         " " Enable heavy omni completion.
-         " if !exists('g:neocomplcache_omni_patterns')
-            " let g:neocomplcache_omni_patterns = {}
-         " endif
-
-         " let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-         " let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-         " let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-         " let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
-
+         let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
          " let g:header_author = "Claas-Thido Pfaff"
       " }}}
 
@@ -798,13 +753,13 @@
       " }}}
 
       " (s)essionman session plugin {{{
-         set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
+         " set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
       " }}}
 
       " (s)yntastic {{{
          let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'  
          " ignore as lacheck seems buggy
-         " let g:syntastic_ignore_files = ['/*.*.cls$)'] 
+         let g:syntastic_ignore_files = ['/*.*.cls$'] 
       " }}}
 
       " (t)agbar options {{{
@@ -836,7 +791,7 @@
          if executable('ack-grep')
             " Use ack in unite grep source.
             let g:unite_source_grep_command = 'ack-grep'
-            let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
+            let g:unite_source_rep_default_opts = '--no-heading --no-color -a'
             let g:unite_source_grep_recursive_opt = ''
          endif
 
@@ -847,12 +802,9 @@
          augroup END
 
          function! s:unite_my_settings()
-
             imap <buffer> kj <Plug>(unite_insert_leave)
             nmap <buffer><leader>bd <Plug>(unite_all_exit)
-
             let unite = unite#get_current_unite()
-
          endfunction
       " }}}
 
@@ -891,20 +843,6 @@
           %s/\s\+$//ge
           call cursor(l,c)
        endfunction
-      "
-
-      " Go forward a paragraph
-      " function! ForwardParagraph()
-         " let cnt = v:count ? v:count : 1
-         " let i = 0
-         " while i < cnt
-            " if !search('^\s*\n.*\S','W')
-               " normal! G$
-               " return
-            " endif
-            " let i = i + 1
-         " endwhile
-      " endfunction
       "
 
       " Small helper
@@ -993,4 +931,4 @@
          autocmd InsertLeave * set nopaste
       augroup END
 
-   "}}}
+   " }}}
