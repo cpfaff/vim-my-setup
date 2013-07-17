@@ -292,14 +292,13 @@
             inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
             inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>" 
 
-            if !has('lua') || v:version < 703 ||
-                  \ (v:version == 703 && !has('patch885')) 
-               inoremap <expr><CR> neocomplete#smart_close_popup()."\<CR>"
-               inoremap <expr><C-l> neocomplete#complete_common_string()
-            else 
+            if !has('lua') || v:version < 703 || (v:version == 703 && !has('patch885')) 
                inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
                inoremap <expr><C-l> neocomplcache#complete_common_string()
                inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>" 
+            else 
+               inoremap <expr><CR> neocomplete#smart_close_popup()."\<CR>"
+               inoremap <expr><C-l> neocomplete#complete_common_string()
             endif
 
             " Make Y consistent with D and C commands which act on a whole line
@@ -704,37 +703,7 @@
    " Plugin configuration {{{
  
       " (n)eocomplete {{{ 
-         if !has('lua') || v:version < 703 ||
-               \ (v:version == 703 && !has('patch885')) 
-            let g:acp_enableAtStartup = 0
-            let g:neocomplete#enable_at_startup = 1
-            let g:neocomplete#enable_smart_case = 1
-            " let g:neocomplete#enable_refresh_always = 1  
-            let g:neocomplete#enable_auto_select = 1 
-
-            " Enable omni completion 
-            augroup neocomplete
-               autocmd!
-               autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-               autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-               autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-               autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-               autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-               autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-            augroup END
-            
-            " Enable heavy omni completion.
-            if !exists('g:neocomplete#sources#omni#input_patterns')
-              let g:neocomplete#sources#omni#input_patterns = {}
-            endif 
-
-            let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-            let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-            let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-            let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-            let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-            " let g:header_author = "Claas-Thido Pfaff"
-         else  
+         if !has('lua') || v:version < 703 || (v:version == 703 && !has('patch885'))  
             let g:neocomplcache_enable_at_startup = 1
             let g:neocomplcache_temporary_dir = '~/.vim/tmp/'
             let g:neocomplcache_enable_camel_case_completion = 1
@@ -776,7 +745,35 @@
             let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
             let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
             let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+         else   
+            let g:acp_enableAtStartup = 0
+            let g:neocomplete#enable_at_startup = 1
+            let g:neocomplete#enable_smart_case = 1
+            " let g:neocomplete#enable_refresh_always = 1  
+            let g:neocomplete#enable_auto_select = 1 
 
+            " Enable omni completion 
+            augroup neocomplete
+               autocmd!
+               autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+               autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+               autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+               autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+               autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+               autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+            augroup END
+            
+            " Enable heavy omni completion.
+            if !exists('g:neocomplete#sources#omni#input_patterns')
+              let g:neocomplete#sources#omni#input_patterns = {}
+            endif 
+
+            let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+            let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+            let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+            let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+            let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+            " let g:header_author = "Claas-Thido Pfaff"
          endif
       " }}} 
 
