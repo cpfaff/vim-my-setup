@@ -20,9 +20,11 @@ NeoBundle 'Shougo/vimproc.git', {
          
 NeoBundle 'Shougo/unite.vim.git'
 
-if !has('lua') || v:version < 703 ||
-      \ (v:version == 703 && !has('patch885')) 
-   NeoBundle 'Shougo/neocomplete.git' 
+if !has('lua') || v:version < 703 || (v:version == 703 && !has('patch885'))  
+  NeoBundle 'Shougo/neocomplete', {
+      \ 'depends' : 'Shougo/context_filetype.vim',
+      \ 'vim_version' : '7.3.885'
+      \ }
 else 
    NeoBundle 'Shougo/neocomplcache.git' 
 endif
