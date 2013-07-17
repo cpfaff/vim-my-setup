@@ -18,11 +18,18 @@ NeoBundle 'Shougo/vimproc.git', {
          \    },
          \ } 
          
-NeoBundle 'Shougo/neocomplete.git'
+NeoBundle 'Shougo/unite.vim.git'
+
+if !has('lua') || v:version < 703 ||
+      \ (v:version == 703 && !has('patch885')) 
+   NeoBundle 'Shougo/neocomplete.git' 
+else 
+   NeoBundle 'Shougo/neocomplcache.git' 
+endif
+
 NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/unite-build.git'
 NeoBundle 'Shougo/vimfiler.git'
-NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'Shougo/unite-outline.git'
 NeoBundle 'Shougo/context_filetype.vim.git'
 NeoBundle 'tpope/vim-fugitive.git'
@@ -40,7 +47,6 @@ NeoBundle 'vim-scripts/YankRing.vim.git'
 NeoBundle 'vim-scripts/Vim-R-plugin.git'
 NeoBundle 'vim-scripts/tex.vim--Tanzler'
 NeoBundle 'vim-scripts/camelcasemotion.git'
-" NeoBundle 'vim-scripts/sessionman.vim.git'
 
 NeoBundle 'scrooloose/nerdcommenter.git'
 NeoBundle 'scrooloose/syntastic.git'
@@ -70,8 +76,8 @@ NeoBundle 'kana/vim-niceblock.git'
 " NeoBundle 'sjl/clam.vim.git'
 " NeoBundle 'mattn/gist-vim' 
 
+" NeoBundle 'vim-scripts/sessionman.vim.git'
 
-" NeoBundle 'Shougo/neocomplcache.git' 
 " NeoBundle 'tjennings/git-grep-vim.git'
 " NeoBundle 'henrik/vim-qargs.git'
 " NeoBundle 'mileszs/ack.vim.git'
