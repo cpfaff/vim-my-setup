@@ -26,6 +26,7 @@ else
   NeoBundle 'Shougo/neocomplete'
 endif
 
+" NeoBundle 'https://github.com/cpfaff/neocomplete.vim.git'
 NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/unite-build.git'
 NeoBundle 'Shougo/vimfiler.git'
@@ -55,6 +56,7 @@ NeoBundle 'Lokaltog/vim-powerline.git'
 
 NeoBundle 'airblade/vim-gitgutter.git' 
 
+NeoBundle 'sk1418/Join.git'
 NeoBundle 'majutsushi/tagbar.git'
 NeoBundle 'godlygeek/tabular.git'
 NeoBundle 'Townk/vim-autoclose.git'

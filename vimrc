@@ -11,7 +11,7 @@
 " File: vimrc
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup.
- 
+
 " Include bundles and autosource vimrc file {{{
 
       " Load vim bundles
@@ -749,8 +749,9 @@
             let g:acp_enableAtStartup = 0
             let g:neocomplete#enable_at_startup = 1
             let g:neocomplete#enable_smart_case = 1
+            let g:neosnippet#snippets_directory='~/.vim/snippets/'
             " let g:neocomplete#enable_refresh_always = 1  
-            let g:neocomplete#enable_auto_select = 1 
+            " let g:neocomplete#enable_auto_select = 1 
 
             " Enable omni completion 
             augroup neocomplete
@@ -776,7 +777,6 @@
             " let g:header_author = "Claas-Thido Pfaff"
          endif
       " }}} 
-
 
       " (n)erd commenter {{{
          let g:NERDCreateDefaultMappings = 0
