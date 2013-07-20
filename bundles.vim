@@ -71,8 +71,8 @@ NeoBundle 'jamiebikies/greplace.vim.git'
 NeoBundle 'kana/vim-niceblock.git'
 
 " Testing
-NeoBundle 'sjl/clam.vim.git'
-NeoBundle 'sjl/splice.vim.git'
+" NeoBundle 'sjl/clam.vim.git'
+" NeoBundle 'sjl/splice.vim.git'
 
 " Other useful bundles 
 
