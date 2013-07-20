@@ -70,19 +70,17 @@ NeoBundle 'jamiebikies/greplace.vim.git'
 
 NeoBundle 'kana/vim-niceblock.git'
 
+" Testing
+NeoBundle 'sjl/clam.vim.git'
+NeoBundle 'sjl/splice.vim.git'
+
 " Other useful bundles 
 
-
-" NeoBundle 'zef/vim-cycle.git'
-" NeoBundle 'sjl/clam.vim.git'
 " NeoBundle 'mattn/gist-vim' 
+" NeoBundle 'zef/vim-cycle.git'
 
 " NeoBundle 'vim-scripts/sessionman.vim.git'
-
-" NeoBundle 'tjennings/git-grep-vim.git'
 " NeoBundle 'henrik/vim-qargs.git'
-" NeoBundle 'mileszs/ack.vim.git'
-" NeoBundle 'wikitopian/hardmode.git' 
 " NeoBundle 'kmnk/vim-unite-giti.git'
 " NeoBundle 'Raimondi/delimitMate.git'
 " NeoBundle 'vim-scripts/peaksea.git'
