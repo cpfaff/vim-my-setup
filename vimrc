@@ -811,7 +811,12 @@
       " (s)yntastic {{{
          let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'  
          " ignore as lacheck seems buggy
-         let g:syntastic_ignore_files = ['/*.*.cls$'] 
+         let g:syntastic_ignore_files = ['/*.*.cls$']  
+         " let g:syntastic_enable_signs = 0
+         " let g:syntastic_enable_balloons = 0
+         " let g:syntastic_enable_highlighting = 0 
+         " let g:syntastic_echo_current_error = 0 
+
       " }}}
 
       " (t)agbar options {{{
