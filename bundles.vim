@@ -40,7 +40,7 @@ NeoBundle 'tpope/vim-unimpaired.git'
 NeoBundle 'tpope/vim-markdown.git'
 NeoBundle 'tpope/vim-abolish.git' 
 NeoBundle 'tpope/vim-sleuth.git' 
-NeoBundle 'tpope/vim-rhubarb.git'
+NeoBundle 'tpope/vim-rhubarb.git' 
 
 NeoBundle 'vim-scripts/CmdlineComplete.git'
 NeoBundle 'vim-scripts/YankRing.vim.git'
@@ -55,6 +55,8 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'Lokaltog/vim-powerline.git'
 
 NeoBundle 'airblade/vim-gitgutter.git' 
+
+NeoBundle 'matze/vim-move' 
 
 NeoBundle 'sk1418/Join.git'
 NeoBundle 'majutsushi/tagbar.git'

@@ -272,11 +272,14 @@
             xmap I <Plug>(niceblock-I)
             xmap A <Plug>(niceblock-A)
 
-            " Move lines up and down (bubbling) left and right (indent)
-            nmap <A-j> ]e
-            nmap <A-k> [e
-            vmap <A-k> [egv
-            vmap <A-j> ]egv
+            " Move lines up and down (bubbling)   
+            " now via move plugin
+            " nmap <A-j> ]e
+            " nmap <A-k> [e
+            " vmap <A-k> [egv
+            " vmap <A-j> ]egv  
+
+            " left and right (indent)
             nnoremap <A-l> >>
             nnoremap <A-h> <<
             vnoremap <A-l> >gv
