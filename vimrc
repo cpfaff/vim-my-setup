@@ -961,6 +961,12 @@
          autocmd BufWrite *.R :call DeleteTrailingWS()
       augroup END
 
+      augroup csv_editing 
+         au!
+         au BufRead,BufWritePost *.csv :%ArrangeColumn
+         au BufWritePre *.csv :%UnArrangeColumn
+      augroup END 
+
       augroup resize_buffer_windows
          autocmd!
          autocmd WinEnter * let &winheight = &lines * 7 / 10

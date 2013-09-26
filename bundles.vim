@@ -13,10 +13,10 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim' 
 
 NeoBundle 'Shougo/vimproc.git', {
-         \ 'build' : {
-         \     'unix' : 'make -f make_unix.mak',
-         \    },
-         \ } 
+        \ 'build' : {
+        \     'unix' : 'make -f make_unix.mak',
+        \    },
+        \ } 
          
 NeoBundle 'Shougo/unite.vim.git'
 
@@ -26,7 +26,7 @@ else
   NeoBundle 'Shougo/neocomplete'
 endif
 
-" NeoBundle 'https://github.com/cpfaff/neocomplete.vim.git'
+NeoBundle 'https://github.com/cpfaff/neocomplete.vim.git'
 NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/unite-build.git'
 NeoBundle 'Shougo/vimfiler.git'
@@ -57,7 +57,7 @@ NeoBundle 'Lokaltog/vim-powerline.git'
 NeoBundle 'airblade/vim-gitgutter.git' 
 
 NeoBundle 'matze/vim-move' 
-
+NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'sk1418/Join.git'
 NeoBundle 'majutsushi/tagbar.git'
 NeoBundle 'godlygeek/tabular.git'
@@ -65,7 +65,8 @@ NeoBundle 'Townk/vim-autoclose.git'
 NeoBundle 'edsono/vim-matchit.git'
 NeoBundle 'sukima/xmledit.git'
 NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'mutewinter/vim-indent-guides'
+" NeoBundle 'mutewinter/vim-indent-guides' 
+NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'altercation/vim-colors-solarized.git'
 NeoBundle 'ervandew/screen.git'
 NeoBundle 'jamiebikies/greplace.vim.git'
