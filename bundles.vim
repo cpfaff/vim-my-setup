@@ -73,7 +73,11 @@ NeoBundle 'jamiebikies/greplace.vim.git'
 
 NeoBundle 'kana/vim-niceblock.git'
 
-" Testing
+" Testing 
+" This one improves the f and t with a 
+" repeat functionality
+NeoBundle 'rhysd/clever-f.vim'
+
 " NeoBundle 'sjl/clam.vim.git'
 " NeoBundle 'sjl/splice.vim.git'
 
