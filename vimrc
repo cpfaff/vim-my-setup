@@ -801,9 +801,9 @@
       " }}}
 
       " (r)-plugin {{{
-         let vimrplugin_screenvsplit = 1
+         let vimrplugin_vsplit = 1
          let ScreenImpl = 'Tmux'
-         let vimrplugin_screenvsplit = 0
+         let vimrplugin_vsplit = 0
          let vimrplugin_assign = 0
       " }}}
 
@@ -958,7 +958,8 @@
          autocmd BufWrite *.rb :call DeleteTrailingWS()
          autocmd BufWrite *.haml :call DeleteTrailingWS()
          autocmd BufWrite *.md :call DeleteTrailingWS()
-         autocmd BufWrite *.R :call DeleteTrailingWS()
+         " autocmd BufWrite *.R :call DeleteTrailingWS()
+         autocmd BufWrite *.txt :call DeleteTrailingWS()
       augroup END
 
       augroup csv_editing 
