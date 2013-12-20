@@ -73,9 +73,9 @@
 
       " Tab completion
       set wildmenu
-      set wildignore=*tikzDiktionary*
+      " set wildignore=*tikzDiktionary*
 
-      " ignore the case (unite reads this)
+      " ignore cases (unite uses this as well)
       set ignorecase
 
       " but be smart about cases
@@ -100,7 +100,7 @@
       syntax on
       set background=dark
       colorscheme solarized 
-      let g:solarized_termtrans=1  
+      " let g:solarized_termtrans=1  
 
       highlight clear SignColumn 
  
@@ -113,12 +113,12 @@
       hi Search guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
       hi IncSearch guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray 
 
-      " wrap and linebreak
+      " wrap and line break
       set wrap
       set linebreak
       set nolist
 
-      " Look for modeline
+      " search for modeline
       set modeline
       set modelines=4
 
@@ -137,7 +137,7 @@
       " Limit popup menu height
       set pumheight=15
 
-      " Set information of status line
+      " Set status line information
       if has('statusline')
          set laststatus=2
          set statusline=%<%f\ " Filename
@@ -151,30 +151,31 @@
          set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
       endif
 
-      " Folding options
+      " folding options
       set foldmethod=marker
       set foldnestmax=10
 
-      " Standard spelling en
+      " standard spelling en
       set spelllang=en
 
-      " Concealment behaviour (e.g LaTeX)
+      " concealment behaviour (e.g LaTeX)
       set conceallevel=0
       let g:tex_conceal= ''
 
       " fast terminal reduces lags
       set ttyfast
 
-      " Set eol vizualized character
+      " set chars for visualization 
       set listchars=trail:·,eol:$
 
+      " clipboard support
       if has ('x') && has ('gui')
          set clipboard=unnamedplus
       elseif has ('gui')
          set clipboard=unnamed
       endif
       
-      " Allow virtual edit in block mode
+      " virtual edit in block mode
       set virtualedit=block
    "}}}
 
@@ -242,16 +243,6 @@
             xmap <silent> <M-e> <Plug>CamelCaseMotion_e
             omap <silent> <M-e> <Plug>CamelCaseMotion_e
 
-            " nmap <silent> w <Plug>CamelCaseMotion_w
-            " xmap <silent> w <Plug>CamelCaseMotion_w
-            " omap <silent> w <Plug>CamelCaseMotion_w
-            " nmap <silent> b <Plug>CamelCaseMotion_b
-            " xmap <silent> b <Plug>CamelCaseMotion_b
-            " omap <silent> b <Plug>CamelCaseMotion_b
-            " nmap <silent> e <Plug>CamelCaseMotion_e
-            " xmap <silent> e <Plug>CamelCaseMotion_e
-            " omap <silent> e <Plug>CamelCaseMotion_e
-
          " }}}
 
          " Editing related mappings {{{
@@ -262,7 +253,7 @@
             cnoremap kj <esc>
             snoremap kj <esc>
 
-            " format the current paragraph with par (gqap)
+            " format the current paragraph
             noremap Q gwap
 
             " Easy undo
@@ -337,17 +328,18 @@
                vnoremap [v_align_key] <Nop>
                vmap <silent><leader>a [v_align_key]
 
-               nnoremap [n_align_key]= :<C-u>Tabularize /=<CR>
-               vnoremap [v_align_key]= :<C-u>Tabularize /=<CR>
+               nnoremap [n_align_key]= : <C-u>Tabularize /=<CR>
+               vnoremap [v_align_key]= : <C-u>Tabularize /=<CR>
 
                nnoremap [n_align_key]a :<C-u>Tabularize /&<CR>
                vnoremap [v_align_key]a :<C-u>Tabularize /&<CR>
 
                nnoremap [n_align_key]: :<C-u>Tabularize /:<CR>
                vnoremap [v_align_key]: :<C-u>Tabularize /:<CR>
-
-               nnoremap [n_align_key]:: <C-u>:Tabularize /:\zs<CR>
-               vnoremap [v_align_key]:: <C-u>:Tabularize /:\zs<CR>
+   
+               " FIXME: not working properly
+               " nnoremap [n_align_key]:: <C-u>:Tabularize /:\zs<CR>
+               " vnoremap [v_align_key]:: <C-u>:Tabularize /:\zs<CR>
 
                nnoremap [n_align_key], :<C-u>Tabularize /,<CR>
                vnoremap [v_align_key], :<C-u>Tabularize /,<CR>
