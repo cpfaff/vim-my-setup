@@ -884,6 +884,10 @@
          let g:yankring_history_dir = '~/.vim/tmp'
       " }}}
 
+      " (y)ankring {{{
+         let g:seek_enable_jumps = 1
+      " }}}
+
    "}}}
 
    " Functions {{{
