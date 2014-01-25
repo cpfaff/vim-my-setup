@@ -19,3 +19,7 @@ chmod +x install.sh
 ```
 ./install.sh
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/cpfaff/vim-my-setup/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
