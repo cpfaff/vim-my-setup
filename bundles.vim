@@ -37,7 +37,7 @@ NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'tpope/vim-markdown.git'
 NeoBundle 'tpope/vim-abolish.git' 
 NeoBundle 'tpope/vim-sleuth.git' 
-NeoBundle 'tpope/vim-rhubarb.git' 
+" NeoBundle 'tpope/vim-rhubarb.git' 
 
 NeoBundle 'vim-scripts/CmdlineComplete.git'
 NeoBundle 'vim-scripts/YankRing.vim.git'
@@ -53,21 +53,24 @@ NeoBundle 'Lokaltog/vim-powerline.git'
  
 NeoBundle 'airblade/vim-gitgutter.git' 
 
-NeoBundle 'matze/vim-move' 
 " NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'sk1418/Join.git'
-NeoBundle 'majutsushi/tagbar.git'
+" NeoBundle 'majutsushi/tagbar.git'
+
 NeoBundle 'godlygeek/tabular.git'
 NeoBundle 'Townk/vim-autoclose.git' 
 NeoBundle 'edsono/vim-matchit.git'
 NeoBundle 'sukima/xmledit.git'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+
 NeoBundle 'altercation/vim-colors-solarized.git'
+
 NeoBundle 'ervandew/screen.git'
 NeoBundle 'jamiebikies/greplace.vim.git'
 
 NeoBundle 'kana/vim-niceblock.git'
 
+NeoBundle 'matze/vim-move' 
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'goldfeld/vim-seek' 
 

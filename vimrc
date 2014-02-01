@@ -626,7 +626,7 @@
                nnoremap [toggle_key] <Nop>
                nmap <silent><leader>t  [toggle_key]
 
-               nnoremap [toggle_key]t :<C-u>TagbarToggle<CR>
+               " nnoremap [toggle_key]t :<C-u>TagbarToggle<CR>
                nnoremap [toggle_key]f :<C-u>VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
             "}}}
 
@@ -815,7 +815,7 @@
       " }}}
 
       " (t)agbar options {{{
-         let g:tagbar_left = 0
+         " let g:tagbar_left = 0
       " }}}
 
       " (t)ab guideline {{{
