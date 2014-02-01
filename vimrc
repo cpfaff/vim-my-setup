@@ -955,14 +955,15 @@
          autocmd BufWrite *.haml :call DeleteTrailingWS()
          autocmd BufWrite *.md :call DeleteTrailingWS()
          " autocmd BufWrite *.R :call DeleteTrailingWS()
+         autocmd BufWrite *.tex :call DeleteTrailingWS()
          autocmd BufWrite *.txt :call DeleteTrailingWS()
       augroup END
 
-      augroup csv_editing 
-         au!
-         au BufRead,BufWritePost *.csv :%ArrangeColumn
-         au BufWritePre *.csv :%UnArrangeColumn
-      augroup END 
+      " augroup csv_editing 
+         " au!
+         " au BufRead,BufWritePost *.csv :%ArrangeColumn
+         " au BufWritePre *.csv :%UnArrangeColumn
+      " augroup END 
 
       augroup resize_buffer_windows
          autocmd!

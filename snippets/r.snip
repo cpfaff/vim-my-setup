@@ -7,3 +7,21 @@ snippet     setc
 abbr        setc
 options     head
    setClass("${1:class}"${2})
+
+snippet     context 
+abbr        context
+options     head
+   context("${1:description}")
+
+snippet	   test
+abbr       test 
+options    head
+   test_that("${1:description}", {
+      ${2}      
+   })
+
+snippet expect
+abbr    expect
+options head 
+   expect_that(${1:something})
+
