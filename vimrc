@@ -18,12 +18,12 @@
       source ~/.vim/bundles.vim
 
       " auto source a changed vimrc file
-      " if has("autocmd")
-         " augroup source_vimrc
-            " autocmd!
-            " autocmd bufwritepost .vimrc source $MYVIMRC
-         " augroup END
-      " endif
+      if has("autocmd")
+         augroup source_vimrc
+            autocmd!
+            autocmd bufwritepost .vimrc source $MYVIMRC
+         augroup END
+      endif
 
    "}}}
 
@@ -698,40 +698,41 @@
    "}}}
 
    " Plugin configuration {{{
-      " plugin variables 
-      let g:acp_enableAtStartup = 0
-      let g:neocomplete#enable_at_startup = 1
-      let g:neocomplete#enable_smart_case = 1
-      let g:neocomplete#enable_camel_case = 1
-      let g:neocomplete#enable_auto_select = 1
-      let g:neocomplete#enable_auto_delimiter = 1
-      let g:neocomplete#enable_refresh_always = 1
-      let g:neocomplete#enable_prefetch = 1
-      let g:neosnippet#snippets_directory = '~/.vim/snippets/'
-      let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
-      
-      " simple omni completion
-      augroup neocomplete
-         autocmd!
-         autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-         autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-         autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-         autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-         autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-      augroup END
-      
-      " heavy omni completion.
-      if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
-      endif 
+   
+      " (n)eo complete {{{
+         " plugin variables 
+         let g:acp_enableAtStartup = 0
+         let g:neocomplete#enable_at_startup = 1
+         let g:neocomplete#enable_smart_case = 1
+         let g:neocomplete#enable_camel_case = 1
+         let g:neocomplete#enable_auto_select = 1
+         let g:neocomplete#enable_auto_delimiter = 1
+         let g:neocomplete#enable_refresh_always = 1
+         let g:neocomplete#enable_prefetch = 1
+         let g:neosnippet#snippets_directory = '~/.vim/snippets/'
+         let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
+         
+         " simple omni completion
+         augroup neocomplete
+            autocmd!
+            autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+            autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+            autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+            autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+            autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+         augroup END
+         
+         " heavy omni completion.
+         if !exists('g:neocomplete#sources#omni#input_patterns')
+           let g:neocomplete#sources#omni#input_patterns = {}
+         endif 
 
-      let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-      let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-      let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-      let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-      let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
+         let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+         let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+         let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+         let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+         let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
    " }}} 
 
       " (n)erd commenter {{{
@@ -753,7 +754,7 @@
          let g:rubycomplete_buffer_loading = 1
       " }}}
 
-      " (r)-plugin {{{
+      " (r)plugin {{{
          let vimrplugin_vsplit = 1
          let ScreenImpl = 'Tmux'
          let vimrplugin_vsplit = 0
@@ -824,13 +825,14 @@
       " (v)imfiler plugin {{{
          let g:vimfiler_as_default_explorer = 1
          let g:vimfiler_safe_mode_by_default = 0
+         let g:vimfiler_data_directory = '~/.vim/tmp/vimfiler'
          let g:vimfiler_tree_leaf_icon = ' '
          let g:vimfiler_tree_opened_icon = '▾'
          let g:vimfiler_tree_closed_icon = '▸'
          let g:vimfiler_file_icon = '-'
          let g:vimfiler_marked_file_icon = '*'
 
-         " autocommand for vimfiler
+         " set setting for vimfiler buffer
          augroup vimfiler_settings
             autocmd!
             autocmd FileType vimfiler call s:vimfiler_settings()
@@ -854,7 +856,6 @@
          " map  N <Plug>(easymotion-prev)
          let g:EasyMotion_smartcase = 1
       " }}}
-
 
    "}}}
 
@@ -904,7 +905,6 @@
    "}}}
 
    " Autogroups {{{
-
       " Return to last edit position when opening files
       augroup last_cursor_position
          autocmd!
@@ -962,5 +962,4 @@
          autocmd!
          autocmd InsertLeave * set nopaste
       augroup END
-
    " }}} 
