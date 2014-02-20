@@ -707,8 +707,8 @@
       let g:neocomplete#enable_auto_delimiter = 1
       let g:neocomplete#enable_refresh_always = 1
       let g:neocomplete#enable_prefetch = 1
-      let g:neosnippet#snippets_directory='~/.vim/snippets/'
-      let g:neocomplete#data_directory ='~/.vim/tmp/neocomplete'
+      let g:neosnippet#snippets_directory = '~/.vim/snippets/'
+      let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
       
       " simple omni completion
       augroup neocomplete
@@ -722,15 +722,16 @@
       augroup END
       
       " heavy omni completion.
+      if !exists('g:neocomplete#sources#omni#input_patterns')
+        let g:neocomplete#sources#omni#input_patterns = {}
+      endif 
+
       let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
       let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
       let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
       let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
       let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
-      if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
-      endif 
    " }}} 
 
       " (n)erd commenter {{{
