@@ -27,9 +27,11 @@ else
 endif
 
 NeoBundle 'Shougo/neosnippet.git'
+NeoBundle 'Shougo/neosnippet-snippets.git'
 NeoBundle 'Shougo/vimfiler.git'
 NeoBundle 'Shougo/unite-outline.git'
 NeoBundle 'Shougo/context_filetype.vim.git'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tpope/vim-rails.git'
 NeoBundle 'tpope/vim-repeat.git'
@@ -71,11 +73,10 @@ NeoBundle 'jamiebikies/greplace.vim.git'
 NeoBundle 'kana/vim-niceblock.git'
 
 NeoBundle 'matze/vim-move' 
-NeoBundle 'rhysd/clever-f.vim'
-NeoBundle 'goldfeld/vim-seek' 
+" NeoBundle 'rhysd/clever-f.vim'
+" NeoBundle 'goldfeld/vim-seek' 
 
 " Other useful bundles 
-" NeoBundle 'Shougo/neosnippet-snippets.git'
 " NeoBundle 'Shougo/unite-build.git'
 
 " NeoBundle 'Raimondi/delimitMate'
