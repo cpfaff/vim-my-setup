@@ -291,8 +291,17 @@
                " inoremap <expr><C-l> neocomplcache#complete_common_string()
                " inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>" 
             " else 
-            
-            inoremap <expr><CR> neocomplete#smart_close_popup()."\<CR>"
+
+            inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+
+            function! s:my_cr_function()
+              return neocomplete#close_popup() . "\<CR>"
+              " For no inserting <CR> key.
+              "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+            endfunction
+
+
+            " inoremap <expr><CR> neocomplete#smart_close_popup()."\<CR>"
             inoremap <expr><C-l> neocomplete#complete_common_string()
             
             " endif
@@ -704,7 +713,7 @@
          let g:acp_enableAtStartup = 0
          let g:neocomplete#enable_at_startup = 1
          let g:neocomplete#enable_smart_case = 1
-         let g:neocomplete#enable_camel_case = 1
+         " let g:neocomplete#enable_camel_case = 1
          let g:neocomplete#enable_auto_select = 1
          let g:neocomplete#enable_auto_delimiter = 1
          let g:neocomplete#enable_refresh_always = 1
@@ -717,6 +726,7 @@
             autocmd!
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
             autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+            autocmd FileType gitcommit setlocal omnifunc=rhubarb#omnifunc
             autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
             autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
             autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
@@ -855,6 +865,12 @@
          " map  n <Plug>(easymotion-next)
          " map  N <Plug>(easymotion-prev)
          let g:EasyMotion_smartcase = 1
+         map <Leader>h <Plug>(easymotion-linebackward)
+         map <Leader>j <Plug>(easymotion-j)
+         map <Leader>k <Plug>(easymotion-k)
+         map <Leader>l <Plug>(easymotion-lineforward)
+         let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+
       " }}}
 
    "}}}

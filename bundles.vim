@@ -39,7 +39,7 @@ NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'tpope/vim-markdown.git'
 NeoBundle 'tpope/vim-abolish.git' 
 NeoBundle 'tpope/vim-sleuth.git' 
-" NeoBundle 'tpope/vim-rhubarb.git' 
+NeoBundle 'tpope/vim-rhubarb.git' 
 
 NeoBundle 'vim-scripts/CmdlineComplete.git'
 NeoBundle 'vim-scripts/YankRing.vim.git'
