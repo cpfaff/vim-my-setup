@@ -138,18 +138,18 @@
       set pumheight=15
 
       " Set status line information
-      if has('statusline')
-         set laststatus=2
-         set statusline=%<%f\ " Filename
-         set statusline+=%w%h%m%r " Options
-         set statusline+=%{fugitive#statusline()} " Git
-         set statusline+=\ [%{&ff}/%Y] " filetype
-         set statusline+=\ [%{getcwd()}] " current directory
-         set statusline+=%#warningmsg#
-         set statusline+=%{SyntasticStatuslineFlag()}
-         set statusline+=%*
-         set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
-      endif
+      set laststatus=2
+      " if has('statusline')
+         " set statusline=%<%f\ " Filename
+         " set statusline+=%w%h%m%r " Options
+         " set statusline+=%{fugitive#statusline()} " Git
+         " set statusline+=\ [%{&ff}/%Y] " filetype
+         " set statusline+=\ [%{getcwd()}] " current directory
+         " set statusline+=%#warningmsg#
+         " set statusline+=%{SyntasticStatuslineFlag()}
+         " set statusline+=%*
+         " set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
+      " endif
 
       " folding options
       set foldmethod=marker
@@ -160,7 +160,9 @@
 
       " concealment behaviour (e.g LaTeX)
       set conceallevel=0
-      let g:tex_conceal= ''
+      let g:tex_conceal=''
+      let g:tex_indent_brace = 0
+      let g:tex_indent_items = 1 
 
       " fast terminal reduces lags
       set ttyfast
@@ -230,7 +232,7 @@
 
             " Visual mode pressing * or # searches for the current selection
             vnoremap <silent> * :call VisualSelection('b')<CR>
-            vnoremap <silent> # :call VisualSelection('f')<CR>
+            " vnoremap <silent> # :call VisualSelection('f')<CR>
     
             " Alternative movement for camelcase 
             nmap <silent> <M-w> <Plug>CamelCaseMotion_w
@@ -710,39 +712,39 @@
    
       " (n)eo complete {{{
          " plugin variables 
-         let g:acp_enableAtStartup = 0
          let g:neocomplete#enable_at_startup = 1
          let g:neocomplete#enable_smart_case = 1
-         " let g:neocomplete#enable_camel_case = 1
-         let g:neocomplete#enable_auto_select = 1
+         let g:neocomplete#sources#syntax#min_keyword_length = 2
          let g:neocomplete#enable_auto_delimiter = 1
          let g:neocomplete#enable_refresh_always = 1
          let g:neocomplete#enable_prefetch = 1
          let g:neosnippet#snippets_directory = '~/.vim/snippets/'
          let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
+
+         " let g:acp_enableAtStartup = 0
+         " let g:neocomplete#enable_auto_select = 1
          
          " simple omni completion
-         augroup neocomplete
-            autocmd!
-            autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-            autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-            autocmd FileType gitcommit setlocal omnifunc=rhubarb#omnifunc
-            autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-            autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-            autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-         augroup END
+         " augroup neocomplete
+            " autocmd!
+            " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+            " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+            " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+            " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+            " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+            " autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+         " augroup END
          
          " heavy omni completion.
-         if !exists('g:neocomplete#sources#omni#input_patterns')
-           let g:neocomplete#sources#omni#input_patterns = {}
-         endif 
+         " if !exists('g:neocomplete#sources#omni#input_patterns')
+           " let g:neocomplete#sources#omni#input_patterns = {}
+         " endif 
 
-         let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-         let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-         let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-         let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-         let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+         " let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+         " let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+         " let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+         " let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+         " let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
    " }}} 
 
       " (n)erd commenter {{{
@@ -757,7 +759,11 @@
       " }}}
 
       " (p)owerline plugin {{{
-         let g:Powerline_symbols = 'fancy'
+        let g:airline_powerline_fonts = 1
+        let g:airline_left_sep = '⮀'
+        let g:airline_left_alt_sep = '⮁'
+        let g:airline_right_sep = '⮂'
+        let g:airline_right_alt_sep = '⮃'
       " }}}
 
       " (r)ails plugin {{{
@@ -902,21 +908,22 @@
           let l:pattern = substitute(l:pattern, "\n$", "", "")
           if a:direction == 'b'
              execute "normal ?" . l:pattern . "^M"
-          elseif a:direction == 'gv'
-             call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-          elseif a:direction == 'replace'
-             call CmdLine("%s" . '/'. l:pattern . '/')
           elseif a:direction == 'f'
              execute "normal /" . l:pattern . "^M"
-          elseif a:direction == 'acksearch'
-             call CmdLine("Ack " . l:pattern . ' *')
-          elseif a:direction == 'quickfixdo'
-             call CmdLine("Qdo " . '%s/' . l:pattern . '/' . '/gc ' . '\|' . 'update')
+          elseif a:direction == 'replace'
+             call CmdLine("%s" . '/'. l:pattern . '/')
+         " elseif a:direction == 'gv'
+          " call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+         " elseif a:direction == 'acksearch'
+          " call CmdLine("Ack " . l:pattern . ' *')
+         " elseif a:direction == 'quickfixdo'
+          " call CmdLine("Qdo " . '%s/' . l:pattern . '/' . '/gc ' . '\|' . 'update')
           endif
           let @/ = l:pattern
           let @" = l:saved_reg
        endfunction
       "
+
 
    "}}}
 
@@ -938,7 +945,7 @@
          autocmd BufWrite *.rb :call DeleteTrailingWS()
          autocmd BufWrite *.haml :call DeleteTrailingWS()
          autocmd BufWrite *.md :call DeleteTrailingWS()
-         " autocmd BufWrite *.R :call DeleteTrailingWS()
+         autocmd BufWrite *.R :call DeleteTrailingWS()
          autocmd BufWrite *.tex :call DeleteTrailingWS()
          autocmd BufWrite *.txt :call DeleteTrailingWS()
       augroup END

@@ -19,13 +19,7 @@ NeoBundle 'Shougo/vimproc.git', {
         \ } 
          
 NeoBundle 'Shougo/unite.vim.git'
-
-if !has('lua') || v:version < 703 || (v:version == 703 && !has('patch885'))  
-  NeoBundle 'Shougo/neocomplcache.git' 
-else 
-  NeoBundle 'Shougo/neocomplete'
-endif
-
+NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/neosnippet-snippets.git'
 NeoBundle 'Shougo/vimfiler.git'
@@ -39,49 +33,39 @@ NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'tpope/vim-markdown.git'
 NeoBundle 'tpope/vim-abolish.git' 
 NeoBundle 'tpope/vim-sleuth.git' 
-NeoBundle 'tpope/vim-rhubarb.git' 
+" replaces rhubarb?
+NeoBundle 'cpfaff/github-issues.vim'
+" NeoBundle 'tpope/vim-rhubarb.git' 
 
 NeoBundle 'vim-scripts/CmdlineComplete.git'
 NeoBundle 'vim-scripts/YankRing.vim.git'
 NeoBundle 'vim-scripts/Vim-R-plugin.git'
 NeoBundle 'vim-scripts/tex.vim--Tanzler'
 NeoBundle 'vim-scripts/camelcasemotion.git'
-
 NeoBundle 'scrooloose/nerdcommenter.git'
 NeoBundle 'scrooloose/syntastic.git'
-
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'Lokaltog/vim-powerline.git'
- 
+NeoBundle 'bling/vim-airline'
 NeoBundle 'airblade/vim-gitgutter.git' 
-
-" NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'sk1418/Join.git'
-" NeoBundle 'majutsushi/tagbar.git'
-
 NeoBundle 'godlygeek/tabular.git'
 NeoBundle 'Townk/vim-autoclose.git' 
 NeoBundle 'edsono/vim-matchit.git'
 NeoBundle 'sukima/xmledit.git'
 NeoBundle 'nathanaelkane/vim-indent-guides'
-
 NeoBundle 'altercation/vim-colors-solarized.git'
-
 NeoBundle 'ervandew/screen.git'
 NeoBundle 'jamiebikies/greplace.vim.git'
-
 NeoBundle 'kana/vim-niceblock.git'
-
 NeoBundle 'matze/vim-move' 
-" NeoBundle 'rhysd/clever-f.vim'
-" NeoBundle 'goldfeld/vim-seek' 
+
 
 " Other useful bundles 
+" NeoBundle 'chrisbra/csv.vim'
 " NeoBundle 'Shougo/unite-build.git'
-
+" NeoBundle 'majutsushi/tagbar.git'
+" NeoBundle 'Lokaltog/vim-powerline.git'
 " NeoBundle 'Raimondi/delimitMate'
-" NeoBundle 'tpope/vim-capslock'
-" NeoBundle 'bling/vim-airline'
 " NeoBundle 'tpope/vim-unimpaired.git'
 " NeoBundle 'sjl/clam.vim.git'
 " NeoBundle 'sjl/splice.vim.git'
