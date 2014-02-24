@@ -11,7 +11,7 @@
 " File: vimrc
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup.
-
+ 
 " Include bundles and autosource vimrc file {{{
 
       " Load vim bundles
@@ -712,16 +712,16 @@
    
       " (n)eo complete {{{
          " plugin variables 
+         let g:acp_enableAtStartup = 0
          let g:neocomplete#enable_at_startup = 1
          let g:neocomplete#enable_smart_case = 1
          let g:neocomplete#sources#syntax#min_keyword_length = 2
          let g:neocomplete#enable_auto_delimiter = 1
-         let g:neocomplete#enable_refresh_always = 1
-         let g:neocomplete#enable_prefetch = 1
          let g:neosnippet#snippets_directory = '~/.vim/snippets/'
          let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
 
-         " let g:acp_enableAtStartup = 0
+         " let g:neocomplete#enable_refresh_always = 1
+         " let g:neocomplete#enable_prefetch = 1
          " let g:neocomplete#enable_auto_select = 1
          
          " simple omni completion
