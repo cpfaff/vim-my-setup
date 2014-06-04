@@ -55,13 +55,12 @@ NeoBundle 'ervandew/screen.git'
 NeoBundle 'jamiebikies/greplace.vim.git'
 NeoBundle 'kana/vim-niceblock.git'
 NeoBundle 'matze/vim-move' 
-
+NeoBundle 'benmills/vimux' 
 
 " Other useful bundles 
 " NeoBundle 'chrisbra/csv.vim'
 " NeoBundle 'Shougo/unite-build.git'
 " NeoBundle 'majutsushi/tagbar.git'
-" NeoBundle 'Lokaltog/vim-powerline.git'
 " NeoBundle 'Raimondi/delimitMate'
 " NeoBundle 'tpope/vim-unimpaired.git'
 " NeoBundle 'sjl/clam.vim.git'

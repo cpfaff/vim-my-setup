@@ -760,10 +760,10 @@
 
       " (p)owerline plugin {{{
         let g:airline_powerline_fonts = 1
-        let g:airline_left_sep = '⮀'
-        let g:airline_left_alt_sep = '⮁'
-        let g:airline_right_sep = '⮂'
-        let g:airline_right_alt_sep = '⮃'
+        " let g:airline_left_sep = '⮀'
+        " let g:airline_left_alt_sep = '⮁'
+        " let g:airline_right_sep = '⮂'
+        " let g:airline_right_alt_sep = '⮃'
       " }}}
 
       " (r)ails plugin {{{
@@ -864,17 +864,13 @@
       " }}}
 
       " (e)symotion {{{
-         nmap s <Plug>(easymotion-s)
-         nmap S <Plug>(easymotion-s)
+         " nmap s <Plug>(easymotion-s)
+         " nmap S <Plug>(easymotion-s)
          " map <space> <Plug>(easymotion-sn)
          " omap <space> <Plug>(easymotion-tn)
          " map  n <Plug>(easymotion-next)
          " map  N <Plug>(easymotion-prev)
          let g:EasyMotion_smartcase = 1
-         map <Leader>h <Plug>(easymotion-linebackward)
-         map <Leader>j <Plug>(easymotion-j)
-         map <Leader>k <Plug>(easymotion-k)
-         map <Leader>l <Plug>(easymotion-lineforward)
          let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 
       " }}}

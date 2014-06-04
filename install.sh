@@ -106,10 +106,10 @@ function sudo_install_packages()
 #{{{
 function execute_command()
 {
-	big_step_display "${1}"
+   big_step_display "${1}"
 
-	${2} 2> /dev/null
-	check_for_process_error "Problems executing the command" ${2}
+   ${2} 2> /dev/null
+   check_for_process_error "Problems executing the command" ${2}
 }
 #}}}
 
@@ -160,5 +160,5 @@ function my_vim_setup()
 
 #{{{
 # Function calls
-   my_vim_setup
+my_vim_setup
 #}}}
