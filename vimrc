@@ -171,11 +171,11 @@
       set listchars=trail:·,eol:$
 
       " clipboard support
-      if has ('x') && has ('gui')
-         set clipboard=unnamedplus
-      elseif has ('gui')
-         set clipboard=unnamed
-      endif
+      " if has ('x') && has ('gui')
+      set clipboard=unnamedplus
+      " elseif has ('gui')
+         " set clipboard=unnamed
+      " endif
       
       " virtual edit in block mode
       set virtualedit=block
@@ -281,9 +281,17 @@
             " Necomplcache and neosnippet mappings
             imap <C-k> <Plug>(neosnippet_expand)
             smap <C-k> <Plug>(neosnippet_expand)
-            xmap <C-k> <Plug>(neosnippet_start_unite_snippet_target)
+            " xmap <C-k> <Plug>(neosnippet_start_unite_snippet_target)
+            " currently the unit plug is not working thus using the expand
+            " target plug as not so godd alternative to replace it 
+            xmap <C-k> <Plug>(neosnippet_expand_target)
             imap <C-j> <Plug>(neosnippet_jump)
             smap <C-j> <Plug>(neosnippet_jump)
+
+            " imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+            " smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+            " xmap <C-l>     <Plug>(neosnippet_start_unite_snippet_target)
+
 
             inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
             inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>" 
@@ -493,7 +501,7 @@
 
                nnoremap [git_key]b :<C-u>Gblame<CR>
                nnoremap [git_key]c :<C-u>Gcommit<CR>
-               nnoremap [git_key]d :<C-u>Gdiff<CR>
+               nnoremap [git_key]d :<C-u>Gvdiff<CR>
                nnoremap [git_key]l :<C-u>Glog<CR>
                nnoremap [git_key]o :<C-u>only<CR><CR>
                nnoremap [git_key]p :<C-u>Git push<CR><CR>
@@ -614,6 +622,7 @@
                noremap [spell_key]n ]s
                noremap [spell_key]p [s
                noremap [spell_key]g zg
+               noremap [spell_key]w zw
                noremap [spell_key]l z=
                noremap [spell_key]r 1z=
             " }}}
@@ -709,7 +718,18 @@
    "}}}
 
    " Plugin configuration {{{
-   
+   "
+      " (b)itly {{{
+         " plugin variables 
+         let g:bitly_login = 'ctpfaff'
+         let g:bitly_api_key = 'R_872b923016fc404a8533f5fb50acf43c'
+      " }}}
+
+      " (g)it gutter {{{
+         " plugin variables 
+         let g:gitgutter_max_signs = 5000  " default value  
+      " }}}
+
       " (n)eo complete {{{
          " plugin variables 
          let g:acp_enableAtStartup = 0
@@ -981,4 +1001,46 @@
          autocmd!
          autocmd InsertLeave * set nopaste
       augroup END
+
+
+      augroup ruby_and_rails_settings
+         autocmd!
+         autocmd FileType ruby,haml call s:my_ruby_and_rails_setting()
+      augroup END
+
+      function! s:my_ruby_and_rails_setting()
+         set re=1
+         set tabstop=3
+      endfunction
+
+      augroup tex_settings 
+         autocmd!
+         autocmd FileType tex call s:my_tex_settings()
+      augroup END
+
+      function! s:my_tex_settings()
+         set re=1
+         set tabstop=3
+      endfunction
+
+      augroup r_and_r_markdown_settings 
+         autocmd!
+         autocmd FileType r call s:my_tex_settings()
+      augroup END
+
+      function! s:my_r_and_r_markdown_settings()
+         set re=1
+         set tabstop=3
+      endfunction
+
+      augroup markdown_settings
+         autocmd!
+         autocmd FileType markdown,md call s:my_markdown_setting()
+      augroup END
+
+      function! s:my_markdown_setting()
+         set re=1
+         set tabstop=3
+      endfunction
+
    " }}} 

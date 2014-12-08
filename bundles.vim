@@ -5,10 +5,11 @@
 set nocompatible
 
 if has('vim_starting')
+   set nocompatible
    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim' 
 
@@ -33,7 +34,6 @@ NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'tpope/vim-markdown.git'
 NeoBundle 'tpope/vim-abolish.git' 
 NeoBundle 'tpope/vim-sleuth.git' 
-NeoBundle 'jaxbot/github-issues.vim'
 NeoBundle 'vim-scripts/CmdlineComplete.git'
 NeoBundle 'vim-scripts/YankRing.vim.git'
 NeoBundle 'vim-scripts/Vim-R-plugin.git'
@@ -56,6 +56,12 @@ NeoBundle 'jamiebikies/greplace.vim.git'
 NeoBundle 'kana/vim-niceblock.git'
 NeoBundle 'matze/vim-move' 
 NeoBundle 'benmills/vimux' 
+NeoBundle 'tpope/vim-rhubarb'
+" NeoBundle 'jaxbot/github-issues.vim'
+NeoBundle 'basyura/bitly.vim'
+
+call neobundle#end()
+NeoBundleCheck
 
 " Other useful bundles 
 " NeoBundle 'chrisbra/csv.vim'
