@@ -186,7 +186,7 @@
       " Preparations {{{
 
          " Set leader and local leader
-         let mapleader = ","
+         let g:mapleader = ","
          let maplocalleader = '.'
 
          " Enable alt and meta key mappings
@@ -609,6 +609,8 @@
             "
             " - [spell_key]g     Mark a word as good.
             "
+            " - [spell_key]w     Mark a word as wrong
+            "
             " - [spell_key]l     Show a list of items which are suggested for the
             "                    misspelled word.
             "
@@ -774,6 +776,7 @@
          let g:NERDCustomDelimiters = {
             \ 'snippet': {'left': '#'},
             \ 'rnoweb' : {'left': '%', 'leftAlt': '#'},
+            \ 'text' : {'left': '#'},
             \ 'r' : {'left': '#', 'leftAlt': "#'"}
           \ }
       " }}}
