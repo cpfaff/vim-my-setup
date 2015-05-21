@@ -59,6 +59,7 @@ NeoBundle 'benmills/vimux'
 NeoBundle 'tpope/vim-rhubarb'
 " NeoBundle 'jaxbot/github-issues.vim'
 NeoBundle 'basyura/bitly.vim'
+NeoBundle 'vim-scripts/DrawIt'
 
 call neobundle#end()
 NeoBundleCheck

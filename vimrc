@@ -101,6 +101,19 @@
       set background=dark
       colorscheme solarized 
       " let g:solarized_termtrans=1  
+      
+      " this allows to pick color on time!
+      " let hour = strftime("%H")
+      " if 6 <= hour && hour < 18
+        " set background=light
+      " else
+        " set background=dark
+      " endif
+      
+      " relative numbering
+      set relativenumber
+
+colorscheme solarized
 
       highlight clear SignColumn 
  
@@ -1045,5 +1058,12 @@
          set re=1
          set tabstop=3
       endfunction
+
+
+      augroup email_settings_mutt
+         autocmd!
+         autocmd BufRead /tmp/mutt-* execute "normal gg"
+         autocmd BufRead /tmp/mutt-* execute "normal o"
+      augroup END
 
    " }}} 
