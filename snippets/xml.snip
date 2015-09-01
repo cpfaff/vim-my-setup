@@ -1,0 +1,19 @@
+snippet     label
+abbr        label
+options     head
+   <rdfs:label xml:lang="en">${1:labelName}</rdfs:label>
+
+snippet     disjoint
+abbr        disjoint
+options     head
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="${1:uri}"/>
+        </owl:members>
+    </rdf:Description>
+
+snippet     subclass
+abbr        subclass
+options     head
+   <rdfs:subClassOf rdf:resource="${1:uri}"/>
