@@ -295,7 +295,7 @@ colorscheme solarized
             imap <C-k> <Plug>(neosnippet_expand)
             smap <C-k> <Plug>(neosnippet_expand)
             " xmap <C-k> <Plug>(neosnippet_start_unite_snippet_target)
-            " currently the unit plug is not working thus using the expand
+            " currently the unite plug is not working thus using the expand
             " target plug as not so godd alternative to replace it 
             xmap <C-k> <Plug>(neosnippet_expand_target)
             imap <C-j> <Plug>(neosnippet_jump)
