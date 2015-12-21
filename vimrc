@@ -914,6 +914,13 @@ colorscheme solarized
    "}}}
 
    " Functions {{{
+      " spotify url to uri converter
+      nnoremap csi :call SpotifyUrlToUri()<CR>
+
+      function! SpotifyUrlToUri()
+          normal ^vt.lxwvwwbwhxr:wwr:kjj^
+      endfunction
+
 
       " Delete trailing white space on save
        function! DeleteTrailingWS()
