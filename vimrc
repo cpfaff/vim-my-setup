@@ -508,7 +508,7 @@ colorscheme solarized
             " - [git_key]o   only to close all but the active diff split
             " - [git_key]p   push to your remote repository
             " - [git_key]s   open the interactive git status window
-
+            
                nnoremap [git_key] <Nop>
                nmap <silent><leader>g [git_key]
 
@@ -520,7 +520,7 @@ colorscheme solarized
                nnoremap [git_key]p :<C-u>Git push<CR><CR>
                nnoremap [git_key]s :<C-u>Gstatus<CR><C-w>15+
             " }}}
-
+            
             " (m)ake call a task {{{
 
             " Description:
@@ -734,182 +734,190 @@ colorscheme solarized
 
    " Plugin configuration {{{
    "
-      " (b)itly {{{
-         " plugin variables 
-         let g:bitly_login = 'ctpfaff'
-         let g:bitly_api_key = 'R_872b923016fc404a8533f5fb50acf43c'
-      " }}}
+   " (b)itly {{{
+   " plugin variables 
+   let g:bitly_login = 'ctpfaff'
+   let g:bitly_api_key = 'R_872b923016fc404a8533f5fb50acf43c'
+   " }}}
 
-      " (g)it gutter {{{
-         " plugin variables 
-         let g:gitgutter_max_signs = 5000  " default value  
-      " }}}
+   " (g)it gutter {{{
+   " plugin variables 
+   let g:gitgutter_max_signs = 5000  " default value  
+   " }}}
 
-      " (n)eo complete {{{
-         " plugin variables 
-         let g:acp_enableAtStartup = 0
-         let g:neocomplete#enable_at_startup = 1
-         let g:neocomplete#enable_smart_case = 1
-         let g:neocomplete#sources#syntax#min_keyword_length = 2
-         let g:neocomplete#enable_auto_delimiter = 1
-         let g:neosnippet#snippets_directory = '~/.vim/snippets/'
-         let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
+   " (n)eo complete {{{
+   " plugin variables 
+   let g:acp_enableAtStartup = 0
+   let g:neocomplete#enable_at_startup = 1
+   let g:neocomplete#enable_smart_case = 1
+   let g:neocomplete#sources#syntax#min_keyword_length = 2
+   let g:neocomplete#enable_auto_delimiter = 1
+   let g:neosnippet#snippets_directory = '~/.vim/snippets/'
+   let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
 
-         " let g:neocomplete#enable_refresh_always = 1
-         " let g:neocomplete#enable_prefetch = 1
-         " let g:neocomplete#enable_auto_select = 1
-         
-         " simple omni completion
-         " augroup neocomplete
-            " autocmd!
-            " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-            " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-            " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-            " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-            " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-            " autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-         " augroup END
-         
-         " heavy omni completion.
-         " if !exists('g:neocomplete#sources#omni#input_patterns')
-           " let g:neocomplete#sources#omni#input_patterns = {}
-         " endif 
+   " let g:neocomplete#enable_refresh_always = 1
+   " let g:neocomplete#enable_prefetch = 1
+   " let g:neocomplete#enable_auto_select = 1
 
-         " let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-         " let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-         " let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-         " let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-         " let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+   " simple omni completion
+   " augroup neocomplete
+   " autocmd!
+   " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+   " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+   " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+   " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+   " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+   " autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+   " augroup END
+
+   " heavy omni completion.
+   " if !exists('g:neocomplete#sources#omni#input_patterns')
+   " let g:neocomplete#sources#omni#input_patterns = {}
+   " endif 
+
+   " let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+   " let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+   " let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+   " let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+   " let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
    " }}} 
 
-      " (n)erd commenter {{{
-         let g:NERDCreateDefaultMappings = 0
-         let g:NERDSpaceDelims = 1
+   " (n)erd commenter {{{
+   let g:NERDCreateDefaultMappings = 0
+   let g:NERDSpaceDelims = 1
 
-         let g:NERDCustomDelimiters = {
+   let g:NERDCustomDelimiters = {
             \ 'snippet': {'left': '#'},
             \ 'rnoweb' : {'left': '%', 'leftAlt': '#'},
             \ 'text' : {'left': '#'},
             \ 'r' : {'left': '#', 'leftAlt': "#'"}
-          \ }
-      " }}}
+            \ }
+   " }}}
 
-      " (p)owerline plugin {{{
-        let g:airline_powerline_fonts = 1
-        " let g:airline_left_sep = '⮀'
-        " let g:airline_left_alt_sep = '⮁'
-        " let g:airline_right_sep = '⮂'
-        " let g:airline_right_alt_sep = '⮃'
-      " }}}
+   " (p)owerline plugin {{{
+   let g:airline_powerline_fonts = 1
+   " let g:airline_left_sep = '⮀'
+   " let g:airline_left_alt_sep = '⮁'
+   " let g:airline_right_sep = '⮂'
+   " let g:airline_right_alt_sep = '⮃'
+   " }}}
 
-      " (r)ails plugin {{{
-         let g:rubycomplete_buffer_loading = 1
-      " }}}
+   " (r)ails plugin {{{
+   let g:rubycomplete_buffer_loading = 1
+   " }}}
 
-      " (r)plugin {{{
-         let vimrplugin_vsplit = 1
-         let ScreenImpl = 'Tmux'
-         let vimrplugin_vsplit = 0
-         let vimrplugin_assign = 0
-      " }}}
+   " (r)plugin {{{
+   let vimrplugin_vsplit = 1
+   let ScreenImpl = 'Tmux'
+   let vimrplugin_vsplit = 0
+   let vimrplugin_assign = 0
+   " }}}
 
-      " (s)essionman session plugin {{{
-         " set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-      " }}}
+   " (g)it automcompletion (github-issues) {{{
+   if filereadable("~/.vim/vimrc.local")
+      source ~/.vim/vimrc.local
+   endif
 
-      " (s)yntastic {{{
-         let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'  
-         " ignore as lacheck seems buggy
-         let g:syntastic_ignore_files = ['/*.*.cls$']  
-         " let g:syntastic_enable_signs = 0
-         " let g:syntastic_enable_balloons = 0
-         " let g:syntastic_enable_highlighting = 0 
-         " let g:syntastic_echo_current_error = 0 
+   let g:gissues_async_omni = 1
+   " }}}
 
-      " }}}
+   " (s)essionman session plugin {{{
+   " set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
+   " }}}
 
-      " (t)agbar options {{{
-         " let g:tagbar_left = 0
-      " }}}
+   " (s)yntastic {{{
+   let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'  
+   " ignore as lacheck seems buggy
+   let g:syntastic_ignore_files = ['/*.*.cls$']  
+   " let g:syntastic_enable_signs = 0
+   " let g:syntastic_enable_balloons = 0
+   " let g:syntastic_enable_highlighting = 0 
+   " let g:syntastic_echo_current_error = 0 
 
-      " (t)ab guideline {{{
-         let g:indent_guides_enable_on_vim_startup = 0
-         let g:indent_guides_auto_colors = 0
-         let g:indent_guides_guide_size = 1
-         let g:indent_guides_start_level = 1
-         hi IndentGuidesOdd  ctermbg=238
-         hi IndentGuidesEven ctermbg=243
-      " }}}
+   " }}}
 
-      " (u)nite vim {{{
-         let g:unite_enable_start_insert = 1
-         let g:unite_source_file_mru_limit = 200
-         let g:unite_cursor_line_highlight = 'TabLineSel'
-         let g:unite_abbr_highlight = 'TabLine'
-         let g:unite_split_rule='belowright'
-         let g:unite_source_file_mru_filename_format = ''
-         let g:unite_enable_ignore_case=1 
+   " (t)agbar options {{{
+   " let g:tagbar_left = 0
+   " }}}
 
-         let g:unite_marked_icon = '*'
-         let g:unite_prompt = '» '
+   " (t)ab guideline {{{
+   let g:indent_guides_enable_on_vim_startup = 0
+   let g:indent_guides_auto_colors = 0
+   let g:indent_guides_guide_size = 1
+   let g:indent_guides_start_level = 1
+   hi IndentGuidesOdd  ctermbg=238
+   hi IndentGuidesEven ctermbg=243
+   " }}}
 
-         " For ack grep.
-         if executable('ack-grep')
-            " Use ack in unite grep source.
-            let g:unite_source_grep_command = 'ack-grep'
-            let g:unite_source_rep_default_opts = '--no-heading --no-color -a'
-            let g:unite_source_grep_recursive_opt = ''
-         endif
+   " (u)nite vim {{{
+   let g:unite_enable_start_insert = 1
+   let g:unite_source_file_mru_limit = 200
+   let g:unite_cursor_line_highlight = 'TabLineSel'
+   let g:unite_abbr_highlight = 'TabLine'
+   let g:unite_split_rule='belowright'
+   let g:unite_source_file_mru_filename_format = ''
+   let g:unite_enable_ignore_case=1 
 
-         " Overwrite settings of unite window
-         augroup unite_settings
-            autocmd!
-            autocmd FileType unite call s:unite_my_settings()
-         augroup END
+   let g:unite_marked_icon = '*'
+   let g:unite_prompt = '» '
 
-         function! s:unite_my_settings()
-            imap <buffer> kj <Plug>(unite_insert_leave)
-            nmap <buffer><leader>bd <Plug>(unite_all_exit)
-            let unite = unite#get_current_unite()
-         endfunction
-      " }}}
+   " For ack grep.
+   if executable('ack-grep')
+      " Use ack in unite grep source.
+      let g:unite_source_grep_command = 'ack-grep'
+      let g:unite_source_rep_default_opts = '--no-heading --no-color -a'
+      let g:unite_source_grep_recursive_opt = ''
+   endif
 
-      " (v)imfiler plugin {{{
-         let g:vimfiler_as_default_explorer = 1
-         let g:vimfiler_safe_mode_by_default = 0
-         let g:vimfiler_data_directory = '~/.vim/tmp/vimfiler'
-         let g:vimfiler_tree_leaf_icon = ' '
-         let g:vimfiler_tree_opened_icon = '▾'
-         let g:vimfiler_tree_closed_icon = '▸'
-         let g:vimfiler_file_icon = '-'
-         let g:vimfiler_marked_file_icon = '*'
+   " Overwrite settings of unite window
+   augroup unite_settings
+      autocmd!
+      autocmd FileType unite call s:unite_my_settings()
+   augroup END
 
-         " set setting for vimfiler buffer
-         augroup vimfiler_settings
-            autocmd!
-            autocmd FileType vimfiler call s:vimfiler_settings()
-         augroup END
+   function! s:unite_my_settings()
+      imap <buffer> kj <Plug>(unite_insert_leave)
+      nmap <buffer><leader>bd <Plug>(unite_all_exit)
+      let unite = unite#get_current_unite()
+   endfunction
+   " }}}
 
-         function! s:vimfiler_settings()
-            nmap <buffer> <C-l> <Plug>(vimfiler_switch_to_other_window)
-         endfunction
-      " }}}
+   " (v)imfiler plugin {{{
+   let g:vimfiler_as_default_explorer = 1
+   let g:vimfiler_safe_mode_by_default = 0
+   let g:vimfiler_data_directory = '~/.vim/tmp/vimfiler'
+   let g:vimfiler_tree_leaf_icon = ' '
+   let g:vimfiler_tree_opened_icon = '▾'
+   let g:vimfiler_tree_closed_icon = '▸'
+   let g:vimfiler_file_icon = '-'
+   let g:vimfiler_marked_file_icon = '*'
 
-      " (y)ankring {{{
-         let g:yankring_history_dir = '~/.vim/tmp'
-      " }}}
+   " set setting for vimfiler buffer
+   augroup vimfiler_settings
+      autocmd!
+      autocmd FileType vimfiler call s:vimfiler_settings()
+   augroup END
 
-      " (e)symotion {{{
-         " nmap s <Plug>(easymotion-s)
-         " nmap S <Plug>(easymotion-s)
-         " map <space> <Plug>(easymotion-sn)
-         " omap <space> <Plug>(easymotion-tn)
-         " map  n <Plug>(easymotion-next)
-         " map  N <Plug>(easymotion-prev)
-         let g:EasyMotion_smartcase = 1
-         let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+   function! s:vimfiler_settings()
+      nmap <buffer> <C-l> <Plug>(vimfiler_switch_to_other_window)
+   endfunction
+   " }}}
 
-      " }}}
+   " (y)ankring {{{
+   let g:yankring_history_dir = '~/.vim/tmp'
+   " }}}
+
+   " (e)symotion {{{
+   " nmap s <Plug>(easymotion-s)
+   " nmap S <Plug>(easymotion-s)
+   " map <space> <Plug>(easymotion-sn)
+   " omap <space> <Plug>(easymotion-tn)
+   " map  n <Plug>(easymotion-next)
+   " map  N <Plug>(easymotion-prev)
+   let g:EasyMotion_smartcase = 1
+   let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+
+   " }}}
 
    "}}}
 
