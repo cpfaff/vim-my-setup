@@ -735,19 +735,19 @@ colorscheme solarized
    " Plugin configuration {{{
    "
    " (b)itly {{{
-   " plugin variables 
+      " plugin variables 
       if filereadable("~/.vim/vimrc.local")
          source ~/.vim/vimrc.local
       endif
    " }}}
 
    " (g)it gutter {{{
-   " plugin variables 
-   let g:gitgutter_max_signs = 5000  " default value  
+      " plugin variables 
+      let g:gitgutter_max_signs = 5000  " default value  
    " }}}
 
    " (n)eo complete {{{
-   " plugin variables 
+      " plugin variables 
       let g:acp_enableAtStartup = 0
       let g:neocomplete#enable_at_startup = 1
       let g:neocomplete#enable_smart_case = 1
@@ -784,15 +784,15 @@ colorscheme solarized
    " }}} 
 
    " (n)erd commenter {{{
-   let g:NERDCreateDefaultMappings = 0
-   let g:NERDSpaceDelims = 1
+      let g:NERDCreateDefaultMappings = 0
+      let g:NERDSpaceDelims = 1
 
-   let g:NERDCustomDelimiters = {
-            \ 'snippet': {'left': '#'},
-            \ 'rnoweb' : {'left': '%', 'leftAlt': '#'},
-            \ 'text' : {'left': '#'},
-            \ 'r' : {'left': '#', 'leftAlt': "#'"}
-            \ }
+      let g:NERDCustomDelimiters = {
+               \ 'snippet': {'left': '#'},
+               \ 'rnoweb' : {'left': '%', 'leftAlt': '#'},
+               \ 'text' : {'left': '#'},
+               \ 'r' : {'left': '#', 'leftAlt': "#'"}
+               \ }
    " }}}
 
    " (p)owerline plugin {{{
@@ -904,19 +904,18 @@ colorscheme solarized
    " }}}
 
    " (y)ankring {{{
-   let g:yankring_history_dir = '~/.vim/tmp'
+      let g:yankring_history_dir = '~/.vim/tmp'
    " }}}
 
    " (e)symotion {{{
-   " nmap s <Plug>(easymotion-s)
-   " nmap S <Plug>(easymotion-s)
-   " map <space> <Plug>(easymotion-sn)
-   " omap <space> <Plug>(easymotion-tn)
-   " map  n <Plug>(easymotion-next)
-   " map  N <Plug>(easymotion-prev)
-   let g:EasyMotion_smartcase = 1
-   let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
-
+      " nmap s <Plug>(easymotion-s)
+      " nmap S <Plug>(easymotion-s)
+      " map <space> <Plug>(easymotion-sn)
+      " omap <space> <Plug>(easymotion-tn)
+      " map  n <Plug>(easymotion-next)
+      " map  N <Plug>(easymotion-prev)
+      let g:EasyMotion_smartcase = 1
+      let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
    " }}}
 
    "}}}
