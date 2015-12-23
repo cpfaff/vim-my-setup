@@ -62,6 +62,9 @@ NeoBundle 'basyura/bitly.vim'
 NeoBundle 'vim-scripts/DrawIt'
 NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'christoomey/vim-tmux-navigator'
+" NeoBundle 'gelguy/Cmd2.vim'
+NeoBundle 'osyo-manga/vim-over'
+
 
 call neobundle#end()
 NeoBundleCheck

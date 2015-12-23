@@ -795,6 +795,10 @@ colorscheme solarized
                \ }
    " }}}
 
+   " (o)ver vim {{{
+      nmap :: :OverCommandLine<cr>
+   " }}}
+
    " (p)owerline plugin {{{
       let g:airline_powerline_fonts = 1
       " let g:airline_left_sep = '⮀'
@@ -861,12 +865,15 @@ colorscheme solarized
       let g:unite_marked_icon = '*'
       let g:unite_prompt = '» '
 
-      " For ack grep.
-      if executable('ack-grep')
-         " Use ack in unite grep source.
-         let g:unite_source_grep_command = 'ack-grep'
-         let g:unite_source_rep_default_opts = '--no-heading --no-color -a'
-         let g:unite_source_grep_recursive_opt = ''
+      " the grep command
+      if executable('ag')
+          let g:unite_source_grep_command='ag'
+          let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
+          let g:unite_source_grep_recursive_opt=''
+      elseif executable('ack')
+          let g:unite_source_grep_command='ack'
+          let g:unite_source_grep_default_opts='--no-heading --no-color -a'
+          let g:unite_source_grep_recursive_opt=''
       endif
 
       " Overwrite settings of unite window
@@ -907,7 +914,7 @@ colorscheme solarized
       let g:yankring_history_dir = '~/.vim/tmp'
    " }}}
 
-   " (e)symotion {{{
+   " (e)asymotion {{{
       " nmap s <Plug>(easymotion-s)
       " nmap S <Plug>(easymotion-s)
       " map <space> <Plug>(easymotion-sn)
@@ -1112,3 +1119,4 @@ colorscheme solarized
       augroup END
 
    " }}} 
+
