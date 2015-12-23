@@ -1119,4 +1119,3 @@ colorscheme solarized
       augroup END
 
    " }}} 
-
