@@ -61,15 +61,14 @@ NeoBundle 'basyura/bitly.vim'
 NeoBundle 'vim-scripts/DrawIt'
 NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'christoomey/vim-tmux-navigator'
-" NeoBundle 'gelguy/Cmd2.vim'
-" NeoBundle 'osyo-manga/vim-over'
-
+NeoBundle 'osyo-manga/vim-over'
 
 call neobundle#end()
 NeoBundleCheck
 
 " Other useful bundles 
 " NeoBundle 'tpope/vim-rhubarb'
+" NeoBundle 'gelguy/Cmd2.vim'
 " NeoBundle 'chrisbra/csv.vim'
 " NeoBundle 'Shougo/unite-build.git'
 " NeoBundle 'majutsushi/tagbar.git'
