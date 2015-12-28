@@ -278,18 +278,15 @@ colorscheme solarized
             xmap I <Plug>(niceblock-I)
             xmap A <Plug>(niceblock-A)
 
-            " Move lines up and down (bubbling)   
-            " now via move plugin
-            " nmap <A-j> ]e
-            " nmap <A-k> [e
-            " vmap <A-k> [egv
-            " vmap <A-j> ]egv  
-
-            " left and right (indent)
-            nnoremap <A-l> >>
-            nnoremap <A-h> <<
-            vnoremap <A-l> >gv
-            vnoremap <A-h> <gv
+            " Move text   
+            xmap <A-j> <Plug>(textmanip-move-down)
+            xmap <A-k> <Plug>(textmanip-move-up)
+            nmap <A-j> <Plug>(textmanip-move-down)
+            nmap <A-k> <Plug>(textmanip-move-up)
+            xmap <A-h> <Plug>(textmanip-move-left)
+            xmap <A-l> <Plug>(textmanip-move-right)
+            nmap <A-h> <Plug>(textmanip-move-left)
+            nmap <A-l> <Plug>(textmanip-move-right)
 
             " Necomplcache and neosnippet mappings
             imap <C-k> <Plug>(neosnippet_expand)

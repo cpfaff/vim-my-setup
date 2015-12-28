@@ -50,16 +50,14 @@ NeoBundle 'altercation/vim-colors-solarized.git'
 NeoBundle 'ervandew/screen.git'
 NeoBundle 'yegappan/greplace'
 NeoBundle 'kana/vim-niceblock.git'
-NeoBundle 'matze/vim-move' 
-" NeoBundle 't9md/vim-textmanip'
+NeoBundle 't9md/vim-textmanip'
 NeoBundle 'benmills/vimux' 
 NeoBundle 'jaxbot/github-issues.vim'
 NeoBundle 'basyura/bitly.vim'
 NeoBundle 'vim-scripts/DrawIt'
 NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'christoomey/vim-tmux-navigator'
-NeoBundle 'sjl/gundo.vim'
-
+NeoBundle 'sjl/gundo.vim'  
 NeoBundle 'vim-scripts/CmdlineComplete.git'
 NeoBundle 'osyo-manga/vim-over'
 
@@ -67,6 +65,7 @@ call neobundle#end()
 NeoBundleCheck
 
 " Other useful bundles 
+" NeoBundle 'matze/vim-move' 
 " NeoBundle 'jamiebikies/greplace.vim.git'
 " NeoBundle 'Shougo/unite-outline.git'
 " NeoBundle 'tpope/vim-markdown.git'
