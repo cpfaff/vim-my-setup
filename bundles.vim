@@ -50,7 +50,7 @@ NeoBundle 'altercation/vim-colors-solarized.git'
 NeoBundle 'ervandew/screen.git'
 NeoBundle 'yegappan/greplace'
 NeoBundle 'kana/vim-niceblock.git'
-NeoBundle 't9md/vim-textmanip'
+NeoBundle 'matze/vim-move' 
 NeoBundle 'benmills/vimux' 
 NeoBundle 'jaxbot/github-issues.vim'
 NeoBundle 'basyura/bitly.vim'
@@ -65,7 +65,7 @@ call neobundle#end()
 NeoBundleCheck
 
 " Other useful bundles 
-" NeoBundle 'matze/vim-move' 
+" NeoBundle 't9md/vim-textmanip'
 " NeoBundle 'jamiebikies/greplace.vim.git'
 " NeoBundle 'Shougo/unite-outline.git'
 " NeoBundle 'tpope/vim-markdown.git'
