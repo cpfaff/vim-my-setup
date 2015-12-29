@@ -271,18 +271,20 @@ colorscheme solarized
             " format the current paragraph
             noremap Q gwap
 
-            " Easy undo
+            " Easy undo/redo
             nnoremap U <C-r>
 
             " Improved block mode
             xmap I <Plug>(niceblock-I)
+            xmap gI <Plug>(niceblock-gI)
             xmap A <Plug>(niceblock-A)
+
 
             " Move text left and right (indent)
             nnoremap <A-l> >>
             nnoremap <A-h> <<
-            vnoremap <A-l> >gv
-            vnoremap <A-h> <gv
+            vnoremap <A-l> >gv^
+            vnoremap <A-h> <gv^
 
             " Move text up and down (bubble)
             xmap <A-j> <Plug>(textmanip-move-down)
