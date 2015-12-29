@@ -1114,11 +1114,10 @@ colorscheme solarized
          set tabstop=3
       endfunction
 
-
       augroup email_settings_mutt
          autocmd!
          autocmd BufRead /tmp/mutt-* execute "normal gg"
-         autocmd BufRead /tmp/mutt-* execute "normal o"
+         autocmd BufRead /tmp/mutt-* execute "normal i"
       augroup END
 
    " }}} 
