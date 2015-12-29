@@ -278,18 +278,17 @@ colorscheme solarized
             xmap I <Plug>(niceblock-I)
             xmap A <Plug>(niceblock-A)
 
-            " Move lines up and down (bubbling)   
-            " now via move plugin
-            " nmap <A-j> ]e
-            " nmap <A-k> [e
-            " vmap <A-k> [egv
-            " vmap <A-j> ]egv  
-
-            " left and right (indent)
+            " Move text left and right (indent)
             nnoremap <A-l> >>
             nnoremap <A-h> <<
             vnoremap <A-l> >gv
             vnoremap <A-h> <gv
+
+            " Move text up and down (bubble)
+            xmap <A-j> <Plug>(textmanip-move-down)
+            nmap <A-j> <Plug>(textmanip-move-down)
+            xmap <A-k> <Plug>(textmanip-move-up)
+            nmap <A-k> <Plug>(textmanip-move-up)
 
             " Necomplcache and neosnippet mappings
             imap <C-k> <Plug>(neosnippet_expand)
@@ -338,7 +337,7 @@ colorscheme solarized
 
       " Sorted key mappings {{{
      
-            " (a)lign with tabularize {{{
+            " (a)lign with easy align {{{
 
             " Description:
             "  This mappings align text with the tabularize plugin.
@@ -347,33 +346,9 @@ colorscheme solarized
             "
             " Mappings:
             "
-            "  - <leader>a=    align by  =
-            "  - <leader>aa    align by  &
-            "  - <leader>a:    align by  :
-            "  - <leader>a::   align by  ::
-            "  - <leader>a,    align by  ,
+               xmap ga <Plug>(EasyAlign)
+               nmap ga <Plug>(EasyAlign)
 
-               nnoremap [n_align_key] <Nop>
-               nmap <silent><leader>a [n_align_key]
-
-               vnoremap [v_align_key] <Nop>
-               vmap <silent><leader>a [v_align_key]
-
-               nnoremap [n_align_key]= : <C-u>Tabularize /=<CR>
-               vnoremap [v_align_key]= : <C-u>Tabularize /=<CR>
-
-               nnoremap [n_align_key]a :<C-u>Tabularize /&<CR>
-               vnoremap [v_align_key]a :<C-u>Tabularize /&<CR>
-
-               nnoremap [n_align_key]: :<C-u>Tabularize /:<CR>
-               vnoremap [v_align_key]: :<C-u>Tabularize /:<CR>
-   
-               " FIXME: not working properly
-               " nnoremap [n_align_key]:: <C-u>:Tabularize /:\zs<CR>
-               " vnoremap [v_align_key]:: <C-u>:Tabularize /:\zs<CR>
-
-               nnoremap [n_align_key], :<C-u>Tabularize /,<CR>
-               vnoremap [v_align_key], :<C-u>Tabularize /,<CR>
             "}}}
 
             " (b)uffer handling {{{
