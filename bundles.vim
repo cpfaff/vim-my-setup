@@ -44,8 +44,8 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'airblade/vim-gitgutter.git' 
 NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'Townk/vim-autoclose.git' 
 NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'edsono/vim-matchit.git'
 NeoBundle 'sukima/xmledit.git'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'altercation/vim-colors-solarized.git'
@@ -67,7 +67,7 @@ NeoBundleCheck
 
 " Other useful bundles 
 " NeoBundle 'matze/vim-move' 
-" NeoBundle 'edsono/vim-matchit.git'
+" NeoBundle 'Townk/vim-autoclose.git' 
 " NeoBundle 'christoomey/vim-tmux-navigator'
 " NeoBundle 'godlygeek/tabular.git'
 " NeoBundle 'jamiebikies/greplace.vim.git'
