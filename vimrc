@@ -769,8 +769,8 @@ colorscheme solarized
                \ }
    " }}}
 
-   " (o)ver vim {{{
-      nmap :: :OverCommandLine<cr>
+   " (o)ver vim plugin {{{
+      " nmap :: :OverCommandLine<cr>
    " }}}
 
    " (p)owerline plugin {{{
