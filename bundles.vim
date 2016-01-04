@@ -57,7 +57,6 @@ NeoBundle 'jaxbot/github-issues.vim'
 NeoBundle 'basyura/bitly.vim'
 NeoBundle 'vim-scripts/DrawIt'
 NeoBundle 'tommcdo/vim-exchange'
-NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'sjl/gundo.vim'  
 NeoBundle 'vim-scripts/CmdlineComplete.git'
 NeoBundle 'osyo-manga/vim-over'
@@ -67,6 +66,7 @@ NeoBundleCheck
 
 " Other useful bundles 
 " NeoBundle 'matze/vim-move' 
+" NeoBundle 'christoomey/vim-tmux-navigator'
 " NeoBundle 'godlygeek/tabular.git'
 " NeoBundle 'jamiebikies/greplace.vim.git'
 " NeoBundle 'Shougo/unite-outline.git'
