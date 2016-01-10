@@ -12,20 +12,12 @@
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup.
  
-" Include bundles and autosource vimrc file {{{
+" Include bundles {{{
 
-      " Load vim bundles
-      source ~/.vim/bundles.vim
+   " Load vim bundles
+   source ~/.vim/bundles.vim
 
-      " auto source a changed vimrc file
-      if has("autocmd")
-         augroup source_vimrc
-            autocmd!
-            autocmd bufwritepost .vimrc source $MYVIMRC
-         augroup END
-      endif
-
-   "}}}
+"}}}
 
    " General Vim behaviour {{{
 
@@ -99,21 +91,12 @@
       " set colour scheme 
       syntax on
       set background=dark
+      let g:solarized_contrast="normal"
       colorscheme solarized 
-      " let g:solarized_termtrans=1  
       
-      " this allows to pick color on time!
-      " let hour = strftime("%H")
-      " if 6 <= hour && hour < 18
-        " set background=light
-      " else
-        " set background=dark
-      " endif
       
       " relative numbering
       set relativenumber
-
-colorscheme solarized
 
       highlight clear SignColumn 
  
@@ -152,17 +135,9 @@ colorscheme solarized
 
       " Set status line information
       set laststatus=2
-      " if has('statusline')
-         " set statusline=%<%f\ " Filename
-         " set statusline+=%w%h%m%r " Options
-         " set statusline+=%{fugitive#statusline()} " Git
-         " set statusline+=\ [%{&ff}/%Y] " filetype
-         " set statusline+=\ [%{getcwd()}] " current directory
-         " set statusline+=%#warningmsg#
-         " set statusline+=%{SyntasticStatuslineFlag()}
-         " set statusline+=%*
-         " set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
-      " endif
+
+      " no double space after punctuation on join
+      set nojoinspaces
 
       " folding options
       set foldmethod=marker
@@ -196,17 +171,11 @@ colorscheme solarized
 
    " Mappings {{{
 
-      " Preparations {{{
+      " Leader keys {{{
 
          " Set leader and local leader
          let g:mapleader = ","
-         let maplocalleader = '.'
-
-         " Enable alt and meta key mappings
-         for i in range(97,122)
-            let c = nr2char(i)
-            exec "set <M-".c.">=\<Esc>".c
-         endfor
+         let maplocalleader = "."
 
       "}}}
 
@@ -239,15 +208,18 @@ colorscheme solarized
             nnoremap L $
 
             " space: search forward. ctrl-<Space>: search backward, leader space clear search
-            noremap <space> /
-            noremap <C-@> ?
+            " noremap <space> /
+            " noremap <C-@> ?
+            
+            map <space> <Plug>(incsearch-forward)
+            map <C-@> <Plug>(incsearch-backward)
             noremap <leader><space> :noh<CR>
 
-            " Visual mode pressing * or # searches for the current selection
+            " Visual mode * or # extended for vizual selection
             vnoremap <silent> * :call VisualSelection('b')<CR>
-            " vnoremap <silent> # :call VisualSelection('f')<CR>
+            vnoremap <silent> # :call VisualSelection('f')<CR>
     
-            " Alternative movement for camelcase 
+            " Alternative movement for camel and snake case notation
             nmap <silent> <M-w> <Plug>CamelCaseMotion_w
             xmap <silent> <M-w> <Plug>CamelCaseMotion_w
             omap <silent> <M-w> <Plug>CamelCaseMotion_w
@@ -279,7 +251,6 @@ colorscheme solarized
             xmap gI <Plug>(niceblock-gI)
             xmap A <Plug>(niceblock-A)
 
-
             " Move text left and right (indent)
             nnoremap <A-l> >>
             nnoremap <A-h> <<
@@ -298,40 +269,33 @@ colorscheme solarized
             xmap <C-k> <Plug>(neosnippet_expand_target)
             imap <C-j> <Plug>(neosnippet_jump)
             smap <C-j> <Plug>(neosnippet_jump)
-
-            " imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-            " smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-            " xmap <C-l>     <Plug>(neosnippet_start_unite_snippet_target)
-
-
-            inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-            inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>" 
-
-            " if !has('lua') || v:version < 703 || (v:version == 703 && !has('patch885')) 
-               " inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-               " inoremap <expr><C-l> neocomplcache#complete_common_string()
-               " inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>" 
-            " else 
+            
+            " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+            " inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>" 
 
             inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 
+            " For no inserting <CR> key.
             function! s:my_cr_function()
               return neocomplete#close_popup() . "\<CR>"
-              " For no inserting <CR> key.
-              "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
             endfunction
 
-
-            " inoremap <expr><CR> neocomplete#smart_close_popup()."\<CR>"
             inoremap <expr><C-l> neocomplete#complete_common_string()
-            
-            " endif
 
             " Make Y consistent with D and C commands which act on a whole line
             nnoremap Y y$
 
             " Toggle paste mode on and off
-            set pastetoggle=<F3>
+            " set pastetoggle=<F3>
+            
+            " Allow repeat operator to be used with visible selection
+            vnoremap . :normal .<CR>
+
+            " change working dir to the current file
+            cmap cwd lcd %:p:h
+
+            " write the file when forgot to sudo
+            cmap w!! w !sudo tee % >/dev/null
 
          "}}}
 
@@ -486,13 +450,15 @@ colorscheme solarized
                nnoremap [git_key] <Nop>
                nmap <silent><leader>g [git_key]
 
-               nnoremap [git_key]b :<C-u>Gblame<CR>
-               nnoremap [git_key]c :<C-u>Gcommit<CR>
-               nnoremap [git_key]d :<C-u>Gvdiff<CR>
-               nnoremap [git_key]l :<C-u>Glog<CR>
-               nnoremap [git_key]o :<C-u>only<CR><CR>
-               nnoremap [git_key]p :<C-u>Git push<CR><CR>
                nnoremap [git_key]s :<C-u>Gstatus<CR><C-w>15+
+               nnoremap [git_key]d :<C-u>Gvdiff<CR>
+               nnoremap [git_key]c :<C-u>Gcommit<CR>
+               nnoremap [git_key]b :<C-u>Gblame<CR>
+               nnoremap [git_key]l :<C-u>Glog<CR>
+               nnoremap [git_key]p :<C-u>Git push<CR><CR>
+               nnoremap [git_key]r :<C-u>Gread<CR><CR>
+               nnoremap [git_key]w :<C-u>Gwrite<CR><CR>
+               nnoremap [git_key]o :<C-u>only<CR><CR>
             " }}}
             
             " (m)ake call a task {{{
@@ -775,10 +741,7 @@ colorscheme solarized
 
    " (p)owerline plugin {{{
       let g:airline_powerline_fonts = 1
-      " let g:airline_left_sep = '⮀'
-      " let g:airline_left_alt_sep = '⮁'
-      " let g:airline_right_sep = '⮂'
-      " let g:airline_right_alt_sep = '⮃'
+      let g:airline_theme = 'solarized'
    " }}}
 
    " (r)ails plugin {{{
@@ -822,6 +785,16 @@ colorscheme solarized
 
    " (t)agbar options {{{
       " let g:tagbar_left = 0
+   " }}}
+
+   " (t)mux complete {{{
+      let g:tmuxcomplete#trigger = ''
+   " }}}
+
+   " (i)ncsearch improve search {{{
+      " map /  <Plug>(incsearch-forward)
+      " map ?  <Plug>(incsearch-backward)
+      " map g/ <Plug>(incsearch-stay)
    " }}}
 
    " (t)ab guideline {{{
@@ -897,12 +870,29 @@ colorscheme solarized
    " (e)asymotion {{{
       " nmap s <Plug>(easymotion-s)
       " nmap S <Plug>(easymotion-s)
-      " map <space> <Plug>(easymotion-sn)
-      " omap <space> <Plug>(easymotion-tn)
-      " map  n <Plug>(easymotion-next)
-      " map  N <Plug>(easymotion-prev)
       let g:EasyMotion_smartcase = 1
       let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+      nmap s <Plug>(easymotion-s2)
+      nmap S <Plug>(easymotion-s2)
+      nmap t <Plug>(easymotion-t2)
+      nmap T <Plug>(easymotion-T2)
+      nmap f <Plug>(easymotion-f2)
+      nmap F <Plug>(easymotion-F2)
+
+      omap s <Plug>(easymotion-s2)
+      omap S <Plug>(easymotion-s2)
+      omap t <Plug>(easymotion-t2)
+      omap T <Plug>(easymotion-T2)
+      omap f <Plug>(easymotion-f2)
+      omap F <Plug>(easymotion-F2)
+
+      vmap s <Plug>(easymotion-s2)
+      vmap S <Plug>(easymotion-s2)
+      vmap t <Plug>(easymotion-t2)
+      vmap T <Plug>(easymotion-T2)
+      vmap f <Plug>(easymotion-f2)
+      vmap F <Plug>(easymotion-F2)
+
    " }}}
 
    "}}}
@@ -914,7 +904,6 @@ colorscheme solarized
       function! SpotifyUrlToUri()
           normal ^vt.lxwvwwbwhxr:wwr:kjj^
       endfunction
-
 
       " Delete trailing white space on save
        function! DeleteTrailingWS()
@@ -933,7 +922,7 @@ colorscheme solarized
        endfunction
       "
 
-      " Get visual selection
+      " Act on visual selection
        function! VisualSelection(direction) range
           let l:saved_reg = @"
           execute "normal! vgvy"
@@ -986,8 +975,6 @@ colorscheme solarized
          exe "set ft=" . l:origft
       endfunction
       command! PrettyXML call DoPrettyXML()
-
-
 
    "}}}
 
@@ -1098,3 +1085,4 @@ colorscheme solarized
       augroup END
 
    " }}} 
+
