@@ -868,30 +868,28 @@
    " }}}
 
    " (e)asymotion {{{
-      " nmap s <Plug>(easymotion-s)
-      " nmap S <Plug>(easymotion-s)
       let g:EasyMotion_smartcase = 1
       let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
-      nmap s <Plug>(easymotion-s2)
-      nmap S <Plug>(easymotion-s2)
-      nmap t <Plug>(easymotion-t2)
-      nmap T <Plug>(easymotion-T2)
-      nmap f <Plug>(easymotion-f2)
-      nmap F <Plug>(easymotion-F2)
+      nmap s <Plug>(easymotion-s)
+      nmap S <Plug>(easymotion-s)
+      nmap t <Plug>(easymotion-t)
+      nmap T <Plug>(easymotion-T)
+      nmap f <Plug>(easymotion-f)
+      nmap F <Plug>(easymotion-F)
 
-      omap s <Plug>(easymotion-s2)
-      omap S <Plug>(easymotion-s2)
-      omap t <Plug>(easymotion-t2)
-      omap T <Plug>(easymotion-T2)
-      omap f <Plug>(easymotion-f2)
-      omap F <Plug>(easymotion-F2)
+      omap s <Plug>(easymotion-s)
+      omap S <Plug>(easymotion-s)
+      omap t <Plug>(easymotion-t)
+      omap T <Plug>(easymotion-T)
+      omap f <Plug>(easymotion-f)
+      omap F <Plug>(easymotion-F)
 
-      vmap s <Plug>(easymotion-s2)
-      vmap S <Plug>(easymotion-s2)
-      vmap t <Plug>(easymotion-t2)
-      vmap T <Plug>(easymotion-T2)
-      vmap f <Plug>(easymotion-f2)
-      vmap F <Plug>(easymotion-F2)
+      vmap s <Plug>(easymotion-s)
+      vmap S <Plug>(easymotion-s)
+      vmap t <Plug>(easymotion-t)
+      vmap T <Plug>(easymotion-T)
+      vmap f <Plug>(easymotion-f)
+      vmap F <Plug>(easymotion-F)
 
    " }}}
 
