@@ -55,8 +55,11 @@ NeoBundle 'kana/vim-niceblock.git'
 NeoBundle 't9md/vim-textmanip'
 NeoBundle 'ervandew/screen.git'
 NeoBundle 'tommcdo/vim-exchange'
-NeoBundle 'sjl/gundo.vim'  
+NeoBundle 'sjl/gundo.vim'
 NeoBundle 'vim-scripts/CmdlineComplete.git'
+NeoBundle 'wellle/tmux-complete.vim'
+NeoBundle 'haya14busa/incsearch.vim'
+NeoBundle 'drmikehenry/vim-fixkey'
 
 call neobundle#end()
 NeoBundleCheck
