@@ -13,7 +13,9 @@
 " Description: This is my personal Vim setup.
 
 " Include bundles {{{
-   source ~/.vim/bundles.vim
+   if filereadable(glob("~/.vim/bundles.vim")) 
+      source ~/.vim/bundles.vim
+   endif
 " }}}
 
 " Source local vimrc {{{
@@ -1072,8 +1074,3 @@
       augroup END
 
    " }}} 
-
-" testing
-" let g:rooter_disable_map = 1
-" let g:rooter_autocmd_patterns = '*.rb,*.haml,*.js, *.vim'
-" set updatetime=250
