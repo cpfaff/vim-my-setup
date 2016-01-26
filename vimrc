@@ -12,7 +12,7 @@
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup.
 
-" Include bundles {{{
+" Source bundles {{{
    if filereadable(glob("~/.vim/bundles.vim")) 
       source ~/.vim/bundles.vim
    endif
