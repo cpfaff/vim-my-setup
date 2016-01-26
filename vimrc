@@ -11,13 +11,16 @@
 " File: vimrc
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup.
- 
+
 " Include bundles {{{
-
-   " Load vim bundles
    source ~/.vim/bundles.vim
+" }}}
 
-"}}}
+" Source local vimrc {{{
+   if filereadable(glob("~/.vim/vimrc.local")) 
+      source ~/.vim/vimrc.local
+   endif
+" }}}
 
    " General Vim behaviour {{{
 
@@ -122,7 +125,7 @@
       set switchbuf=useopen,usetab,newtab
       set showtabline=1
 
-      " Scroll options
+      " Adjust scroll of screen when cursor is moved
       set scrolloff=8
       set sidescrolloff=15
       set sidescroll=1
@@ -167,6 +170,14 @@
       
       " virtual edit in block mode
       set virtualedit=block
+
+      " indent stuff
+      set autoindent
+      set smartindent
+
+      " showcmd (testing)
+      set showcmd
+
    "}}}
 
    " Mappings {{{
@@ -175,7 +186,8 @@
 
          " Set leader and local leader
          let g:mapleader = ","
-         let maplocalleader = "."
+         " let maplocalleader = "."
+         let maplocalleader = "-"
 
       "}}}
 
@@ -208,14 +220,13 @@
             nnoremap L $
 
             " space: search forward. ctrl-<Space>: search backward, leader space clear search
-            " noremap <space> /
-            " noremap <C-@> ?
-            
-            map <space> <Plug>(incsearch-forward)
-            map <C-@> <Plug>(incsearch-backward)
+            noremap <space> /
+            " map <space> <Plug>(incsearch-forward)
+            noremap <C-@> ?
+            " map <C-@> <Plug>(incsearch-backward)
             noremap <leader><space> :noh<CR>
 
-            " Visual mode * or # extended for vizual selection
+            " The * or # commands extended for vizual selection
             vnoremap <silent> * :call VisualSelection('b')<CR>
             vnoremap <silent> # :call VisualSelection('f')<CR>
     
@@ -673,55 +684,49 @@
    "}}}
 
    " Plugin configuration {{{
-   "
-   " (b)itly {{{
-      " plugin variables 
-      if filereadable("~/.vim/vimrc.local")
-         source ~/.vim/vimrc.local
-      endif
-   " }}}
+   
+      " (g)it gutter {{{
+         " plugin variables 
+         let g:gitgutter_max_signs = 5000    
+         let g:gitgutter_map_keys = 0
+      " }}}
 
-   " (g)it gutter {{{
-      " plugin variables 
-      let g:gitgutter_max_signs = 5000  " default value  
-   " }}}
+      " (n)eo complete {{{
+         " plugin variables 
+         let g:acp_enableAtStartup = 0
+         let g:neocomplete#enable_at_startup = 1
+         let g:neocomplete#enable_smart_case = 1
+         let g:neocomplete#sources#syntax#min_keyword_length = 2
+         let g:neocomplete#enable_auto_delimiter = 1
+         let g:neosnippet#snippets_directory = '~/.vim/snippets/'
+         let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
 
-   " (n)eo complete {{{
-      " plugin variables 
-      let g:acp_enableAtStartup = 0
-      let g:neocomplete#enable_at_startup = 1
-      let g:neocomplete#enable_smart_case = 1
-      let g:neocomplete#sources#syntax#min_keyword_length = 2
-      let g:neocomplete#enable_auto_delimiter = 1
-      let g:neosnippet#snippets_directory = '~/.vim/snippets/'
-      let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
+         " simple omni completion
+         augroup neocomplete
+            autocmd!
+            autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+            autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+            autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+            autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+            autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+         augroup END
 
-      " let g:neocomplete#enable_refresh_always = 1
-      " let g:neocomplete#enable_prefetch = 1
-      " let g:neocomplete#enable_auto_select = 1
+         " heavy omni completion.
+         if !exists('g:neocomplete#sources#omni#input_patterns')
+            let g:neocomplete#sources#omni#input_patterns = {}
+         endif
+         if !exists('g:neocomplete#force_omni_input_patterns')
+            let g:neocomplete#force_omni_input_patterns = {}
+         endif
 
-      " simple omni completion
-      " augroup neocomplete
-      " autocmd!
-      " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-      " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-      " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-      " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-      " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-      " autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-      " augroup END
+         let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+         let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+         let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?'
+         let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+         let g:neocomplete#sources#omni#input_patterns.perl = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 
-      " heavy omni completion.
-      " if !exists('g:neocomplete#sources#omni#input_patterns')
-      " let g:neocomplete#sources#omni#input_patterns = {}
-      " endif 
-
-      " let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-      " let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-      " let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-      " let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-      " let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-   " }}} 
+      " }}} 
 
    " (n)erd commenter {{{
       let g:NERDCreateDefaultMappings = 0
@@ -733,10 +738,6 @@
                \ 'text' : {'left': '#'},
                \ 'r' : {'left': '#', 'leftAlt': "#'"}
                \ }
-   " }}}
-
-   " (o)ver vim plugin {{{
-      " nmap :: :OverCommandLine<cr>
    " }}}
 
    " (p)owerline plugin {{{
@@ -756,10 +757,6 @@
    " }}}
 
    " (g)it automcompletion (github-issues) {{{
-      if filereadable("~/.vim/vimrc.local")
-         source ~/.vim/vimrc.local
-      endif
-
       let g:gissues_async_omni = 1
    " }}}
 
@@ -775,12 +772,8 @@
 
    " (s)yntastic {{{
       let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'  
-      " ignore as lacheck seems buggy
+      " ignore as lacheck for latex files seems a bit buggy
       let g:syntastic_ignore_files = ['/*.*.cls$']  
-      " let g:syntastic_enable_signs = 0
-      " let g:syntastic_enable_balloons = 0
-      " let g:syntastic_enable_highlighting = 0 
-      " let g:syntastic_echo_current_error = 0 
    " }}}
 
    " (t)agbar options {{{
@@ -789,12 +782,6 @@
 
    " (t)mux complete {{{
       let g:tmuxcomplete#trigger = ''
-   " }}}
-
-   " (i)ncsearch improve search {{{
-      " map /  <Plug>(incsearch-forward)
-      " map ?  <Plug>(incsearch-backward)
-      " map g/ <Plug>(incsearch-stay)
    " }}}
 
    " (t)ab guideline {{{
@@ -897,10 +884,10 @@
 
    " Functions {{{
       " spotify url to uri converter
-      nnoremap csi :call SpotifyUrlToUri()<CR>
+      nnoremap ctu :call SpotifyUrlToUri()<CR>
 
       function! SpotifyUrlToUri()
-          normal ^vt.lxwvwwbwhxr:wwr:kjj^
+          normal ^vt.alxwr:wvwxwr:kjj
       endfunction
 
       " Delete trailing white space on save
@@ -980,10 +967,12 @@
       " Return to last edit position when opening files
       augroup last_cursor_position
          autocmd!
-         autocmd BufReadPost *
-            \ if line("'\"") > 0 && line("'\"") <= line("$") |
-            \  exe "normal! g`\"" |
-            \ endif
+        au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+         " autocmd BufReadPost *
+            " \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            " \  exe "normal! g`\"" |
+            " \ endif
+            "
       augroup END
 
       "Remove trailing whilespaces
@@ -1084,3 +1073,7 @@
 
    " }}} 
 
+" testing
+" let g:rooter_disable_map = 1
+" let g:rooter_autocmd_patterns = '*.rb,*.haml,*.js, *.vim'
+" set updatetime=250
