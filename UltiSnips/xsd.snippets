@@ -1,0 +1,57 @@
+snippet element "An element" b
+<xs:element name="${1:name}" type="${2:type}" minOccurs="${3:min}" maxOccurs="${4:max}"/>
+endsnippet
+
+snippet oelement "An open element" b
+<xs:element name="${1:name}" minOccurs="${2:min}" maxOccurs="${3:max}">
+	${4}
+</xs:element>
+endsnippet
+
+snippet complex "A complex type" b
+<xs:complexType>
+	<xs:sequence>
+		${1}
+	</xs:sequence>
+</xs:complexType>
+endsnippet
+
+snippet annotation "An annotation" b
+<xs:annotation>
+	<xs:documentation>
+		${1:VISUAL}
+	</xs:documentation>
+</xs:annotation>
+endsnippet
+
+snippet enannotation "An english annotation" b
+<xs:annotation>
+	<xs:documentation xml:lang="en">
+		${1:${VISUAL}}
+	</xs:documentation>
+</xs:annotation>
+endsnippet
+
+snippet fixd "Fix documentation" b
+FIXME: ${1:Description}
+endsnippet
+
+snippet reference "A reference"
+( ${1:Wikipedia}, ${2} )
+endsnippet
+
+snippet enumeration "An enumeration item" b
+<xs:enumeration  value="${1}"/>
+endsnippet
+
+snippet mzmo "Minimum zero maximum one"
+minOccurs="0" maxOccurs="1"
+endsnippet
+
+snippet momo "Minimum one maximum one"
+minOccurs="1" maxOccurs="1"
+endsnippet
+
+snippet momu "Minimum one maximum unbound"
+minOccurs="1" maxOccurs="unbounded"
+endsnippet

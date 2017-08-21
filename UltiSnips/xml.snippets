@@ -1,0 +1,124 @@
+snippet fixme "Description" b
+FIXME: claas: `date`: ${1}
+endsnippet
+
+snippet tclass "Top level class" b
+<Class rdf:about="http://terminologies.gfbio.org/terms/cafe#${1:TheConcept}">
+	<rdfs:comment xml:lang="en"> 
+		${3:TheComment}
+	</rdfs:comment>
+	<rdfs:label xml:lang="en">${4:TheLabel}</rdfs:label>
+</Class>
+endsnippet
+
+snippet sclass "Sub level class" b
+<Class rdf:about="http://terminologies.gfbio.org/terms/cafe#${1:TheConcept}">
+	<rdfs:subClassOf rdf:resource="http://terminologies.gfbio.org/terms/cafe#${2:IsSubclassOf}"/>
+	<rdfs:comment xml:lang="en"> 
+		${3:TheComment}
+	</rdfs:comment>
+	<rdfs:label xml:lang="en">${4:TheLabel}</rdfs:label>
+</Class>
+endsnippet
+
+
+snippet rtclass "Restricted on Property" b
+<Class rdf:about="http://terminologies.gfbio.org/terms/cafe#${1:TheConcept}">
+	<rdfs:subClassOf rdf:resource="http://terminologies.gfbio.org/terms/cafe#${2:IsSubclassOf}"/>
+	<rdfs:subClassOf>
+		<owl:Restriction>
+			<owl:onProperty rdf:resource="http://terminologies.gfbio.org/terms/cafe#${3:TheProperty}"/>
+			<owl:someValuesFrom rdf:resource="http://terminologies.gfbio.org/terms/cafe#${4:ConceptValues}"/>
+		</owl:Restriction>
+	</rdfs:subClassOf>
+	<rdfs:comment xml:lang="en"> 
+		${5:TheComment}
+	</rdfs:comment>
+	<rdfs:label xml:lang="en">${6:TheLabel}</rdfs:label>
+</Class>
+endsnippet
+
+snippet disjoints "Disjoints" b
+
+<rdf:Description>
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="http://terminologies.gfbio.org/terms/cafe#${1:OneConcept}"/>
+			<rdf:Description rdf:about="http://terminologies.gfbio.org/terms/cafe#${2:OneConcept}"/>
+		</owl:members>
+</rdf:Description>
+endsnippet
+
+snippet class "A class" b
+<owl:Class rdf:about="http://terminologies.gfbio.org/terms/cafe#${1:TheClass}">
+</owl:Class>
+endsnippet
+
+snippet subclassOf "A subclass definition" b
+<rdfs:subClassOf rdf:resource="http://terminologies.gfbio.org/terms/cafe#${1:TheClass}"/>
+endsnippet
+
+snippet disjointClass "Disjoint classes" b
+<owl:disjointWith rdf:resource="http://terminologies.gfbio.org/terms/cafe#${1:TheClass}"/>
+endsnippet
+
+snippet encomment "A comment" b
+<rdfs:comment xml:lang="en"> 
+	${1:TheComment}	
+</rdfs:comment>
+endsnippet
+
+snippet label "A label" b 
+<rdfs:label xml:lang="en">${1:TheLabel}</rdfs:label>
+endsnippet
+
+snippet ispartof "Is a part of" b
+<rdfs:subClassOf>
+	<owl:Restriction>
+		<owl:onProperty rdf:resource="http://terminologies.gfbio.org/terms/cafe#isPartOf"/>
+		<owl:someValuesFrom rdf:resource="http://terminologies.gfbio.org/terms/cafe#${1:concept}"/>
+	</owl:Restriction>
+</rdfs:subClassOf>
+endsnippet
+
+snippet element
+	<Element>
+		<elementName>${1:name}</elementName>
+	</Element>
+endsnippet
+
+snippet factor "an ease factor"
+<Factor>
+	<factorName was="${1:manipulated}">${2:what}</factorName>
+	<factorType>${3:Biotic}</factorType>
+</Factor>
+endsnippet
+	
+snippet setup "The befchina setup related factors"
+<Factor>
+	<factorName was="manipulated">Producer Diversity</factorName>
+	<factorType>Biotic</factorType>
+</Factor>
+<Factor>
+	<factorName was="manipulated">Producer Composition</factorName>
+	<factorType>Biotic</factorType>
+</Factor>
+<Factor>
+	<factorName was="manipulated">Producer Density</factorName>
+	<factorType>Biotic</factorType>
+</Factor>
+<Factor>
+	<factorName was="manipulated">Producer Structure</factorName>
+	<factorType>Biotic</factorType>
+</Factor>
+<Factor>
+	<factorName was="manipulated">Elevation</factorName>
+	<factorType>Abiotic</factorType>
+</Factor>
+<Factor>
+	<factorName was="manipulated">Topography</factorName>
+	<factorType>Abiotic</factorType>
+</Factor>
+endsnippet
+
+	

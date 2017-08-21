@@ -90,8 +90,18 @@
       " for regular expressions turn magic on
       set magic
 
+      " do not start at first line
+      set nostartofline
+
       " enable better colours in console
-      set t_Co=256
+      " set t_Co=256
+      if &term =~ '256color'
+        " disable Background Color Erase (BCE) so that color schemes
+        " render properly when inside 256-color tmux and GNU screen.
+        " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+        set t_ut=
+      endif
+
 
       " set colour scheme 
       syntax on
@@ -107,8 +117,8 @@
  
       " completion popup
       hi Pmenu guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-      hi PmenuSbar guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
-      hi PmenuThumb guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE   
+      hi PmenuSbar guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=Lightgray cterm=NONE
+      hi PmenuThumb guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=Lightgray ctermbg=darkcyan cterm=NONE   
 
       " search highlight
       hi Search guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
@@ -188,9 +198,8 @@
 
          " Set leader and local leader
          let g:mapleader = ","
-         " let maplocalleader = "."
-         let maplocalleader = "-"
-
+         let maplocalleader = "."
+         " let maplocalleader = "-"
       "}}}
 
       " Basic mappings {{{
@@ -265,8 +274,10 @@
             xmap A <Plug>(niceblock-A)
 
             " Move text left and right (indent)
-            nnoremap <A-l> >>
-            nnoremap <A-h> <<
+            nnoremap <A-l> >>^
+            nnoremap <A-h> <<^
+            nnoremap <A-L> >ap^
+            nnoremap <A-H> <ap^
             vnoremap <A-l> >gv^
             vnoremap <A-h> <gv^
 
@@ -277,12 +288,18 @@
             nmap <A-k> <Plug>(textmanip-move-up)
 
             " Necomplcache and neosnippet mappings
-            imap <C-k> <Plug>(neosnippet_expand)
-            smap <C-k> <Plug>(neosnippet_expand)
-            xmap <C-k> <Plug>(neosnippet_expand_target)
-            imap <C-j> <Plug>(neosnippet_jump)
-            smap <C-j> <Plug>(neosnippet_jump)
+            " imap <C-k> <Plug>(neosnippet_expand)
+            " smap <C-k> <Plug>(neosnippet_expand)
+            " xmap <C-k> <Plug>(neosnippet_expand_target)
+            " imap <C-j> <Plug>(neosnippet_jump)
+            " smap <C-j> <Plug>(neosnippet_jump)
             
+            " play with ultisnippets
+            let g:UltiSnipsExpandTrigger="<C-k>"
+            let g:UltiSnipsJumpForwardTrigger="<C-j>"
+            let g:UltiSnipsJumpBackwardTrigger="<C-l>"
+            let g:UltiSnipsEditSplit="vertical"
+ 
             " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
             " inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>" 
 
@@ -349,7 +366,8 @@
                noremap [buffer_key]d :<C-u>bd!<CR>
                noremap [buffer_key]n :<C-u>tabnew<CR>
                noremap [buffer_key]o :<C-u>tabonly<CR>
-               nnoremap [buffer_key] :<C-u>Unite -buffer-name=buffers buffer -input=!vimfiler -quick-match<CR>
+               " nnoremap [buffer_key] :<C-u>Unite -buffer-name=buffers buffer -input=!vimfiler -quick-match<CR>
+               nnoremap [buffer_key] :<C-u>Unite -buffer-name=buffers buffer<CR>
             " }}}
 
             " (c)omment handling {{{
@@ -411,8 +429,10 @@
                nnoremap [edit_key] <Nop>
                nmap <silent><leader>e [edit_key]
 
-               nnoremap [edit_key]r :<C-u>NeoSnippetEdit -runtime<CR>
-               nnoremap [edit_key]s :<C-u>NeoSnippetEdit<CR>
+               " nnoremap [edit_key]r :<C-u>NeoSnippetEdit -runtime<CR>
+               " nnoremap [edit_key]s :<C-u>NeoSnippetEdit<CR>
+               nnoremap [edit_key]s :<C-u>UltiSnipsEdit<CR>
+               nnoremap [edit_key]r :<C-u>UltiSnipsEdit!<CR>
                nnoremap [edit_key]v :<C-u>vsplit $MYVIMRC<cr>
             " }}}
 
@@ -453,7 +473,8 @@
             " Mappings:
             "
             " - [git_key]b   open a git blame in split view
-            " - [git_key]c   commit your changes
+            " - [git_key]c   brows or show commits (for file, for range in
+            "   vizual mode)
             " - [git_key]d   opens a git diff in split view of the file
             " - [git_key]l   show a git log
             " - [git_key]o   only to close all but the active diff split
@@ -472,6 +493,10 @@
                nnoremap [git_key]r :<C-u>Gread<CR><CR>
                nnoremap [git_key]w :<C-u>Gwrite<CR><CR>
                nnoremap [git_key]o :<C-u>only<CR><CR>
+               nnoremap [git_key]i :<C-u>Gissues<CR>
+               nnoremap [git_key]n :<C-u>Giadd<CR>
+               nnoremap [git_key]c :<C-u>GV<CR>
+               xnoremap <silent><leader>gc :GV<CR>
             " }}}
             
             " (m)ake call a task {{{
@@ -700,7 +725,7 @@
          let g:neocomplete#enable_smart_case = 1
          let g:neocomplete#sources#syntax#min_keyword_length = 2
          let g:neocomplete#enable_auto_delimiter = 1
-         let g:neosnippet#snippets_directory = '~/.vim/snippets/'
+         " let g:neosnippet#snippets_directory = '~/.vim/snippets/'
          let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
 
          " simple omni completion
@@ -860,25 +885,25 @@
       let g:EasyMotion_smartcase = 1
       let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
       nmap s <Plug>(easymotion-s)
-      nmap S <Plug>(easymotion-s)
-      nmap t <Plug>(easymotion-t)
-      nmap T <Plug>(easymotion-T)
-      nmap f <Plug>(easymotion-f)
-      nmap F <Plug>(easymotion-F)
+      " nmap S <Plug>(easymotion-s)
+      " nmap t <Plug>(easymotion-bd-t)
+      " nmap T <Plug>(easymotion-bd-T)
+      " nmap f <Plug>(easymotion-f)
+      " nmap F <Plug>(easymotion-F)
 
       omap s <Plug>(easymotion-s)
-      omap S <Plug>(easymotion-s)
-      omap t <Plug>(easymotion-t)
-      omap T <Plug>(easymotion-T)
-      omap f <Plug>(easymotion-f)
-      omap F <Plug>(easymotion-F)
+      " omap S <Plug>(easymotion-s)
+      " omap t <Plug>(easymotion-bd-t)
+      " omap T <Plug>(easymotion-bd-T)
+      " omap f <Plug>(easymotion-f)
+      " omap F <Plug>(easymotion-F)
 
       vmap s <Plug>(easymotion-s)
-      vmap S <Plug>(easymotion-s)
-      vmap t <Plug>(easymotion-t)
-      vmap T <Plug>(easymotion-T)
-      vmap f <Plug>(easymotion-f)
-      vmap F <Plug>(easymotion-F)
+      " vmap S <Plug>(easymotion-s)
+      " vmap t <Plug>(easymotion-bd-t)
+      " vmap T <Plug>(easymotion-bd-T)
+      " vmap f <Plug>(easymotion-f)
+      " vmap F <Plug>(easymotion-F)
 
    " }}}
 
@@ -967,14 +992,13 @@
 
    " Autogroups {{{
       " Return to last edit position when opening files
-      augroup last_cursor_position
+      if has("autocmd")
+       au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+      endif
+
+      augroup xml_filetypes 
          autocmd!
-        au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-         " autocmd BufReadPost *
-            " \ if line("'\"") > 0 && line("'\"") <= line("$") |
-            " \  exe "normal! g`\"" |
-            " \ endif
-            "
+         autocmd BufNewFile,BufRead *.eml set filetype=xml
       augroup END
 
       "Remove trailing whilespaces
@@ -988,6 +1012,7 @@
          autocmd BufWrite *.R :call DeleteTrailingWS()
          autocmd BufWrite *.tex :call DeleteTrailingWS()
          autocmd BufWrite *.txt :call DeleteTrailingWS()
+         autocmd BufWrite *.xsd :call DeleteTrailingWS()
       augroup END
 
       " augroup csv_editing 
@@ -1073,4 +1098,37 @@
          autocmd BufRead /tmp/mutt-* execute "normal i"
       augroup END
 
+      " au FileType xml,eml exe ":silent %!xmllint --format --recover - 2>/dev/null" 
    " }}} 
+
+" needs to be put into the folds above
+let g:goourl_disable_default_mappings = 1
+nnoremap us :python googurl()<CR>
+
+"workaround for fugitive to open the preview window correctly
+set previewheight=3
+au BufEnter ?* call PreviewHeightWorkAround()
+func PreviewHeightWorkAround()
+  if &previewwindow
+    exec 'wincmd K'
+    exec 'setlocal winheight='.&previewheight
+  endif
+endfunc
+
+let g:netrw_browsex_viewer= "xdg-open"
+
+
+function! TwiddleCase(str)
+  if a:str ==# toupper(a:str)
+    let result = tolower(a:str)
+  elseif a:str ==# tolower(a:str)
+    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
+  else
+    let result = toupper(a:str)
+  endif
+  return result
+endfunction
+
+vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgvl
+
+
