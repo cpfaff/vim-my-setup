@@ -737,6 +737,7 @@
             autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
             autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
             autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+            autocmd FileType r setlocal omnifunc=CompleteR
          augroup END
 
          " heavy omni completion.
@@ -752,7 +753,7 @@
          let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?'
          let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
          let g:neocomplete#sources#omni#input_patterns.perl = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-
+         " let g:neocomplete#sources#omni#input_patterns.r = '[A-z]'
       " }}} 
 
    " (n)erd commenter {{{
@@ -777,10 +778,19 @@
    " }}}
 
    " (r)plugin {{{
-      let vimrplugin_vsplit = 1
-      let ScreenImpl = 'Tmux'
-      let vimrplugin_vsplit = 0
-      let vimrplugin_assign = 0
+      " let vimrplugin_vsplit = 1
+      " let ScreenImpl = 'Tmux'
+      " let vimrplugin_vsplit = 0
+      " let vimrplugin_assign = 0
+
+      let R_in_buffer = 0
+      let R_applescript = 0
+      let R_tmux_split = 1
+      let R_rconsole_width = 0
+      let R_rconsole_height = 15
+      let R_assign = 0
+      " let R_user_maps_only = 1
+
    " }}}
 
    " (g)it automcompletion (github-issues) {{{
