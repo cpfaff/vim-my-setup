@@ -2,89 +2,112 @@
 " Bundle list
 " ===================================================
 
-set nocompatible
+call plug#begin('~/.vim/plugged')
 
-if has('vim_starting')
-   set nocompatible
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/unite.vim'
+
+" Plug 'Shougo/neocomplete' 
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+Plug 'Shougo/vimfiler'
+Plug 'Shougo/context_filetype.vim'
+Plug 'Shougo/neomru.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
-NeoBundleFetch 'Shougo/neobundle.vim' 
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-abolish' 
+Plug 'tpope/vim-sleuth' 
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
 
-NeoBundle 'Shougo/vimproc.git', {
-        \ 'build' : {
-        \     'unix' : 'make -f make_unix.mak',
-        \    },
-        \ } 
-         
-NeoBundle 'Shougo/unite.vim.git'
-NeoBundle 'Shougo/neocomplete'
-" NeoBundle 'Shougo/neosnippet.git'
-" NeoBundle 'Shougo/neosnippet-snippets.git'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'Shougo/vimfiler.git'
-NeoBundle 'Shougo/context_filetype.vim.git'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'tpope/vim-rails.git'
-NeoBundle 'tpope/vim-repeat.git'
-NeoBundle 'tpope/vim-surround.git'
-NeoBundle 'tpope/vim-abolish.git' 
-NeoBundle 'tpope/vim-sleuth.git' 
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-fugitive.git'
-NeoBundle 'junegunn/gv.vim'
-NeoBundle 'jaxbot/github-issues.vim'
+Plug 'junegunn/gv.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'jaxbot/github-issues.vim'
 
-NeoBundle 'vim-scripts/YankRing.vim.git'
-" NeoBundle 'vim-scripts/Vim-R-plugin.git'
-NeoBundle 'jalvesaq/Nvim-R'
-NeoBundle 'cpfaff/tex.vim--Tanzler'
-NeoBundle 'scrooloose/nerdcommenter.git'
-NeoBundle 'scrooloose/syntastic.git'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'vim-scripts/camelcasemotion.git'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'airblade/vim-gitgutter.git' 
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'vim-scripts/matchit.zip'
-NeoBundle 'sukima/xmledit.git'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'altercation/vim-colors-solarized.git'
-NeoBundle 'skwp/greplace.vim'
-NeoBundle 'kana/vim-niceblock.git'
-NeoBundle 't9md/vim-textmanip'
-NeoBundle 'ervandew/screen.git'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'vim-scripts/CmdlineComplete.git'
-NeoBundle 'drmikehenry/vim-fixkey'
-NeoBundle 'cpfaff/googurl.vim'
-NeoBundle 'niklasl/vim-rdf'
-NeoBundle 'oplatek/Conque-Shell'
-NeoBundle 'chrisbra/csv.vim'
+Plug 'vim-scripts/renamer.vim'
+Plug 'vim-scripts/YankRing.vim'
+Plug 'vim-scripts/camelcasemotion'
+Plug 'vim-scripts/matchit.zip'
+Plug 'vim-scripts/CmdlineComplete'
 
- " testing
- " NeoBundle 'zhaocai/GoldenView.Vim'
- " NeoBundle 'gregsexton/gitv'
- " NeoBundle 'wellle/tmux-complete.vim'
- " NeoBundle 'Olical/vim-enmasse'
- " NeoBundle 'tommcdo/vim-exchange'
- " NeoBundle 'haya14busa/incsearch.vim'
- " NeoBundle 'sk1418/Join'
- " NeoBundle 'AndrewRadev/splitjoin.vim'
- NeoBundle 'Konfekt/FastFold'
- " NeoBundle 'vim-scripts/DrawIt'
- " NeoBundle 'airblade/vim-rooter'
+" Plug 'jalvesaq/Nvim-R', { 'tag': 'v0.9.10' }
+Plug 'jalvesaq/Nvim-R'
 
- 
- call neobundle#end()
- NeoBundleCheck
- 
- " Other useful bundles 
+Plug 'cpfaff/googurl.vim'
+
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+
+Plug 'mhinz/vim-signify'
+
+Plug 'Lokaltog/vim-easymotion'
+
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'Raimondi/delimitMate'
+Plug 'sukima/xmledit'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'altercation/vim-colors-solarized'
+Plug 'skwp/greplace.vim'
+Plug 'kana/vim-niceblock'
+Plug 't9md/vim-textmanip'
+Plug 'ervandew/screen'
+Plug 'sjl/gundo.vim'
+
+if has('nvim')
+else
+  Plug 'drmikehenry/vim-fixkey'
+endif
+
+Plug 'niklasl/vim-rdf'
+Plug 'oplatek/Conque-Shell'
+Plug 'chrisbra/csv.vim'
+Plug 'haya14busa/vim-asterisk'
+
+Plug 'wellle/tmux-complete.vim'
+Plug 'ap/vim-css-color'
+
+
+Plug 'coderifous/textobj-word-column.vim'
+" language files
+Plug 'sheerun/vim-polyglot'
+Plug 'farmergreg/vim-lastplace'
+
+call plug#end()
+
+
+" neosnippet
+" Plug 'Shougo/neosnippet.git'
+" Plug 'Shougo/neosnippet-snippets.git'
+"
+" testing
+" Plug 'zhaocai/GoldenView.Vim'
+" Plug 'gregsexton/gitv'
+" Plug 'Olical/vim-enmasse'
+" Plug 'tommcdo/vim-exchange'
+" Plug 'haya14busa/incsearch.vim'
+" Plug 'sk1418/Join'
+" Plug 'AndrewRadev/splitjoin.vim'
+" Plug 'Konfekt/FastFold'
+" Plug 'vim-scripts/DrawIt'
+" Plug 'airblade/vim-rooter'
+
+" Other useful bundles 
+
+" Plug 'lifepillar/vim-solarized8'
+" Plug 'airblade/vim-gitgutter' 
+" Plug 'cpfaff/tex.vim--Tanzler'
 " NeoBundle 'osyo-manga/vim-over'
 " NeoBundle 'basyura/bitly.vim'
 " NeoBundle 'benmills/vimux' 

@@ -94,31 +94,86 @@ snippet factor "an ease factor"
 </Factor>
 endsnippet
 	
-snippet setup "The befchina setup related factors"
-<Factor>
-	<factorName was="manipulated">Producer Diversity</factorName>
-	<factorType>Biotic</factorType>
-</Factor>
-<Factor>
-	<factorName was="manipulated">Producer Composition</factorName>
-	<factorType>Biotic</factorType>
-</Factor>
-<Factor>
-	<factorName was="manipulated">Producer Density</factorName>
-	<factorType>Biotic</factorType>
-</Factor>
+snippet mainfactor "The befchina main factors"
 <Factor>
 	<factorName was="manipulated">Producer Structure</factorName>
 	<factorType>Biotic</factorType>
 </Factor>
 <Factor>
-	<factorName was="manipulated">Elevation</factorName>
-	<factorType>Abiotic</factorType>
-</Factor>
-<Factor>
-	<factorName was="manipulated">Topography</factorName>
-	<factorType>Abiotic</factorType>
+	<factorName was="manipulated">Producer Diversity</factorName>
+	<factorType>Biotic</factorType>
 </Factor>
 endsnippet
 
-	
+snippet cspfactor "The befchina csp factors"
+<Factor>
+	<factorName was="manipulated">Producer Structure</factorName>
+	<factorType>Biotic</factorType>
+</Factor>
+endsnippet
+
+
+snippet template_plant "Template for plant organism"
+            <Organism>
+              <Taxonomy>
+                <domain>Eukaryota</domain>
+                <kingdom>Plantae</kingdom>
+                <division></division>
+                <class></class>
+                <order></order>
+                <family></family>
+                <species></species>
+                <OrganismName>
+                  <BacterialName>
+                    <fullBacterialName></fullBacterialName>
+                    <genusOrMonomial></genusOrMonomial>
+                    <subgenus></subgenus>
+                    <subgenusAuthorAndYear></subgenusAuthorAndYear>
+                    <speciesEpithet></speciesEpithet>
+                    <subspeciesEpithet></subspeciesEpithet>
+                    <parentheticalAuthorTeamAndYear></parentheticalAuthorTeamAndYear>
+                    <authorTeamAndYear></authorTeamAndYear>
+                    <nameApprobation></nameApprobation>
+                  </BacterialName>
+                  <FungalName>
+                    <fullFungalName></fullFungalName>
+                  </FungalName>
+                  <BotanicalName>
+                    <fullBotanicalName>string</fullBotanicalName>
+                    <genusOrMonomial></genusOrMonomial>
+                    <firstEpithet></firstEpithet>
+                    <infraspecificEpithet></infraspecificEpithet>
+                    <rank></rank>
+                    <hybridFlag insertionpoint="3"></hybridFlag>
+                    <authorTeamParenthesis></authorTeamParenthesis>
+                    <authorTeam></authorTeam>
+                    <cultivarGroupName></cultivarGroupName>
+                    <cultivarName></cultivarName>
+                    <tradeDesignationNames>
+                      <tradeDesignationName></tradeDesignationName>
+                    </tradeDesignationNames>
+                  </BotanicalName>
+                  <ZoologicalName>
+                    <fullZoologicalName></fullZoologicalName>
+                    <genusOrMonomial></genusOrMonomial>
+                    <subgenus></subgenus>
+                    <speciesEpithet></speciesEpithet>
+                    <subspeciesEpithet></subspeciesEpithet>
+                    <authorTeamOriginalAndYear></authorTeamOriginalAndYear>
+                    <authorTeamParenthesisAndYear></authorTeamParenthesisAndYear>
+                    <combinationAuthorTeamAndYear></combinationAuthorTeamAndYear>
+                    <breed></breed>
+                    <namedIndividual></namedIndividual>
+                  </ZoologicalName>
+                  <ViralName>
+                    <fullViralName></fullViralName>
+                    <genusOrMonomial></genusOrMonomial>
+                    <viralSpeciesDesignation></viralSpeciesDesignation>
+                    <acronym></acronym>
+                  </ViralName>
+                </OrganismName>
+              </Taxonomy>
+            </Organism>
+endsnippet	
+
+

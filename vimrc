@@ -12,16 +12,21 @@
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup.
 
+let R_parenblock = 0
+
+" Be more modern
+set nocompatible
+
 " Source bundles {{{
-   if filereadable(glob("~/.vim/bundles.vim")) 
-      source ~/.vim/bundles.vim
-   endif
+if filereadable(glob("~/.vim/bundles.vim")) 
+   source ~/.vim/bundles.vim
+endif
 " }}}
 
 " Source local vimrc {{{
-   if filereadable(glob("~/.vim/vimrc.local")) 
-      source ~/.vim/vimrc.local
-   endif
+if filereadable(glob("~/.vim/vimrc.local")) 
+   source ~/.vim/vimrc.local
+endif
 " }}}
 
    " General Vim behaviour {{{
@@ -30,21 +35,27 @@
       set noerrorbells
       set novisualbell
       set t_vb=
-      set timeoutlen=500
+
+      " time out for key codes
+      if !has('nvim') && &ttimeoutlen == -1
+        set ttimeout
+        set ttimeoutlen=100
+      endif
 
       " Save all files in one place
       set nobackup
-      " set backupdir=~/.vim/tmp
+      set backupdir=~/.vim/tmp
       set noswapfile
       set directory=~/.vim/tmp
       set tags=~/.vim/tmp/
 
       " Disable vim startup message
       set shortmess+=filmnrxoOtTI
-      " Sets how much history and undo vim remembers
+
+      " Sets history size
       set history=1000
 
-      " Persistent undo
+      " Persistent undo 
       if has('persistent_undo')
          set undodir=~/.vim/tmp
          set undofile
@@ -59,7 +70,7 @@
       " A buffer becomes hidden when it is abandoned
       set hidden
 
-      " Configure backspace
+      " Configure backspace (through everything)
       set backspace=indent,eol,start
 
       " Wrap behavior
@@ -68,20 +79,22 @@
       "swith on numbering on left side
       set number 
 
-      " Tab completion
-      set wildmenu
-      " set wildignore=*tikzDiktionary*
+      " relative numbering
+      set relativenumber
 
-      " ignore cases (unite uses this as well)
+      " Tab completion (display completion matches in a status line)
+      set wildmenu
+
+      " ignore cases first
       set ignorecase
 
-      " but be smart about cases
+      " but be smart with cases 
       set smartcase
 
       " highlight search results
       set hlsearch
 
-      " makes search act like search in modern browsers
+      " search like in modern browsers
       set incsearch
 
       " don't redraw while executing macros (better performance)
@@ -90,39 +103,35 @@
       " for regular expressions turn magic on
       set magic
 
-      " do not start at first line
+      " do  not start at first line (e.g. strg+d)
       set nostartofline
-
-      " enable better colours in console
-      " set t_Co=256
-      if &term =~ '256color'
-        " disable Background Color Erase (BCE) so that color schemes
-        " render properly when inside 256-color tmux and GNU screen.
-        " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-        set t_ut=
-      endif
-
 
       " set colour scheme 
       syntax on
-      set background=dark
-      let g:solarized_contrast="normal"
-      colorscheme solarized 
-      
-      
-      " relative numbering
-      set relativenumber
 
+      " enable better colours in console
+      " set t_Co=256
+      "
+      " if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
+         " set t_Co=16
+      " endif
+
+      " if &term =~ '256color'
+        " disable Background Color Erase (BCE) so that color schemes
+        " render properly when inside 256-color tmux and GNU screen.
+        " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+        " set t_ut=
+      " endif
+
+      set background=dark
+      colorscheme solarized
       highlight clear SignColumn 
- 
+      hi SignColumn guifg=#000000 guibg=#000000 ctermfg=black ctermbg=black
+
       " completion popup
       hi Pmenu guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
       hi PmenuSbar guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=Lightgray cterm=NONE
       hi PmenuThumb guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=Lightgray ctermbg=darkcyan cterm=NONE   
-
-      " search highlight
-      hi Search guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-      hi IncSearch guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray 
 
       " wrap and line break
       set wrap
@@ -145,7 +154,7 @@
       " Completion
       set completeopt=menu,menuone,longest
 
-      " Limit popup menu height
+      " Limit pop-up menu height
       set pumheight=15
 
       " Set status line information
@@ -170,16 +179,14 @@
       " fast terminal reduces lags
       set ttyfast
 
-      " set chars for visualization 
-      set listchars=trail:·,eol:$
+      " set chars for visualization
+      if &listchars ==# 'eol:$'
+         set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+,eol:$
+      endif
 
       " clipboard support
-      " if has ('x') && has ('gui')
-      set clipboard=unnamedplus
-      " elseif has ('gui')
-         " set clipboard=unnamed
-      " endif
-      
+      set clipboard^=unnamed,unnamedplus
+
       " virtual edit in block mode
       set virtualedit=block
 
@@ -187,8 +194,25 @@
       set autoindent
       set smartindent
 
-      " showcmd (testing)
-      set showcmd
+      let g:netrw_browsex_viewer= "xdg-open"
+      
+      " try out new stuff
+      if v:version > 703 || v:version == 703 && has("patch541")
+         set formatoptions+=j " Delete comment character when joining commented lines
+      endif
+      "
+      set ruler	" show the cursor position all the time
+      set showcmd " display incomplete commands
+
+      " Show @@@ in the last line if it is truncated.
+      set display=truncate
+
+      " Do not recognize octal numbers for Ctrl-A and Ctrl-X, most users find
+      " it confusing.
+
+      set nrformats-=octal
+      set autoread
+      set display+=lastline 
 
    "}}}
 
@@ -199,7 +223,6 @@
          " Set leader and local leader
          let g:mapleader = ","
          let maplocalleader = "."
-         " let maplocalleader = "-"
       "}}}
 
       " Basic mappings {{{
@@ -211,7 +234,7 @@
 
             " Disable ZZ.
             nnoremap ZZ <Nop>
-         "}}}
+      "}}}
 
          " Movement related {{{
 
@@ -238,8 +261,8 @@
             noremap <leader><space> :noh<CR>
 
             " The * or # commands extended for vizual selection
-            vnoremap <silent> * :call VisualSelection('b')<CR>
-            vnoremap <silent> # :call VisualSelection('f')<CR>
+            " vnoremap <silent> * :call VisualSelection('b')<CR>
+            " vnoremap <silent> # :call VisualSelection('f')<CR>
     
             " Alternative movement for camel and snake case notation
             nmap <silent> <M-w> <Plug>CamelCaseMotion_w
@@ -273,7 +296,7 @@
             xmap gI <Plug>(niceblock-gI)
             xmap A <Plug>(niceblock-A)
 
-            " Move text left and right (indent)
+,           " Move text left and right (indent)
             nnoremap <A-l> >>^
             nnoremap <A-h> <<^
             nnoremap <A-L> >ap^
@@ -287,48 +310,41 @@
             xmap <A-k> <Plug>(textmanip-move-up)
             nmap <A-k> <Plug>(textmanip-move-up)
 
-            " Necomplcache and neosnippet mappings
+            " Neosnippet mappings
             " imap <C-k> <Plug>(neosnippet_expand)
             " smap <C-k> <Plug>(neosnippet_expand)
             " xmap <C-k> <Plug>(neosnippet_expand_target)
             " imap <C-j> <Plug>(neosnippet_jump)
             " smap <C-j> <Plug>(neosnippet_jump)
-            
+
             " play with ultisnippets
-            let g:UltiSnipsExpandTrigger="<C-k>"
-            let g:UltiSnipsJumpForwardTrigger="<C-j>"
-            let g:UltiSnipsJumpBackwardTrigger="<C-l>"
-            let g:UltiSnipsEditSplit="vertical"
- 
-            " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-            " inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>" 
+            let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+            let g:UltiSnipsExpandTrigger = "<C-k>"
+            let g:UltiSnipsJumpForwardTrigger = "<C-j>"
+            let g:UltiSnipsJumpBackwardTrigger = "<C-l>"
+            let g:UltiSnipsEditSplit = "vertical"
 
             inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 
             " For no inserting <CR> key.
             function! s:my_cr_function()
-              return neocomplete#close_popup() . "\<CR>"
+              return deoplete#close_popup() . "\<CR>"
             endfunction
 
-            inoremap <expr><C-l> neocomplete#complete_common_string()
+            inoremap <expr><C-l> deoplete#complete_common_string()
 
             " Make Y consistent with D and C commands which act on a whole line
             nnoremap Y y$
 
             " Toggle paste mode on and off
-            " set pastetoggle=<F3>
+            set pastetoggle=<F3>
             
             " Allow repeat operator to be used with visible selection
             vnoremap . :normal .<CR>
 
             " change working dir to the current file
-            cmap cwd lcd %:p:h
-
-            " write the file when forgot to sudo
-            cmap w!! w !sudo tee % >/dev/null
-
+            " cmap cwd lcd %:p:h
          "}}}
-
       "}}}
 
       " Sorted key mappings {{{
@@ -345,6 +361,21 @@
                xmap ga <Plug>(EasyAlign)
                nmap ga <Plug>(EasyAlign)
 
+            "}}}
+     
+            " (a)sterisk improved {{{
+
+            " Description:
+            " These mappings allow asterisk movements
+            "
+            " Mappings:
+            "
+               map * <Plug>(asterisk-gz*)
+               map # <Plug>(asterisk-gz#)
+               " map *  <Plug>(asterisk-z*)
+               " map #  <Plug>(asterisk-z#)
+               " map g* <Plug>(asterisk-gz*)
+               " map g# <Plug>(asterisk-gz#)
             "}}}
 
             " (b)uffer handling {{{
@@ -393,26 +424,6 @@
                map [comment_key]y <plug>NERDCommenterYank
             " }}}
 
-            " (d)ump and load sessions {{{
-
-            " Description:
-            "
-            " This mappings make use of the Vim sessionman plug-in to handle sessions. If
-            " you store a session all things defined under "sessionoptions" will be
-            " stored.
-            "
-            " Mappings:
-            "
-            " - [dump_key]l   lists all stored sessions
-            " - [dump_key]s   to save a session
-
-               " nnoremap [dump_key] <Nop>
-               " nmap <silent><leader>d [dump_key]
-
-               " nnoremap [dump_key]l :<C-u>SessionList<CR>
-               " nnoremap [dump_key]s :<C-u>SessionSave<CR>
-            " }}}
-
             " (e)dit config and snippet files {{{
 
             " Description:
@@ -428,7 +439,7 @@
 
                nnoremap [edit_key] <Nop>
                nmap <silent><leader>e [edit_key]
-
+ 
                " nnoremap [edit_key]r :<C-u>NeoSnippetEdit -runtime<CR>
                " nnoremap [edit_key]s :<C-u>NeoSnippetEdit<CR>
                nnoremap [edit_key]s :<C-u>UltiSnipsEdit<CR>
@@ -459,7 +470,7 @@
                nnoremap [unite_key]f :<C-u>Unite -buffer-name=sources source<CR>
                nnoremap [unite_key]g :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
                nnoremap [unite_key]r :<C-u>Unite -buffer-name=files file_mru<CR>
-               nnoremap [unite_key]u :<C-u>Unite -log -buffer-name=update neobundle/update<CR>
+               " nnoremap [unite_key]u :<C-u>Unite -log -buffer-name=update neobundle/update<CR>               "
 
             "}}}
 
@@ -522,12 +533,12 @@
             "                the make task showpdf. You can extend this to you
             "                needs.
 
-               nnoremap [make_key] <Nop>
-               nmap <silent><leader>m [make_key]
+               " nnoremap [make_key] <Nop>
+               " nmap <silent><leader>m [make_key]
 
-               nnoremap [make_key]  :<C-u>Unite -input=error build<CR>
-               nnoremap [make_key]s :<C-u>Unite -no-empty build:make:showpdf<CR>
-               nnoremap [make_key]c :<C-u>Unite -no-empty build:make:clean<CR>
+               " nnoremap [make_key]  :<C-u>Unite -input=error build<CR>
+               " nnoremap [make_key]s :<C-u>Unite -no-empty build:make:showpdf<CR>
+               " nnoremap [make_key]c :<C-u>Unite -no-empty build:make:clean<CR>
 
             " }}}
 
@@ -579,6 +590,9 @@
                vnoremap [replace_key] :call VisualSelection('replace')<CR>
                " vnoremap [replace_key]a :call VisualSelection('quickfixdo')<CR>
                " vnoremap [replace_key]s :call VisualSelection('acksearch')<CR>
+               " replace under the curser (however the old functionality is
+               " broken)
+               " nnoremap <Leader>r :%s/\<<C-r><C-w>\>/
             " }}}
 
             " (s)pellchecking {{{
@@ -624,16 +638,9 @@
 
             " Description:
             "
-            " This mappings help you with file and tag navigation. They use the
-            " plugin tagbar on one hand and on the other the vimfiler for file
-            " navigation. The tagbar requires in background a working installation
-            " of the ctags program.
+            " This mapping help you with file navigation.             "
             "
             " Mappings:
-            "
-            " - [toggle_key]t  Opens a tagbar on the left side of a screen. In
-            "                  this window you can navigate beween the functions
-            "                  in your sourcecode.
             "
             " - [toggle_key]f  Opens a file manager on the left side of the
             "                  screen (VimFiler)
@@ -641,7 +648,6 @@
                nnoremap [toggle_key] <Nop>
                nmap <silent><leader>t  [toggle_key]
 
-               " nnoremap [toggle_key]t :<C-u>TagbarToggle<CR>
                nnoremap [toggle_key]f :<C-u>VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
             "}}}
 
@@ -709,27 +715,22 @@
       "}}}
 
    "}}}
-
+   
    " Plugin configuration {{{
    
-      " (g)it gutter {{{
-         " plugin variables 
-         let g:gitgutter_max_signs = 5000    
-         let g:gitgutter_map_keys = 0
-      " }}}
-
-      " (n)eo complete {{{
+      " (d)eo plete {{{
+      
          " plugin variables 
          let g:acp_enableAtStartup = 0
-         let g:neocomplete#enable_at_startup = 1
-         let g:neocomplete#enable_smart_case = 1
-         let g:neocomplete#sources#syntax#min_keyword_length = 2
-         let g:neocomplete#enable_auto_delimiter = 1
+         let g:deoplete#enable_at_startup = 1
+         let g:deoplete#enable_smart_case = 1
+         let g:deoplete#sources#syntax#min_keyword_length = 2
+         let g:deoplete#enable_auto_delimiter = 1
          " let g:neosnippet#snippets_directory = '~/.vim/snippets/'
-         let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
+         let g:deoplete#data_directory = '~/.vim/tmp/deoplete'
 
          " simple omni completion
-         augroup neocomplete
+         augroup deoplete
             autocmd!
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
             autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -741,20 +742,64 @@
          augroup END
 
          " heavy omni completion.
-         if !exists('g:neocomplete#sources#omni#input_patterns')
-            let g:neocomplete#sources#omni#input_patterns = {}
+         if !exists('g:deoplete#sources#omni#input_patterns')
+            let g:deoplete#sources#omni#input_patterns = {}
          endif
-         if !exists('g:neocomplete#force_omni_input_patterns')
-            let g:neocomplete#force_omni_input_patterns = {}
+         if !exists('g:deoplete#force_omni_input_patterns')
+            let g:deoplete#force_omni_input_patterns = {}
          endif
 
-         let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-         let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-         let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?'
-         let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-         let g:neocomplete#sources#omni#input_patterns.perl = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-         " let g:neocomplete#sources#omni#input_patterns.r = '[A-z]'
+         let g:deoplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+         let g:deoplete#sources#omni#input_patterns.php = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+         let g:deoplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?'
+         let g:deoplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+         let g:deoplete#sources#omni#input_patterns.perl = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+         let g:deoplete#sources#omni#input_patterns.r = '[A-z]'
       " }}} 
+
+   " (e)asymotion {{{
+      let g:EasyMotion_smartcase = 1
+      let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+      nmap s <Plug>(easymotion-s)
+      " nmap S <Plug>(easymotion-s)
+      " nmap t <Plug>(easymotion-bd-t)
+      " nmap T <Plug>(easymotion-bd-T)
+      " nmap f <Plug>(easymotion-f)
+      " nmap F <Plug>(easymotion-F)
+
+      omap s <Plug>(easymotion-s)
+      " omap S <Plug>(easymotion-s)
+      " omap t <Plug>(easymotion-bd-t)
+      " omap T <Plug>(easymotion-bd-T)
+      " omap f <Plug>(easymotion-f)
+      " omap F <Plug>(easymotion-F)
+
+      vmap s <Plug>(easymotion-s)
+      " vmap S <Plug>(easymotion-s)
+      " vmap t <Plug>(easymotion-bd-t)
+      " vmap T <Plug>(easymotion-bd-T)
+      " vmap f <Plug>(easymotion-f)
+      " vmap F <Plug>(easymotion-F)
+
+   " }}}
+
+      " (f)ugitive {{{
+         "workaround for fugitive to open the preview window correctly
+         set previewheight=3
+         au BufEnter ?* call PreviewHeightWorkAround()
+         func PreviewHeightWorkAround()
+            if &previewwindow
+               exec 'wincmd K'
+               exec 'setlocal winheight='.&previewheight
+            endif
+         endfunc
+      " }}} 
+
+      " (g)it gutter {{{
+         " plugin variables 
+         let g:gitgutter_max_signs = 5000    
+         let g:gitgutter_map_keys = 0
+      " }}}
 
    " (n)erd commenter {{{
       let g:NERDCreateDefaultMappings = 0
@@ -773,21 +818,20 @@
       let g:airline_theme = 'solarized'
    " }}}
 
+   " (p)lug package manager {{{
+      let g:plug_window = 'botright new'
+   " }}}
+
    " (r)ails plugin {{{
       let g:rubycomplete_buffer_loading = 1
    " }}}
 
    " (r)plugin {{{
-      " let vimrplugin_vsplit = 1
-      " let ScreenImpl = 'Tmux'
-      " let vimrplugin_vsplit = 0
-      " let vimrplugin_assign = 0
-
       let R_in_buffer = 0
       let R_applescript = 0
       let R_tmux_split = 1
       let R_rconsole_width = 0
-      let R_rconsole_height = 15
+      let R_rconsole_height = 17
       let R_assign = 0
       " let R_user_maps_only = 1
 
@@ -803,18 +847,10 @@
       let g:gundo_help = 0
    " }}}
 
-   " (s)essionman session plugin {{{
-      " set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-   " }}}
-
    " (s)yntastic {{{
       let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'  
       " ignore as lacheck for latex files seems a bit buggy
       let g:syntastic_ignore_files = ['/*.*.cls$']  
-   " }}}
-
-   " (t)agbar options {{{
-      " let g:tagbar_left = 0
    " }}}
 
    " (t)mux complete {{{
@@ -889,32 +925,7 @@
 
    " (y)ankring {{{
       let g:yankring_history_dir = '~/.vim/tmp'
-   " }}}
-
-   " (e)asymotion {{{
-      let g:EasyMotion_smartcase = 1
-      let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
-      nmap s <Plug>(easymotion-s)
-      " nmap S <Plug>(easymotion-s)
-      " nmap t <Plug>(easymotion-bd-t)
-      " nmap T <Plug>(easymotion-bd-T)
-      " nmap f <Plug>(easymotion-f)
-      " nmap F <Plug>(easymotion-F)
-
-      omap s <Plug>(easymotion-s)
-      " omap S <Plug>(easymotion-s)
-      " omap t <Plug>(easymotion-bd-t)
-      " omap T <Plug>(easymotion-bd-T)
-      " omap f <Plug>(easymotion-f)
-      " omap F <Plug>(easymotion-F)
-
-      vmap s <Plug>(easymotion-s)
-      " vmap S <Plug>(easymotion-s)
-      " vmap t <Plug>(easymotion-bd-t)
-      " vmap T <Plug>(easymotion-bd-T)
-      " vmap f <Plug>(easymotion-f)
-      " vmap F <Plug>(easymotion-F)
-
+      let g:yankring_clipboard_monitor = 0
    " }}}
 
    "}}}
@@ -935,39 +946,7 @@
           call cursor(l,c)
        endfunction
       "
-
-      " Small helper
-       function! CmdLine(str)
-          exe "menu Foo.Bar :" . a:str
-          emenu Foo.Bar
-          unmenu Foo
-       endfunction
-      "
-
-      " Act on visual selection
-       function! VisualSelection(direction) range
-          let l:saved_reg = @"
-          execute "normal! vgvy"
-          let l:pattern = escape(@", '\\/.*$^~[]')
-          let l:pattern = substitute(l:pattern, "\n$", "", "")
-          if a:direction == 'b'
-             execute "normal ?" . l:pattern . "^M"
-          elseif a:direction == 'f'
-             execute "normal /" . l:pattern . "^M"
-          elseif a:direction == 'replace'
-             call CmdLine("%s" . '/'. l:pattern . '/')
-         " elseif a:direction == 'gv'
-          " call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-         " elseif a:direction == 'acksearch'
-          " call CmdLine("Ack " . l:pattern . ' *')
-         " elseif a:direction == 'quickfixdo'
-          " call CmdLine("Qdo " . '%s/' . l:pattern . '/' . '/gc ' . '\|' . 'update')
-          endif
-          let @/ = l:pattern
-          let @" = l:saved_reg
-       endfunction
-      "
-
+      
       " Format XML 
       function! DoPrettyXML()
          " save the filetype so we can restore it later
@@ -996,16 +975,57 @@
          " restore the filetype
          exe "set ft=" . l:origft
       endfunction
+
       command! PrettyXML call DoPrettyXML()
+
+      function! TwiddleCase(str)
+         if a:str ==# toupper(a:str)
+            let result = tolower(a:str)
+         elseif a:str ==# tolower(a:str)
+            let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
+         else
+            let result = toupper(a:str)
+         endif
+         return result
+      endfunction
+
+      vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
+
+      " Act on visual selection with the next two functions
+      " e.g. search forward, backward or search and replace
+      function! CmdLine(str)
+         exe "menu Foo.Bar :" . a:str
+         emenu Foo.Bar
+         unmenu Foo
+      endfunction
+      "
+
+      function! VisualSelection(direction) range
+         let l:saved_reg = @"
+         execute "normal! vgvy"
+         let l:pattern = escape(@", '\\/.*$^~[]')
+         let l:pattern = substitute(l:pattern, "\n$", "", "")
+         if a:direction == 'b'
+            execute "normal ?" . l:pattern . "^M"
+         elseif a:direction == 'f'
+            execute "normal /" . l:pattern . "^M"
+         elseif a:direction == 'replace'
+            call CmdLine("%s" . '/'. l:pattern . '/')
+            " elseif a:direction == 'gv'
+            " call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+            " elseif a:direction == 'acksearch'
+            " call CmdLine("Ack " . l:pattern . ' *')
+            " elseif a:direction == 'quickfixdo'
+            " call CmdLine("Qdo " . '%s/' . l:pattern . '/' . '/gc ' . '\|' . 'update')
+         endif
+         let @/ = l:pattern
+         let @" = l:saved_reg
+      endfunction
+      "
 
    "}}}
 
    " Autogroups {{{
-      " Return to last edit position when opening files
-      if has("autocmd")
-       au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-      endif
-
       augroup xml_filetypes 
          autocmd!
          autocmd BufNewFile,BufRead *.eml set filetype=xml
@@ -1025,21 +1045,9 @@
          autocmd BufWrite *.xsd :call DeleteTrailingWS()
       augroup END
 
-      " augroup csv_editing 
-         " au!
-         " au BufRead,BufWritePost *.csv :%ArrangeColumn
-         " au BufWritePre *.csv :%UnArrangeColumn
-      " augroup END 
-
       augroup resize_buffer_windows
          autocmd!
          autocmd WinEnter * let &winheight = &lines * 7 / 10
-      augroup END
-
-      " Tex files
-      augroup tex_file_options
-        autocmd!
-        autocmd BufNewFile,BufRead *.tex set ft=tex
       augroup END
 
       " Rnw files
@@ -1060,85 +1068,4 @@
          autocmd!
          autocmd InsertLeave * set nopaste
       augroup END
-
-
-      augroup ruby_and_rails_settings
-         autocmd!
-         autocmd FileType ruby,haml call s:my_ruby_and_rails_setting()
-      augroup END
-
-      function! s:my_ruby_and_rails_setting()
-         set re=1
-         set tabstop=3
-      endfunction
-
-      augroup tex_settings 
-         autocmd!
-         autocmd FileType tex call s:my_tex_settings()
-      augroup END
-
-      function! s:my_tex_settings()
-         set re=1
-         set tabstop=3
-      endfunction
-
-      augroup r_and_r_markdown_settings 
-         autocmd!
-         autocmd FileType r call s:my_tex_settings()
-      augroup END
-
-      function! s:my_r_and_r_markdown_settings()
-         set re=1
-         set tabstop=3
-      endfunction
-
-      augroup markdown_settings
-         autocmd!
-         autocmd FileType markdown,md call s:my_markdown_setting()
-      augroup END
-
-      function! s:my_markdown_setting()
-         set re=1
-         set tabstop=3
-      endfunction
-
-      augroup email_settings_mutt
-         autocmd!
-         autocmd BufRead /tmp/mutt-* execute "normal gg"
-         autocmd BufRead /tmp/mutt-* execute "normal i"
-      augroup END
-
-      " au FileType xml,eml exe ":silent %!xmllint --format --recover - 2>/dev/null" 
    " }}} 
-
-" needs to be put into the folds above
-let g:goourl_disable_default_mappings = 1
-nnoremap us :python googurl()<CR>
-
-"workaround for fugitive to open the preview window correctly
-set previewheight=3
-au BufEnter ?* call PreviewHeightWorkAround()
-func PreviewHeightWorkAround()
-  if &previewwindow
-    exec 'wincmd K'
-    exec 'setlocal winheight='.&previewheight
-  endif
-endfunc
-
-let g:netrw_browsex_viewer= "xdg-open"
-
-
-function! TwiddleCase(str)
-  if a:str ==# toupper(a:str)
-    let result = tolower(a:str)
-  elseif a:str ==# tolower(a:str)
-    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
-  else
-    let result = toupper(a:str)
-  endif
-  return result
-endfunction
-
-vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgvl
-
-
