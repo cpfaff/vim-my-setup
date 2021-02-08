@@ -2,5 +2,6 @@ tmp/*
 bundle/*
 view/*
 .netrwhist
+plugged/
 sessions/
 vimrc.local
