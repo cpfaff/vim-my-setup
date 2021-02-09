@@ -12,9 +12,7 @@
 " Maintainer: Claas-Thido Pfaff
 " Description: This is my personal Vim setup.
 
-let R_parenblock = 0
-
-" Be more modern
+" Be modern
 set nocompatible
 
 " Source bundles {{{
