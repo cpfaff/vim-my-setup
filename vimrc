@@ -16,13 +16,13 @@
 set nocompatible
 
 " Source bundles {{{
-if filereadable(glob("~/.vim/bundles.vim")) 
+if filereadable(glob("~/.vim/bundles.vim"))
    source ~/.vim/bundles.vim
 endif
 " }}}
 
 " Source local vimrc {{{
-if filereadable(glob("~/.vim/vimrc.local")) 
+if filereadable(glob("~/.vim/vimrc.local"))
    source ~/.vim/vimrc.local
 endif
 " }}}
