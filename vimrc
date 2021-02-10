@@ -301,7 +301,7 @@ endif
             xmap gI <Plug>(niceblock-gI)
             xmap A <Plug>(niceblock-A)
 
-,           " Move text left and right (indent)
+           " Move text left and right (indent)
             nnoremap <A-l> >>^
             nnoremap <A-h> <<^
             nnoremap <A-L> >ap^
@@ -315,14 +315,7 @@ endif
             xmap <A-k> <Plug>(textmanip-move-up)
             nmap <A-k> <Plug>(textmanip-move-up)
 
-            " Neosnippet mappings
-            " imap <C-k> <Plug>(neosnippet_expand)
-            " smap <C-k> <Plug>(neosnippet_expand)
-            " xmap <C-k> <Plug>(neosnippet_expand_target)
-            " imap <C-j> <Plug>(neosnippet_jump)
-            " smap <C-j> <Plug>(neosnippet_jump)
-
-            " play with ultisnippets
+            " Ultisnippets
             let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
             let g:UltiSnipsExpandTrigger = "<C-k>"
             let g:UltiSnipsJumpForwardTrigger = "<C-j>"
