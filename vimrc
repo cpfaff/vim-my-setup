@@ -267,10 +267,6 @@ endif
             " leader space clear search
             noremap <leader><space> :noh<CR>
 
-            " The * or # commands extended for vizual selection
-            " vnoremap <silent> * :call VisualSelection('b')<CR>
-            " vnoremap <silent> # :call VisualSelection('f')<CR>
-    
             " Alternative movement for camel and snake case notation
             nmap <silent> <M-w> <Plug>CamelCaseMotion_w
             xmap <silent> <M-w> <Plug>CamelCaseMotion_w
