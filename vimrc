@@ -51,7 +51,7 @@ endif
       set tags=~/.vim/tmp/
 
       " Disable vim startup message
-      set shortmess+=filmnrxoOtTI
+      set shortmess+=filmnrxoOtTIac
 
       " Sets history size
       set history=1000
