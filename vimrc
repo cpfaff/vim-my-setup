@@ -234,6 +234,13 @@ endif
 
             " Disable ZZ.
             nnoremap ZZ <Nop>
+
+            " Disable arrow keys
+            noremap <Up> <Nop>
+            noremap <Down> <Nop>
+            noremap <Left> <Nop>
+            noremap <Right> <Nop>
+
       "}}}
 
          " Movement related {{{
