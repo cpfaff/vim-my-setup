@@ -424,16 +424,12 @@ endif
             "
             " - [edit_key]r   edit the neosnippet builtin snippets for [filetype]
             " - [edit_key]s   edit your personal snippet file for [filetype]
-            " - [edit_key]v   edit the vimrc file in vertical split
 
                nnoremap [edit_key] <Nop>
                nmap <silent><leader>e [edit_key]
- 
-               " nnoremap [edit_key]r :<C-u>NeoSnippetEdit -runtime<CR>
-               " nnoremap [edit_key]s :<C-u>NeoSnippetEdit<CR>
+
                nnoremap [edit_key]s :<C-u>UltiSnipsEdit<CR>
                nnoremap [edit_key]r :<C-u>UltiSnipsEdit!<CR>
-               nnoremap [edit_key]v :<C-u>vsplit $MYVIMRC<cr>
             " }}}
 
             " (f)ind files, buffers etc. and do (unite) {{{
