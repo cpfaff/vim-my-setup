@@ -748,11 +748,6 @@ endif
                \ }
    " }}}
 
-   " (p)owerline plugin {{{
-      let g:airline_powerline_fonts = 1
-      let g:airline_theme = 'solarized'
-   " }}}
-
    " (p)lug package manager {{{
       let g:plug_window = 'botright new'
    " }}}
