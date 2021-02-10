@@ -686,7 +686,6 @@ endif
    " (c)oc plugin {{{
    
       " Deskription:
-      "
       " neoclide coc configuration
       " autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv']
 
@@ -860,7 +859,7 @@ endif
       nnoremap ctu :call SpotifyUrlToUri()<CR>
 
       function! SpotifyUrlToUri()
-          normal ^vt.alxwr:wvwxwr:kjj
+          normal ^v sphxwr:lvt/lxwr:lwv$hx
       endfunction
 
       " Delete trailing white space on save
@@ -871,8 +870,8 @@ endif
           call cursor(l,c)
        endfunction
       "
-      
-      " Format XML 
+
+      " Format XML
       function! DoPrettyXML()
          " save the filetype so we can restore it later
          let l:origft = &ft
@@ -946,12 +945,18 @@ endif
          let @/ = l:pattern
          let @" = l:saved_reg
       endfunction
+
+      " The * or # commands extended for vizual selection
+      " vnoremap <silent> * :call VisualSelection('b')<CR>
+      " vnoremap <silent> # :call VisualSelection('f')<CR>
+
+
       "
 
    "}}}
 
    " Autogroups {{{
-      augroup xml_filetypes 
+      augroup xml_filetypes
          autocmd!
          autocmd BufNewFile,BufRead *.eml set filetype=xml
       augroup END
@@ -959,15 +964,15 @@ endif
       "Remove trailing whilespaces
       augroup remove_trailing_spaces
          autocmd!
-         autocmd BufWrite *.py :call DeleteTrailingWS()
-         autocmd BufWrite *.coffee :call DeleteTrailingWS()
+         " autocmd BufWrite *.py :call DeleteTrailingWS()
+         " autocmd BufWrite *.coffee :call DeleteTrailingWS()
          autocmd BufWrite *.rb :call DeleteTrailingWS()
          autocmd BufWrite *.haml :call DeleteTrailingWS()
          autocmd BufWrite *.md :call DeleteTrailingWS()
-         autocmd BufWrite *.R :call DeleteTrailingWS()
+         " autocmd BufWrite *.R :call DeleteTrailingWS()
          autocmd BufWrite *.tex :call DeleteTrailingWS()
          autocmd BufWrite *.txt :call DeleteTrailingWS()
-         autocmd BufWrite *.xsd :call DeleteTrailingWS()
+         " autocmd BufWrite *.xsd :call DeleteTrailingWS()
       augroup END
 
       augroup resize_buffer_windows
@@ -982,6 +987,14 @@ endif
          autocmd FileType gitcommit set spell
       augroup END
 
+      " Rnw files
+      augroup text_file_options
+         autocmd!
+         autocmd BufNewFile,BufRead *.txt set spell
+         autocmd BufNewFile,BufRead *.txt set nosi
+         autocmd BufNewFile,BufRead *.txt set nocindent
+      augroup END
+
       " Add $ to schow the end of change text range
       augroup set_cp_options
          autocmd!
@@ -993,4 +1006,4 @@ endif
          autocmd!
          autocmd InsertLeave * set nopaste
       augroup END
-   " }}} 
+   " }}}
