@@ -697,6 +697,47 @@ endif
    
    " }}}
 
+      " (d)eo plete {{{
+
+         " plugin variables
+         " let g:deoplete#enable_at_startup = 1
+
+         " Set a single option
+         " call deoplete#custom#option('smart_case', v:true)
+         " call deoplete#custom#var('file', 'force_completion_length', 0)
+
+         " let g:deoplete#sources#syntax#min_keyword_length = 2
+         " let g:deoplete#enable_auto_delimiter = 1
+         " let g:deoplete#data_directory = '~/.vim/tmp/deoplete'
+
+         " " simple omni completion
+         " augroup deoplete
+            " autocmd!
+            " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+            " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+            " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+            " autocmd FileType javascript omnifunc=ale#completion#OmniFunc
+            " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+            " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+            " autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+            " autocmd FileType r setlocal omnifunc=CompleteR
+         " augroup END
+
+         " " heavy omni completion.
+         " if !exists('g:deoplete#sources#omni#input_patterns')
+            " let g:deoplete#sources#omni#input_patterns = {}
+         " endif
+         " if !exists('g:deoplete#force_omni_input_patterns')
+            " let g:deoplete#force_omni_input_patterns = {}
+         " endif
+
+         " let g:deoplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+         " let g:deoplete#sources#omni#input_patterns.php = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+         " let g:deoplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?'
+         " let g:deoplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+         " let g:deoplete#sources#omni#input_patterns.perl = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+         " let g:deoplete#sources#omni#input_patterns.r = '[A-z]'
+      " }}}
 
    " (e)asymotion {{{
       let g:EasyMotion_smartcase = 1
@@ -768,19 +809,7 @@ endif
    " }}}
 
    " (g)it automcompletion (github-issues) {{{
-      let g:gissues_async_omni = 1
-   " }}}
-
-   " (g)undo (a nice undo tree) {{{
-      nnoremap <Leader>u :GundoToggle<CR>
-      let g:gundo_preview_bottom = 1
-      let g:gundo_help = 0
-   " }}}
-
-   " (s)yntastic {{{
-      let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'  
-      " ignore as lacheck for latex files seems a bit buggy
-      let g:syntastic_ignore_files = ['/*.*.cls$']  
+      " let g:gissues_async_omni = 1
    " }}}
 
    " (t)mux complete {{{
@@ -796,34 +825,6 @@ endif
       hi IndentGuidesEven ctermbg=243
    " }}}
 
-   " (u)nite vim {{{
-      let g:unite_enable_start_insert = 1
-      let g:unite_source_file_mru_limit = 200
-      let g:unite_cursor_line_highlight = 'TabLineSel'
-      let g:unite_abbr_highlight = 'TabLine'
-      let g:unite_split_rule='belowright'
-      let g:unite_source_file_mru_filename_format = ''
-      let g:unite_enable_ignore_case=1 
-
-      let g:unite_marked_icon = '*'
-      let g:unite_prompt = '» '
-
-      " the grep command
-      if executable('ag')
-          let g:unite_source_grep_command='ag'
-          let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
-          let g:unite_source_grep_recursive_opt=''
-      elseif executable('ack')
-          let g:unite_source_grep_command='ack'
-          let g:unite_source_grep_default_opts='--no-heading --no-color -a'
-          let g:unite_source_grep_recursive_opt=''
-      endif
-
-      " Overwrite settings of unite window
-      augroup unite_settings
-         autocmd!
-         autocmd FileType unite call s:unite_my_settings()
-      augroup END
 
       function! s:unite_my_settings()
          imap <buffer> kj <Plug>(unite_insert_leave)
