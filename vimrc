@@ -502,29 +502,6 @@ endif
                nnoremap [git_key]c :<C-u>GV<CR>
                xnoremap <silent><leader>gc :GV<CR>
             " }}}
-            
-            " (m)ake call a task {{{
-
-            " Description:
-            "
-            " This mappings help to call make tasks.
-            "
-            " Mappings:
-            "
-            " - [make_key]   opens a unite window and starts a plain make call.
-            "                the filter in the file is set to error so it will
-            "                display all errors in the make run output. You can
-            "                specify it to your needs or to multiple statements
-            "                if you like. Another solution is to delete the
-            "                filter and type in the interactive unite window to
-            "                narrow down the output.
-            "
-            " - [make_key]s  This is an exaple makefile call which calls make directly to
-            "                execute a task defined in the makefile. I would also do this with
-            "                unite in future versions of this configuration but I have a unicode
-            "                problem with it at them moment. The example calls
-            "                the make task showpdf. You can extend this to you
-            "                needs.
 
                " nnoremap [make_key] <Nop>
                " nmap <silent><leader>m [make_key]
