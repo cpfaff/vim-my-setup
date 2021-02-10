@@ -656,6 +656,10 @@ endif
 
                nnoremap [yank_key]y :<C-u>YRShow<CR>
                nnoremap [yank_key]s :<C-u>YRPush '+'<CR>
+               " map p <Plug>(miniyank-autoput)
+               " map P <Plug>(miniyank-autoPut)
+               " map <leader>n <Plug>(miniyank-cycle)
+               " map <leader>N <Plug>(miniyank-cycleback)
             " }}}
 
             " (f10) to show current highlight group {{{
@@ -675,7 +679,7 @@ endif
       "}}}
 
    "}}}
-   
+
    " Plugin configuration {{{
    
 
