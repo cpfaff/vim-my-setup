@@ -376,7 +376,6 @@ endif
             "
             " Mappings:
             "
-            "  - [buffer_key]b   show open buffers (buffer swither)
             "  - [buffer_key]d   closes the active buffer
             "  - [buffer_key]n   opens a new tab
             "  - [buffer_key]o   closes all but the active buffer
@@ -384,10 +383,10 @@ endif
                nnoremap [buffer_key] <Nop>
                nmap <silent><leader>b [buffer_key]
 
-               nnoremap [buffer_key]b :<C-u>:Buffers<CR>
                noremap [buffer_key]d :<C-u>bd!<CR>
                noremap [buffer_key]n :<C-u>tabnew<CR>
                noremap [buffer_key]o :<C-u>tabonly<CR>
+
             " }}}
 
             " (c)omment handling {{{
@@ -451,6 +450,7 @@ endif
                nnoremap [file_key]h :<C-u>:History<CR>
                nnoremap [file_key]g :<C-u>:Rg<CR>
                nnoremap [file_key]l :<C-u>:Lines<CR>
+               nnoremap [file_key]b :<C-u>:Buffers<CR>
 
                " Fzf
                " nnoremap <leader><leader> :GFiles<CR>
