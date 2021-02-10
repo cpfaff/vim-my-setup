@@ -587,13 +587,14 @@ endif
             "
             " Mappings:
             "
-            " - [toggle_key]f  Opens a file manager on the left side of the
-            "                  screen (VimFiler)
+            " - [toggle_key]t  Opens split windows like a file manager or the
+            "   undo history (fimfiler, undotreetoggle) 
             "
                nnoremap [toggle_key] <Nop>
                nmap <silent><leader>t  [toggle_key]
 
-               nnoremap [toggle_key]f :<C-u>VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
+               nnoremap [toggle_key]e :<C-u>VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
+               nnoremap [toggle_key]u :<C-u>:GundoToggle<CR>
             "}}}
 
             " (v)izualize {{{
