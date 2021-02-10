@@ -436,26 +436,34 @@ endif
 
             " Description:
             "
-            " Mappings based on the unite vim plugin to find files and buffers
-            " as sources to pick from.
+            " Mappings to find files files and buffers as sources to pick from.
             "
             " Mappings:
             "
-            " - [unite_key]c  open files recursively starting from current directory
-            " - [unite_key]f  open unite vim in sources overview
-            " - [unite_key]g  open files recursively starting from the root of
-            "                 a project folder (e.g. git repository)
-            " - [unite_key]r  open a list of recently used files
-            " - {unite_key]u  update all plugins
+            " - [file_key]c  open files starting from current directory
+            " - [file_key]h  open files that have been recently used 
+            " - [file_key]g  open files by matches with ripgrep 
 
-               nnoremap [unite_key] <Nop>
-               nmap <silent><leader>f [unite_key]
+               nnoremap [file_key] <Nop>
+               nmap <silent><leader>f [file_key]
 
-               nnoremap [unite_key]c :<C-u>Unite -buffer-name=files file_rec/async<CR>
-               nnoremap [unite_key]f :<C-u>Unite -buffer-name=sources source<CR>
-               nnoremap [unite_key]g :<C-u>Unite -buffer-name=files file_rec/async:!<CR>
-               nnoremap [unite_key]r :<C-u>Unite -buffer-name=files file_mru<CR>
-               " nnoremap [unite_key]u :<C-u>Unite -log -buffer-name=update neobundle/update<CR>               "
+               nnoremap [file_key]c :<C-u>:Files<CR>
+               nnoremap [file_key]h :<C-u>:History<CR>
+               nnoremap [file_key]g :<C-u>:Rg<CR>
+
+
+               " nnoremap [file_key]g :<C-u>:GFiles<CR>
+               " nnoremap [file_key]b :<C-u>:Buffers<CR>
+               " Fzf
+               " nnoremap <leader><leader> :GFiles<CR>
+               " nnoremap <leader>fi       :Files<CR>
+               " nnoremap <leader>C        :Colors<CR>
+               " nnoremap <leader><CR>     :Buffers<CR>
+               " nnoremap <leader>fl       :Lines<CR>
+               " nnoremap <leader>ag       :Ag! <C-R><C-W><CR>
+               " nnoremap <leader>m        :History<CR>
+
+
 
             "}}}
 
