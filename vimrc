@@ -450,10 +450,8 @@ endif
                nnoremap [file_key]c :<C-u>:Files<CR>
                nnoremap [file_key]h :<C-u>:History<CR>
                nnoremap [file_key]g :<C-u>:Rg<CR>
+               nnoremap [file_key]l :<C-u>:Lines<CR>
 
-
-               " nnoremap [file_key]g :<C-u>:GFiles<CR>
-               " nnoremap [file_key]b :<C-u>:Buffers<CR>
                " Fzf
                " nnoremap <leader><leader> :GFiles<CR>
                " nnoremap <leader>fi       :Files<CR>
@@ -462,8 +460,6 @@ endif
                " nnoremap <leader>fl       :Lines<CR>
                " nnoremap <leader>ag       :Ag! <C-R><C-W><CR>
                " nnoremap <leader>m        :History<CR>
-
-
 
             "}}}
 
