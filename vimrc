@@ -658,6 +658,20 @@ endif
                nnoremap [yank_key]s :<C-u>YRPush '+'<CR>
             " }}}
 
+            " (f10) to show current highlight group {{{
+
+               " Description:
+               "
+               " This mappings help to detect the highlight group under the
+               " cursor.
+               "
+               " Mappings:
+               "
+                  noremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+                  \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+                  \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+            "}}}
+
       "}}}
 
    "}}}
