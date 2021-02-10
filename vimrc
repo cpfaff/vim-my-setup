@@ -195,10 +195,24 @@ endif
 
       " Do not recognize octal numbers for Ctrl-A and Ctrl-X, most users find
       " it confusing.
-
       set nrformats-=octal
       set autoread
-      set display+=lastline 
+      set display+=lastline
+
+      " Give more space for displaying messages.
+      set cmdheight=2
+
+      if has("patch-8.1.1564")
+        " merge signcolumn and number column into one
+        set signcolumn=number
+      else
+         " or always show signcolumn
+        set signcolumn=yes
+      endif
+
+      " host programs: useful wen using virtual environments
+      let g:ruby_host_prog='/home/ctpfaff/.rvm/rubies/ruby-2.3.8/bin/ruby'
+      let g:python3_host_prog = '/usr/bin/python3'
 
    "}}}
 
