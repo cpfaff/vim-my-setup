@@ -826,12 +826,6 @@ endif
    " }}}
 
 
-      function! s:unite_my_settings()
-         imap <buffer> kj <Plug>(unite_insert_leave)
-         nmap <buffer><leader>bd <Plug>(unite_all_exit)
-         let unite = unite#get_current_unite()
-      endfunction
-   " }}}
 
    " (v)imfiler plugin {{{
       let g:vimfiler_as_default_explorer = 1
