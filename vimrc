@@ -734,12 +734,6 @@ endif
                exec 'setlocal winheight='.&previewheight
             endif
          endfunc
-      " }}} 
-
-      " (g)it gutter {{{
-         " plugin variables 
-         let g:gitgutter_max_signs = 5000    
-         let g:gitgutter_map_keys = 0
       " }}}
 
    " (n)erd commenter {{{
