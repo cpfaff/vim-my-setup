@@ -697,44 +697,6 @@ endif
    
    " }}}
 
-      " (d)eo plete {{{
-      
-         " plugin variables 
-         let g:acp_enableAtStartup = 0
-         let g:deoplete#enable_at_startup = 1
-         let g:deoplete#enable_smart_case = 1
-         let g:deoplete#sources#syntax#min_keyword_length = 2
-         let g:deoplete#enable_auto_delimiter = 1
-         " let g:neosnippet#snippets_directory = '~/.vim/snippets/'
-         let g:deoplete#data_directory = '~/.vim/tmp/deoplete'
-
-         " simple omni completion
-         augroup deoplete
-            autocmd!
-            autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-            autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-            autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-            autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-            autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-            autocmd FileType r setlocal omnifunc=CompleteR
-         augroup END
-
-         " heavy omni completion.
-         if !exists('g:deoplete#sources#omni#input_patterns')
-            let g:deoplete#sources#omni#input_patterns = {}
-         endif
-         if !exists('g:deoplete#force_omni_input_patterns')
-            let g:deoplete#force_omni_input_patterns = {}
-         endif
-
-         let g:deoplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-         let g:deoplete#sources#omni#input_patterns.php = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-         let g:deoplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?'
-         let g:deoplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-         let g:deoplete#sources#omni#input_patterns.perl = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-         let g:deoplete#sources#omni#input_patterns.r = '[A-z]'
-      " }}} 
 
    " (e)asymotion {{{
       let g:EasyMotion_smartcase = 1
