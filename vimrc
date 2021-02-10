@@ -46,7 +46,7 @@ endif
       " Save all files in one place
       set nobackup
       set backupdir=~/.vim/tmp
-      set noswapfile
+      " set noswapfile
       set directory=~/.vim/tmp
       set tags=~/.vim/tmp/
 
