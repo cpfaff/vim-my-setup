@@ -502,6 +502,10 @@ endif
                xnoremap <silent><leader>gc :GV<CR>
             " }}}
 
+            " (g)undo (a nice undo tree) {{{
+               let g:gundo_preview_bottom = 1
+               let g:gundo_help = 0
+            " }}}
 
             " (q)quit fast {{{
 
