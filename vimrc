@@ -56,7 +56,7 @@ endif
       " Sets history size
       set history=1000
 
-      " Persistent undo 
+      " Persistent undo
       if has('persistent_undo')
          set undodir=~/.vim/tmp
          set undofile
@@ -68,7 +68,9 @@ endif
       filetype plugin on
       filetype indent on
 
-      " A buffer becomes hidden when it is abandoned
+      " A buffer becomes hidden when it is abandoned. Vim
+      " will not ask you to save the current file if it has
+      " non saved changes.
       set hidden
 
       " Configure backspace (through everything)
@@ -78,7 +80,7 @@ endif
       set whichwrap=b,s,<,>,[,],h,l
 
       "swith on numbering on left side
-      set number 
+      set number
 
       " relative numbering
       set relativenumber
@@ -86,10 +88,10 @@ endif
       " Tab completion (display completion matches in a status line)
       set wildmenu
 
-      " ignore cases first
+      " ignore cases when searching first
       set ignorecase
 
-      " but be smart with cases 
+      " but be smart with cases
       set smartcase
 
       " highlight search results
@@ -104,35 +106,22 @@ endif
       " for regular expressions turn magic on
       set magic
 
-      " do  not start at first line (e.g. strg+d)
+      " do not start at first line (e.g. strg+d)
       set nostartofline
 
-      " set colour scheme 
+      " set colour scheme
       syntax on
-
-      " enable better colours in console
-      " set t_Co=256
-      "
-      " if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
-         " set t_Co=16
-      " endif
-
-      " if &term =~ '256color'
-        " disable Background Color Erase (BCE) so that color schemes
-        " render properly when inside 256-color tmux and GNU screen.
-        " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-        " set t_ut=
-      " endif
-
+      
+      " set background=dark
       set background=dark
-      colorscheme solarized
-      highlight clear SignColumn 
-      hi SignColumn guifg=#000000 guibg=#000000 ctermfg=black ctermbg=black
+      let g:gruvbox_sign_column='bg0'
+      let g:gruvbox_number_column='bg0'
+      colorscheme gruvbox
+      let g:gruvbox_inverse=0
 
-      " completion popup
-      hi Pmenu guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-      hi PmenuSbar guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=Lightgray cterm=NONE
-      hi PmenuThumb guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=Lightgray ctermbg=darkcyan cterm=NONE   
+      let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ }
 
       " wrap and line break
       set wrap
