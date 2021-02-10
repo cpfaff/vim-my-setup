@@ -40,6 +40,9 @@ endif
         set ttimeoutlen=100
       endif
 
+      " prevents delays of the ui with coc.
+      set updatetime=300
+
       " Save all files in one place
       set nobackup
       set backupdir=~/.vim/tmp
