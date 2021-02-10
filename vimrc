@@ -289,6 +289,8 @@ endif
             snoremap kj <esc>
 
             " format the current paragraph
+            set formatprg=par\ -w80
+ 
             noremap Q gwap
 
             " Easy undo/redo
