@@ -164,7 +164,7 @@ endif
       set conceallevel=0
       let g:tex_conceal=''
       let g:tex_indent_brace = 0
-      let g:tex_indent_items = 1 
+      let g:tex_indent_items = 1
 
       " fast terminal reduces lags
       set ttyfast
@@ -184,13 +184,9 @@ endif
       set autoindent
       set smartindent
 
+      " Set netrw options
       let g:netrw_browsex_viewer= "xdg-open"
-      
-      " try out new stuff
-      if v:version > 703 || v:version == 703 && has("patch541")
-         set formatoptions+=j " Delete comment character when joining commented lines
-      endif
-      "
+
       set ruler	" show the cursor position all the time
       set showcmd " display incomplete commands
 
