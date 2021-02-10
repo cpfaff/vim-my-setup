@@ -757,14 +757,14 @@ endif
    " }}}
 
    " (r)plugin {{{
-      let R_in_buffer = 0
+      let R_in_buffer = 1
       let R_applescript = 0
-      let R_tmux_split = 1
       let R_rconsole_width = 0
       let R_rconsole_height = 17
       let R_assign = 0
+      let R_parenblock = 0
+      let g:rout_follow_colorscheme=1
       " let R_user_maps_only = 1
-
    " }}}
 
    " (g)it automcompletion (github-issues) {{{
