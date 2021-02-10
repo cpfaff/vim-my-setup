@@ -477,14 +477,13 @@ endif
             " Mappings:
             "
             " - [git_key]b   open a git blame in split view
-            " - [git_key]c   brows or show commits (for file, for range in
-            "   vizual mode)
+            " - [git_key]c   browse or show commits (for file, for range in vizual mode)
             " - [git_key]d   opens a git diff in split view of the file
             " - [git_key]l   show a git log
             " - [git_key]o   only to close all but the active diff split
             " - [git_key]p   push to your remote repository
             " - [git_key]s   open the interactive git status window
-            
+
                nnoremap [git_key] <Nop>
                nmap <silent><leader>g [git_key]
 
