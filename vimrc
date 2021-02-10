@@ -260,11 +260,11 @@ endif
             nnoremap HH 0
             nnoremap L $
 
-            " space: search forward. ctrl-<Space>: search backward, leader space clear search
+            " space: search forward.
             noremap <space> /
-            " map <space> <Plug>(incsearch-forward)
+            " ctrl-<Space>: search backward
             noremap <C-@> ?
-            " map <C-@> <Plug>(incsearch-backward)
+            " leader space clear search
             noremap <leader><space> :noh<CR>
 
             " The * or # commands extended for vizual selection
