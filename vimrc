@@ -322,21 +322,13 @@ endif
             let g:UltiSnipsJumpBackwardTrigger = "<C-l>"
             let g:UltiSnipsEditSplit = "vertical"
 
-            inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-
-            " For no inserting <CR> key.
-            function! s:my_cr_function()
-              return deoplete#close_popup() . "\<CR>"
-            endfunction
-
-            inoremap <expr><C-l> deoplete#complete_common_string()
 
             " Make Y consistent with D and C commands which act on a whole line
             nnoremap Y y$
 
             " Toggle paste mode on and off
             set pastetoggle=<F3>
-            
+
             " Allow repeat operator to be used with visible selection
             vnoremap . :normal .<CR>
 
@@ -346,7 +338,7 @@ endif
       "}}}
 
       " Sorted key mappings {{{
-     
+
             " (a)lign with easy align {{{
 
             " Description:
@@ -360,7 +352,7 @@ endif
                nmap ga <Plug>(EasyAlign)
 
             "}}}
-     
+
             " (a)sterisk improved {{{
 
             " Description:
