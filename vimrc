@@ -503,14 +503,6 @@ endif
                xnoremap <silent><leader>gc :GV<CR>
             " }}}
 
-               " nnoremap [make_key] <Nop>
-               " nmap <silent><leader>m [make_key]
-
-               " nnoremap [make_key]  :<C-u>Unite -input=error build<CR>
-               " nnoremap [make_key]s :<C-u>Unite -no-empty build:make:showpdf<CR>
-               " nnoremap [make_key]c :<C-u>Unite -no-empty build:make:clean<CR>
-
-            " }}}
 
             " (q)quit fast {{{
 
