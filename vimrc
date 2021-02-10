@@ -753,7 +753,7 @@ endif
    " }}}
 
    " (r)ails plugin {{{
-      let g:rubycomplete_buffer_loading = 1
+      " let g:rubycomplete_buffer_loading = 1
    " }}}
 
    " (r)plugin {{{
