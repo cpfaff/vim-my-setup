@@ -523,41 +523,21 @@ endif
                nnoremap [quit_key] :<C-u>q!<CR>
             " }}}
 
-            " (r)eplace search visual selection {{{
+            " (r)eplace visual selection {{{
 
             " Description:
             "
-            " These mappings help to search and replace content in your files.
+            " These mappings help to replace content in your files.
             "
             " Mappings:
             "
             " - [replace_key]    Works in vizual mode and replaces the current
             "                    marked text by a replacement defined by you.
             "
-            " - [replace_key]a   You can mark text in vizual mode and then call
-            "                    this mapping. Does a quickfixdo which opens all the files
-            "                    whith the occurence of the string you grepped
-            "                    for in the quickfix window. It changes all
-            "                    strings to a string defined by you and saves the
-            "                    files.
-            "
-            " - [replace_key]s   Is also a vizal mode mapping and Calls grep (ack) from current direcotry
-            "                    recursive on its contents to find the currently
-            "                    marked text. The results end up in a quickfix
-            "                    window. This is really helpful when you like to
-            "                    replace a string in all your project files. You
-            "                    can combine it with the next command for
-            "                    replacment.
-            "
                vnoremap [replace_key] <Nop>
                vmap <silent><leader>r [replace_key]
 
                vnoremap [replace_key] :call VisualSelection('replace')<CR>
-               " vnoremap [replace_key]a :call VisualSelection('quickfixdo')<CR>
-               " vnoremap [replace_key]s :call VisualSelection('acksearch')<CR>
-               " replace under the curser (however the old functionality is
-               " broken)
-               " nnoremap <Leader>r :%s/\<<C-r><C-w>\>/
             " }}}
 
             " (s)pellchecking {{{
