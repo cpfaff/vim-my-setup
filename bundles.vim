@@ -1,142 +1,215 @@
-" =================================================== 
-" Bundle list
-" ===================================================
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               My Bundle List                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""
+"  Manage Bundle With Plug  "
+"""""""""""""""""""""""""""""
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'Shougo/unite.vim'
+" completion framework
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Plug 'Shougo/neocomplete' 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
+" fuzzy finder
+Plug 'junegunn/fzf.vim'
+
+" compatibility layer
+if !has('nvim')
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-Plug 'Shougo/vimfiler'
-Plug 'Shougo/context_filetype.vim'
-Plug 'Shougo/neomru.vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-abolish' 
-Plug 'tpope/vim-sleuth' 
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive'
-
-Plug 'junegunn/gv.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'jaxbot/github-issues.vim'
-
-Plug 'vim-scripts/renamer.vim'
-Plug 'vim-scripts/YankRing.vim'
-Plug 'vim-scripts/camelcasemotion'
-Plug 'vim-scripts/matchit.zip'
-Plug 'vim-scripts/CmdlineComplete'
-
-" Plug 'jalvesaq/Nvim-R', { 'tag': 'v0.9.10' }
-Plug 'jalvesaq/Nvim-R'
-
-Plug 'cpfaff/googurl.vim'
-
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
-
-Plug 'mhinz/vim-signify'
-
-Plug 'Lokaltog/vim-easymotion'
-
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-Plug 'Raimondi/delimitMate'
-Plug 'sukima/xmledit'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'altercation/vim-colors-solarized'
-Plug 'skwp/greplace.vim'
-Plug 'kana/vim-niceblock'
-Plug 't9md/vim-textmanip'
-Plug 'ervandew/screen'
-Plug 'sjl/gundo.vim'
-
-if has('nvim')
-else
   Plug 'drmikehenry/vim-fixkey'
 endif
 
-Plug 'niklasl/vim-rdf'
-Plug 'oplatek/Conque-Shell'
+" A better vim file explorer
+Plug 'Shougo/vimfiler'
+
+" Unite interface (dependency for vimfiler)
+Plug 'Shougo/unite.vim'
+
+" Vimproc is a great asynchronous execution library for Vim
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+
+" UltiSnips is the ultimate solution for snippets in Vim.
+Plug 'SirVer/ultisnips'
+
+" A very fast, multi-syntax context-sensitive color name highlighter
+" Plug 'ap/vim-css-color'
+
+" Far.vim makes it easier to find and replace text through multiple files.
+Plug 'brooth/far.vim'
+
+" This plugin is used for handling column separated data with Vim.
 Plug 'chrisbra/csv.vim'
+
+" Extend % for mathing more keywords
+Plug 'chrisbra/matchit'
+
+" Adds ic, ac, iC, and aC as column text-objects.
+Plug 'coderifous/textobj-word-column.vim'
+
+" A kill ring for vim 
+Plug 'cpfaff/YankRing.vim'
+
+" A url shortener
+Plug 'cpfaff/googurl.vim'
+
+" The gruvbox color schema
+Plug 'cpfaff/gruvbox'
+
+" Vim motions on speed
+Plug 'easymotion/vim-easymotion'
+
+" Intelligently reopen files at your last edit position.
+Plug 'farmergreg/vim-lastplace'
+
+" Rainbow parenthesis
+Plug 'frazrepo/vim-rainbow' 
+
+" Asterisk.vim provides improved * motions.
 Plug 'haya14busa/vim-asterisk'
 
-Plug 'wellle/tmux-complete.vim'
-Plug 'ap/vim-css-color'
+" Snippets for fim
+Plug 'honza/vim-snippets'
 
+" A better status line
+Plug 'itchyny/lightline.vim'
+Plug 'shinchu/lightline-gruvbox.vim'
 
-Plug 'coderifous/textobj-word-column.vim'
-" language files
+" Vim R support
+Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
+
+" A git commit browser
+Plug 'junegunn/gv.vim' 
+
+" Align table like
+Plug 'junegunn/vim-easy-align'
+
+" Improved visual block mode
+Plug 'kana/vim-niceblock'
+
+" sign column to indicate added, modified and removed lines 
+Plug 'mhinz/vim-signify'
+
+" Display indentation levels
+Plug 'nathanaelkane/vim-indent-guides'
+
+" A filetype plugin for rdf files
+Plug 'niklasl/vim-rdf'
+
+" Comment functions so powerful—no comment necessary.
+Plug 'preservim/nerdcommenter'
+
+" A collection of language packs for Vim.
+"
+" as polyglot requires variables to be set before loading 
+" the package itsel the configuration is here 
+let g:polyglot_disabled = ['markdown']
 Plug 'sheerun/vim-polyglot'
-Plug 'farmergreg/vim-lastplace'
+
+" A nice undo history
+Plug 'sjl/gundo.vim'
+
+" a filetype plugin for xml
+" Plug 'sukima/xmledit'
+
+" Move selected lines or block area to specified direction
+Plug 't9md/vim-textmanip'
+
+" An improve substitution command 
+Plug 'tpope/vim-abolish' 
+
+" A git integration for vim
+Plug 'tpope/vim-fugitive'
+
+" This is a Vim plugin for editing Ruby on Rails
+Plug 'tpope/vim-rails'
+
+" Repeat.vim remaps . in a way that plugins can tap into it.
+Plug 'tpope/vim-repeat'
+
+" Adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file
+Plug 'tpope/vim-sleuth' 
+
+" add and change surroundings like parenthesis 
+Plug 'tpope/vim-surround'
+
+" complete the command line 
+Plug 'vim-scripts/CmdlineComplete'
+
+" adds motions for camel and snake case
+Plug 'vim-scripts/camelcasemotion'
+
+" tmux as completion source
+Plug 'wellle/tmux-complete.vim'
+
+"""""""""""""""""""""""""""""
+"  Manage Bundle With Plug  "
+"""""""""""""""""""""""""""""
 
 call plug#end()
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                            Unused At The Moment                            "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" neosnippet
-" Plug 'Shougo/neosnippet.git'
-" Plug 'Shougo/neosnippet-snippets.git'
+"""""""""""""""""""""""""""""""""""
+"  Check if you still need these  "
+"""""""""""""""""""""""""""""""""""
+
+" better syntax highlighting for python
+
+" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+" function MyHighlights()
+  " hi semshiLocal           ctermfg=209 guifg=#ff875f
+  " hi semshiGlobal          ctermfg=214 guifg=#ffaf00
+  " hi semshiImported        ctermfg=214 guifg=#ffaf00 cterm=bold gui=bold
+  " hi semshiParameter       ctermfg=75  guifg=#5fafff
+  " hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
+  " hi semshiFree            ctermfg=218 guifg=#ffafd7
+  " hi semshiBuiltin         ctermfg=207 guifg=#ff5fff
+  " hi semshiAttribute       ctermfg=49  guifg=#00ffaf
+  " hi semshiSelf            ctermfg=249 guifg=#b2b2b2
+  " hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
+  " hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=237 cterm=bold guibg=#d7005f
+  " hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+  " hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+" endfunction
+
+" augroup MyColors
+    " autocmd!
+    " autocmd ColorScheme * call MyHighlights()
+    " autocmd FileType python call MyHighlights()
+" augroup END
+
+
+
+" Plug 'dpelle/vim-LanguageTool'
+" 
+" Grammar checker
+" Plug 'rhysd/vim-grammarous'
+
+" this is just a reminder to myself. if csv vim is broken for some reason
+" use this commit to install it.
+" Plug 'chrisbra/csv.vim', { 'commit': '7aa17f00a6cc96b9c9c364c6786c24f97c04605b' }
+
+" impmroved terminal support in neovim
+" Plug 'kassio/neoterm'
+
+" version mangement and signs
+" Plug 'jaxbot/github-issues.vim'
+" Plug 'scrooloose/syntastic'
+" Plug 'w0rp/ale'
+
+" handle yank history
+" Plug 'bfredl/nvim-miniyank'
+
+" Plug 'Shougo/deoplete.nvim'
+" 
+" context filetpes
+" Plug 'Shougo/context_filetype.vim'
 "
-" testing
-" Plug 'zhaocai/GoldenView.Vim'
-" Plug 'gregsexton/gitv'
-" Plug 'Olical/vim-enmasse'
-" Plug 'tommcdo/vim-exchange'
-" Plug 'haya14busa/incsearch.vim'
-" Plug 'sk1418/Join'
-" Plug 'AndrewRadev/splitjoin.vim'
-" Plug 'Konfekt/FastFold'
-" Plug 'vim-scripts/DrawIt'
-" Plug 'airblade/vim-rooter'
 
-" Other useful bundles 
+" Unite source for recently used files
+" Plug 'Shougo/neomru.vim'
 
-" Plug 'lifepillar/vim-solarized8'
-" Plug 'airblade/vim-gitgutter' 
-" Plug 'cpfaff/tex.vim--Tanzler'
-" NeoBundle 'osyo-manga/vim-over'
-" NeoBundle 'basyura/bitly.vim'
-" NeoBundle 'benmills/vimux' 
-" NeoBundle 'matze/vim-move' 
-" NeoBundle 'Townk/vim-autoclose.git' 
-" NeoBundle 'christoomey/vim-tmux-navigator'
-" NeoBundle 'godlygeek/tabular.git'
-" NeoBundle 'jamiebikies/greplace.vim.git'
-" NeoBundle 'Shougo/unite-outline.git'
-" NeoBundle 'tpope/vim-markdown.git'
-" NeoBundle 'tpope/vim-rhubarb'
-" NeoBundle 'gelguy/Cmd2.vim'
-" NeoBundle 'Shougo/unite-build.git'
-" NeoBundle 'majutsushi/tagbar.git'
-" NeoBundle 'Raimondi/delimitMate'
-" NeoBundle 'tpope/vim-unimpaired.git'
-" NeoBundle 'sjl/clam.vim.git'
-" NeoBundle 'sjl/splice.vim.git'
-" NeoBundle 'mattn/gist-vim' 
-" NeoBundle 'zef/vim-cycle.git'
-" NeoBundle 'kchmck/vim-coffee-script'
-" NeoBundle 'mutewinter/vim-indent-guides' 
-" NeoBundle 'vim-scripts/sessionman.vim.git'
-" NeoBundle 'henrik/vim-qargs.git'
-" NeoBundle 'kmnk/vim-unite-giti.git'
-" NeoBundle 'vim-scripts/peaksea.git'
-" NeoBundle 'guns/xterm-color-table.vim.git'
-" NeoBundle 'honza/snipmate-snippets.git'
-" NeoBundle 'Rykka/colorv.vim.git'
-" NeoBundle 'chriskempson/base16-vim.git'
-" NeoBundle 'chriskempson/vim-tomorrow-theme.git'
-" NeoBundle 'lambdalisue/vim-gista'
